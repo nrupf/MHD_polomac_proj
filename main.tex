@@ -1,0 +1,30 @@
+\documentclass[12pt, a4paper]{scrreprt}  % KOMA-Script report class
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[backend=biber, style=authoryear]{biblatex}
+\addbibresource{bibliography.bib}
+
+% Title info
+\title{Your Thesis Title}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\include{chapters/intro}
+
+% Add more chapters as you go:
+% \include{chapters/methods}
+% \include{chapters/results}
+
+\printbibliography
+
+\end{document}
