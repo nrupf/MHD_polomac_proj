@@ -1,0 +1,30 @@
+\chapter{Single Fluid MHD equations}
+The ideal single fluid equations consist of
+\begin{itemize}
+    \item the mass-continuity equation:
+            \begin{equation}
+                \frac{\partial\rho}{\partial t} + \nabla_{\vec{r}} (\rho \vec{v}) = 0
+            \end{equation}
+    \item the momentum equation:
+            \begin{equation}
+                \rho \frac{d \vec{v}}{dt} = \vec{J} \wedge B - \nabla P
+            \end{equation}
+    \item Ohm's law:
+            \begin{equation}
+                \vec{E} + \vec{v} \wedge \vec{B} = \eta \vec{J}
+            \end{equation}
+    \item Closure equation:
+            \begin{equation}
+                \frac{d}{dt}\left(P \rho^{-\gamma}\right) = 0
+            \end{equation}
+    \item Maxwell equations:
+            \begin{equation}
+                \nabla\wedge\vec{E} = - \frac{\partial \vec{B}}{\partial t}
+            \end{equation}
+            \begin{equation}
+                \nabla\wedge\vec{B} =  \mu_0 \vec{J}
+            \end{equation}
+            \begin{equation}
+                \nabla\cdot\vec{B} = 0
+            \end{equation}
+\end{itemize}
