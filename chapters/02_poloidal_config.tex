@@ -1,1 +1,10 @@
-\chapter{SPecialziation to poloidal configurations}
+\chapter{Specialziation to poloidal configurations}
+
+In cylindrical coordinates $(r, \varphi, z)$, the divergence and curl are:
+
+\begin{align}
+    \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial (r F_r)}{\partial r} + \frac{1}{r}\frac{\partial F_\varphi}{\partial \varphi} + \frac{\partial F_z}{\partial z} \\
+    \nabla \wedge \vec{F} &= \left(\frac{1}{r}\frac{\partial F_z}{\partial \varphi} - \frac{\partial F_\varphi}{\partial z}\right)\hat{e}_r
+    + \left(\frac{\partial F_r}{\partial z} - \frac{\partial F_z}{\partial r}\right)\hat{e}_\varphi
+    + \frac{1}{r}\left(\frac{\partial (r F_\varphi)}{\partial r} - \frac{\partial F_r}{\partial \varphi}\right)\hat{e}_z
+\end{align}

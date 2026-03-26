@@ -1,13 +1,99 @@
 \chapter{Single Fluid MHD equations}
-The ideal single fluid equations consist of
+
+\section{Derivation process}
+\begin{enumerate}
+    \item Maxwell eq
+    \item Boltzmann eq
+    \item Species equations
+    \item One fluid model    
+    \begin{enumerate}
+        \item One fluid variables
+        \item Center of mass frame
+        \item Onefluid equations
+        \item Many simplifications $\implies$ MHD
+    \end{enumerate}
+\end{enumerate}
+
+\section{The Maxwell equations}
+
+\begin{align}
+    \nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} \label{eq:gauss_e} \\
+    \nabla \cdot \vec{B} &= 0 \label{eq:gauss_b} \\
+    \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \label{eq:faraday} \\
+    \nabla \wedge \vec{B} &= \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} \label{eq:ampere}
+\end{align}
+
+\section{The Boltzmann equation}
+The Boltzmann equation is
+\begin{equation}
+    \frac{\partial f_s}{\partial t} + \vec{v} \nabla_{\vec{r}} f_s + \frac{q_s}{m_s}(\vec{E}^{\lr} \vec{v}\wedge \vec{B}^{\lr} ) \nabla_{\vec{v}} f_s - \left(\frac{\partial f}{\partial t}\right)_{\operatorname{coll}} = 0
+\end{equation}
+
+\subsection{Gravity irrelevant}
+
+Gravity on single ion: $F_G = m g \sim \SI{1e-26}{\kilo\gram} \SI{10}{\meter\second^{-2}} \sim \SI{1e-25}{\newton}$
+
+
+From Poisson eq ($\nabla^2 \phi = \frac{\rho}{\epsilon_0}$) and length scale estimate for long range forces ($\nabla \sim \frac{1}{\lambda_D}$), we can estimate the 
+long-range (beyond $\lambda_D$) Coulomb force: $F_C = e E = e \nabla \phi \sim \lambda_D \frac{\rho}{\epsilon_0} = \frac{e^2 n_e \lambda_D}{\epsilon_0} \sim \SI{3e-27}{m^2 \newton} n_e \lambda_D$
+
+Even a very weak estimate ($\lambda_D \sim 10^{-6}$, $n_e \sim 10^{14}$) , compared to typical plasma values (see \cite{Blandford2013APPLICATIONSOC}), this shows that gravity can be neglected.
+
+\section{Species continuity equation and momentum equation}
+\subsection{Species variables}
+\begin{itemize}
+    \item Number density: $n_s(\vec{r}, t) = \int d\vec{v} f_s(\vec{r},\vec{v},t)$
+\end{itemize}
+In general, we note the per particle average in velocity space of a function $g(\vec{v})$ at a given $(\vec{r},t)$ as
+\begin{equation}
+    \langle g(\vec{r},t)\rangle_{\vec{v}} = \frac{1}{n_s(\vec{r}, t)} \int d\vec{v} g(\vec{v}) f_s(\vec{r},\vec{v},t)
+\end{equation}
+
+Thus we have 
+
+\begin{itemize}
+    \item Average fluid velocity $\vec{u}_s(\vec{r},t)$: $g(\vec{v})=\vec{v} \rightarrow \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \vec{v} f_s(\vec{r},\vec{v},t)$
+    \item Average kinetic energy density $\vec{w}_s(\vec{r},t)$: $g(\vec{v})=\frac{1}{2}m_s\vec{v}^2 \rightarrow \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \frac{1}{2}m_s\vec{v}^2 f_s(\vec{r},\vec{v},t)$
+\end{itemize}
+
+Furthermmore, we define the pressure tensor $\overleftrightarrow{P}$ as (note that we do not normalize over number density)
+\[ \overleftrightarrow{P}_s = \int d\vec{v} (\vec{v}-\vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
+\]
+
+
+\subsection{Species continuity equation}
+
+\subsection{Species momentum equation}
+
+\includegraphics[width=\linewidth]{figures/Temp/PlasmaPhysicsIntro_Notes-23.jpg}
+
+
+\section{Single fluid equations}
+\subsection{Single fluid variables}
+\begin{itemize}
+    \item Mass density: $\varrho(\vec{r}, t) = \sum_s n_s m_s$
+    \item Center of Mass Velocity: $\vec{V}(\vec{r}, t) = \frac{\sum m_s n_s \vec{u}_s}{\varrho}$
+    \item Total electric charge density: $\rho = \sum_s n_s q_s$
+    \item Total electric current density: $\vec{J} = \sum_s q_s n_s \vec{u}_s$
+    \item Pressure tensor in center of mass frame
+\end{itemize}
+
+\subsection{Single fluid equations}
+\includegraphics[width=\linewidth]{figures/Temp/PlasmaPhysicsIntro_Notes-33.jpg}
+
+\includegraphics[width=\linewidth]{figures/Temp/PlasmaPhysicsIntro_Notes-34.jpg}
+
+
+\section{The magnetohydrodynamic equations}
+The ideal magnetohydrodynamic equations consist of
 \begin{itemize}
     \item the mass-continuity equation:
             \begin{equation}
-                \frac{\partial\rho}{\partial t} + \nabla_{\vec{r}} (\rho \vec{v}) = 0
+                \frac{\partial\varrho}{\partial t} + \nabla_{\vec{r}} (\varrho \vec{v}) = 0
             \end{equation}
     \item the momentum equation:
             \begin{equation}
-                \rho \frac{d \vec{v}}{dt} = \vec{J} \wedge B - \nabla P
+                \varrho \frac{d \vec{v}}{dt} = \vec{J} \wedge B - \nabla P
             \end{equation}
     \item Ohm's law:
             \begin{equation}
@@ -15,7 +101,7 @@ The ideal single fluid equations consist of
             \end{equation}
     \item Closure equation:
             \begin{equation}
-                \frac{d}{dt}\left(P \rho^{-\gamma}\right) = 0
+                \frac{d}{dt}\left(P \varrho^{-\gamma}\right) = 0
             \end{equation}
     \item Maxwell equations:
             \begin{equation}
@@ -28,3 +114,5 @@ The ideal single fluid equations consist of
                 \nabla\cdot\vec{B} = 0
             \end{equation}
 \end{itemize}
+
+\subsection{Summary of assumptions and constraints}

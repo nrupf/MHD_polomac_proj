@@ -1,1 +1,0 @@
-# polomac_proj

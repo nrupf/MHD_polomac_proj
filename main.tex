@@ -9,14 +9,18 @@
 
 \usepackage{amsmath}
 
+\usepackage{siunitx}
+
 \usepackage[backend=biber, style=authoryear]{biblatex}
 \usepackage{csquotes}
 \addbibresource{bibliography.bib}
 
+\input{latex/commands}
+
 % Title info
-\title{Your Thesis Title}
-\author{Your Name}
-\date{\today}
+\title{Polomac project}
+\author{Nicola Rupf}
+\date{Spring 2026}
 
 \begin{document}
 
@@ -32,10 +36,6 @@
 \include{chapters/03_equilib_model}
 \include{chapters/04_polomac_params}
 \include{chapters/05_conceptual_comparison}
-
-% Add more chapters as you go:
-% \include{chapters/methods}
-% \include{chapters/results}
 
 %\printbibliography
 
