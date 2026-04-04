@@ -121,7 +121,7 @@ $\to$ Can generally evolve each species, often we care about ions \& electrons $
 
 
 
-\section{Single fluid equations}
+\section{Single fluid model}
 \subsection{Single fluid variables}
 \begin{itemize}
     \item Mass density: $\varrho(\vec{r}, t) = \sum_s n_s m_s$
@@ -132,9 +132,171 @@ $\to$ Can generally evolve each species, often we care about ions \& electrons $
 \end{itemize}
 
 \subsection{Single fluid equations}
-\includegraphics[width=\linewidth]{figures/Temp/PlasmaPhysicsIntro_Notes-33.jpg}
 
-\includegraphics[width=\linewidth]{figures/Temp/PlasmaPhysicsIntro_Notes-34.jpg}
+\textbf{cont. eq. for species:} $\partial_t n_s + \partial_{\vec{r}} \cdot (n_s \vec{u}_s) = 0$ \qquad $|\cdot n_s$
+
+\[
+m_s \partial_t n_s + m_s \partial_{\vec{r}} \cdot (n_s \vec{u}_s) = 0
+\]
+
+$\to$ Ass. we have electrons and one species of ions
+
+$\to$ Sum of their respective eq's is \qquad $\partial_t \varrho_m + \partial_{\vec{r}} \cdot (\varrho_m \vec{V}) = 0$
+
+\vspace{1em}
+
+\textbf{cont. eq. for species:} $\partial_t n_s + \partial_{\vec{r}} \cdot (n_s \vec{u}_s) = 0$ \qquad $|\cdot q_s$
+
+\[
+q_s \partial_t n_s + q_s \partial_{\vec{r}} \cdot (n_s \vec{u}_s) = 0
+\]
+
+$\to$ Ass. we have electrons and one species of ions
+
+$\to$ Sum of their respective eq's is \qquad $\partial_t \rho + \partial_{\vec{r}} \cdot \vec{J} = 0$
+
+\vspace{1em}
+
+\textbf{momentum equations:} \quad $m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s \left(\vec{E} + \vec{u}_s \times \vec{B}\right) - \partial_{\vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s$
+
+$\to$ Ass. we have electrons and one species of ions
+
+$\to$ Sum of their respective eq's is \qquad $\varrho_m \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \times \vec{B} - \partial_{\vec{r}} \cdot \overleftrightarrow{P}^{cm}$
+
+\vspace{1em}
+
+\textbf{momentum equations:} \quad $m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s \left(\vec{E} + \vec{u}_s \times \vec{B}\right) - \partial_{\vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s$
+
+$\to$ Ass. we have electrons and one species of ions
+
+$\to$ multiply electron eq. by $\frac{1}{q_e}$ and ion eq. by $\frac{1}{q_i} = \frac{m_e}{m_i n_e}$
+
+$\to$ assume neutrality $(n_e \simeq n_i \simeq n)$, $m_e \ll m_i$, $\vec{J} \ll e n_e \vec{u}_e$, $e n_i \vec{u}_i$
+
+$\to$ Sum of their respective eq's is approx.: \qquad $\frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right) = \vec{E} + \vec{V} \times \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}$
+
+
+\subsection{Complete single fluid model}
+
+\begin{itemize}
+\item Mass continuity equation: $\frac{\partial \rho_M}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\rho_M \vec{V}) = 0$
+
+\item Charge continuity equation: $\frac{\partial \rho}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot \vec{J} = 0$
+
+\item Momentum equation: $\rho_M \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \times \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}}$
+
+\item Ohm's law: \quad $\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right] = \vec{E} + \vec{v} \times \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e} - \eta \vec{J}$
+\end{itemize}
+
+
+
+\begin{itemize}
+\item Closure: \quad if there are sufficient collisions
+\[
+\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \rho_M^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
+\]
+
+\item Maxwell equations
+\begin{align*}
+\nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} & \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+\nabla \cdot \vec{B} &= 0 & \nabla \times \vec{B} &= \mu_0 \left(\vec{J} + \epsilon_0 \frac{\partial \vec{E}}{\partial t}\right)
+\end{align*}
+\end{itemize}
+
+
+
+\subsection{Typical assumptions}
+
+\begin{enumerate}
+\item Electron inertia negligible, $m_e \to 0$
+
+\item Quasi neutrality 
+\[
+\left(\frac{L}{\lambda_D} \gg 1, \, \omega \ll \omega_{pe}, \, \omega \ll \omega_{ei}\right), \quad \frac{\rho}{ne} = \frac{n_e - n_i}{n_e} \ll 1
+\]
+
+\item Neglect E.M. waves:
+\[
+\left|\epsilon_0 \frac{\partial \vec{E}}{\partial t}\right| \ll \left|\vec{J}\right| \quad \Rightarrow \quad \frac{\partial}{\partial \vec{r}} \cdot \vec{J} = 0
+\]
+
+\item Small Larmor radius $\left(\frac{L}{\rho_i} \gg 1\right)$,
+\[
+\left|\vec{V} \times \vec{B}\right| \gg \left|\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}\right|
+\]
+\end{enumerate}
+
+\vspace{1em}
+
+\begin{itemize}
+\item Mass continuity equation:
+\[
+\frac{\partial \rho_M}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\rho_M \vec{V}) = 0
+\]
+
+\item Charge continuity equation:
+\[
+\underbrace{\frac{\partial \rho}{\partial t}}_{\text{Ass. 2}} + \underbrace{\frac{\partial}{\partial \vec{r}} \cdot \vec{J} = 0}_{\text{Ass. 3}}
+\]
+
+\item Momentum equation:
+\[
+\rho_M \frac{d\vec{V}}{dt} = \underbrace{\rho \vec{E}}_{\text{Ass. 2}} + \vec{J} \times \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}}
+\]
+
+\item Ohm's law:
+\[
+\underbrace{\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right]}_{\text{Assumption 1: } m_e \to 0} = \vec{E} + \vec{v} \times \vec{B} - \underbrace{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e}}_{\text{Assumption 4}} - \eta \vec{J}
+\]
+\end{itemize}
+
+
+
+\begin{itemize}
+\item Closure: \quad if there are sufficient collisions
+\[
+\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \rho_M^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
+\]
+
+\item Maxwell equations
+\begin{align*}
+\underbrace{\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}}_{\text{Ass. 2}} & & \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+\nabla \cdot \vec{B} &= 0 & \nabla \times \vec{B} &= \mu_0 \left(\vec{J} + \underbrace{\epsilon_0 \frac{\partial \vec{E}}{\partial t}}_{\text{Ass. 3}}\right)
+\end{align*}
+\end{itemize}
+
+
+\section{The Magneto-hydro dynamics (MHD) model}
+
+\begin{itemize}
+\item Continuity: $\frac{\partial \rho_M}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\rho_M \vec{V}) = 0$
+
+\item Momentum equation: $\rho_M \frac{d\vec{V}}{dt} = \vec{J} \times \vec{B} - \frac{\partial}{\partial \vec{r}} P$
+
+\item Ohm's law: $\vec{E} + \vec{V} \times \vec{B} = \eta \vec{J}$
+
+\item Closure equation: $\frac{d}{dt} (P \rho_M^{-\gamma}) = 0$
+
+\item Maxwell equations:
+\begin{align*}
+\nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+\nabla \times \vec{B} &= \mu_0 \vec{J} \\
+\nabla \cdot \vec{B} &= 0 \quad \text{(initial condition for $\vec{B}$)}
+\end{align*}
+\end{itemize}
+
+\begin{align*}
+&\rho_M \\
+&\vec{V} \\
+&\vec{J} \quad &\Rightarrow \text{ 14 unknowns,} \\
+&\vec{B} \quad &\phantom{\Rightarrow} \text{ 14 equations} \\
+&P \\
+&\vec{E}
+\end{align*}
+
+If $\eta = 0$: ideal MHD model,
+
+otherwise: resistive MHD model
 
 
 \section{The magnetohydrodynamic equations}
