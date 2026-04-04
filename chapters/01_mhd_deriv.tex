@@ -1,4 +1,4 @@
-\chapter{Single Fluid MHD equations}
+\chapter{Single Fluid ideal MHD equations}
 
 \section{Derivation process}
 \begin{enumerate}
@@ -42,29 +42,29 @@ Even a very weak estimate ($\lambda_D \sim 10^{-6}$, $n_e \sim 10^{14}$) , compa
 \section{Species continuity equation and momentum equation}
 \subsection{Species variables}
 \begin{itemize}
-    \item Number density: $n_s(\vec{r}, t) = \int d\vec{v} f_s(\vec{r},\vec{v},t)$
+    \item Number density: $n_s(\vec{r}, t) = \int d\vec{v} \, f_s(\vec{r},\vec{v},t)$
 \end{itemize}
 In general, we note the per particle average in velocity space of a function $g(\vec{v})$ at a given $(\vec{r},t)$ as
 \begin{equation}
-    \langle g(\vec{r},t)\rangle_{\vec{v}} = \frac{1}{n_s(\vec{r}, t)} \int d\vec{v} g(\vec{v}) f_s(\vec{r},\vec{v},t)
+    \langle g(\vec{r},t)\rangle_{\vec{v}} = \frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, g(\vec{v}) f_s(\vec{r},\vec{v},t)
 \end{equation}
 
 Thus we have 
 
 \begin{itemize}
-    \item Average fluid velocity $\vec{u}_s(\vec{r},t)$: $g(\vec{v})=\vec{v} \rightarrow \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \vec{v} f_s(\vec{r},\vec{v},t)$
-    \item Average kinetic energy density $\vec{w}_s(\vec{r},t)$: $g(\vec{v})=\frac{1}{2}m_s\vec{v}^2 \rightarrow \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \frac{1}{2}m_s\vec{v}^2 f_s(\vec{r},\vec{v},t)$
+    \item Average fluid velocity $\vec{u}_s(\vec{r},t)$: $g(\vec{v})=\vec{v} \rightarrow \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \vec{v} f_s(\vec{r},\vec{v},t)$
+    \item Average kinetic energy density $\vec{w}_s(\vec{r},t)$: $g(\vec{v})=\frac{1}{2}m_s\vec{v}^2 \rightarrow \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \frac{1}{2}m_s\vec{v}^2 f_s(\vec{r},\vec{v},t)$
 \end{itemize}
 
-Furthermmore, we define the pressure tensor $\overleftrightarrow{P}$ as (note that we do not normalize over number density)
-\[ \overleftrightarrow{P}_s = \int d\vec{v} (\vec{v}-\vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
+Furthermore, we define the pressure tensor $\overleftrightarrow{P}$ as (note that we do not normalize over number density)
+\[ \overleftrightarrow{P}_s \coloneq \int d\vec{v} \, (\vec{v}-\vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
 \]
 
 We can evaluate moments of the Boltzmann equation
 
 
 \[
-\int g_s(\vec{v}) \left[\text{Boltzmann}\right] d\vec{v} = 0
+\int d\vec{v} \, g_s(\vec{v}) \left[\text{Boltzmann}\right] = 0
 \]
 \subsection{Species continuity equation}
 $\to$ continuity eq.: choose $g_s(\vec{v}) = 1$
@@ -74,17 +74,18 @@ $\to$ continuity eq.: choose $g_s(\vec{v}) = 1$
 \end{align*}
 
 \begin{align*}
-(1): \quad & \int d\vec{v} \, \frac{\partial f_s}{\partial t} = \frac{\partial}{\partial t} \int f_s = \frac{\partial}{\partial t} n_s \\
-(2): \quad & \int d\vec{v} \, \vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}} = \frac{\partial}{\partial \vec{r}} \cdot \int d\vec{v} \, \vec{v} f_s = \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) \qquad \text{$\vec{v}$ indep. of $\vec{r}$} \\
+(1): \quad & \int d\vec{v} \,  \frac{\partial f_s}{\partial t} = \frac{\partial}{\partial t} \int f_s = \frac{\partial}{\partial t} n_s \\
+(2): \quad & \int d\vec{v} \,  \vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}} = \frac{\partial}{\partial \vec{r}} \cdot \int d\vec{v} \, \vec{v} f_s = \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) \qquad \text{$\vec{v}$ indep. of $\vec{r}$} \\
 & \qquad \qquad \qquad \qquad \qquad \qquad \qquad \text{$\vec{v}$ indep. of $\vec{r}$, $\vec{u} = \langle \vec{v} \rangle$} \\
-(3): \quad & \int d\vec{v} \, \frac{q_s}{m_s} (\vec{E}^{ext} + \vec{v} \wedge \vec{B}^{ext}) \cdot \frac{\partial f_s}{\partial \vec{v}} = \frac{q_s}{m_s} \int \frac{\partial}{\partial \vec{v}} \cdot (\vec{E} + \vec{v} \wedge \vec{B}) \\
+(3): \quad & \int d\vec{v} \,  \frac{q_s}{m_s} (\vec{E}^{ext} + \vec{v} \wedge \vec{B}^{ext}) \cdot \frac{\partial f_s}{\partial \vec{v}} = \frac{q_s}{m_s} \int \frac{\partial}{\partial \vec{v}} \cdot (\vec{E} + \vec{v} \wedge \vec{B}) \\
 & = \frac{q_s}{m_s} \int_{S_{\vec{v} \to \infty}} (\vec{E} + \vec{v} \wedge \vec{B}) \, f_s \, d\vec{S}_{\vec{v}} = 0 \qquad\text{Ass. } f_s\overset{v\to\infty}{\rightarrow}0\\
-(4): \quad & \int d\vec{v} \, \left(\frac{\partial f}{\partial t}\right)_{coll} = 0 \quad \text{bec. we ass. collisions don't create or destroy ptcls.}
+(4): \quad & \int d\vec{v} \,  \left(\frac{\partial f}{\partial t}\right)_{coll} = 0 \quad \text{bec. we ass. collisions don't create or destroy ptcls.}
 \end{align*}
 
-\[
-\Rightarrow \quad \frac{\partial}{\partial t} n_s + \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) = 0 \quad, \quad \text{the fluid continuity eq.}
-\]
+We thus arrive at the species fluid continuity equation
+\begin{equation}
+    \frac{\partial}{\partial t} n_s + \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) = 0
+\end{equation}
 
 
 
@@ -97,7 +98,7 @@ $\to$ momentum eq.: choose $g_s(\vec{v}) = m_s \vec{v}$
 
 where $\frac{d}{dt}$ is the convective derivative, $\frac{d}{dt} = \frac{\partial}{\partial t} + \vec{u}_s \cdot \frac{\partial}{\partial \vec{r}}$
 
-$\vec{R}_s$ is a viscous force due to collisions, $\vec{R} = \int m_s (\vec{v} - \vec{u}_s) \left(\frac{\partial f}{\partial t}\right)_{coll} d\vec{v}$
+$\vec{R}_s$ is a viscous force due to collisions, $\vec{R} = \int d\vec{v} \, m_s (\vec{v} - \vec{u}_s) \left(\frac{\partial f}{\partial t}\right)_{coll} $
 
 
 \subsection{Species energy equation}
@@ -112,9 +113,9 @@ $\to$ energy eq.: choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$
 \item double contraction ":" : $\overleftrightarrow{P_s} : \frac{\partial}{\partial \vec{r}} \vec{u}_s \coloneq \sum_{i,j} P_{(s),\, ij} \frac{\partial u_{(s),\, i}}{\partial r_j}$
 \item $T_s := \frac{1}{3n_s} \int d\vec{v} \, m_s \, (\vec{v} - \vec{u}_s)^2 f_s$ \quad, \quad the kinetic energy due to spreading around fluid velocity
 
-\item $\vec{q}_s = \frac{1}{2} m_s \int (\vec{v} - \vec{u}_s)^2 (\vec{v} - \vec{u}_s) f_s \, d\vec{v}$ \quad, \quad the heat flux vector, so the kinetic energy that is transported with velocity of the ptcls
+\item $\vec{q}_s = \frac{1}{2} m_s \int d\vec{v} \, (\vec{v} - \vec{u}_s)^2 (\vec{v} - \vec{u}_s) f_s$ \quad, \quad the heat flux vector, so the kinetic energy that is transported with velocity of the ptcls
 
-\item $Q_s = \int \frac{1}{2} m_s \, (\vec{v} - \vec{u}_s)^2 \left(\frac{\partial f}{\partial t}\right)_{coll} d\vec{v}$ \quad, \quad heat generated due to viscous forces
+\item $Q_s = \int d\vec{v} \, \frac{1}{2} m_s \, (\vec{v} - \vec{u}_s)^2 \left(\frac{\partial f}{\partial t}\right)_{coll}$ \quad, \quad heat generated due to viscous forces
 \end{itemize}
 
 $\to$ Can generally evolve each species, often we care about ions \& electrons $\to$ call it two-fluid model
@@ -128,44 +129,54 @@ $\to$ Can generally evolve each species, often we care about ions \& electrons $
     \item Center of Mass Velocity: $\vec{V}(\vec{r}, t) = \frac{\sum m_s n_s \vec{u}_s}{\varrho}$
     \item Total electric charge density: $\rho = \sum_s n_s q_s$
     \item Total electric current density: $\vec{J} = \sum_s q_s n_s \vec{u}_s$
-    \item Pressure tensor in center of mass frame: 
+    \item Pressure tensor:
+    \begin{itemize}
+        \item Species pressure tensor in center of mass frame: $\overleftrightarrow{P}_s^{cm} = n_s m_s \int d\vec{v} \, (\vec{v}-\vec{V}) \otimes (\vec{v}-\vec{V}) f_s(\vec{r},\vec{v},t) $
+        \item Singe fluid pressure tensor in center of mass frame: $\overleftrightarrow{P}^{cm} = \sum_s \overleftrightarrow{P}_s^{cm}$
+    \end{itemize} 
 \end{itemize}
 
 \subsection{Single fluid equations}
 
-\textbf{cont. eq. for species:} $\partial_t n_s + \partial_{\vec{r}} \cdot (n_s \vec{u}_s) = 0$ \qquad $|\cdot n_s$
+In the following we want to combine the species equations to a model describing the behaviour of the combined fluid consisting of the different species.
 
-\[
-m_s \partial_t n_s + m_s \partial_{\vec{r}} \cdot (n_s \vec{u}_s) = 0
-\]
+\subsubsection{Mass continuity equation}
+Multiplying the species continuity equation by their respective mass $m_s$, which is time independent, and adding the the equations for all present species, we obtain the \emph{single fluid mass continuity equation}
 
-$\to$ Ass. we have electrons and one species of ions
+\begin{equation}
+    \frac{\partial \varrho}{\partial t} + \nabla \cdot (\varrho \vec{V}) = 0
+\end{equation}
 
-$\to$ Sum of their respective eq's is \qquad $\partial_t \varrho_m + \partial_{\vec{r}} \cdot (\varrho_m \vec{V}) = 0$
+
+\subsubsection{Charge continuity equation}
+Similarly, multiplying the species continuity equation by their respective charges $q_s$, which is time independent, and adding the the equations for all present species, we obtain the \emph{single fluid charge continuity equation}
+
+\begin{equation}
+    \frac{\partial \rho}{\partial t} + \nabla \cdot  \vec{J} = 0
+\end{equation} 
+
+\subsubsection{Momentum equation}
+
+If we assume that only two species are present, i.e. ions and electrons, it automatically follows that the friction due to collisions with other particles cancels out: $\sum_s \vec{R}_s = 0$
+
+Summing the species momentum equation we then get: 
+
+{\color{magenta} Show $\sum_s n_s m_s \frac{d u_s}{dt} = \varrho \frac{d V}{dt}$ and $\sum_s P_s^{cm} = P^{cm}$ (maybe even connected?)}
+
+We arrive at the \emph{momentum equation}
+\begin{equation}
+    \varrho \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \wedge \vec{B} - \partial_{\vec{r}} \cdot \overleftrightarrow{P}^{cm}
+\end{equation}
+
+\subsubsection{Ohm's law}
+
+
+
+
 
 \vspace{1em}
 
-\textbf{cont. eq. for species:} $\partial_t n_s + \partial_{\vec{r}} \cdot (n_s \vec{u}_s) = 0$ \qquad $|\cdot q_s$
-
-\[
-q_s \partial_t n_s + q_s \partial_{\vec{r}} \cdot (n_s \vec{u}_s) = 0
-\]
-
-$\to$ Ass. we have electrons and one species of ions
-
-$\to$ Sum of their respective eq's is \qquad $\partial_t \rho + \partial_{\vec{r}} \cdot \vec{J} = 0$
-
-\vspace{1em}
-
-\textbf{momentum equations:} \quad $m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s \left(\vec{E} + \vec{u}_s \times \vec{B}\right) - \partial_{\vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s$
-
-$\to$ Ass. we have electrons and one species of ions
-
-$\to$ Sum of their respective eq's is \qquad $\varrho_m \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \times \vec{B} - \partial_{\vec{r}} \cdot \overleftrightarrow{P}^{cm}$
-
-\vspace{1em}
-
-\textbf{momentum equations:} \quad $m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s \left(\vec{E} + \vec{u}_s \times \vec{B}\right) - \partial_{\vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s$
+from momentum equations \quad $m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \partial_{\vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s$
 
 $\to$ Ass. we have electrons and one species of ions
 
@@ -173,39 +184,33 @@ $\to$ multiply electron eq. by $\frac{1}{q_e}$ and ion eq. by $\frac{1}{q_i} = \
 
 $\to$ assume neutrality $(n_e \simeq n_i \simeq n)$, $m_e \ll m_i$, $\vec{J} \ll e n_e \vec{u}_e$, $e n_i \vec{u}_i$
 
-$\to$ Sum of their respective eq's is approx.: \qquad $\frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right) = \vec{E} + \vec{V} \times \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}$
+$\to$ Sum of their respective eq's is approx.: \qquad $\frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right) = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}$
 
 
-\subsection{Complete single fluid model}
+\subsubsection{Closure}
 
-\begin{itemize}
-\item Mass continuity equation: $\frac{\partial \rho_M}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\rho_M \vec{V}) = 0$
-
-\item Charge continuity equation: $\frac{\partial \rho}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot \vec{J} = 0$
-
-\item Momentum equation: $\rho_M \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \times \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}}$
-
-\item Ohm's law: \quad $\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right] = \vec{E} + \vec{v} \times \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e} - \eta \vec{J}$
-\end{itemize}
-
-
-
-\begin{itemize}
-\item Closure: \quad if there are sufficient collisions
+if there are sufficient collisions
 \[
-\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \rho_M^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
+\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
 \]
 
-\item Maxwell equations
+\subsubsection{Single fluid Maxwell equations}
+Maxwell equations
 \begin{align*}
-\nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} & \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
-\nabla \cdot \vec{B} &= 0 & \nabla \times \vec{B} &= \mu_0 \left(\vec{J} + \epsilon_0 \frac{\partial \vec{E}}{\partial t}\right)
+\nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} & \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+\nabla \cdot \vec{B} &= 0 & \nabla \wedge \vec{B} &= \mu_0 \left(\vec{J} + \epsilon_0 \frac{\partial \vec{E}}{\partial t}\right)
 \end{align*}
-\end{itemize}
 
 
 
-\subsection{Typical assumptions}
+
+
+
+
+
+\section{Magnetohydrodynamic model}
+
+\subsection{Simplifications}
 
 \begin{enumerate}
 \item Electron inertia negligible, $m_e \to 0$
@@ -222,7 +227,7 @@ $\to$ Sum of their respective eq's is approx.: \qquad $\frac{m_e}{n e^2} \left(\
 
 \item Small Larmor radius $\left(\frac{L}{\rho_i} \gg 1\right)$,
 \[
-\left|\vec{V} \times \vec{B}\right| \gg \left|\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}\right|
+\left|\vec{V} \wedge \vec{B}\right| \gg \left|\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}\right|
 \]
 \end{enumerate}
 
@@ -231,7 +236,7 @@ $\to$ Sum of their respective eq's is approx.: \qquad $\frac{m_e}{n e^2} \left(\
 \begin{itemize}
 \item Mass continuity equation:
 \[
-\frac{\partial \rho_M}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\rho_M \vec{V}) = 0
+\frac{\partial \varrho}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\varrho \vec{V}) = 0
 \]
 
 \item Charge continuity equation:
@@ -241,12 +246,12 @@ $\to$ Sum of their respective eq's is approx.: \qquad $\frac{m_e}{n e^2} \left(\
 
 \item Momentum equation:
 \[
-\rho_M \frac{d\vec{V}}{dt} = \underbrace{\rho \vec{E}}_{\text{Ass. 2}} + \vec{J} \times \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}}
+\varrho \frac{d\vec{V}}{dt} = \underbrace{\rho \vec{E}}_{\text{Ass. 2}} + \vec{J} \wedge \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}}
 \]
 
 \item Ohm's law:
 \[
-\underbrace{\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right]}_{\text{Assumption 1: } m_e \to 0} = \vec{E} + \vec{v} \times \vec{B} - \underbrace{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e}}_{\text{Assumption 4}} - \eta \vec{J}
+\underbrace{\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right]}_{\text{Assumption 1: } m_e \to 0} = \vec{E} + \vec{v} \wedge \vec{B} - \underbrace{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e}}_{\text{Assumption 4}} - \eta \vec{J}
 \]
 \end{itemize}
 
@@ -255,51 +260,21 @@ $\to$ Sum of their respective eq's is approx.: \qquad $\frac{m_e}{n e^2} \left(\
 \begin{itemize}
 \item Closure: \quad if there are sufficient collisions
 \[
-\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \rho_M^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
+\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
 \]
 
 \item Maxwell equations
 \begin{align*}
-\underbrace{\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}}_{\text{Ass. 2}} & & \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
-\nabla \cdot \vec{B} &= 0 & \nabla \times \vec{B} &= \mu_0 \left(\vec{J} + \underbrace{\epsilon_0 \frac{\partial \vec{E}}{\partial t}}_{\text{Ass. 3}}\right)
+\underbrace{\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}}_{\text{Ass. 2}} & & \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+\nabla \cdot \vec{B} &= 0 & \nabla \wedge \vec{B} &= \mu_0 \left(\vec{J} + \underbrace{\epsilon_0 \frac{\partial \vec{E}}{\partial t}}_{\text{Ass. 3}}\right)
 \end{align*}
 \end{itemize}
 
 
-\section{The Magneto-hydro dynamics (MHD) model}
-
-\begin{itemize}
-\item Continuity: $\frac{\partial \rho_M}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\rho_M \vec{V}) = 0$
-
-\item Momentum equation: $\rho_M \frac{d\vec{V}}{dt} = \vec{J} \times \vec{B} - \frac{\partial}{\partial \vec{r}} P$
-
-\item Ohm's law: $\vec{E} + \vec{V} \times \vec{B} = \eta \vec{J}$
-
-\item Closure equation: $\frac{d}{dt} (P \rho_M^{-\gamma}) = 0$
-
-\item Maxwell equations:
-\begin{align*}
-\nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0 \vec{J} \\
-\nabla \cdot \vec{B} &= 0 \quad \text{(initial condition for $\vec{B}$)}
-\end{align*}
-\end{itemize}
-
-\begin{align*}
-&\rho_M \\
-&\vec{V} \\
-&\vec{J} \quad &\Rightarrow \text{ 14 unknowns,} \\
-&\vec{B} \quad &\phantom{\Rightarrow} \text{ 14 equations} \\
-&P \\
-&\vec{E}
-\end{align*}
-
-If $\eta = 0$: ideal MHD model,
-
-otherwise: resistive MHD model
 
 
-\section{The magnetohydrodynamic equations}
+
+\subsection{The magnetohydrodynamic equations}
 The ideal magnetohydrodynamic equations consist of
 \begin{itemize}
     \item the mass-continuity equation:
@@ -330,4 +305,8 @@ The ideal magnetohydrodynamic equations consist of
             \end{equation}
 \end{itemize}
 
-\subsection{Summary of assumptions and constraints}
+If $\eta = 0$: ideal MHD model,
+
+otherwise: resistive MHD model
+
+\subsection{Summary of assumptions and constraints of the magnetohydrodynamic model}
