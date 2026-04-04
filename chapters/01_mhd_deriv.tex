@@ -60,12 +60,65 @@ Furthermmore, we define the pressure tensor $\overleftrightarrow{P}$ as (note th
 \[ \overleftrightarrow{P}_s = \int d\vec{v} (\vec{v}-\vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
 \]
 
+We can evaluate moments of the Boltzmann equation
 
+
+\[
+\int g_s(\vec{v}) \left[\text{Boltzmann}\right] d\vec{v} = 0
+\]
 \subsection{Species continuity equation}
+$\to$ continuity eq.: choose $g_s(\vec{v}) = 1$
+
+\begin{align*}
+&\Rightarrow \int \left[\underbrace{\frac{\partial f_s}{\partial t}}_{(1)} + \underbrace{\vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}}}_{(2)} + \underbrace{\frac{q_s}{m_s} (\vec{E}^{ext} + \vec{v} \wedge \vec{B}^{ext}) \cdot \frac{\partial f_s}{\partial \vec{v}}}_{(3)} - \underbrace{\left(\frac{\partial f}{\partial t}\right)_{coll}}_{(4)}\right] = 0
+\end{align*}
+
+\begin{align*}
+(1): \quad & \int d\vec{v} \, \frac{\partial f_s}{\partial t} = \frac{\partial}{\partial t} \int f_s = \frac{\partial}{\partial t} n_s \\
+(2): \quad & \int d\vec{v} \, \vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}} = \frac{\partial}{\partial \vec{r}} \cdot \int d\vec{v} \, \vec{v} f_s = \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) \qquad \text{$\vec{v}$ indep. of $\vec{r}$} \\
+& \qquad \qquad \qquad \qquad \qquad \qquad \qquad \text{$\vec{v}$ indep. of $\vec{r}$, $\vec{u} = \langle \vec{v} \rangle$} \\
+(3): \quad & \int d\vec{v} \, \frac{q_s}{m_s} (\vec{E}^{ext} + \vec{v} \wedge \vec{B}^{ext}) \cdot \frac{\partial f_s}{\partial \vec{v}} = \frac{q_s}{m_s} \int \frac{\partial}{\partial \vec{v}} \cdot (\vec{E} + \vec{v} \wedge \vec{B}) \\
+& = \frac{q_s}{m_s} \int_{S_{\vec{v} \to \infty}} (\vec{E} + \vec{v} \wedge \vec{B}) \, f_s \, d\vec{S}_{\vec{v}} = 0 \qquad\text{Ass. } f_s\overset{v\to\infty}{\rightarrow}0\\
+(4): \quad & \int d\vec{v} \, \left(\frac{\partial f}{\partial t}\right)_{coll} = 0 \quad \text{bec. we ass. collisions don't create or destroy ptcls.}
+\end{align*}
+
+\[
+\Rightarrow \quad \frac{\partial}{\partial t} n_s + \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) = 0 \quad, \quad \text{the fluid continuity eq.}
+\]
+
+
 
 \subsection{Species momentum equation}
+$\to$ momentum eq.: choose $g_s(\vec{v}) = m_s \vec{v}$
+: similar
+\begin{align*}
+\Rightarrow \quad m_s n_s \frac{d \vec{u}_s}{d t} &= q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s
+\end{align*}
 
-\includegraphics[width=\linewidth]{figures/Temp/PlasmaPhysicsIntro_Notes-23.jpg}
+where $\frac{d}{dt}$ is the convective derivative, $\frac{d}{dt} = \frac{\partial}{\partial t} + \vec{u}_s \cdot \frac{\partial}{\partial \vec{r}}$
+
+$\vec{R}_s$ is a viscous force due to collisions, $\vec{R} = \int m_s (\vec{v} - \vec{u}_s) \left(\frac{\partial f}{\partial t}\right)_{coll} d\vec{v}$
+
+
+\subsection{Species energy equation}
+$\to$ energy eq.: choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$
+: similar 
+
+\begin{align*}
+\Rightarrow \quad \frac{3}{2} n_s \frac{\d T_s}{\d t} + \overleftrightarrow{P_s} : \frac{\partial}{\partial \vec{r}} \vec{u}_s + \frac{\partial}{\partial \vec{r}} \cdot \vec{q}_s &= Q_s
+\end{align*}
+
+\begin{itemize}
+\item double contraction ":" : $\overleftrightarrow{P_s} : \frac{\partial}{\partial \vec{r}} \vec{u}_s \coloneq \sum_{i,j} P_{(s),\, ij} \frac{\partial u_{(s),\, i}}{\partial r_j}$
+\item $T_s := \frac{1}{3n_s} \int d\vec{v} \, m_s \, (\vec{v} - \vec{u}_s)^2 f_s$ \quad, \quad the kinetic energy due to spreading around fluid velocity
+
+\item $\vec{q}_s = \frac{1}{2} m_s \int (\vec{v} - \vec{u}_s)^2 (\vec{v} - \vec{u}_s) f_s \, d\vec{v}$ \quad, \quad the heat flux vector, so the kinetic energy that is transported with velocity of the ptcls
+
+\item $Q_s = \int \frac{1}{2} m_s \, (\vec{v} - \vec{u}_s)^2 \left(\frac{\partial f}{\partial t}\right)_{coll} d\vec{v}$ \quad, \quad heat generated due to viscous forces
+\end{itemize}
+
+$\to$ Can generally evolve each species, often we care about ions \& electrons $\to$ call it two-fluid model
+
 
 
 \section{Single fluid equations}
