@@ -1,3 +1,227 @@
 \chapter{Species equations derivation}
-\section{Momentum equation}
+\section{Species Momentum equation}\label{sec:Species Momentum equation}
+
+Choose $g_s(\vec{v}) = m_s \vec{v}$ and take the momentum moment of the Boltzmann equation:
+
+\begin{align*}
+&\Rightarrow \int d\vec{v} \, m_s \vec{v} \left[\frac{\partial f_s}{\partial t}+ \vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}} + \frac{q_s}{m_s}(\vec{E}^{lr} + \vec{v} \wedge \vec{B}^{lr}) \cdot \frac{\partial f_s}{\partial \vec{v}} - \left(\frac{\partial f}{\partial t}\right)_{coll}\right] = 0
+\end{align*}
+
+This gives us four terms to evaluate:
+\begin{align*}
+\text{Term 1: } & \int d\vec{v} \, m_s \vec{v} \frac{\partial f_s}{\partial t} \\
+\text{Term 2: } & \int d\vec{v} \, m_s \vec{v} (\vec{v} \cdot \nabla_{\vec{r}} f_s) \\
+\text{Term 3: } & \int d\vec{v} \, m_s \vec{v} \left[\frac{q_s}{m_s}(\vec{E} + \vec{v} \wedge \vec{B}) \cdot \nabla_{\vec{v}} f_s\right] \\
+\text{Term 4: } & -\int d\vec{v} \, m_s \vec{v} \left(\frac{\partial f}{\partial t}\right)_{coll}
+\end{align*}
+
+\subsection{Term 1: Time derivative}
+
+\begin{align*}
+\text{Term 1} &= \int d^3v \, m_s \vec{v} \frac{\partial f_s}{\partial t}  \\
+&= m_s \frac{\partial}{\partial t} \int d^3v \, \vec{v} f_s \quad \text{($\vec{v}$ independent of $t$)}  \\
+&= m_s \frac{\partial}{\partial t} (n_s \vec{u}_s)  \\
+&= m_s \left[ \frac{\partial n_s}{\partial t} \vec{u}_s + n_s \frac{\partial \vec{u}_s}{\partial t} \right]
+\end{align*}
+
+\subsection{Term 2: Spatial advection}
+
+\begin{align*}
+\text{Term 2} &= \int d^3v \, m_s \vec{v} (\vec{v} \cdot \nabla_{\vec{r}} f_s)  \\
+&= m_s \int d^3v \, v_i v_j \frac{\partial f_s}{\partial r_j} \quad \text{(component form)}  \\
+&= m_s \frac{\partial}{\partial r_j} \int d^3v \, v_i v_j f_s \quad \text{($\vec{v}$ independent of $\vec{r}$)}
+\end{align*}
+
+We now evaluate the integral $\int d^3v \, v_i v_j f_s$ using the velocity decomposition:
+\begin{equation*}
+\vec{v} = \vec{u}_s + \vec{w}, \quad \text{where } \vec{w} = \vec{v} - \vec{u}_s
+\end{equation*}
+
+Then:
+\begin{align*}
+v_i v_j &= (u_{s,i} + w_i)(u_{s,j} + w_j)  \\
+&= u_{s,i} u_{s,j} + u_{s,i} w_j + w_i u_{s,j} + w_i w_j
+\end{align*}
+
+Integrating term by term:
+\begin{align*}
+\int d^3v \, u_{s,i} u_{s,j} f_s &= u_{s,i} u_{s,j} n_s \\
+\int d^3v \, u_{s,i} w_j f_s &= u_{s,i} \int d^3v \, (v_j - u_{s,j}) f_s = u_{s,i}[n_s u_{s,j} - n_s u_{s,j}] = 0 \\
+\int d^3v \, w_i u_{s,j} f_s &= 0 \quad \text{(similarly)} \\
+\int d^3v \, w_i w_j f_s &= \frac{P_{s,ij}}{m_s}
+\end{align*}
+
+where the pressure tensor is defined as:
+\begin{equation*}
+P_{s,ij} \equiv m_s \int d^3v \, (v_i - u_{s,i})(v_j - u_{s,j}) f_s
+\end{equation*}
+
+Therefore:
+\begin{equation*}
+\int d^3v \, v_i v_j f_s = n_s u_{s,i} u_{s,j} + \frac{P_{s,ij}}{m_s}
+\end{equation*}
+
+Substituting back into Term 2:
+\begin{align*}
+\text{Term 2} &= m_s \frac{\partial}{\partial r_j} \left[ n_s u_{s,i} u_{s,j} + \frac{P_{s,ij}}{m_s} \right]  \\
+&= m_s \frac{\partial}{\partial r_j} (n_s u_{s,i} u_{s,j}) + \frac{\partial P_{s,ij}}{\partial r_j}
+\end{align*}
+
+Expanding the first term using the product rule:
+\begin{align*}
+\frac{\partial}{\partial r_j} (n_s u_{s,i} u_{s,j}) &= n_s u_{s,j} \frac{\partial u_{s,i}}{\partial r_j} + u_{s,i} \frac{\partial}{\partial r_j}(n_s u_{s,j})  \\
+&= n_s (\vec{u}_s \cdot \nabla_{\vec{r}}) u_{s,i} + u_{s,i} \nabla_{\vec{r}} \cdot (n_s \vec{u}_s)
+\end{align*}
+
+In vector notation:
+\begin{equation*}
+\text{Term 2} = m_s n_s (\vec{u}_s \cdot \nabla_{\vec{r}}) \vec{u}_s + m_s \vec{u}_s [\nabla_{\vec{r}} \cdot (n_s \vec{u}_s)] + \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s
+\end{equation*}
+
+\subsection{Combining Terms 1 and 2}
+
+Adding Terms 1 and 2:
+\begin{align*}
+\text{Term 1 + Term 2} &= m_s \frac{\partial n_s}{\partial t} \vec{u}_s + m_s n_s \frac{\partial \vec{u}_s}{\partial t}  \\
+&\quad + m_s n_s (\vec{u}_s \cdot \nabla_{\vec{r}}) \vec{u}_s + m_s \vec{u}_s [\nabla_{\vec{r}} \cdot (n_s \vec{u}_s)] + \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s
+\end{align*}
+
+Regrouping:
+\begin{align*}
+&= m_s n_s \left[ \frac{\partial \vec{u}_s}{\partial t} + (\vec{u}_s \cdot \nabla_{\vec{r}}) \vec{u}_s \right] + m_s \vec{u}_s \left[ \frac{\partial n_s}{\partial t} + \nabla_{\vec{r}} \cdot (n_s \vec{u}_s) \right] + \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s
+\end{align*}
+
+Using the species continuity equation:
+\begin{equation*}
+\frac{\partial n_s}{\partial t} + \nabla_{\vec{r}} \cdot (n_s \vec{u}_s) = 0
+\end{equation*}
+
+the second term vanishes, leaving:
+\begin{equation*}
+\text{Term 1 + Term 2} = m_s n_s \left[ \frac{\partial \vec{u}_s}{\partial t} + (\vec{u}_s \cdot \nabla_{\vec{r}}) \vec{u}_s \right] + \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s
+\end{equation*}
+
+Defining the \textbf{convective derivative}:
+\begin{equation*}
+\frac{d\vec{u}_s}{dt} \equiv \frac{\partial \vec{u}_s}{\partial t} + (\vec{u}_s \cdot \nabla_{\vec{r}}) \vec{u}_s
+\end{equation*}
+
+we obtain:
+\begin{equation*}
+\boxed{\text{Term 1 + Term 2} = m_s n_s \frac{d\vec{u}_s}{dt} + \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s}
+\end{equation*}
+
+\subsection{Term 3: Lorentz force}
+
+\begin{align*}
+\text{Term 3} &= \int d^3v \, m_s \vec{v} \left[ \frac{q_s}{m_s}(\vec{E} + \vec{v} \wedge \vec{B}) \cdot \nabla_{\vec{v}} f_s \right]  \\
+&= q_s \int d^3v \, \vec{v} \cdot [(\vec{E} + \vec{v} \wedge \vec{B}) \cdot \nabla_{\vec{v}} f_s]
+\end{align*}
+
+In component form:
+\begin{equation*}
+[\text{Term 3}]_i = q_s \int d^3v \, v_i [(E_j + (v \wedge B)_j) \frac{\partial f_s}{\partial v_j}]
+\end{equation*}
+
+We use integration by parts. From the product rule:
+\begin{equation*}
+\frac{\partial}{\partial v_j} [v_i (E_j + (v \wedge B)_j) f_s] = v_i (E_j + (v \wedge B)_j) \frac{\partial f_s}{\partial v_j} + f_s \frac{\partial}{\partial v_j}[v_i (E_j + (v \wedge B)_j)]
+\end{equation*}
+
+Rearranging:
+\begin{equation*}
+v_i (E_j + (v \wedge B)_j) \frac{\partial f_s}{\partial v_j} = \frac{\partial}{\partial v_j} [v_i (E_j + (v \wedge B)_j) f_s] - f_s \frac{\partial}{\partial v_j}[v_i (E_j + (v \wedge B)_j)]
+\end{equation*}
+
+Integrating over all velocity space:
+\begin{equation*}
+\int d^3v \, v_i (E_j + (v \wedge B)_j) \frac{\partial f_s}{\partial v_j} = \underbrace{\int d^3v \, \frac{\partial}{\partial v_j} [v_i (E_j + (v \wedge B)_j) f_s]}_{=0} - \int d^3v \, f_s \frac{\partial}{\partial v_j}[v_i (E_j + (v \wedge B)_j)]
+\end{equation*}
+
+The first integral vanishes by the divergence theorem (surface integral at $|\vec{v}| \to \infty$ where $f_s \to 0$).
+
+For the second integral, we compute:
+\begin{align*}
+\frac{\partial}{\partial v_j}[v_i (E_j + (v \wedge B)_j)] &= \frac{\partial v_i}{\partial v_j}(E_j + (v \wedge B)_j) + v_i \frac{\partial}{\partial v_j}(E_j + (v \wedge B)_j)  \\
+&= \delta_{ij}(E_j + (v \wedge B)_j) + v_i \frac{\partial}{\partial v_j}(E_j + (v \wedge B)_j)
+\end{align*}
+
+The first term gives:
+\begin{equation*}
+\delta_{ij}(E_j + (v \wedge B)_j) = E_i + (v \wedge B)_i
+\end{equation*}
+
+For the second term, note that:
+\begin{itemize}
+\item $\frac{\partial E_j}{\partial v_j} = 0$ \quad ($\vec{E}$ independent of $\vec{v}$)
+\item $\frac{\partial}{\partial v_j}(v \wedge B)_j = \frac{\partial}{\partial v_j}(\varepsilon_{jkl} v_k B_l) = \varepsilon_{jkl} B_l \delta_{jk} = \varepsilon_{jjl} B_l = 0$
+\end{itemize}
+
+The last equality holds because $(v \wedge B)_j$ is independent of $v_j$ (the cross product structure ensures the $j$-th component depends only on the other velocity components).
+
+Therefore:
+\begin{equation*}
+\frac{\partial}{\partial v_j}[v_i (E_j + (v \wedge B)_j)] = E_i + (v \wedge B)_i
+\end{equation*}
+
+Substituting back:
+\begin{align*}
+[\text{Term 3}]_i &= -q_s \int d^3v \, f_s [E_i + (v \wedge B)_i]  \\
+&= -q_s E_i \int d^3v \, f_s - q_s \int d^3v \, f_s (v \wedge B)_i  \\
+&= -q_s n_s E_i - q_s \int d^3v \, f_s \varepsilon_{ijk} v_j B_k  \\
+&= -q_s n_s E_i - q_s \varepsilon_{ijk} B_k \int d^3v \, v_j f_s  \\
+&= -q_s n_s E_i - q_s \varepsilon_{ijk} B_k (n_s u_{s,j})  \\
+&= -q_s n_s [E_i + (u_s \wedge B)_i]
+\end{align*}
+
+In vector notation:
+\begin{equation*}
+\text{Term 3} = -q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B})
+\end{equation*}
+
+\subsection{Term 4: Collision term}
+
+\begin{equation*}
+\text{Term 4} = -\int d^3v \, m_s \vec{v} \left(\frac{\partial f}{\partial t}\right)_{\text{coll}} \equiv \vec{R}_s
+\end{equation*}
+
+We can rewrite this using the velocity decomposition $\vec{v} = \vec{u}_s + \vec{w}$:
+\begin{align*}
+\vec{R}_s &= -\int d^3v \, m_s (\vec{u}_s + \vec{w}) \left(\frac{\partial f_s}{\partial t}\right)_{\text{coll}}  \\
+&= -m_s \vec{u}_s \int d^3v \, \left(\frac{\partial f_s}{\partial t}\right)_{\text{coll}} - m_s \int d^3v \, \vec{w} \left(\frac{\partial f_s}{\partial t}\right)_{\text{coll}}
+\end{align*}
+
+The first integral vanishes due to particle conservation in collisions:
+\begin{equation*}
+\int d^3v \, \left(\frac{\partial f_s}{\partial t}\right)_{\text{coll}} = 0
+\end{equation*}
+
+Therefore, both forms are equivalent:
+\begin{equation*}
+\boxed{\vec{R}_s = -\int d^3v \, m_s \vec{v} \left(\frac{\partial f_s}{\partial t}\right)_{\text{coll}} = -\int d^3v \, m_s (\vec{v} - \vec{u}_s) \left(\frac{\partial f_s}{\partial t}\right)_{\text{coll}}}
+\end{equation*}
+
+\textbf{Physical interpretation:} $\vec{R}_s$ represents the momentum transferred to species $s$ from other species through collisions.
+
+\textbf{Properties:}
+\begin{itemize}
+\item For collisions within the same species: $\vec{R}_s = 0$ (momentum conserved)
+\item For multi-species plasma: $\sum_s \vec{R}_s = 0$ (total momentum conserved)
+\end{itemize}
+
+\subsection{Final Result: Species Momentum equation}
+
+Combining all terms (Term 1 + Term 2 + Term 3 + Term 4 = 0):
+\begin{equation*}
+m_s n_s \frac{d\vec{u}_s}{dt} + \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s - q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B}) + \vec{R}_s = 0
+\end{equation*}
+
+Rearranging:
+\begin{equation*}
+\boxed{m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B}) - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s + \vec{R}_s}
+\end{equation*}
+
+where $\frac{d}{dt} = \frac{\partial}{\partial t} + \vec{u}_s \cdot \nabla_{\vec{r}}$ is the convective derivative.
+
+
 \section{Energy equation}

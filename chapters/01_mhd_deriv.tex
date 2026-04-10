@@ -17,10 +17,10 @@
 \section{The Maxwell equations}
 
 \begin{align}
-    \nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} \label{eq:gauss_e} \\
-    \nabla \cdot \vec{B} &= 0 \label{eq:gauss_b} \\
-    \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \label{eq:faraday} \\
-    \nabla \wedge \vec{B} &= \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} \label{eq:ampere}
+    \text{Gauss's law: } \nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} \label{eq:gauss_e} \\
+    \text{Gauss's law for magnetism: } \nabla \cdot \vec{B} &= 0 \label{eq:gauss_b} \\
+    \text{Faraday's law of induction: } \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \label{eq:faraday} \\
+    \text{Ampère–Maxwell law: }  \nabla \wedge \vec{B} &= \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} \label{eq:ampere}
 \end{align}
 
 \section{The Boltzmann equation}
@@ -28,6 +28,9 @@ The Boltzmann equation is
 \begin{equation}
     \frac{\partial f_s}{\partial t} + \vec{v} \nabla_{\vec{r}} f_s + \frac{q_s}{m_s}(\vec{E}^{\lr} \vec{v}\wedge \vec{B}^{\lr} ) \nabla_{\vec{v}} f_s - \left(\frac{\partial f}{\partial t}\right)_{\operatorname{coll}} = 0
 \end{equation}
+
+Here the short range interactions are accounted for in the collisional term, and the long range (lr) interactions from collective effeects are accounted for in the electric and Lorentz term.
+The crititical distance hereby is the Debye length of electrons $\lambda_{De} = \sqrt{\frac{\epsilon_0 T_e}{e^2 n_0}}$.
 
 \subsection{Gravity irrelevant}
 
@@ -70,14 +73,14 @@ We can evaluate moments of the Boltzmann equation
 $\to$ continuity eq.: choose $g_s(\vec{v}) = 1$
 
 \begin{align*}
-&\Rightarrow \int \left[\underbrace{\frac{\partial f_s}{\partial t}}_{(1)} + \underbrace{\vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}}}_{(2)} + \underbrace{\frac{q_s}{m_s} (\vec{E}^{ext} + \vec{v} \wedge \vec{B}^{ext}) \cdot \frac{\partial f_s}{\partial \vec{v}}}_{(3)} - \underbrace{\left(\frac{\partial f}{\partial t}\right)_{coll}}_{(4)}\right] = 0
+&\Rightarrow \int d\vec{v} \, \left[\underbrace{\frac{\partial f_s}{\partial t}}_{(1)} + \underbrace{\vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}}}_{(2)} + \underbrace{\frac{q_s}{m_s} (\vec{E}^{lr} + \vec{v} \wedge \vec{B}^{lr}) \cdot \frac{\partial f_s}{\partial \vec{v}}}_{(3)} - \underbrace{\left(\frac{\partial f}{\partial t}\right)_{coll}}_{(4)}\right] = 0
 \end{align*}
 
 \begin{align*}
 (1): \quad & \int d\vec{v} \,  \frac{\partial f_s}{\partial t} = \frac{\partial}{\partial t} \int f_s = \frac{\partial}{\partial t} n_s \\
 (2): \quad & \int d\vec{v} \,  \vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}} = \frac{\partial}{\partial \vec{r}} \cdot \int d\vec{v} \, \vec{v} f_s = \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) \qquad \text{$\vec{v}$ indep. of $\vec{r}$} \\
 & \qquad \qquad \qquad \qquad \qquad \qquad \qquad \text{$\vec{v}$ indep. of $\vec{r}$, $\vec{u} = \langle \vec{v} \rangle$} \\
-(3): \quad & \int d\vec{v} \,  \frac{q_s}{m_s} (\vec{E}^{ext} + \vec{v} \wedge \vec{B}^{ext}) \cdot \frac{\partial f_s}{\partial \vec{v}} = \frac{q_s}{m_s} \int \frac{\partial}{\partial \vec{v}} \cdot (\vec{E} + \vec{v} \wedge \vec{B}) \\
+(3): \quad & \int d\vec{v} \,  \frac{q_s}{m_s} (\vec{E}^{lr} + \vec{v} \wedge \vec{B}^{lr}) \cdot \frac{\partial f_s}{\partial \vec{v}} = \frac{q_s}{m_s} \int \frac{\partial}{\partial \vec{v}} \cdot (\vec{E} + \vec{v} \wedge \vec{B}) \\
 & = \frac{q_s}{m_s} \int_{S_{\vec{v} \to \infty}} (\vec{E} + \vec{v} \wedge \vec{B}) \, f_s \, d\vec{S}_{\vec{v}} = 0 \qquad\text{Ass. } f_s\overset{v\to\infty}{\rightarrow}0\\
 (4): \quad & \int d\vec{v} \,  \left(\frac{\partial f}{\partial t}\right)_{coll} = 0 \quad \text{bec. we ass. collisions don't create or destroy ptcls.}
 \end{align*}
@@ -91,7 +94,9 @@ We thus arrive at the species fluid continuity equation
 
 \subsection{Species momentum equation}
 $\to$ momentum eq.: choose $g_s(\vec{v}) = m_s \vec{v}$
-: similar
+
+See derivation in \ref{sec:Species Momentum Equation}
+
 \begin{align*}
 \Rightarrow \quad m_s n_s \frac{d \vec{u}_s}{d t} &= q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s
 \end{align*}
@@ -103,7 +108,9 @@ $\vec{R}_s$ is a viscous force due to collisions, $\vec{R} = \int d\vec{v} \, m_
 
 \subsection{Species energy equation}
 $\to$ energy eq.: choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$
-: similar 
+
+{\color{magenta} Show derivation in appendix}
+
 
 \begin{align*}
 \Rightarrow \quad \frac{3}{2} n_s \frac{d T_s}{d t} + \overleftrightarrow{P_s} : \frac{\partial}{\partial \vec{r}} \vec{u}_s + \frac{\partial}{\partial \vec{r}} \cdot \vec{q}_s &= Q_s
@@ -184,14 +191,14 @@ $\to$ multiply electron eq. by $\frac{1}{q_e}$ and ion eq. by $\frac{1}{q_i} = \
 
 $\to$ assume neutrality $(n_e \simeq n_i \simeq n)$, $m_e \ll m_i$, $\vec{J} \ll e n_e \vec{u}_e$, $e n_i \vec{u}_i$
 
-$\to$ Sum of their respective eq's is approx.: \qquad $\frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right) = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}$
-
+$\to$ Sum of their respective eq's is approx.:
+\[\frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right) = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}\]
 
 \subsubsection{Closure}
 
 if there are sufficient collisions
 \[
-\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
+\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
 \]
 
 \subsubsection{Single fluid Maxwell equations}
@@ -246,7 +253,7 @@ Maxwell equations
 
 \item Momentum equation:
 \[
-\varrho \frac{d\vec{V}}{dt} = \underbrace{\rho \vec{E}}_{\text{Ass. 2}} + \vec{J} \wedge \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}}
+\varrho \frac{d\vec{V}}{dt} = \underbrace{\rho \vec{E}}_{\text{Ass. 2}} + \vec{J} \wedge \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM}
 \]
 
 \item Ohm's law:
@@ -260,7 +267,7 @@ Maxwell equations
 \begin{itemize}
 \item Closure: \quad if there are sufficient collisions
 \[
-\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
+\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
 \]
 
 \item Maxwell equations
@@ -310,3 +317,7 @@ If $\eta = 0$: ideal MHD model,
 otherwise: resistive MHD model
 
 \subsection{Summary of assumptions and constraints of the magnetohydrodynamic model}
+
+\begin{itemize}
+    \item Elastic collisions $\to$ particle nuber of each species conserved
+\end{itemize}
