@@ -138,7 +138,7 @@ $\to$ Can generally evolve each species, often we care about ions \& electrons $
     \item Total electric current density: $\vec{J} = \sum_s q_s n_s \vec{u}_s$
     \item Pressure tensor:
     \begin{itemize}
-        \item Species pressure tensor in center of mass frame: $\overleftrightarrow{P}_s^{cm} = n_s m_s \int d\vec{v} \, (\vec{v}-\vec{V}) \otimes (\vec{v}-\vec{V}) f_s(\vec{r},\vec{v},t) $
+        \item Species pressure tensor in center of mass frame: \[\overleftrightarrow{P}_s^{cm} = \int d\vec{v} \,m_s\, (\vec{v}-\vec{V}) \otimes (\vec{v}-\vec{V}) f_s(\vec{r},\vec{v},t) \]
         \item Singe fluid pressure tensor in center of mass frame: $\overleftrightarrow{P}^{cm} = \sum_s \overleftrightarrow{P}_s^{cm}$
     \end{itemize} 
 \end{itemize}
@@ -165,6 +165,17 @@ Similarly, multiplying the species continuity equation by their respective charg
 \subsubsection{Momentum equation}
 
 If we assume that only two species are present, i.e. ions and electrons, it automatically follows that the friction due to collisions with other particles cancels out: $\sum_s \vec{R}_s = 0$
+
+Because $\int d\vec{v} \, \vec{v} f_s = \int d\vec{v} \, \vec{u}_s f_s = n_s \vec{u}_s$ we notice that $\overleftrightarrow{P}_s^{cm}$ is equal to
+        \begin{align*}
+            \overleftrightarrow{P}_s^{cm} &= \int d\vec{v} \,m_s\, (\vec{v}-\vec{V}) \otimes (\vec{v}-\vec{V}) f_s(\vec{r},\vec{v},t)\\
+            &= \int d\vec{v} \,m_s\, (\vec{v}- \vec{u}_s + \vec{u}_s -\vec{V}) \otimes (\vec{v}-\vec{u}_s + \vec{u}_s - \vec{V}) f_s(\vec{r},\vec{v},t)\\
+            &= \int d\vec{v} \,m_s\, (\vec{v}- \vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
+              + \int d\vec{v} \,m_s\, (\vec{v}- \vec{u}_s) \otimes (\vec{u}_s - \vec{V}) f_s(\vec{r},\vec{v},t)\\
+            & + \int d\vec{v} \,m_s\, (\vec{u}_s -\vec{V}) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
+              + \int d\vec{v} \,m_s\, (\vec{u}_s -\vec{V}) \otimes (\vec{u}_s - \vec{V}) f_s(\vec{r},\vec{v},t)\\
+            &= \overleftrightarrow{P}_s + m_s (\vec{u}_s -\vec{V}) \otimes (\vec{u}_s - \vec{V}) n_s
+        \end{align*}
 
 Summing the species momentum equation we then get: 
 
