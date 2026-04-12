@@ -97,9 +97,9 @@ $\to$ momentum eq.: choose $g_s(\vec{v}) = m_s \vec{v}$
 
 See derivation in \ref{sec:Species Momentum Equation}
 
-\begin{align*}
-\Rightarrow \quad m_s n_s \frac{d \vec{u}_s}{d t} &= q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s
-\end{align*}
+\begin{equation}\label{eq: species momentum eq}
+ m_s n_s \frac{d \vec{u}_s}{d t} = q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s
+\end{equation}
 
 where $\frac{d}{dt}$ is the convective derivative, $\frac{d}{dt} = \frac{\partial}{\partial t} + \vec{u}_s \cdot \frac{\partial}{\partial \vec{r}}$
 
@@ -164,35 +164,19 @@ Similarly, multiplying the species continuity equation by their respective charg
 
 \subsubsection{Momentum equation}
 
-If we assume that only two species are present, i.e. ions and electrons, it automatically follows that the friction due to collisions with other particles cancels out: $\sum_s \vec{R}_s = 0$
+Summing the species momentum equations (\eqref{eq: species momentum eq}), we can obtain the \emph{single fluid momentum equation}.
 
-Because $\int d\vec{v} \, \vec{v} f_s = \int d\vec{v} \, \vec{u}_s f_s = n_s \vec{u}_s$ we notice that $\overleftrightarrow{P}_s^{cm}$ is equal to
-        \begin{align*}
-            \overleftrightarrow{P}_s^{cm} &= \int d\vec{v} \,m_s\, (\vec{v}-\vec{V}) \otimes (\vec{v}-\vec{V}) f_s(\vec{r},\vec{v},t)\\
-            &= \int d\vec{v} \,m_s\, (\vec{v}- \vec{u}_s + \vec{u}_s -\vec{V}) \otimes (\vec{v}-\vec{u}_s + \vec{u}_s - \vec{V}) f_s(\vec{r},\vec{v},t)\\
-            &= \int d\vec{v} \,m_s\, (\vec{v}- \vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
-              + \int d\vec{v} \,m_s\, (\vec{v}- \vec{u}_s) \otimes (\vec{u}_s - \vec{V}) f_s(\vec{r},\vec{v},t)\\
-            & + \int d\vec{v} \,m_s\, (\vec{u}_s -\vec{V}) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
-              + \int d\vec{v} \,m_s\, (\vec{u}_s -\vec{V}) \otimes (\vec{u}_s - \vec{V}) f_s(\vec{r},\vec{v},t)\\
-            &= \overleftrightarrow{P}_s + m_s (\vec{u}_s -\vec{V}) \otimes (\vec{u}_s - \vec{V}) n_s
-        \end{align*}
-
-Summing the species momentum equation we then get: 
-
-{\color{magenta} Show $\sum_s n_s m_s \frac{d u_s}{dt} = \varrho \frac{d V}{dt}$ and $\sum_s P_s^{cm} = P^{cm}$ (maybe even connected?)}
-
-We arrive at the \emph{momentum equation}
-\begin{equation}
+\begin{equation}\label{eq: Single fluid momentum eq.}
     \varrho \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \wedge \vec{B} - \partial_{\vec{r}} \cdot \overleftrightarrow{P}^{cm}
 \end{equation}
 
+Details of the derivation can be found in \ref{sec:Derivation of the Single Fluid Momentum Equation}.
+
+
+
 \subsubsection{Ohm's law}
 
-
-
-
-
-\vspace{1em}
+{\color{magenta} Derivation}
 
 from momentum equations \quad $m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \partial_{\vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s$
 
@@ -207,7 +191,9 @@ $\to$ Sum of their respective eq's is approx.:
 
 \subsubsection{Closure}
 
-if there are sufficient collisions
+{\color{magenta}description}
+
+{\color{magenta}if there are sufficient collisions}
 \[
 \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
 \]

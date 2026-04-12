@@ -1,0 +1,203 @@
+\chapter{Single fluid equation derivations}
+\section{Derivation of the Single Fluid Momentum Equation}\label{sec:Derivation of the Single Fluid Momentum Equation}
+
+This section presents a complete derivation of the single fluid momentum equation starting from the species momentum equations obtained from kinetic theory.
+
+\subsection{Starting Point: Species Momentum Equations}
+
+For each species $s$ (electrons and ions), the momentum equation (\ref{eq: species momentum eq}) derived from the Boltzmann kinetic equation is :
+
+\begin{equation*}
+m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B}) - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s + \vec{R}_s
+\end{equation*}
+
+where:
+\begin{itemize}
+\item $\displaystyle \frac{d}{dt} = \frac{\partial}{\partial t} + \vec{u}_s \cdot \nabla_{\vec{r}}$ is the convective derivative for species $s$
+\item $\displaystyle \overleftrightarrow{P}_s = m_s \int d^3v \, (\vec{v} - \vec{u}_s) \otimes (\vec{v} - \vec{u}_s) f_s$ is the species-frame pressure tensor
+\item $\displaystyle \vec{R}_s = \int d^3v \, m_s (\vec{v} - \vec{u}_s) \left(\frac{\partial f_s}{\partial t}\right)_{\text{coll}}$ is the collisional momentum transfer
+\end{itemize}
+
+\subsection{Summation of Species Equations}
+
+Summing the momentum equations over all species:
+
+\begin{equation*}
+\sum_s m_s n_s \frac{d\vec{u}_s}{dt} = \sum_s q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B}) - \sum_s \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s + \sum_s \vec{R}_s
+\end{equation*}
+
+The right-hand side simplifies as follows:
+
+\paragraph{Lorentz force terms:}
+\begin{equation*}
+\sum_s q_s n_s \vec{E} = \vec{E} \sum_s q_s n_s = \rho \vec{E}
+\end{equation*}
+
+\begin{equation*}
+\sum_s q_s n_s (\vec{u}_s \wedge \vec{B}) = \left(\sum_s q_s n_s \vec{u}_s\right) \wedge \vec{B} = \vec{J} \wedge \vec{B}
+\end{equation*}
+
+\paragraph{Collision term:}
+\begin{equation*}
+\sum_s \vec{R}_s = 0
+\end{equation*}
+since total momentum is conserved in collisions.
+
+Thus:
+\begin{equation*}
+\sum_s m_s n_s \frac{d\vec{u}_s}{dt} = \rho \vec{E} + \vec{J} \wedge \vec{B} - \sum_s \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s
+\label{eq:summed_momentum}
+\end{equation*}
+
+\subsection{Single Fluid Variables}
+
+We define the species drift velocity relative to the total CM velocity $\vec{V}$
+
+\begin{equation*}
+\vec{w}_s = \vec{u}_s - \vec{V} \quad \text{(species drift from CM)}
+\end{equation*}
+
+A crucial property of the drift velocity is:
+\begin{equation}
+\sum_s m_s n_s \vec{w}_s = \sum_s m_s n_s (\vec{u}_s - \vec{V}) = \varrho \vec{V} - \varrho \vec{V} = 0
+\label{eq:drift_sum_zero}
+\end{equation}
+
+\subsection{The Key Identity}
+
+We now prove that the sum of species convective derivatives can be rewritten as:
+
+\begin{equation}
+\sum_s m_s n_s \frac{d\vec{u}_s}{dt} = \varrho \frac{d\vec{V}}{dt} + \nabla_{\vec{r}} \cdot \left[\sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s\right]
+\label{eq:key_identity}
+\end{equation}
+
+
+Working in component form, we have:
+
+\begin{equation*}
+\sum_s m_s n_s \frac{du_{s,i}}{dt} = \sum_s m_s n_s \left[\frac{\partial u_{s,i}}{\partial t} + u_{s,j} \frac{\partial u_{s,i}}{\partial r_j}\right]
+\end{equation*}
+
+Substituting $u_{s,i} = V_i + w_{s,i}$:
+
+\begin{equation*}
+= \sum_s m_s n_s \Bigg[\frac{\partial V_i}{\partial t} + \frac{\partial w_{s,i}}{\partial t} + V_j \frac{\partial V_i}{\partial r_j} + V_j \frac{\partial w_{s,i}}{\partial r_j} \\
++ w_{s,j} \frac{\partial V_i}{\partial r_j} + w_{s,j} \frac{\partial w_{s,i}}{\partial r_j}\Bigg]
+\end{equation*}
+
+The terms involving only $V$ give:
+\begin{equation*}
+\sum_s m_s n_s \left[\frac{\partial V_i}{\partial t} + V_j \frac{\partial V_i}{\partial r_j}\right] = \varrho \frac{dV_i}{dt}
+\end{equation*}
+
+For the remaining terms, we use the product rule:
+\begin{equation*}
+m_s n_s \frac{\partial w_{s,i}}{\partial t} = \frac{\partial}{\partial t}(m_s n_s w_{s,i}) - w_{s,i} \frac{\partial (m_s n_s)}{\partial t}
+\end{equation*}
+
+Since $\sum_s m_s n_s w_{s,i} = 0$ for all $t$ and $\vec{r}$ (equation \ref{eq:drift_sum_zero}), its time and spatial derivatives also vanish:
+\begin{equation*}
+\sum_s \frac{\partial}{\partial t}(m_s n_s w_{s,i}) = 0, \quad \sum_s \frac{\partial}{\partial r_j}(m_s n_s w_{s,i}) = 0
+\end{equation*}
+
+From the species continuity equation $\frac{\partial (m_s n_s)}{\partial t} + \nabla \cdot (m_s n_s \vec{u}_s) = 0$, we obtain:
+\begin{equation*}
+\frac{\partial (m_s n_s)}{\partial t} + V_j \frac{\partial (m_s n_s)}{\partial r_j} = -m_s n_s \frac{\partial u_{s,j}}{\partial r_j} - w_{s,j} \frac{\partial (m_s n_s)}{\partial r_j}
+\end{equation*}
+
+Using $\frac{\partial u_{s,j}}{\partial r_j} = \frac{\partial V_j}{\partial r_j} + \frac{\partial w_{s,j}}{\partial r_j}$ and the fact that $\sum_s m_s n_s w_{s,i} = 0$, we find that the remaining terms combine to give:
+
+\begin{equation*}
+\sum_s \left[m_s n_s w_{s,i} \frac{\partial w_{s,j}}{\partial r_j} + m_s n_s w_{s,j} \frac{\partial w_{s,i}}{\partial r_j} + w_{s,i} w_{s,j} \frac{\partial (m_s n_s)}{\partial r_j}\right]
+\end{equation*}
+
+Applying the product rule in reverse:
+\begin{equation*}
+\frac{\partial}{\partial r_j}(m_s n_s w_{s,i} w_{s,j}) = w_{s,i} w_{s,j} \frac{\partial (m_s n_s)}{\partial r_j} + m_s n_s w_{s,i} \frac{\partial w_{s,j}}{\partial r_j} + m_s n_s w_{s,j} \frac{\partial w_{s,i}}{\partial r_j}
+\end{equation*}
+
+we obtain:
+\begin{equation*}
+= \sum_s \frac{\partial}{\partial r_j}(m_s n_s w_{s,i} w_{s,j}) = \frac{\partial}{\partial r_j}\left[\sum_s m_s n_s w_{s,i} w_{s,j}\right]
+\end{equation*}
+
+This completes the proof of equation (\ref{eq:key_identity}).
+
+\subsection{Pressure Tensor Relationships}
+
+We define the center-of-mass frame pressure contribution for species $s$ as:
+
+\begin{equation*}
+\overleftrightarrow{P}_s^{CM} = m_s \int d^3v \, (\vec{v} - \vec{V}) \otimes (\vec{v} - \vec{V}) f_s
+\end{equation*}
+
+To relate this to the species-frame pressure, we decompose:
+\begin{equation*}
+\vec{v} - \vec{V} = (\vec{v} - \vec{u}_s) + (\vec{u}_s - \vec{V}) = \vec{w} + \vec{w}_s
+\end{equation*}
+
+where $\vec{w} = \vec{v} - \vec{u}_s$ is the thermal velocity. Expanding:
+
+\begin{equation*}
+\overleftrightarrow{P}_s^{CM} = m_s \int d^3v \, (\vec{w} + \vec{w}_s) \otimes (\vec{w} + \vec{w}_s) f_s
+\end{equation*}
+
+This yields four terms:
+\begin{itemize}
+\item \textbf{Term 1:} $\displaystyle m_s \int d^3v \, \vec{w} \otimes \vec{w} \, f_s = \overleftrightarrow{P}_s$
+\item \textbf{Term 2:} $\displaystyle m_s \int d^3v \, \vec{w} \otimes \vec{w}_s \, f_s = \vec{w}_s \otimes m_s \int d^3v \, \vec{w} f_s = 0$
+\item \textbf{Term 3:} $\displaystyle m_s \int d^3v \, \vec{w}_s \otimes \vec{w} \, f_s = 0$
+\item \textbf{Term 4:} $\displaystyle m_s \int d^3v \, \vec{w}_s \otimes \vec{w}_s \, f_s = m_s n_s \vec{w}_s \otimes \vec{w}_s$
+\end{itemize}
+
+The mixed terms (2 and 3) vanish because $\int d^3v \, \vec{w} f_s = 0$ by definition of the mean velocity.
+
+Thus:
+\begin{equation*}
+\overleftrightarrow{P}_s^{CM} = \overleftrightarrow{P}_s + m_s n_s \vec{w}_s \otimes \vec{w}_s
+\end{equation*}
+
+Summing over all species:
+\begin{equation}
+\overleftrightarrow{P}^{CM} \equiv \sum_s \overleftrightarrow{P}_s^{CM} = \sum_s \overleftrightarrow{P}_s + \sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s
+\label{eq:pressure_relation}
+\end{equation}
+
+Rearranging:
+\begin{equation*}
+\sum_s \overleftrightarrow{P}_s = \overleftrightarrow{P}^{CM} - \sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s
+\end{equation*}
+
+\subsection{Final Assembly}
+
+Combining equation (\ref{eq:key_identity}) with equation (\ref{eq:summed_momentum}):
+
+\begin{equation*}
+\varrho \frac{d\vec{V}}{dt} + \nabla_{\vec{r}} \cdot \left[\sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s\right] = \rho \vec{E} + \vec{J} \wedge \vec{B} - \nabla_{\vec{r}} \cdot \left[\sum_s \overleftrightarrow{P}_s\right]
+\end{equation*}
+
+Using equation (\ref{eq:pressure_relation}):
+
+\begin{equation*}
+\nabla_{\vec{r}} \cdot \left[\sum_s \overleftrightarrow{P}_s\right] = \nabla_{\vec{r}} \cdot \overleftrightarrow{P}^{CM} - \nabla_{\vec{r}} \cdot \left[\sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s\right]
+\end{equation*}
+
+Substituting:
+
+\begin{multline}
+\varrho \frac{d\vec{V}}{dt} + \nabla_{\vec{r}} \cdot \left[\sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s\right] \\
+= \rho \vec{E} + \vec{J} \wedge \vec{B} - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}^{CM} + \nabla_{\vec{r}} \cdot \left[\sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s\right]
+\end{multline}
+
+The divergence terms cancel exactly, yielding the single fluid momentum equation:
+
+\begin{equation}
+\varrho \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \wedge \vec{B} - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}^{CM}
+\label{eq:single_fluid_momentum}
+\end{equation}
+
+where the center-of-mass convective derivative is:
+\begin{equation*}
+\frac{d}{dt} = \frac{\partial}{\partial t} + \vec{V} \cdot \nabla_{\vec{r}}
+\end{equation*}
