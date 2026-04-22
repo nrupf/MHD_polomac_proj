@@ -19,7 +19,7 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global/global}
-    \entry{Blandford2013APPLICATIONSOC}{inproceedings}{}{}
+    \entry{Blandford2013}{inbook}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=1f3a24a5b0b6f8d13667d43da4a25dc9}{%
            family={Blandford},
@@ -49,7 +49,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{chapter}{20}
-      \field{title}{APPLICATIONS OF CLASSICAL PHYSICS}
+      \field{title}{Applications of Classical Physics}
       \field{year}{2013}
       \verb{urlraw}
       \verb https://api.semanticscholar.org/CorpusID:118651591
@@ -57,6 +57,71 @@
       \verb{url}
       \verb https://api.semanticscholar.org/CorpusID:118651591
       \endverb
+    \endentry
+    \entry{Chen2016}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a5b8b2e287cbcd596b1a245e40c69dd9}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Francis\bibnamedelima F.},
+           giveni={F\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Cham}%
+      }
+      \strng{namehash}{a5b8b2e287cbcd596b1a245e40c69dd9}
+      \strng{fullhash}{a5b8b2e287cbcd596b1a245e40c69dd9}
+      \strng{fullhashraw}{a5b8b2e287cbcd596b1a245e40c69dd9}
+      \strng{bibnamehash}{a5b8b2e287cbcd596b1a245e40c69dd9}
+      \strng{authorbibnamehash}{a5b8b2e287cbcd596b1a245e40c69dd9}
+      \strng{authornamehash}{a5b8b2e287cbcd596b1a245e40c69dd9}
+      \strng{authorfullhash}{a5b8b2e287cbcd596b1a245e40c69dd9}
+      \strng{authorfullhashraw}{a5b8b2e287cbcd596b1a245e40c69dd9}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3}
+      \field{isbn}{978-3-319-22309-4}
+      \field{title}{Introduction to Plasma Physics and Controlled Fusion}
+      \field{year}{2016}
+      \field{pages}{xii+490}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1007/978-3-319-22309-4
+      \endverb
+    \endentry
+    \entry{Freidberg2014}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ab3d7d1044e3f57dee33d794eac4a8ea}{%
+           family={Freidberg},
+           familyi={F\bibinitperiod},
+           given={Jeffrey\bibnamedelima P.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{ab3d7d1044e3f57dee33d794eac4a8ea}
+      \strng{fullhash}{ab3d7d1044e3f57dee33d794eac4a8ea}
+      \strng{fullhashraw}{ab3d7d1044e3f57dee33d794eac4a8ea}
+      \strng{bibnamehash}{ab3d7d1044e3f57dee33d794eac4a8ea}
+      \strng{authorbibnamehash}{ab3d7d1044e3f57dee33d794eac4a8ea}
+      \strng{authornamehash}{ab3d7d1044e3f57dee33d794eac4a8ea}
+      \strng{authorfullhash}{ab3d7d1044e3f57dee33d794eac4a8ea}
+      \strng{authorfullhashraw}{ab3d7d1044e3f57dee33d794eac4a8ea}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Ideal MHD}
+      \field{year}{2014}
     \endentry
   \enddatalist
 \endrefsection

@@ -1,5 +1,7 @@
 \chapter{Single Fluid ideal MHD equations}
 
+This theory follows mostly the EPFL Intro to Plasma Phyiscs course, Freidberg's book \cite{Freidberg2014} and Chen's book \cite{Chen2016}.
+
 \section{Derivation process}
 \begin{enumerate}
     \item Maxwell eq
@@ -40,7 +42,7 @@ Gravity on single ion: $F_G = m g \sim \SI{1e-26}{\kilo\gram} \SI{10}{\meter\sec
 From Poisson eq ($\nabla^2 \phi = \frac{\rho}{\epsilon_0}$) and length scale estimate for long range forces ($\nabla \sim \frac{1}{\lambda_D}$), we can estimate the 
 long-range (beyond $\lambda_D$) Coulomb force: $F_C = e E = e \nabla \phi \sim \lambda_D \frac{\rho}{\epsilon_0} = \frac{e^2 n_e \lambda_D}{\epsilon_0} \sim \SI{3e-27}{m^2 \newton} n_e \lambda_D$
 
-Even a very weak estimate ($\lambda_D \sim 10^{-6}$, $n_e \sim 10^{14}$) , compared to typical plasma values (see \cite{Blandford2013APPLICATIONSOC}), this shows that gravity can be neglected.
+Even a very weak estimate ($\lambda_D \sim 10^{-6}$, $n_e \sim 10^{14}$) , compared to typical plasma values (see \cite{Blandford2013}), this shows that gravity can be neglected.
 
 \section{Species continuity equation and momentum equation}
 \subsection{Species variables}
@@ -176,7 +178,7 @@ Details of the derivation can be found in \ref{sec:Derivation of the Single Flui
 
 \subsubsection{Ohm's law}
 
-{\color{magenta} Derivation}
+{\color{magenta} Clean derivation}
 
 from momentum equations \quad $m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \partial_{\vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s$
 
@@ -191,12 +193,25 @@ $\to$ Sum of their respective eq's is approx.:
 
 \subsubsection{Closure}
 
-{\color{magenta}description}
+In order to have a closed system of equations, we need additional assumptions and thus restrictions. This is called a \emph{closure}.
+Many types of closures exist and most are quite involved.
 
-{\color{magenta}if there are sufficient collisions}
+For an isotropic pressure tensor and adiabatic processes we have the following closure:
+
 \[
-\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
+\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \gamma = \frac{c_p}{c_v}= \frac{5}{3}
 \]
+
+\begin{comment}
+    Three closures
+
+    \[
+    \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
+    \]
+\end{comment}
+
+We will justify these assumptions in the next section.
+
 
 \subsubsection{Single fluid Maxwell equations}
 Maxwell equations
@@ -214,8 +229,7 @@ Maxwell equations
 
 \section{Magnetohydrodynamic model}
 
-\subsection{Simplifications}
-
+\subsection{Assumptions}
 \begin{enumerate}
 \item Electron inertia negligible, $m_e \to 0$
 
@@ -233,9 +247,20 @@ Maxwell equations
 \[
 \left|\vec{V} \wedge \vec{B}\right| \gg \left|\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}\right|
 \]
+
+
+\item Incompressible motion
+
+    We assume that the motions of interest are incompressible, i.e. $\nabla \cdot \vec{V} = 0$.
+
+\item 
+
 \end{enumerate}
 
-\vspace{1em}
+
+
+\subsection{Simplifications}
+
 
 \begin{itemize}
 \item Mass continuity equation:
