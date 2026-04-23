@@ -32,7 +32,7 @@ The Boltzmann equation is
 \end{equation}
 
 Here the short range interactions are accounted for in the collisional term, and the long range (lr) interactions from collective effeects are accounted for in the electric and Lorentz term.
-The crititical distance hereby is the Debye length of electrons $\lambda_{De} = \sqrt{\frac{\epsilon_0 T_e}{e^2 n_0}}$.
+The crititical distance hereby is the Debye length of electrons $\lambda_{D} = \sqrt{\frac{\epsilon_0 T_e}{e^2 n_0}}$.
 
 \subsection{Gravity irrelevant}
 
@@ -105,8 +105,10 @@ See derivation in \ref{sec:Species Momentum Equation}
 
 where $\frac{d}{dt}$ is the convective derivative, $\frac{d}{dt} = \frac{\partial}{\partial t} + \vec{u}_s \cdot \frac{\partial}{\partial \vec{r}}$
 
-$\vec{R}_s$ is a viscous force due to collisions, $\vec{R} = \int d\vec{v} \, m_s (\vec{v} - \vec{u}_s) \left(\frac{\partial f}{\partial t}\right)_{coll} $
+$\vec{R}_s$ is a viscous force due to collisions, $\vec{R} = \int d\vec{v} \, m_s (\vec{v} - \vec{u}_s) \left(\frac{\partial f}{\partial t}\right)_{coll} $.
 
+In the relaxation time approcimation we have $\vec{R}_e \approx -m_e n_e \nu_{ei} (\vec{u}_e - \vec{u}_i)$,
+ where $\nu_{ei}$ is the electron-ion collision frequency.
 
 \subsection{Species energy equation}
 $\to$ energy eq.: choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$
@@ -166,7 +168,7 @@ Similarly, multiplying the species continuity equation by their respective charg
 
 \subsubsection{Momentum equation}
 
-Summing the species momentum equations (\eqref{eq: species momentum eq}), we can obtain the \emph{single fluid momentum equation}.
+Summing the species momentum equations \eqref{eq: species momentum eq}, we can obtain the \emph{single fluid momentum equation}.
 
 \begin{equation}\label{eq: Single fluid momentum eq.}
     \varrho \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \wedge \vec{B} - \partial_{\vec{r}} \cdot \overleftrightarrow{P}^{cm}
@@ -191,6 +193,7 @@ $\to$ assume neutrality $(n_e \simeq n_i \simeq n)$, $m_e \ll m_i$, $\vec{J} \ll
 $\to$ Sum of their respective eq's is approx.:
 \[\frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right) = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}\]
 
+with the \emph{plasma resisitivity} $\eta = \frac{m_e \nu_{ei}}{e^2 n}$.
 \subsubsection{Closure}
 
 In order to have a closed system of equations, we need additional assumptions and thus restrictions. This is called a \emph{closure}.
@@ -231,12 +234,12 @@ Maxwell equations
 
 \subsection{Assumptions}
 \begin{enumerate}
+
 \item Electron inertia negligible, $m_e \to 0$
 
 \item Quasi neutrality 
-\[
-\left(\frac{L}{\lambda_D} \gg 1, \, \omega \ll \omega_{pe}, \, \omega \ll \omega_{ei}\right), \quad \frac{\rho}{ne} = \frac{n_e - n_i}{n_e} \ll 1
-\]
+We assume the plasma to be quasi-neutral, i.e. that the typical plasma length scale $L$ is much greater than the screening distance $\lambda_D$, and outside of that screening distance $\frac{\rho}{ne} = \frac{n_e - n_i}{n_e} \ll 1$
+
 
 \item Neglect E.M. waves:
 \[
@@ -248,10 +251,34 @@ Maxwell equations
 \left|\vec{V} \wedge \vec{B}\right| \gg \left|\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}\right|
 \]
 
+\item $\eta = 0$
 
-\item Incompressible motion
+\item Isotropic pressure and incompressible motion
 
-    We assume that the motions of interest are incompressible, i.e. $\nabla \cdot \vec{V} = 0$.
+    The adiabatic closure assumes that pressure is isotropic and heat is not being transported.
+
+    Because the particles are bound to magnetic field line through gyromotion but are not bound along $\vec{B}$, 
+    a more accurate model would be to assume infinite heat flow along the magnetic field lines ($\vec{B}\cdot\nabla T = 0$)
+
+    Using mass conservation, we see that 
+    \[
+        \frac{d}{dt}\left(\frac{P}{\rho^\gamma}\right) = 0 \iff \frac{dP}{dt} + \gamma P \nabla \cdot \vec{V} = 0
+    \]
+
+    For incompressible motions and perfect conductivity ($\eta = 0$), we can show (see \cite{Freidberg2014}, chapter 2.6) that the two are equivalent and reduce to 
+    \[
+    \frac{dP}{dt} = 0
+    \]
+
+    An analysis as done in chapter 8.9 of \cite{Freidberg2014} shows that geometries with closed field lines (such as the Polomac)
+    have also compressible instabilities, but the most unstable modes are always incompressible.
+
+    For the Polomac geometry (a closed-line system), certain symmetry-preserving modes cannot be fully incompressible.
+    For these modes, the quantitative stability predictions using ideal MHD should be viewed with caution, though qualitative trends remain valid.
+
+    We assume that the motions of interest are incompressible, i.e. $\nabla \cdot \vec{V} = 0$ and equivalently $\overleftrightarrow{P}^{CM} = P$.
+
+    In static equilibrium ($\vec{V} = 0$), this is certainly the case.
 
 \item 
 
@@ -263,10 +290,7 @@ Maxwell equations
 
 
 \begin{itemize}
-\item Mass continuity equation:
-\[
-\frac{\partial \varrho}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\varrho \vec{V}) = 0
-\]
+
 
 \item Charge continuity equation:
 \[
