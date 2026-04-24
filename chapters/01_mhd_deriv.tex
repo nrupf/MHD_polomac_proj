@@ -398,6 +398,10 @@ We see that this is negligible for the polomac's values (\cite{Elio2024}).
 
 
 \item Charge continuity equation:
+
+harge continuity reduces to $\nabla \cdot \vec{J} = 0$, which is automatically 
+satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \wedge \vec{B}) = 0$).
+
 \[
 \underbrace{\frac{\partial \rho}{\partial t}}_{\text{Ass. 2}} + \underbrace{\frac{\partial}{\partial \vec{r}} \cdot \vec{J} = 0}_{\text{Ass. 4}}
 \]
@@ -419,7 +423,7 @@ We see that this is negligible for the polomac's values (\cite{Elio2024}).
 
 \item Maxwell equations
 \begin{align*}
-\underbrace{\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}}_{\text{Ass. 2}} & & \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+\underbrace{\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}}_{\text{redundant}} & & \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
 \nabla \cdot \vec{B} &= 0 & \nabla \wedge \vec{B} &= \mu_0 \left(\vec{J} + \underbrace{\epsilon_0 \frac{\partial \vec{E}}{\partial t}}_{\text{Ass. 4}}\right)
 \end{align*}
 \end{itemize}
