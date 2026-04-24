@@ -94,6 +94,71 @@
       \verb 10.1007/978-3-319-22309-4
       \endverb
     \endentry
+    \entry{Elio2024}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=299455ea183ef998cc1f4392a4815ac0}{%
+           family={Elio},
+           familyi={E\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bf6fe8154a437edd3c4e8535b48bd5e5}{%
+           family={Elio},
+           familyi={E\bibinitperiod},
+           given={Fr.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c8ac1a04d7c0cdc1a5f8b28df81afaab}{%
+           family={Fulceri},
+           familyi={F\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7d3dd54de624e1ffd17452c3ee49e4ac}{%
+           family={Leone},
+           familyi={L\bibinitperiod},
+           given={M.\bibnamedelimi G.},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9c108945377e1faf8fb285d0c719b270}{%
+           family={Sborchia},
+           familyi={S\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{477617a1a678fcb5bdb7291d04b56e5e}
+      \strng{fullhash}{24d0a40151dfd43e9162fa677b2661fa}
+      \strng{fullhashraw}{24d0a40151dfd43e9162fa677b2661fa}
+      \strng{bibnamehash}{477617a1a678fcb5bdb7291d04b56e5e}
+      \strng{authorbibnamehash}{477617a1a678fcb5bdb7291d04b56e5e}
+      \strng{authornamehash}{477617a1a678fcb5bdb7291d04b56e5e}
+      \strng{authorfullhash}{24d0a40151dfd43e9162fa677b2661fa}
+      \strng{authorfullhashraw}{24d0a40151dfd43e9162fa677b2661fa}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Technological and Space Plasmas}
+      \field{month}{10}
+      \field{number}{1}
+      \field{title}{Technical Report: The Polomac approach to fusion energy}
+      \field{volume}{5}
+      \field{year}{2024}
+      \field{pages}{172\bibrangedash 180}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.31281/med9bh43
+      \endverb
+      \verb{urlraw}
+      \verb https://jtsp.eu/jtsp/article/view/32
+      \endverb
+      \verb{url}
+      \verb https://jtsp.eu/jtsp/article/view/32
+      \endverb
+    \endentry
     \entry{Freidberg2014}{book}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=ab3d7d1044e3f57dee33d794eac4a8ea}{%

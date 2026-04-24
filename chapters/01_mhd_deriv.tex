@@ -193,7 +193,7 @@ $\to$ assume neutrality $(n_e \simeq n_i \simeq n)$, $m_e \ll m_i$, $\vec{J} \ll
 $\to$ Sum of their respective eq's is approx.:
 \[\frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right) = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}\]
 
-with the \emph{plasma resisitivity} $\eta = \frac{m_e \nu_{ei}}{e^2 n}$.
+with the \emph{plasma resisitivity} $\eta = \frac{m_e \nu_{ei}}{e^2 n} $.
 \subsubsection{Closure}
 
 In order to have a closed system of equations, we need additional assumptions and thus restrictions. This is called a \emph{closure}.
@@ -233,54 +233,159 @@ Maxwell equations
 \section{Magnetohydrodynamic model}
 
 \subsection{Assumptions}
+
+By comparing constants as well as time and length scales typical in fusion plasmas or provided specifically for polomacs by \cite{Elio2024}, we can make the following assumptions.
+
+In the following we specifically apply  \cite{Freidberg2014}, section 2.2.3.
+
+\begin{itemize}
+    \item Characteristic length: $L \sim \SI{1}{\meter}$
+    \item We assume approximate thermal equilibrium: $T_e \approx T_i \approx \SI{100}{\electronvolt}$
+\end{itemize}
+
+
 \begin{enumerate}
 
 \item Electron inertia negligible, $m_e \to 0$
 
-\item Quasi neutrality 
-We assume the plasma to be quasi-neutral, i.e. that the typical plasma length scale $L$ is much greater than the screening distance $\lambda_D$, and outside of that screening distance $\frac{\rho}{ne} = \frac{n_e - n_i}{n_e} \ll 1$
+Electrons respond nearly instantaneously to field changes on MHD timescales. 
+The electron cyclotron period $\tau_{ce} = 2\pi/\omega_{ce}$ is much shorter 
+than the characteristic MHD time $\tau_{MHD} \sim L/V_{Ti}$, where 
+$V_{Ti} = \sqrt{2 k_B T_i / m_i}$ is the ion thermal velocity.
 
+For Polomac (\cite{Elio2024}):
+\begin{itemize}
+    \item ECR heating frequency: $f_{ce} = \SI{4}{\giga\hertz}$ 
+          $\Rightarrow \omega_{ce} = 2\pi f_{ce} = \SI{2.51e10}{\radian\per\second}$
+    \item $V_{Ti} = \sqrt{2 \times \SI{100}{\electronvolt} \times \SI{1.6e-19}{\joule\per\electronvolt} / \SI{1.67e-27}{\kilo\gram}} = \SI{4.4e4}{\meter\per\second}$
+    \item $\tau_{MHD} = L/V_{Ti} = \SI{0.30}{\meter} / \SI{4.4e4}{\meter\per\second} = \SI{6.8e-6}{\second}$
+    \item $\omega_{MHD}/\omega_{ce} \approx \num{3.7e-5} \ll 1$
+\end{itemize}
+
+
+
+
+\item Quasi neutrality 
+
+We assume the plasma to be quasi-neutral, i.e. that the typical plasma length scale $L$ is much greater than the Debye screening distance $\lambda_D$, and outside of that screening distance $\frac{\rho}{ne} = \frac{n_e - n_i}{n_e} \ll 1$, i.e. there aremany particles in the Debye sphere.
+
+For Polomac (\cite{Elio2024}):
+\begin{itemize}
+    \item Hydrogen density: $n = \SI{e20}{\per\meter\cubed}$
+    \item Ion temperature: $T_i = \SI{100}{\electronvolt}$ (assuming $T_e \approx T_i$)
+    \item Debye length: $\lambda_D = \SI{7430}{\meter} \sqrt{\frac{T_{\text{eV}}}{n}} = \SI{7430}{\meter} \sqrt{\frac{100}{\num{e20}}} = \SI{7.4e-6}{\meter}$
+    \item $\frac{L}{\lambda_D} = \frac{\SI{1}{\meter}}{\SI{7.4e-6}{\meter}} \approx \num{1.4e5} \gg 1$
+    \item Number of particles in Debye sphere: $N_D = n \cdot \frac{4\pi}{3} \lambda_D^3 = \num{e20} \cdot \frac{4\pi}{3} \cdot (\SI{7.4e-6}{\meter})^3 \approx \num{1.7e4} \gg 1$ 
+\end{itemize}
+
+This is again connected to the fact that we assume electrons can move very fast.
+
+\item Ideal MHD - zero resistivity ($\eta = 0$)
+
+The classical Spitzer resistivity \cite{Chen2016} is given by:
+\begin{equation*}
+    \eta_\parallel = 5.2 \times 10^{-5} \frac{Z \ln\Lambda}{T_{eV}^{3/2}} \quad [\Omega\text{-m}]
+\end{equation*}
+
+For Polomac (\cite{Elio2024}):
+\begin{itemize}
+    \item Hydrogen plasma: $Z = 1$
+    \item Electron temperature: $T_e = \SI{100}{\electronvolt}$ (assuming $T_e \approx T_i$)
+    \item Electron density: $n_e = \SI{e20}{\per\meter\cubed}$
+    \item Coulomb logarithm: $\ln\Lambda = 14.3$
+    \item Parallel resistivity: 
+    \begin{equation*}
+        \eta_\parallel = 5.2 \times 10^{-5} \times \frac{1 \times 14.3}{(100)^{3/2}} \approx \SI{7.4e-7}{\ohm\meter}
+    \end{equation*}
+    \item For comparison: this is comparable to stainless steel ($\eta \approx \SI{7e-7}{\ohm\meter}$) and much more resistive than copper ($\eta \approx \SI{2e-8}{\ohm\meter}$).
+\end{itemize}
+
+Since $\eta_\perp \sim 2 \eta_\parallel$ (\cite{Chen2016}) we have $\eta \sim \SI{e-6}{\ohm\meter}$.
 
 \item Neglect E.M. waves:
+
+Current density $\vec{J}$ dominates over displacement current $\epsilon_0 \frac{\partial \vec{E}}{\partial t}$.
+This holds when plasma timescales are much longer than electromagnetic wave periods, and characteristic MHD wave velocities are much slower than the speed of light.
+
+Assuming low resisitivity (so $E \sim v \wedge B$), $\partial_t \sim \frac{1}{\tau} \sim \frac{v}{L}$, $\nabla \wedge B \sim \frac{B}{L}$ and using $c^2 = \frac{1}{\epsilon_0 \mu_0}$
+we can compare the displacement current to the curl of the magnetic field and see that its contribution is small.
+
+The characteristic wave speed in MHD is the Alfvén velocity (\cite{Freidberg2014, Chen2016}):
 \[
-\left|\epsilon_0 \frac{\partial \vec{E}}{\partial t}\right| \ll \left|\vec{J}\right| \quad \Rightarrow \quad \frac{\partial}{\partial \vec{r}} \cdot \vec{J} = 0
+v_A = \frac{B}{\sqrt{\mu_0 \varrho}}
 \]
 
-\item Small Larmor radius $\left(\frac{L}{\rho_i} \gg 1\right)$,
+We get for Polomac (\cite{Elio2024}):
+\begin{itemize}
+    \item Mass density: $ \varrho = n m_i = \SI{e20}{\per\meter\cubed} \times \SI{1.67e-27}{\kilo\gram} = \SI{1.67e-7}{\kilo\gram\per\meter\cubed}$
+    \item Magnetic field: $B = \SI{0.25}{\tesla}$ (midpoint of \SIrange{0.2}{0.3}{\tesla} operating range)
+    \item Alfvén velocity: $v_A = \frac{\SI{0.25}{\tesla}}{\sqrt{4\pi \times \SI{e-7}{\henry\per\meter} \times \SI{1.67e-7}{\kilo\gram\per\meter\cubed}}} = \SI{5.5e4}{\meter\per\second}$
+    \item Speed of light: $c = \SI{3e8}{\meter\per\second}$
+    \item $\frac{v_A}{c} = \frac{\SI{5.5e4}{\meter\per\second}}{\SI{3e8}{\meter\per\second}} \approx \num{1.8e-4} \ll 1$
+\end{itemize}
+
+Since MHD wave velocities are non-relativistic ($v_A \ll c$), we can safely neglect the displacement current $\epsilon_0 \partial \vec{E}/\partial t$ compared to $\vec{J}$ in Ampère's law.
+
+Note that $\mu_0 \vec{J} = \nabla \wedge \vec{B}$ implies $\nabla \cdot \vec{J} = 0$.
+
+
+\item Small Larmor radius $\left(\frac{L}{\rho_i} \gg 1\right)$
+
+The particles are tightly bound to the electric field lines. Inserting the definition of the larmor radius this leads to
 \[
 \left|\vec{V} \wedge \vec{B}\right| \gg \left|\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}\right|
 \]
 
-\item $\eta = 0$
+Equivalently without the larmor radius
+\[
+\frac{\vec{V}\wedge\vec{B}}{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}}
+\sim \frac{v_{th, i} B}{\frac{n_e k_B T_e}{e n L}}
+\]
+
+We see that this is negligible for the polomac's values (\cite{Elio2024}).
+
+
 
 \item Isotropic pressure and incompressible motion
 
-    The adiabatic closure assumes that pressure is isotropic and heat is not being transported.
+    \textbf{Isotropic pressure:} The ideal MHD model assumes that the pressure tensor is isotropic, 
+    $\overleftrightarrow{P}^{CM} = P$, where $P$ is a scalar pressure. This assumption 
+    is not rigorously justified for low-collisionality fusion plasmas, where pressure can become 
+    anisotropic ($P_\parallel \neq P_\perp$). However, as shown in \cite{Freidberg2014} Section 2.4.3, 
+    MHD stability predictions remain qualitatively accurate because the most unstable modes couple 
+    to incompressible motions where the shortcomings of the isotropic pressure assumption have 
+    minimal impact.
 
-    Because the particles are bound to magnetic field line through gyromotion but are not bound along $\vec{B}$, 
-    a more accurate model would be to assume infinite heat flow along the magnetic field lines ($\vec{B}\cdot\nabla T = 0$)
-
-    Using mass conservation, we see that 
+    \textbf{Adiabatic closure:} Using the adiabatic equation of state and mass conservation, we obtain
     \[
         \frac{d}{dt}\left(\frac{P}{\rho^\gamma}\right) = 0 \iff \frac{dP}{dt} + \gamma P \nabla \cdot \vec{V} = 0
     \]
+    
+    Because particles can move freely along $\vec{B}$ but are bound to field lines by gyromotion, 
+    a more physically accurate model would assume rapid heat flow along magnetic field lines 
+    ($\vec{B}\cdot\nabla T = 0$) rather than adiabatic behavior.
 
-    For incompressible motions and perfect conductivity ($\eta = 0$), we can show (see \cite{Freidberg2014}, chapter 2.6) that the two are equivalent and reduce to 
+    \textbf{Incompressible approximation:} For incompressible motions ($\nabla \cdot \vec{V} = 0$) 
+    and perfect conductivity ($\eta = 0$), both the adiabatic closure and the infinite parallel 
+    thermal conductivity model reduce to the same result (see \cite{Freidberg2014}, Section 2.4.4):
     \[
     \frac{dP}{dt} = 0
     \]
 
-    An analysis as done in chapter 8.9 of \cite{Freidberg2014} shows that geometries with closed field lines (such as the Polomac)
-    have also compressible instabilities, but the most unstable modes are always incompressible.
+    An analysis in Chapter 8.9 of \cite{Freidberg2014} shows that geometries with closed field lines 
+    (such as the Polomac) support both compressible and incompressible instabilities, but the most 
+    unstable modes are typically incompressible. For symmetry-preserving modes that cannot be fully 
+    incompressible, quantitative stability predictions using ideal MHD should be viewed with caution, 
+    though qualitative trends remain valid.
 
-    For the Polomac geometry (a closed-line system), certain symmetry-preserving modes cannot be fully incompressible.
-    For these modes, the quantitative stability predictions using ideal MHD should be viewed with caution, though qualitative trends remain valid.
+    In static equilibrium ($\vec{V} = 0$), the incompressibility condition is automatically satisfied.
 
-    We assume that the motions of interest are incompressible, i.e. $\nabla \cdot \vec{V} = 0$ and equivalently $\overleftrightarrow{P}^{CM} = P$.
+    If more accurate models are required for the fusion-relevant regime, kinetic MHD or double 
+    adiabatic (CGL) theory can be used. Details can be found in \cite{Freidberg2014}.
 
-    In static equilibrium ($\vec{V} = 0$), this is certainly the case.
 
-\item 
+
+
 
 \end{enumerate}
 
@@ -294,32 +399,28 @@ We assume the plasma to be quasi-neutral, i.e. that the typical plasma length sc
 
 \item Charge continuity equation:
 \[
-\underbrace{\frac{\partial \rho}{\partial t}}_{\text{Ass. 2}} + \underbrace{\frac{\partial}{\partial \vec{r}} \cdot \vec{J} = 0}_{\text{Ass. 3}}
+\underbrace{\frac{\partial \rho}{\partial t}}_{\text{Ass. 2}} + \underbrace{\frac{\partial}{\partial \vec{r}} \cdot \vec{J} = 0}_{\text{Ass. 4}}
 \]
 
 \item Momentum equation:
 \[
-\varrho \frac{d\vec{V}}{dt} = \underbrace{\rho \vec{E}}_{\text{Ass. 2}} + \vec{J} \wedge \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM}
+\varrho \frac{d\vec{V}}{dt} = \underbrace{\rho \vec{E}}_{\text{Ass. 2}} + \vec{J} \wedge \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \underbrace{\overleftrightarrow{P}^{CM}}_{\text{Ass. 6}}
 \]
 
 \item Ohm's law:
 \[
-\underbrace{\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right]}_{\text{Assumption 1: } m_e \to 0} = \vec{E} + \vec{v} \wedge \vec{B} - \underbrace{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e}}_{\text{Assumption 4}} - \eta \vec{J}
+\underbrace{\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right]}_{\text{Ass. 1}} = \vec{E} + \vec{v} \wedge \vec{B} - \underbrace{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e}}_{\text{Ass. 5}}- \underbrace{\eta \vec{J}}_{\text{Ass. 3}}
 \]
 \end{itemize}
 
 
 
 \begin{itemize}
-\item Closure: \quad if there are sufficient collisions
-\[
-\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
-\]
 
 \item Maxwell equations
 \begin{align*}
 \underbrace{\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}}_{\text{Ass. 2}} & & \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
-\nabla \cdot \vec{B} &= 0 & \nabla \wedge \vec{B} &= \mu_0 \left(\vec{J} + \underbrace{\epsilon_0 \frac{\partial \vec{E}}{\partial t}}_{\text{Ass. 3}}\right)
+\nabla \cdot \vec{B} &= 0 & \nabla \wedge \vec{B} &= \mu_0 \left(\vec{J} + \underbrace{\epsilon_0 \frac{\partial \vec{E}}{\partial t}}_{\text{Ass. 4}}\right)
 \end{align*}
 \end{itemize}
 
@@ -327,20 +428,20 @@ We assume the plasma to be quasi-neutral, i.e. that the typical plasma length sc
 
 
 
-\subsection{The magnetohydrodynamic equations}
+\subsection{The ideal MHD equations}
 The ideal magnetohydrodynamic equations consist of
 \begin{itemize}
     \item the mass-continuity equation:
             \begin{equation}
-                \frac{\partial\varrho}{\partial t} + \nabla_{\vec{r}} (\varrho \vec{v}) = 0
+                \frac{\partial\varrho}{\partial t} + \nabla(\varrho \vec{v}) = 0
             \end{equation}
     \item the momentum equation:
             \begin{equation}
-                \varrho \frac{d \vec{v}}{dt} = \vec{J} \wedge B - \nabla P
+                \varrho \frac{d \vec{V}}{dt} = \vec{J} \wedge B - \nabla P
             \end{equation}
     \item Ohm's law:
             \begin{equation}
-                \vec{E} + \vec{v} \wedge \vec{B} = \eta \vec{J}
+                \vec{E} + \vec{V} \wedge \vec{B} = 0
             \end{equation}
     \item Closure equation:
             \begin{equation}
@@ -356,14 +457,4 @@ The ideal magnetohydrodynamic equations consist of
             \begin{equation}
                 \nabla\cdot\vec{B} = 0
             \end{equation}
-\end{itemize}
-
-If $\eta = 0$: ideal MHD model,
-
-otherwise: resistive MHD model
-
-\subsection{Summary of assumptions and constraints of the magnetohydrodynamic model}
-
-\begin{itemize}
-    \item Elastic collisions $\to$ particle nuber of each species conserved
 \end{itemize}
