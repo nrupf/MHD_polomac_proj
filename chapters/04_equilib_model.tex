@@ -1,0 +1,72 @@
+\chapter{Static equilibrium model in cylindrical coordinates under axisymmetric assumptions}
+\section{Axisymmetric formulation}
+
+In the following we will assume the magnetic configuration to be axisymmetric, i.e. independent of the toroidal angle $\varphi$.
+
+The magnetic field thus simplifies to
+\begin{equation}
+    \vec{B} = B_r (r,z) \hat{e}_r + B_z(r,z) \hat{e}_z + B_\varphi(r,z) \hat{e}_\varphi
+    \label{eq: axisymm. magn. field}
+\end{equation}
+.
+
+In cylindrical coordinates $(r, \varphi, z)$, the divergence and curl are:
+
+\begin{align*}
+    \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial (r F_r)}{\partial r} + \frac{1}{r}\frac{\partial F_\varphi}{\partial \varphi} + \frac{\partial F_z}{\partial z} \\
+    \nabla \wedge \vec{F} &= \left(\frac{1}{r}\frac{\partial F_z}{\partial \varphi} - \frac{\partial F_\varphi}{\partial z}\right)\hat{e}_r
+    + \left(\frac{\partial F_r}{\partial z} - \frac{\partial F_z}{\partial r}\right)\hat{e}_\varphi
+    + \frac{1}{r}\left(\frac{\partial (r F_\varphi)}{\partial r} - \frac{\partial F_r}{\partial \varphi}\right)\hat{e}_z
+\end{align*}
+
+so
+\begin{align}
+    \nabla \cdot \vec{B}  &= \frac{1}{r}\frac{\partial (r B_r)}{\partial r} + \frac{\partial B_z}{\partial z} \label{eq: axysimm. cylindrical div}\\
+    \nabla \wedge \vec{B} &= 
+\left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)\hat{e}_\varphi 
+- \frac{\partial B_\varphi}{\partial z}\,\hat{e}_r 
++ \frac{1}{r}\frac{\partial(r B_\varphi)}{\partial r}\,\hat{e}_z
+    \label{eq: axisymm. cylindrical curl}
+\end{align}
+
+{\color{magenta}
+
+\textbf{With or without $B_{phi}$?}
+
+}
+
+To zeroth order in our poloidal expansion, so letting $B_\varphi=0$, \eqref{eq: axisymm. cylindrical curl} further simplifies to 
+\begin{align}
+    \nabla \wedge \vec{B} &= \left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)\hat{e}_\varphi 
+    \label{eq: poloidal cylindrical curl}
+\end{align}
+
+
+\section{Static equilibrium}
+
+In case of a static equilibrium ($\vec{V}=0$, $\frac{\partial}{\partial t} \cdot =0$), 
+of the ideal MHD equations only the following \emph{static equilibrium equations} remain.
+
+\begin{itemize}
+    \item the static momentum equation:
+            \begin{equation}
+                 \vec{J} \wedge \vec{B} = \nabla P
+            \end{equation}
+
+    \item static Maxwell equations:
+        \begin{itemize}
+            \item 
+                \begin{equation}
+                    \nabla\wedge\vec{B} =  \mu_0 \vec{J}
+                \end{equation}
+            \item
+                \begin{equation}
+                    \nabla\cdot\vec{B} = 0
+                \end{equation}
+        \end{itemize}
+\end{itemize}
+
+
+Using \eqref{eq: axisymm. magn. field}, \eqref{eq: axysimm. cylindrical div} and \eqref{eq: poloidal cylindrical curl} 
+we can rewrite these equations and only the following components remain: 
+
