@@ -1,0 +1,75 @@
+\chapter{Adiabatic Equation of State}
+\label{chap: App. Adiabatic Equation of State}
+ 
+We show that for an ideal gas, conserving entropy along fluid trajectories is
+equivalent to the relation $\dfrac{d}{dt}(P\rho^{-\gamma})=0$.
+ 
+\section{First Law of Thermodynamics}
+ 
+Per unit mass, the first law reads
+\begin{equation}
+    de = T\,ds - P\,d\!\left(\frac{1}{\rho}\right),
+    \label{eq:firstlaw}
+\end{equation}
+where $e$ is specific internal energy, $s$ is specific entropy, and $1/\rho$
+is specific volume.
+ 
+\section{Ideal Gas Relations}
+ 
+For an ideal gas two relations hold:
+\begin{align}
+    e &= c_v T, \label{eq:ig1}\\
+    P &= \frac{k_B}{m}\,\rho T, \label{eq:ig2}
+\end{align}
+where $c_v$ is the specific heat at constant volume, $k_B$ is Boltzmann's
+constant, and $m$ is the particle mass.
+ 
+\section{Differential of Entropy}
+ 
+Substituting \eqref{eq:ig1} and \eqref{eq:ig2} into \eqref{eq:firstlaw} gives
+\begin{equation}
+    ds = c_v\,\frac{dT}{T} - \frac{k_B}{m}\,\frac{d\rho}{\rho}.
+    \label{eq:ds}
+\end{equation}
+Integrating:
+\begin{equation}
+    s = c_v \ln T - \frac{k_B}{m}\ln\rho + \text{const}.
+    \label{eq:s_T}
+\end{equation}
+ 
+\section{Eliminating Temperature}
+ 
+From \eqref{eq:ig2}, $T = Pm/(\rho k_B)$, so $\ln T = \ln P - \ln\rho +
+\text{const}$. Substituting into \eqref{eq:s_T}:
+\begin{equation*}
+    s = c_v\ln\!\left(\frac{P}{\rho}\right) - \frac{k_B}{m}\ln\rho + \text{const}.
+\end{equation*}
+Expanding and collecting the $\ln\rho$ terms:
+\begin{equation*}
+    s = c_v\ln P - \left(c_v + \frac{k_B}{m}\right)\ln\rho + \text{const}.
+\end{equation*}
+Using the ideal-gas identity $c_p - c_v = k_B/m$ and the definition
+$\gamma \equiv c_p/c_v$, we have $c_v + k_B/m = c_p = \gamma c_v$, so
+\begin{equation}
+    s = c_v\!\left(\ln P - \gamma\ln\rho\right) + \text{const}
+      = c_v\ln\!\left(P\rho^{-\gamma}\right) + \text{const}.
+    \label{eq:s_final}
+\end{equation}
+ 
+\section{Adiabatic Condition}
+ 
+Since $c_v > 0$, equation \eqref{eq:s_final} shows that
+\begin{equation*}
+    \frac{ds}{dt} = 0
+    \quad\iff\quad
+    \frac{d}{dt}\!\left(P\rho^{-\gamma}\right) = 0,
+\end{equation*}
+where $d/dt = \partial_t + \mathbf{v}\cdot\nabla$ is the material derivative
+following a fluid element. This is the \emph{adiabatic equation of state}: it
+is simply the statement that entropy is conserved along fluid trajectories.
+ 
+\medskip
+\noindent\textbf{Note.} The derivation relies on the ideal gas law
+\eqref{eq:ig2}. In a plasma context this assumption should be revisited, as
+inter-particle interactions and anisotropic pressure can modify the equation of
+state.

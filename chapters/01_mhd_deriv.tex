@@ -1,20 +1,7 @@
 \chapter{Single Fluid ideal MHD equations}
 
-This theory follows mostly the EPFL Intro to Plasma Phyiscs course, Freidberg's book \cite{Freidberg2014} and Chen's book \cite{Chen2016}.
-
-\section{Derivation process}
-\begin{enumerate}
-    \item Maxwell eq
-    \item Boltzmann eq
-    \item Species equations
-    \item One fluid model    
-    \begin{enumerate}
-        \item One fluid variables
-        \item Center of mass frame
-        \item Onefluid equations
-        \item Many simplifications $\implies$ MHD
-    \end{enumerate}
-\end{enumerate}
+This theory follows mostly the EPFL Intro to Plasma Phyiscs course, Freidberg's book \emph{Ideal MHD} 
+(\cite{Freidberg2014}) and Chen's book \emph{Introduction to Plasma Physics and Controlled Fusion} (\cite{Chen2016}).
 
 \section{The Maxwell equations}
 
@@ -356,9 +343,13 @@ We see that this is negligible for the polomac's values (\cite{Elio2024}).
     to incompressible motions where the shortcomings of the isotropic pressure assumption have 
     minimal impact.
 
-    \textbf{Adiabatic closure:} Using the adiabatic equation of state and mass conservation, we obtain
+    \textbf{Adiabatic closure:}
+    From the ideal gas law, we see that the adiabatic equation of state ($\frac{ds}{dt}=0$) is equivalent
+     to $\frac{d}{dt}(\frac{P}{\varrho^\gamma})$ (see \autoref{chap: App. Adiabatic Equation of State}).
+    
+    and mass conservation, we obtain
     \[
-        \frac{d}{dt}\left(\frac{P}{\rho^\gamma}\right) = 0 \iff \frac{dP}{dt} + \gamma P \nabla \cdot \vec{V} = 0
+        \frac{d}{dt}\left(\frac{P}{\varrho^\gamma}\right) = 0 \iff \frac{dP}{dt} + \gamma P \nabla \cdot \vec{V} = 0
     \]
     
     Because particles can move freely along $\vec{B}$ but are bound to field lines by gyromotion, 
@@ -377,6 +368,10 @@ We see that this is negligible for the polomac's values (\cite{Elio2024}).
     unstable modes are typically incompressible. For symmetry-preserving modes that cannot be fully 
     incompressible, quantitative stability predictions using ideal MHD should be viewed with caution, 
     though qualitative trends remain valid.
+    Because the isothermal equation of state (from ideal gas law) is $\frac{d}{dt}(\frac{P}{\varrho})$,
+    so similar but with $\gamma=1$, we conclude that whenever a result depends on $\gamma$, isothermal
+    and adiabatic assumptions produce different outputs and we have to be careful with the result.
+
 
     In static equilibrium ($\vec{V} = 0$), the incompressibility condition is automatically satisfied.
 
@@ -399,8 +394,8 @@ We see that this is negligible for the polomac's values (\cite{Elio2024}).
 
 \item Charge continuity equation:
 
-harge continuity reduces to $\nabla \cdot \vec{J} = 0$, which is automatically 
-satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \wedge \vec{B}) = 0$).
+Charge continuity reduces to $\nabla \cdot \vec{J} = 0$, which is automatically 
+satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \wedge \vec{B}) = 0$). It is thus obsolete.
 
 \[
 \underbrace{\frac{\partial \rho}{\partial t}}_{\text{Ass. 2}} + \underbrace{\frac{\partial}{\partial \vec{r}} \cdot \vec{J} = 0}_{\text{Ass. 4}}

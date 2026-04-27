@@ -1,7 +1,16 @@
 \chapter{Equilibrium model in cylindrical coordinates under axisymmetric assumptions}
-Possible eqilibria
-\begin{itemize}
-    \item steady state (time invariant)
-    \item stable operations
-    \item spatial eqilibria
-\end{itemize}
+
+In cylindrical coordinates $(r, \varphi, z)$, the divergence and curl are:
+
+\begin{align}
+    \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial (r F_r)}{\partial r} + \frac{1}{r}\frac{\partial F_\varphi}{\partial \varphi} + \frac{\partial F_z}{\partial z} \\
+    \nabla \wedge \vec{F} &= \left(\frac{1}{r}\frac{\partial F_z}{\partial \varphi} - \frac{\partial F_\varphi}{\partial z}\right)\hat{e}_r
+    + \left(\frac{\partial F_r}{\partial z} - \frac{\partial F_z}{\partial r}\right)\hat{e}_\varphi
+    + \frac{1}{r}\left(\frac{\partial (r F_\varphi)}{\partial r} - \frac{\partial F_r}{\partial \varphi}\right)\hat{e}_z
+\end{align}
+
+In the following we will assume the magnetic configuration to be axisymmetric.
+The magnetic field thus simplifies to
+\[
+\vec{B} = B_r (r,z) \vec{e}_r + B_z(r,z) \vec{e}_z
+\]

@@ -1,14 +1,31 @@
 \chapter{Specialization to poloidal configurations}
 
+\section{Polomac geometry}
+The magnetic field is decomposed as
+\begin{equation}
+    \vec{B} = \vec{B}_\mathrm{pol}(r,\varphi,z) + \vec{B}_\mathrm{tor}(r,\varphi,z),
+\end{equation}
+where $\vec{B}_\mathrm{pol} = B_r(r,\varphi,z) \hat{e}_r + B_z(r,\varphi,z) \hat{e}_z$
+denotes the poloidal component and $\vec{B}_\mathrm{tor} = B_\varphi(r,\varphi,z) \hat{e}_\varphi$ 
+denotes the toroidal component, directed along the azimuthal direction.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/Polomac_Prototype_Elio2024}
+    \caption{Cut out view of the Polomac prototype, figure taken from \cite{Elio2024}}
+    \label{fig:polomac_cut_out}
+\end{figure}
+
+From \autoref{fig:polomac_cut_out} provided by \citeauthor{Elio2024}, we can see that the magnetic configuration 
+of the Polomac is predominantly poloidal, so for $\vec{B} = B_r(r,\phi,z) \vec{e}_r + B_\phi(r,\phi,z) \vec{e}_\phi + B_z(r,\phi,z) \vec{e}_z$, 
+we have that in the middle sections $B_z \gg B_r, B_\phi$ and in the top and bottom arcs $B_r \gg B_z, B_\phi$.
+The total axisymmetry is broken in the middle section by the magnetic tunnels necessary to feed, support and cool the central solenoid. 
+The device is described in greater detail in \cite{Elio2024}. The arcs are axisymmetric, i.e., invariant under rotation about the $z$-axis.
+
 
 \section{Specialization to poloidal configurations}
 
-In cylindrical coordinates $(r, \varphi, z)$, the divergence and curl are:
-
-\begin{align}
-    \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial (r F_r)}{\partial r} + \frac{1}{r}\frac{\partial F_\varphi}{\partial \varphi} + \frac{\partial F_z}{\partial z} \\
-    \nabla \wedge \vec{F} &= \left(\frac{1}{r}\frac{\partial F_z}{\partial \varphi} - \frac{\partial F_\varphi}{\partial z}\right)\hat{e}_r
-    + \left(\frac{\partial F_r}{\partial z} - \frac{\partial F_z}{\partial r}\right)\hat{e}_\varphi
-    + \frac{1}{r}\left(\frac{\partial (r F_\varphi)}{\partial r} - \frac{\partial F_r}{\partial \varphi}\right)\hat{e}_z
-\end{align}
-
+Since $B_\varphi \ll |\vec{B}_\mathrm{pol}|$, all terms in the MHD equations 
+arising from the toroidal field component enter as corrections of order 
+$\varepsilon \equiv B_\varphi / |\vec{B}_\mathrm{pol}| \ll 1$. 
+To leading order, the dynamics are governed by the poloidal field alone.
