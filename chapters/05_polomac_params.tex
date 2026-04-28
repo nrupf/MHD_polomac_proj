@@ -6,3 +6,89 @@ the ratio of pressure to magnetic pressure
 \begin{equation*}
     \beta \coloneq \frac{p}{\nicefrac{B^2}{2\mu_0}}
 \end{equation*}
+
+
+\section{Alfvén waves}
+
+
+\section{Lundquist number}
+
+
+{\color{magenta}
+\chapter{Relevant parameters for a polomac}
+
+\section{Plasma beta}
+While pressure is the relevant parameter for fusion, analysis often uses $\beta$, 
+the ratio of plasma pressure to magnetic pressure
+\begin{equation}
+    \beta \coloneqq \frac{p}{B^2/2\mu_0}
+\end{equation}
+For the Polomac prototype, using the design values from Elio et al. 2024 (Table 1),
+plasma pressure ranges from $1.6$--$16$ kPa and magnetic pressure from $15.9$--$35.8$ kPa,
+giving
+\begin{equation*}
+    \beta \in [0.04, 1]
+\end{equation*}
+A high $\beta$ is desirable for fusion efficiency, and the poloidal configuration is claimed to support 
+higher $\beta$ than conventional toroidal devices (Elio et al. 2024). These are design 
+targets and have not been experimentally verified.
+
+\section{Alfvén waves}
+Alfvén waves are transverse MHD waves propagating along magnetic field lines. 
+To derive the dispersion relation, we linearize the ideal MHD equations around a 
+static uniform equilibrium: $\vec{B} = B_0 \hat{e}_z$, $\varrho = \varrho_0$, 
+$\vec{V} = 0$, $P = P_0$. We write each quantity as an equilibrium part plus a 
+small perturbation, e.g. $\vec{B} = B_0\hat{e}_z + \vec{B}_1$.
+
+To first order in the perturbations, the linearized momentum equation and 
+induction equation (Ohm's law combined with Faraday's law) give
+\begin{align}
+    \varrho_0 \frac{\partial \vec{V}_1}{\partial t} &= \frac{1}{\mu_0}(\nabla \wedge \vec{B}_1) \wedge \vec{B}_0 \\
+    \frac{\partial \vec{B}_1}{\partial t} &= \nabla \wedge (\vec{V}_1 \wedge \vec{B}_0)
+\end{align}
+Assuming plane wave solutions $\sim e^{i(\vec{k}\cdot\vec{x} - \omega t)}$ and 
+considering perturbations perpendicular to $\vec{B}_0$ with $\vec{k} = k\hat{e}_z$, 
+one obtains the dispersion relation
+\begin{equation}
+    \omega^2 = k_\parallel^2 v_A^2
+\end{equation}
+where $k_\parallel = \vec{k}\cdot\hat{b}$ is the wavenumber along the field and
+\begin{equation}
+    v_A = \frac{B}{\sqrt{\mu_0 \varrho}}
+\end{equation}
+is the Alfvén velocity. For the Polomac, using $B = 0.25$ T and 
+$\varrho = n m_i = 10^{20} \times 1.67\times10^{-27}$ kg m$^{-3}$ (Elio et al. 2024),
+this was already computed in Section 2.5.1:
+\begin{equation*}
+    v_A = 5.5 \times 10^4 \text{ m s}^{-1}
+\end{equation*}
+The Alfvén velocity sets the characteristic speed of MHD disturbances and defines 
+the MHD timescale $\tau_\text{MHD} = L/v_A$. It also enters directly into the 
+Lundquist number below.
+
+\section{Lundquist number}
+The Lundquist number is defined as the ratio of the resistive diffusion timescale 
+$\tau_R = \mu_0 L^2 / \eta$ to the Alfvén timescale $\tau_A = L/v_A$:
+\begin{equation}
+    S \coloneqq \frac{\tau_R}{\tau_A} = \frac{\mu_0 L v_A}{\eta}
+\end{equation}
+Equivalently, it can be written as the magnetic Reynolds number evaluated at the 
+Alfvén speed. When $S \gg 1$, resistive diffusion is negligible on MHD timescales 
+and the magnetic field is effectively frozen into the plasma, justifying the ideal 
+MHD assumption of zero resistivity (Assumption 3, Section 2.5.1).
+
+For the Polomac prototype, using $L \sim 0.3$ m, $v_A = 5.5\times10^4$ m s$^{-1}$, 
+and $\eta \sim 10^{-6}$ $\Omega$m (Section 2.5.1):
+\begin{equation*}
+    S = \frac{4\pi\times10^{-7} \times 0.3 \times 5.5\times10^4}{10^{-6}} \approx 2\times10^4
+\end{equation*}
+This is at the lower end of the fusion-relevant range of $S \sim 10^2$--$10^8$ 
+reported for laboratory plasmas \cite{wikipedia_lundquist}. While $S \gg 1$ confirms 
+that ideal MHD is a reasonable starting point, the relatively modest value compared 
+to large tokamaks ($S \sim 10^6$--$10^8$) reflects the small size and low temperature 
+of the prototype. In particular, since $\eta \propto T^{-3/2}$, a reactor-scale 
+Polomac operating at keV temperatures would have $S \sim 10^6$, well into the ideal 
+MHD regime. For the present analysis, which concerns static equilibrium rather than 
+dynamic phenomena, $S \sim 2\times10^4$ is sufficient to justify the ideal MHD 
+framework (Freidberg 2014, Section 2.4).
+}
