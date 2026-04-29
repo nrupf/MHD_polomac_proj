@@ -1,5 +1,6 @@
 \chapter{Static equilibrium model in cylindrical coordinates under axisymmetric assumptions}
-\section{Axisymmetric formulation}
+\section{Axisymmetric and poloidal formulation}
+
 
 In the following we will assume the magnetic configuration to be axisymmetric, i.e. independent of the toroidal angle $\varphi$.
 
@@ -21,7 +22,7 @@ In cylindrical coordinates $(r, \varphi, z)$, the divergence and curl are:
 
 so
 \begin{align}
-    \nabla \cdot \vec{B}  &= \frac{1}{r}\frac{\partial (r B_r)}{\partial r} + \frac{\partial B_z}{\partial z} \label{eq: axysimm. cylindrical div}\\
+    \nabla \cdot \vec{B}  &= \frac{1}{r}\frac{\partial (r B_r)}{\partial r} + \frac{\partial B_z}{\partial z} \label{eq: axisymm. cylindrical div}\\
     \nabla \wedge \vec{B} &= 
 \left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)\hat{e}_\varphi 
 - \frac{\partial B_\varphi}{\partial z}\,\hat{e}_r 
@@ -29,13 +30,16 @@ so
     \label{eq: axisymm. cylindrical curl}
 \end{align}
 
-{\color{magenta}
+In our axisymmetric approximation we disregard any impact the tunnels have. Since the polomac does not include any toroidal field coils,
+the only possible source of a nonzero $B_\varphi(r,z) \hat{e}_\varphi$ are these tunnels, which we are disregarding (so zeroth order in our poloidal expansion).
 
-\textbf{With or without $B_{phi}$?}
+We thus set $B_\varphi(r,z) \hat{e}_\varphi \equiv 0$, which further simplifies \eqref{eq: axisymm. magn. field} to
+\begin{equation}
+    \vec{B} = B_r (r,z) \hat{e}_r + B_z(r,z) \hat{e}_z
+    \label{eq: axisymm. pol. magn. field}
+\end{equation}
 
-}
-
-To zeroth order in our poloidal expansion, so letting $B_\varphi=0$, \eqref{eq: axisymm. cylindrical curl} further simplifies to 
+and \eqref{eq: axisymm. cylindrical curl} to 
 \begin{align}
     \nabla \wedge \vec{B} &= \left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)\hat{e}_\varphi 
     \label{eq: poloidal cylindrical curl}
@@ -44,6 +48,9 @@ To zeroth order in our poloidal expansion, so letting $B_\varphi=0$, \eqref{eq: 
 
 \section{Static equilibrium}
 
+For the following derivation we closely work with Chapter 6 of \cite{Freidberg2014} which derives the Grad-Shafranov equation.
+Due to our special geometry, we can make a couple of simplifications.
+
 In case of a static equilibrium ($\vec{V}=0$, $\frac{\partial}{\partial t} \cdot =0$), 
 of the ideal MHD equations only the following \emph{static equilibrium equations} remain.
 
@@ -51,6 +58,7 @@ of the ideal MHD equations only the following \emph{static equilibrium equations
     \item the static momentum equation:
             \begin{equation}
                  \vec{J} \wedge \vec{B} = \nabla P
+                 \label{eq: static momentum eq.}
             \end{equation}
 
     \item static Maxwell equations:
@@ -67,6 +75,103 @@ of the ideal MHD equations only the following \emph{static equilibrium equations
 \end{itemize}
 
 
-Using \eqref{eq: axisymm. magn. field}, \eqref{eq: axysimm. cylindrical div} and \eqref{eq: poloidal cylindrical curl} 
-we can rewrite these equations and only the following components remain: 
 
+Using \eqref{eq: axisymm. cylindrical div}, \eqref{eq: axisymm. pol. magn. field} and \eqref{eq: poloidal cylindrical curl} 
+we can rewrite these equations and only the following components remain:
+
+\begin{itemize}
+    \item $\nabla \cdot \vec{B} = 0$ becomes:
+        \begin{equation}
+            \frac{1}{r}\frac{\partial (r B_r)}{\partial r} + \frac{\partial B_z}{\partial z} = 0
+            \label{eq: divB}
+        \end{equation}
+
+    \item Ampère's law $\nabla \wedge \vec{B} = \mu_0 \vec{J}$ gives a purely toroidal current density:
+        \begin{equation}
+            \vec{J} = J_\varphi(r,z)\,\hat{e}_\varphi, \qquad 
+            J_\varphi = \frac{1}{\mu_0}\left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)
+            \label{eq: J_phi}
+        \end{equation}
+
+    \item The momentum equation $\vec{J} \wedge \vec{B} = \nabla P$ yields:
+        \begin{align}
+            J_\varphi\,\hat{e}_\varphi \wedge \left(B_r\,\hat{e}_r + B_z\,\hat{e}_z\right) 
+            &= \frac{\partial P}{\partial r}\hat{e}_r + \frac{\partial P}{\partial z}\hat{e}_z
+        \end{align}
+        Using $\hat{e}_\varphi \wedge \hat{e}_r = -\hat{e}_z$ and $\hat{e}_\varphi \wedge \hat{e}_z = \hat{e}_r$, 
+        this gives two scalar equations:
+        \begin{align}
+            -J_\varphi B_z &= \frac{\partial P}{\partial r} \label{eq: momentum_r}\\
+             J_\varphi B_r &= \frac{\partial P}{\partial z} \label{eq: momentum_z}
+        \end{align}
+\end{itemize}
+
+Notice that \eqref{eq: divB} implies that $\vec{B}$ can be written identically
+by introducing the poloidal flux function $\psi(r,z)$ such that
+\begin{equation}
+    \vec{B} = \frac{1}{r} \nabla\psi \times \hat{e}_\varphi,
+    \qquad
+    B_r = -\frac{1}{r}\frac{\partial \psi}{\partial z}, \quad
+    B_z = \frac{1}{r}\frac{\partial \psi}{\partial r}.
+\end{equation}
+
+{\color{magenta}
+We must require that $\nabla \psi \overset{r \to 0}{\longrightarrow} 0$
+}
+
+Multiplying this $\vec{B}$ to both sides of \eqref{eq: static momentum eq.}, we obtain
+\[
+\vec{B}\cdot \nabla P = 0
+\]
+Pressure $p$ is thus constant along magnetic field lines. 
+Since by construction $\vec{B}\cdot \nabla \psi = 0$, so $\psi$ constant along field lines aswell.
+Thus for our axisymmetric geometry 
+
+
+
+
+
+
+\color{magenta}
+
+
+
+\subsection{Polomac Specialization: \texorpdfstring{$B_\varphi \approx 0$}{Bphi = 0}}
+
+For the Polomac geometry, we set the toroidal field to zero:
+\begin{equation}
+    B_\varphi \approx 0 \quad \Longrightarrow \quad F \equiv r B_\varphi = 0,
+\end{equation}
+where $F(\psi)$ is the standard free function appearing in the general Grad--Shafranov equation. With $F = 0$, the $F\,dF/d\psi$ term vanishes.
+
+\subsection{Reduced Grad--Shafranov Equation}
+
+Setting $F = 0$ in the general Grad--Shafranov equation
+$\Delta^* \psi = -\mu_0 r^2 \,dp/d\psi - (1/2)\,dF^2/d\psi$,
+the equilibrium reduces to
+\begin{equation}
+    \boxed{
+    r\frac{\partial}{\partial r}\!\left(\frac{1}{r}\frac{\partial \psi}{\partial r}\right)
+    + \frac{\partial^2 \psi}{\partial z^2}
+    = -\mu_0 r^2 \frac{dp}{d\psi}
+    }
+    \label{eq:reduced_GSE}
+\end{equation}
+This is a second-order, nonlinear PDE for $\psi(r,z)$ in the poloidal plane.
+
+\subsection{Free Function \texorpdfstring{$p(\psi)$}{p(psi)}}
+
+The pressure profile $p(\psi)$ is a free function that must be prescribed to close the problem. A simple power-law choice is
+\begin{equation}
+    p(\psi) = p_0 \left(\frac{\psi}{\psi_0}\right)^\alpha, \qquad \alpha > 0,
+\end{equation}
+where $p_0$ and $\psi_0$ are reference values and $\alpha$ controls the profile peaking. This renders the right-hand side of~\eqref{eq:reduced_GSE} explicit.
+
+\subsection{Boundary Conditions}
+
+The problem requires the following boundary conditions:
+\begin{enumerate}
+    \item \textbf{Axis regularity:} $\psi = 0$ on the magnetic axis $r = 0$ (or at the geometric axis by convention).
+    \item \textbf{Plasma boundary:} $\psi = \psi_b$ prescribed on the last closed flux surface $\partial\Omega_p$.
+    \item \textbf{Coil source:} The external coil enters as an internal source term or a jump condition on $\nabla\psi$ at the coil location, consistent with Amp\`{e}re's law applied to the coil current $I_c$.
+\end{enumerate}
