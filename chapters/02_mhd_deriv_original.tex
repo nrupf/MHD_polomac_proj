@@ -19,11 +19,7 @@ The Boltzmann equation is
 \end{equation}
 
 Here the short range interactions are accounted for in the collisional term, and the long range (lr) interactions from collective effeects are accounted for in the electric and Lorentz term.
-The crititical screening distance hereby is the Debye length $\lambda_{D}$ of electrons 
-\begin{equation}
-    \lambda_{D} = \sqrt{\frac{\epsilon_0 T_e}{e^2 n_0}}
-    \label{eq: debye length}
-\end{equation}
+The crititical distance hereby is the Debye length of electrons $\lambda_{D} = \sqrt{\frac{\epsilon_0 T_e}{e^2 n_0}}$.
 
 \subsection{Gravity irrelevant}
 
@@ -184,7 +180,7 @@ $\to$ assume neutrality $(n_e \simeq n_i \simeq n)$, $m_e \ll m_i$, $\vec{J} \ll
 $\to$ Sum of their respective eq's is approx.:
 \[\frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right) = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}\]
 
-with the \emph{plasma resisitivity} $\eta$.
+with the \emph{plasma resisitivity} $\eta = \frac{m_e \nu_{ei}}{e^2 n} $.
 \subsubsection{Closure}
 
 In order to have a closed system of equations, we need additional assumptions and thus restrictions. This is called a \emph{closure}.
@@ -209,11 +205,10 @@ We will justify these assumptions in the next section.
 
 \subsubsection{Single fluid Maxwell equations}
 Maxwell equations
-\begin{align}
+\begin{align*}
 \nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} & \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
 \nabla \cdot \vec{B} &= 0 & \nabla \wedge \vec{B} &= \mu_0 \left(\vec{J} + \epsilon_0 \frac{\partial \vec{E}}{\partial t}\right)
-\label{eq: single fluid maxwell eq}
-\end{align}
+\end{align*}
 
 
 
@@ -223,27 +218,13 @@ Maxwell equations
 
 
 \section{Magnetohydrodynamic model}
-\subsection{MHD assumptions}
 \label{subsec:mhd_assumptions}
-By comparing constants as well as time and length scales typical in fusion
- plasmas or provided specifically for polomacs by \cite{Elio2024}, 
- we can make a number of assumptions following chapter 2 of \cite{Freidberg2014}.
-
-
-For each assumption we state the physical condition
-and give its general justification; quantitative verification of three asumptions
-for the Polomac prototype is deferred to Chapter~\ref{chap:parameters},
-where the relevant dimensionless parameters are introduced and computed.
-
-
-\begin{itemize}
-    \item Characteristic length of the Polomac (\cite{Elio2024}): $L \sim \SIrange{0.04}{0.3}{\meter}$ 
-    \begin{itemize}
-        \item If not otherwise specified, we will in each case use the more limiting value of the two extremes.
-    \end{itemize}
-    \item We assume approximate thermal equilibrium: $T_e \approx T_i \approx \SI{100}{\electronvolt}$
-\end{itemize}
-
+In the following we specifically apply \cite{Freidberg2014}, chapter 2.
+The following six assumptions reduce the single-fluid equations to the
+ideal MHD system.  For each assumption we state the physical condition
+and give its general justification; quantitative verification for the
+Polomac prototype is deferred to Chapter~\ref{chap:parameters}, where
+the relevant dimensionless parameters are introduced and computed.
 
 \begin{enumerate}
 
@@ -261,122 +242,124 @@ plasma length scale.  The condition is
 \]
 This is verified for the Polomac in Section~\ref{sec:alfven}.
 
+\subsection{Assumptions}
 
+By comparing constants as well as time and length scales typical in fusion plasmas or provided specifically for polomacs by \cite{Elio2024}, we can make the following assumptions.
 
-
-\item \textbf{Quasi-neutrality}
-
-We assume the plasma to be quasi-neutral, i.e. that the typical plasma length scale $L$
- is much greater than the Debye screening distance $\lambda_D$ (see \eqref{eq: debye length}), and outside of that
-  screening distance $\frac{\rho}{ne} = \frac{n_e - n_i}{n_e} \ll 1$,
-   i.e. there are many particles in the Debye sphere.
-
-\[
-    \frac{L}{\lambda_D} \gg 1, \qquad
-    N_D = n\cdot\tfrac{4\pi}{3}\lambda_D^3 \gg 1.
-\]
-
-For the Polomac (\cite{Elio2024}), with $n=10^{20}\,\text{m}^{-3}$ and
-$T_e=100\,\text{eV}$:
 \begin{itemize}
-    \item $\lambda_D
-          = 7430\,\text{m}\,\sqrt{T_\text{eV}/n}
-          = 7430\sqrt{100/10^{20}}
-          = \SI{7.4e-6}{\meter}$
-    \item $L/\lambda_D
-          \geq 0.04\,\text{m}/7.4\times10^{-6}\,\text{m}
-          \approx 5.4\times10^3 \gg 1$
-    \item $N_D
-          = 10^{20}\cdot\tfrac{4\pi}{3}(7.4\times10^{-6})^3
-          \approx 1.7\times10^4 \gg 1$
+    \item Characteristic length: $L \sim \SIrange{0.04}{0.3}{\meter}$
+    \begin{itemize}
+        \item In the following calculations, we will in each case use the more limiting value.
+    \end{itemize}
+    \item We assume approximate thermal equilibrium: $T_e \approx T_i \approx \SI{100}{\electronvolt}$
 \end{itemize}
-Both conditions are well satisfied.
 
-Note that this is again connected to the fact that we assume electrons can move very fast.
+In the following we specifically apply  \cite{Freidberg2014}, chapter 2.
+
+\begin{enumerate}
+
+\item Electron inertia negligible, $m_e \to 0$
+
+Electrons respond nearly instantaneously to field changes on MHD timescales. 
+The electron cyclotron period $\tau_{ce} = 2\pi/\omega_{ce}$ is much shorter 
+than the characteristic MHD time $\tau_{MHD} \sim L/V_{Ti}$, where 
+$V_{Ti} = \sqrt{2 k_B T_i / m_i}$ is the ion thermal velocity.
+
+For Polomac (\cite{Elio2024}):
+\begin{itemize}
+    \item ECR heating frequency: $f_{ce} = \SI{4}{\giga\hertz}$ 
+          $\Rightarrow \omega_{ce} = 2\pi f_{ce} = \SI{2.51e10}{\radian\per\second}$
+    \item $V_{Ti} = \sqrt{2 \times \SI{100}{\electronvolt} \times \SI{1.6e-19}{\joule\per\electronvolt} / \SI{1.67e-27}{\kilo\gram}} = \SI{4.4e4}{\meter\per\second}$
+    \item $\tau_{MHD} = L/V_{Ti} = \SI{0.30}{\meter} / \SI{4.4e4}{\meter\per\second} = \SI{6.8e-6}{\second}$
+    \item $\omega_{MHD}/\omega_{ce} \approx \num{3.7e-5} \ll 1$
+\end{itemize}
 
 
 
-% --- Assumption 3 ---
-\item \textbf{Ideal MHD — zero resistivity} ($\eta = 0$)
 
-Resistive diffusion is negligible when the magnetic field moves instantly with the plasma,
- i.e.\ when the resistive diffusion timescale greatly exceeds
-the Alfvén timescale. This is valid when the Lundquist number
-$S \gg 1$, the calculation of which is deffered to section~\ref{sec:lundquist}.
+\item Quasi neutrality 
 
-We can however already calculate the resistivity.
-The classical Spitzer resistivity (\cite{Chen2016}) is
+We assume the plasma to be quasi-neutral, i.e. that the typical plasma length scale $L$ is much greater than the Debye screening distance $\lambda_D$, and outside of that screening distance $\frac{\rho}{ne} = \frac{n_e - n_i}{n_e} \ll 1$, i.e. there aremany particles in the Debye sphere.
+
+For Polomac (\cite{Elio2024}):
+\begin{itemize}
+    \item Hydrogen density: $n = \SI{e20}{\per\meter\cubed}$
+    \item Ion temperature: $T_i = \SI{100}{\electronvolt}$ (assuming $T_e \approx T_i$)
+    \item Debye length: $\lambda_D = \SI{7430}{\meter} \sqrt{\frac{T_{\text{eV}}}{n}} = \SI{7430}{\meter} \sqrt{\frac{100}{\num{e20}}} = \SI{7.4e-6}{\meter}$
+    \item $\frac{L}{\lambda_D} = \frac{\SI{0.04}{\meter}}{\SI{7.4e-6}{\meter}} \approx \num{5.4e3} \gg 1$
+    \item Number of particles in Debye sphere: $N_D = n \cdot \frac{4\pi}{3} \lambda_D^3 = \num{e20} \cdot \frac{4\pi}{3} \cdot (\SI{7.4e-6}{\meter})^3 \approx \num{1.7e4} \gg 1$ 
+\end{itemize}
+
+This is again connected to the fact that we assume electrons can move very fast.
+
+\item Ideal MHD - zero resistivity ($\eta = 0$)
+
+The classical Spitzer resistivity \cite{Chen2016} is given by:
+\begin{equation*}
+    \eta_\parallel = 5.2 \times 10^{-5} \frac{Z \ln\Lambda}{T_{eV}^{3/2}} \quad [\Omega\text{-m}]
+\end{equation*}
+
+For Polomac (\cite{Elio2024}):
+\begin{itemize}
+    \item Hydrogen plasma: $Z = 1$
+    \item Electron temperature: $T_e = \SI{100}{\electronvolt}$ (assuming $T_e \approx T_i$)
+    \item Electron density: $n_e = \SI{e20}{\per\meter\cubed}$
+    \item Coulomb logarithm: $\ln\Lambda = 14.3$
+    \item Parallel resistivity: 
+    \begin{equation*}
+        \eta_\parallel = 5.2 \times 10^{-5} \times \frac{1 \times 14.3}{(100)^{3/2}} \approx \SI{7.4e-7}{\ohm\meter}
+    \end{equation*}
+    \item For comparison: this is comparable to stainless steel ($\eta \approx \SI{7e-7}{\ohm\meter}$) and much more resistive than copper ($\eta \approx \SI{2e-8}{\ohm\meter}$).
+\end{itemize}
+
+Since $\eta_\perp \sim 2 \eta_\parallel$ (\cite{Chen2016}) we have $\eta \sim \SI{e-6}{\ohm\meter}$.
+
+{\color{magenta}
+$\eta\to 0$ is valid if the Lundquist number is high.
+}
+
+\item Neglect E.M. waves:
+
+Current density $\vec{J}$ dominates over displacement current $\epsilon_0 \frac{\partial \vec{E}}{\partial t}$.
+This holds when plasma timescales are much longer than electromagnetic wave periods, and characteristic MHD wave velocities are much slower than the speed of light.
+
+Assuming low resisitivity (so $E \sim v \wedge B$), $\partial_t \sim \frac{1}{\tau} \sim \frac{v}{L}$, $\nabla \wedge B \sim \frac{B}{L}$ and using $c^2 = \frac{1}{\epsilon_0 \mu_0}$
+we can compare the displacement current to the curl of the magnetic field and see that its contribution is small.
+
+The characteristic wave speed in MHD is the Alfvén velocity (\cite{Freidberg2014, Chen2016}):
 \[
-    \eta_\parallel
-    = 5.2\times10^{-5}\,\frac{Z\ln\Lambda}{T_{eV}^{3/2}}
-    \quad[\Omega\text{-m}],
+v_A = \frac{B}{\sqrt{\mu_0 \varrho}}
 \]
-where $\ln\Lambda \equiv \ln(r_\text{max}/r_\text{min})$ is the Coulomb
-logarithm, the ratio of the maximum to minimum effective impact
-parameters in a Coulomb collision (\cite{NRL2023}). For electron--ion
-collisions in the regime $T_i m_e/m_i < 10Z^2\,\text{eV} < T_e$,
-which applies here since $T_i m_e/m_i \approx 0.05\,\text{eV}$ and
-$T_e = 100\,\text{eV} \gg 10\,\text{eV}$ (\cite{NRL2023}):
-\[
-    \ln\Lambda_{ei}
-    = 24 - \ln\!\left(n_e^{1/2}\,T_e^{-1}\right)
-    = 24 - \ln\!\left(\frac{\sqrt{10^{14}\,\text{cm}^{-3}}}{100}\right)
-    = 24 - 5\ln 10
-    \approx 12.5.
-\]
-For the Polomac ($Z=1$, $T_e = 100\,\text{eV}$):
-\[
-    \eta_\parallel
-    = 5.2\times10^{-5}\times\frac{1\times 12.5}{(100)^{3/2}}
-    \approx \SI{6.5e-7}{\ohm\meter},
-\]
-and since $\eta_\perp \sim 2\eta_\parallel$~\cite{Chen2016} we use
-$\eta \sim \SI{e-6}{\ohm\meter}$. Whether this justifies $\eta\to 0$
-is determined by $S$; see Section~\ref{sec:lundquist}.
+
+We get for Polomac (\cite{Elio2024}):
+\begin{itemize}
+    \item Mass density: $ \varrho = n m_i = \SI{e20}{\per\meter\cubed} \times \SI{1.67e-27}{\kilo\gram} = \SI{1.67e-7}{\kilo\gram\per\meter\cubed}$
+    \item Magnetic field: $B = \SI{0.25}{\tesla}$ (midpoint of \SIrange{0.2}{0.3}{\tesla} operating range)
+    \item Alfvén velocity: $v_A = \frac{\SI{0.25}{\tesla}}{\sqrt{4\pi \times \SI{e-7}{\henry\per\meter} \times \SI{1.67e-7}{\kilo\gram\per\meter\cubed}}} = \SI{5.5e4}{\meter\per\second}$
+    \item Speed of light: $c = \SI{3e8}{\meter\per\second}$
+    \item $\frac{v_A}{c} = \frac{\SI{5.5e4}{\meter\per\second}}{\SI{3e8}{\meter\per\second}} \approx \num{1.8e-4} \ll 1$
+\end{itemize}
+
+Since MHD wave velocities are non-relativistic ($v_A \ll c$), we can safely neglect the displacement current $\epsilon_0 \partial \vec{E}/\partial t$ compared to $\vec{J}$ in Ampère's law.
+
+Note that $\mu_0 \vec{J} = \nabla \wedge \vec{B}$ implies $\nabla \cdot \vec{J} = 0$.
 
 
+\item Small Larmor radius $\left(\frac{L}{\rho_i} \gg 1\right)$
 
-\item \textbf{Neglect displacement current}
-
-In Amp\`ere's law \eqref{eq: single fluid maxwell eq}, 
-$\nabla\wedge\vec{B} = \mu_0\vec{J} + \mu_0\epsilon_0\,\partial_t\vec{E}$, 
-we drop the displacement current when $\vec{J}$ dominates. 
-To estimate $E$, we use Faraday's law $\nabla\wedge\vec{E}=-\partial_t\vec{B}$, 
-which gives $E/L\sim B/\tau\sim vB/L$, hence $E\sim vB$. Then with $c^2=1/\epsilon_0\mu_0$:
-\[
-    \frac{\mu_0\epsilon_0\,\partial_t\vec{E}}
-         {\nabla\wedge\vec{B}}
-    \sim \frac{v^2 B/c^2 L}{B/L}
-    = \frac{v^2}{c^2}.
-\]
-The fastest characteristic speed in MHD is the Alfv\'en 
-velocity $v_A = \frac{B}{\sqrt{\mu_0\varrho}}$ (\cite{Freidberg2014, Chen2016}), 
-which is derived in section~\ref{sec:alfven}, so the condition reduces to $v_A^2/c^2\ll 1$.
-
-Physically, dropping the displacement current filters out electromagnetic
-waves propagating at $c$, retaining only the slow MHD dynamics. 
-The quantitative verification for the Polomac is also given in section~\ref{sec:alfven}.
-
-\item \textbf{Small Larmor radius} $\left(\nicefrac{L}{\rho_i} \gg 1\right)$
-
-The particles are tightly bound to the electric field lines.
-Inserting the definition of the larmor radius ($r_i = \nicefrac{m_i v_{th, i}}{eB}$)
-this leads to
+The particles are tightly bound to the electric field lines. Inserting the definition of the larmor radius this leads to
 \[
 \left|\vec{V} \wedge \vec{B}\right| \gg \left|\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}\right|
 \]
 
-in Ohm's law. We see this by recognizing the larmor radius in
+Equivalently without the larmor radius
 \[
 \frac{\vec{V}\wedge\vec{B}}{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}}
-\sim \frac{v_{th, i} B}{\frac{n_e k_B T_e}{e n L}} \sim \frac{v_{th, i} B}{\frac{ k_B T_e}{e L}} \sim \frac{L}{r_i}
+\sim \frac{v_{th, i} B}{\frac{n_e k_B T_e}{e n L}}
 \]
-where we used the ideal gas relation to approximate $\overleftrightarrow{P_e}$, the relation $T_e \sim T_i$ and $k_B T_i \sim m_i v_{th,i}^2$.
 
-With $L=\SIrange{0.04}{0.3}{\meter}$ this gives $L/r_i\approx \numrange{7}{52}$.
-The condition is satisfied at device scales; at the smallest resolved
-scales the margin is reduced and the ideal MHD description should be
-treated with appropriate caution.
+We see that this is negligible for the polomac's values (\cite{Elio2024}).
+
 
 
 \item Isotropic pressure and incompressible motion
@@ -430,10 +413,109 @@ treated with appropriate caution.
 
 \end{enumerate}
 
+{\color{magenta}
+
+\section{Magnetohydrodynamic Model}
+
+\subsection{Assumptions}
+
+
+% --- Assumption 2 ---
+\item \textbf{Quasi-neutrality}
+
+Charge imbalances are screened over the Debye length
+$\lambda_D = \sqrt{\epsilon_0 T_e/(e^2 n)}$.  Quasi-neutrality holds
+when $L \gg \lambda_D$ and many particles populate the Debye sphere:
+\[
+    \frac{L}{\lambda_D} \gg 1, \qquad
+    N_D = n\cdot\tfrac{4\pi}{3}\lambda_D^3 \gg 1.
+\]
+For the Polomac~\cite{Elio2024}, with $n=10^{20}\,\text{m}^{-3}$ and
+$T_e=100\,\text{eV}$:
+\begin{itemize}
+    \item $\lambda_D
+          = 7430\,\text{m}\,\sqrt{T_\text{eV}/n}
+          = 7430\sqrt{100/10^{20}}
+          = \SI{7.4e-6}{\meter}$
+    \item $L/\lambda_D
+          \geq 0.04\,\text{m}/7.4\times10^{-6}\,\text{m}
+          \approx 5.4\times10^3 \gg 1$
+    \item $N_D
+          = 10^{20}\cdot\tfrac{4\pi}{3}(7.4\times10^{-6})^3
+          \approx 1.7\times10^4 \gg 1$
+\end{itemize}
+Both conditions are well satisfied.
+
+% --- Assumption 3 ---
+\item \textbf{Ideal MHD — zero resistivity} ($\eta = 0$)
+
+Resistive diffusion is negligible when the magnetic field is frozen into
+the plasma, i.e.\ when the resistive diffusion timescale greatly exceeds
+the Alfv\'en timescale.  This is captured by the Lundquist number
+$S \gg 1$; see Section~\ref{sec:lundquist}.
+
+For reference, the classical Spitzer resistivity~\cite{Chen2016} is
+\[
+    \eta_\parallel
+    = 5.2\times10^{-5}\,\frac{Z\ln\Lambda}{T_{eV}^{3/2}}
+    \quad[\Omega\text{-m}].
+\]
+For the Polomac ($Z=1$, $T_e=100\,\text{eV}$, $\ln\Lambda=14.3$):
+\[
+    \eta_\parallel
+    = 5.2\times10^{-5}\times\frac{1\times14.3}{(100)^{3/2}}
+    \approx \SI{7.4e-7}{\ohm\meter},
+\]
+and since $\eta_\perp\sim2\eta_\parallel$~\cite{Chen2016} we use
+$\eta\sim\SI{e-6}{\ohm\meter}$.  Whether this is small enough to justify
+$\eta\to0$ is determined by $S$; see Section~\ref{sec:lundquist}.
+
+% --- Assumption 4 ---
+\item \textbf{Neglect electromagnetic waves}
+
+The displacement current $\epsilon_0\partial_t\vec{E}$ is negligible in
+Amp\`ere's law when MHD wave speeds are non-relativistic.  The
+characteristic wave speed is the Alfv\'en velocity
+$v_A = B/\sqrt{\mu_0\varrho}$, and the condition is
+\[
+    \frac{v_A}{c} \ll 1.
+\]
+This is verified for the Polomac in Section~\ref{sec:alfven}.
+
+% --- Assumption 5 ---
+\item \textbf{Small Larmor radius} ($L/\rho_i \gg 1$)
+
+Particles are tightly bound to field lines, making the Hall term
+$(1/en)\nabla\cdot\overleftrightarrow{P}_e$ negligible compared to
+$\vec{V}\wedge\vec{B}$ in Ohm's law.  The relevant condition is
+$L/\rho_i\gg1$ where $\rho_i = m_iV_{Ti}/(eB)$.
+
+For the Polomac, with $V_{Ti}=1.38\times10^5\,\text{m\,s}^{-1}$ (see
+Section~\ref{sec:alfven}) and $B=0.25\,\text{T}$:
+\[
+    \rho_i
+    = \frac{1.67\times10^{-27}\times1.38\times10^5}
+           {1.6\times10^{-19}\times0.25}
+    = \frac{2.31\times10^{-22}}{4\times10^{-20}}
+    \approx \SI{5.8e-3}{\meter}.
+\]
+With $L=0.04$--$0.3\,\text{m}$ this gives $L/\rho_i\approx7$--$52$.
+The condition is satisfied at device scales; at the smallest resolved
+scales the margin is reduced and the ideal MHD description should be
+treated with appropriate caution.
+
+% --- Assumption 6 ---
+\item \textbf{Isotropic pressure and closure}
+
+% [unchanged – same text as original on isotropic pressure,
+%  adiabatic closure, incompressibility, and the note on gamma]
+
+\end{enumerate}
+}%magenta
+
 
 
 \subsection{Simplifications}
-\label{subsec: simplifications}
 
 
 \begin{itemize}

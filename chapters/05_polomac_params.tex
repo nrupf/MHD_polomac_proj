@@ -1,95 +1,188 @@
-\chapter{Relevant parameters for a polomac}
-
-\section{Plasma beta}
-While pressure is the relevant paramter for fusion, analysis often use $\beta$, 
-the ratio of pressure to magnetic pressure
-\begin{equation*}
-    \beta \coloneq \frac{p}{\nicefrac{B^2}{2\mu_0}}
-\end{equation*}
-
-
-\section{Alfvén waves}
-
-
-\section{Lundquist number}
-
-
 {\color{magenta}
-\chapter{Relevant parameters for a polomac}
+\chapter{Relevant Parameters for the Polomac}
+\label{chap:parameters}
 
-\section{Plasma beta}
-While pressure is the relevant parameter for fusion, analysis often uses $\beta$, 
-the ratio of plasma pressure to magnetic pressure
-\begin{equation}
-    \beta \coloneqq \frac{p}{B^2/2\mu_0}
-\end{equation}
-For the Polomac prototype, using the design values from Elio et al. 2024 (Table 1),
-plasma pressure ranges from $1.6$--$16$ kPa and magnetic pressure from $15.9$--$35.8$ kPa,
-giving
-\begin{equation*}
-    \beta \in [0.04, 1]
-\end{equation*}
-A high $\beta$ is desirable for fusion efficiency, and the poloidal configuration is claimed to support 
-higher $\beta$ than conventional toroidal devices (Elio et al. 2024). These are design 
-targets and have not been experimentally verified.
+Three dimensionless (or characteristic) parameters govern the MHD
+dynamics of the Polomac.  For each we first introduce the underlying
+physics, then evaluate the parameter using design values
+from~\cite{Elio2024}, and finally state which assumption of subsection \ref{subsec:mhd_assumptions} it justifies.
 
-\section{Alfvén waves}
-Alfvén waves are transverse MHD waves propagating along magnetic field lines. 
-To derive the dispersion relation, we linearize the ideal MHD equations around a 
-static uniform equilibrium: $\vec{B} = B_0 \hat{e}_z$, $\varrho = \varrho_0$, 
-$\vec{V} = 0$, $P = P_0$. We write each quantity as an equilibrium part plus a 
-small perturbation, e.g. $\vec{B} = B_0\hat{e}_z + \vec{B}_1$.
+Throughout this chapter we use the following Polomac
+values~\cite{Elio2024}: hydrogen plasma ($m_i=1.67\times10^{-27}$~kg,
+$Z=1$), $n=10^{20}$~m$^{-3}$, $T_i\approx T_e=100$~eV,
+$B=0.2$--$0.3$~T, $L\sim0.04$--$0.3$~m.
 
-To first order in the perturbations, the linearized momentum equation and 
-induction equation (Ohm's law combined with Faraday's law) give
+% ------------------------------------------------------------
+\section{Alfv\'en Velocity and Waves}
+\label{sec:alfven}
+
+\subsection*{Physics}
+
+Alfv\'en waves are transverse, incompressible oscillations that
+propagate along magnetic field lines, driven by magnetic tension and
+resisted by plasma inertia.  To derive their dispersion relation we
+linearize the ideal MHD equations around a static uniform equilibrium
+$\vec{B}=B_0\hat{e}_z$, $\varrho=\varrho_0$, $\vec{V}=0$,
+$P=P_0$, writing each quantity as its equilibrium value plus a small
+perturbation (e.g.\ $\vec{B}=B_0\hat{e}_z+\vec{B}_1$).  To first
+order, the momentum equation and induction equation (Ohm's law combined
+with Faraday's law) give
 \begin{align}
-    \varrho_0 \frac{\partial \vec{V}_1}{\partial t} &= \frac{1}{\mu_0}(\nabla \wedge \vec{B}_1) \wedge \vec{B}_0 \\
-    \frac{\partial \vec{B}_1}{\partial t} &= \nabla \wedge (\vec{V}_1 \wedge \vec{B}_0)
+    \varrho_0\frac{\partial\vec{V}_1}{\partial t}
+        &= \frac{1}{\mu_0}(\nabla\wedge\vec{B}_1)\wedge\vec{B}_0,
+    \label{eq:alfven_mom}\\
+    \frac{\partial\vec{B}_1}{\partial t}
+        &= \nabla\wedge(\vec{V}_1\wedge\vec{B}_0).
+    \label{eq:alfven_ind}
 \end{align}
-Assuming plane wave solutions $\sim e^{i(\vec{k}\cdot\vec{x} - \omega t)}$ and 
-considering perturbations perpendicular to $\vec{B}_0$ with $\vec{k} = k\hat{e}_z$, 
-one obtains the dispersion relation
+Assuming plane-wave solutions $\sim e^{i(\vec{k}\cdot\vec{x}-\omega t)}$
+with $\vec{k}=k\hat{e}_z$ and perturbations perpendicular to
+$\vec{B}_0$, one obtains the dispersion relation
 \begin{equation}
-    \omega^2 = k_\parallel^2 v_A^2
+    \omega^2 = k_\parallel^2\, v_A^2,
+    \label{eq:alfven_disp}
 \end{equation}
-where $k_\parallel = \vec{k}\cdot\hat{b}$ is the wavenumber along the field and
+where $k_\parallel=\vec{k}\cdot\hat{b}$ is the wavenumber along the
+field and
 \begin{equation}
-    v_A = \frac{B}{\sqrt{\mu_0 \varrho}}
+    \boxed{v_A = \frac{B}{\sqrt{\mu_0\varrho}}}
+    \label{eq:va}
 \end{equation}
-is the Alfvén velocity. For the Polomac, using $B = 0.25$ T and 
-$\varrho = n m_i = 10^{20} \times 1.67\times10^{-27}$ kg m$^{-3}$ (Elio et al. 2024),
-this was already computed in Section 2.5.1:
-\begin{equation*}
-    v_A = 5.5 \times 10^4 \text{ m s}^{-1}
-\end{equation*}
-The Alfvén velocity sets the characteristic speed of MHD disturbances and defines 
+is the \emph{Alfv\'en velocity}.  The waves are non-dispersive and
+propagate without compression.
 
-the MHD timescale $\tau_\text{MHD} = L/v_A$. It also enters directly into the 
-Lundquist number below.
+\subsection*{Evaluation for the Polomac}
 
-\section{Lundquist number}
-The Lundquist number is defined as the ratio of the resistive diffusion timescale 
-$\tau_R = \mu_0 L^2 / \eta$ to the Alfvén timescale $\tau_A = L/v_A$:
+With $B=0.25$~T (midpoint of operating range) and
+$\varrho = nm_i = 10^{20}\times1.67\times10^{-27}
+= 1.67\times10^{-7}$~kg\,m$^{-3}$:
+\[
+    v_A
+    = \frac{0.25}{\sqrt{4\pi\times10^{-7}
+                        \times1.67\times10^{-7}}}
+    = \frac{0.25}{4.58\times10^{-7}}
+    \approx 5.5\times10^5\,\text{m\,s}^{-1}.
+\]
+The corresponding MHD timescale for $L=0.3$~m is
+$\tau_A = L/v_A \approx 5.5\times10^{-7}$~s.
+
+\subsection*{Significance and justification of MHD assumptions}
+
+\paragraph{Assumption~4: neglect displacement current.}
+\[
+    \frac{v_A}{c}
+    = \frac{5.5\times10^5}{3\times10^8}
+    \approx 1.8\times10^{-3} \ll 1. \quad
+\]
+MHD dynamics are non-relativistic; the displacement current in
+Amp\`ere's law is negligible.
+
+\paragraph{Assumption~1: electron inertia negligible.}
+The ion thermal velocity is
+\[
+    V_{Ti}
+    = \sqrt{\frac{2\times100\,\text{eV}\times1.6\times10^{-19}\,
+                  \text{J\,eV}^{-1}}
+                 {1.67\times10^{-27}\,\text{kg}}}
+    = \sqrt{1.916\times10^{10}}
+    \approx 1.38\times10^5\,\text{m\,s}^{-1}.
+\]
+The ECR heating frequency implies $\omega_{ce}=2\pi\times4\times10^9
+=2.51\times10^{10}$~rad\,s$^{-1}$.  Using $L=0.3$~m:
+\[
+    \frac{\omega_{MHD}}{\omega_{ce}}
+    = \frac{V_{Ti}/L}{\omega_{ce}}
+    = \frac{1.38\times10^5/0.3}{2.51\times10^{10}}
+    = \frac{4.6\times10^5}{2.51\times10^{10}}
+    \approx 1.8\times10^{-5} \ll 1. \quad
+\]
+Ion dynamics are slow compared to the electron cyclotron motion;
+electron inertia can be neglected on MHD timescales.
+
+% ------------------------------------------------------------
+\section{Lundquist Number}
+\label{sec:lundquist}
+
+\subsection*{Physics}
+
+The Lundquist number compares the resistive diffusion timescale
+$\tau_R = \mu_0 L^2/\eta$ to the Alfv\'en timescale $\tau_A=L/v_A$:
 \begin{equation}
-    S \coloneqq \frac{\tau_R}{\tau_A} = \frac{\mu_0 L v_A}{\eta}
+    \boxed{S \coloneqq \frac{\tau_R}{\tau_A} = \frac{\mu_0 L v_A}{\eta}.}
+    \label{eq:lundquist}
 \end{equation}
-Equivalently, it can be written as the magnetic Reynolds number evaluated at the 
-Alfvén speed. When $S \gg 1$, resistive diffusion is negligible on MHD timescales 
-and the magnetic field is effectively frozen into the plasma, justifying the ideal 
-MHD assumption of zero resistivity (Assumption 3, Section 2.5.1).
+Equivalently, $S$ is the magnetic Reynolds number evaluated at the
+Alfv\'en speed.  When $S\gg1$, resistive diffusion is slow on MHD
+timescales and the magnetic flux is effectively frozen into the
+fluid — the ideal MHD limit.
 
-For the Polomac prototype, using $L \sim 0.3$ m, $v_A = 5.5\times10^4$ m s$^{-1}$, 
-and $\eta \sim 10^{-6}$ $\Omega$m (Section 2.5.1):
-\begin{equation*}
-    S = \frac{4\pi\times10^{-7} \times 0.3 \times 5.5\times10^4}{10^{-6}} \approx 2\times10^4
-\end{equation*}
-This is at the lower end of the fusion-relevant range of $S \sim 10^2$--$10^8$ 
-reported for laboratory plasmas \cite{wikipedia_lundquist}. While $S \gg 1$ confirms 
-that ideal MHD is a reasonable starting point, the relatively modest value compared 
-to large tokamaks ($S \sim 10^6$--$10^8$) reflects the small size and low temperature 
-of the prototype. In particular, since $\eta \propto T^{-3/2}$, a reactor-scale 
-Polomac operating at keV temperatures would have $S \sim 10^6$, well into the ideal 
-MHD regime. For the present analysis, which concerns static equilibrium rather than 
-dynamic phenomena, $S \sim 2\times10^4$ is sufficient to justify the ideal MHD 
-framework (Freidberg 2014, Section 2.4).
+\subsection*{Evaluation for the Polomac}
+
+Using $\eta\sim10^{-6}$~$\Omega$m (Section~\ref{sec:mhd_assumptions}),
+$v_A=5.5\times10^5$~m\,s$^{-1}$, and $L=0.3$~m:
+\[
+    S = \frac{4\pi\times10^{-7}\times0.3\times5.5\times10^5}
+             {10^{-6}}
+    \approx 2\times10^5.
+\]
+
+\subsection*{Significance and justification of MHD assumptions}
+
+\paragraph{Assumption~3: zero resistivity.}
+$S\approx2\times10^5\gg1$ confirms that resistive diffusion is
+negligible on MHD timescales, justifying $\eta\to0$.  This value is
+modest compared to large tokamaks ($S\sim10^6$--$10^8$), reflecting the
+prototype's small size and low temperature.  Since $\eta\propto
+T^{-3/2}$, a reactor-scale Polomac at keV temperatures would reach
+$S\sim10^6$.
+
+For the static equilibrium analysis of Chapter~\ref{chap:equilibrium}
+($\vec{V}=0$), resistive effects are absent regardless, so even a
+moderate $S$ is sufficient to justify the framework.
+
+% ------------------------------------------------------------
+\section{Plasma \texorpdfstring{$\beta$}{Beta}}
+\label{sec:beta}
+
+\subsection*{Physics}
+
+The plasma $\beta$ is the ratio of kinetic plasma pressure to magnetic
+pressure:
+\begin{equation}
+    \boxed{\beta \coloneqq \frac{p}{B^2/(2\mu_0)}.}
+    \label{eq:beta}
+\end{equation}
+It measures confinement efficiency: a higher $\beta$ means more fusion
+power per unit of magnetic field energy invested.  Conventional
+tokamaks are typically limited to $\beta lesssim 0.1$ by current-driven
+instabilities.
+
+\subsection*{Evaluation for the Polomac}
+
+From~\cite{Elio2024} (Table~1), plasma pressure is $1.6$--$16$~kPa.
+The magnetic pressure at the operating field range is:
+\[
+    \frac{B^2}{2\mu_0}\bigg|_{B=0.2\,\text{T}}
+    = \frac{0.04}{2\times1.257\times10^{-6}}
+    \approx 15.9\,\text{kPa},
+\]
+\[
+    \frac{B^2}{2\mu_0}\bigg|_{B=0.3\,\text{T}}
+    = \frac{0.09}{2\times1.257\times10^{-6}}
+    \approx 35.8\,\text{kPa}.
+\]
+This gives:
+\[
+    \beta \in [0.04,\;1].
+\]
+
+\subsection*{Significance for the Polomac}
+
+The predominantly poloidal field topology is claimed to support higher
+$\beta$ than toroidal devices because the closed poloidal field lines
+reduce current-driven instability drive~\cite{Elio2024}.  If the upper
+range $\beta\to1$ is achievable, the Polomac could confine fusion-grade
+pressures with a comparatively modest magnetic field, reducing both
+engineering complexity and power consumption.  These are design targets
+and have not yet been experimentally demonstrated.
 }

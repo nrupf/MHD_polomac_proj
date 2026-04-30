@@ -19,6 +19,46 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global/global}
+    \entry{NRL2023}{report}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c2c8fbba2c12e5bcae0166e42c60b66a}{%
+           family={Beresnyak},
+           familyi={B\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Naval Research Laboratory}%
+      }
+      \list{location}{1}{%
+        {Washington, DC 20375}%
+      }
+      \strng{namehash}{c2c8fbba2c12e5bcae0166e42c60b66a}
+      \strng{fullhash}{c2c8fbba2c12e5bcae0166e42c60b66a}
+      \strng{fullhashraw}{c2c8fbba2c12e5bcae0166e42c60b66a}
+      \strng{bibnamehash}{c2c8fbba2c12e5bcae0166e42c60b66a}
+      \strng{authorbibnamehash}{c2c8fbba2c12e5bcae0166e42c60b66a}
+      \strng{authornamehash}{c2c8fbba2c12e5bcae0166e42c60b66a}
+      \strng{authorfullhash}{c2c8fbba2c12e5bcae0166e42c60b66a}
+      \strng{authorfullhashraw}{c2c8fbba2c12e5bcae0166e42c60b66a}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Radiation Hydrodynamics Branch, Plasma Physics Division. Supported by the Office of Naval Research}
+      \field{title}{{NRL} Plasma Formulary}
+      \field{type}{techreport}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.nrl.navy.mil/Portals/38/PDF%20Files/NRL_Plasma_Formulary_2023.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.nrl.navy.mil/Portals/38/PDF%20Files/NRL_Plasma_Formulary_2023.pdf
+      \endverb
+    \endentry
     \entry{Blandford2013}{inbook}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=1f3a24a5b0b6f8d13667d43da4a25dc9}{%
@@ -189,7 +229,6 @@
       \field{year}{2014}
     \endentry
   \enddatalist
-  \missing{wikipedia_lundquist}
 \endrefsection
 \endinput
 
