@@ -11,9 +11,10 @@ The magnetic field thus simplifies to
 \end{equation}
 .
 
-In cylindrical coordinates $(r, \varphi, z)$, the divergence and curl are:
+In cylindrical coordinates $(r, \varphi, z)$, the gradient, divergence and curl are:
 
 \begin{align*}
+    \nabla \cdot f &= \frac{\partial f}{\partial r} \hat{e}_r + \frac{1}{r}\frac{\partial f}{\partial \varphi} \hat{e}_\varphi + \frac{\partial f}{\partial z} \hat{e}_z \\
     \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial (r F_r)}{\partial r} + \frac{1}{r}\frac{\partial F_\varphi}{\partial \varphi} + \frac{\partial F_z}{\partial z} \\
     \nabla \wedge \vec{F} &= \left(\frac{1}{r}\frac{\partial F_z}{\partial \varphi} - \frac{\partial F_\varphi}{\partial z}\right)\hat{e}_r
     + \left(\frac{\partial F_r}{\partial z} - \frac{\partial F_z}{\partial r}\right)\hat{e}_\varphi
@@ -97,12 +98,13 @@ we can rewrite these equations and only the following components remain:
         \begin{align}
             J_\varphi\,\hat{e}_\varphi \wedge \left(B_r\,\hat{e}_r + B_z\,\hat{e}_z\right) 
             &= \frac{\partial P}{\partial r}\hat{e}_r + \frac{\partial P}{\partial z}\hat{e}_z
+            \label{eq: mom eq}
         \end{align}
         Using $\hat{e}_\varphi \wedge \hat{e}_r = -\hat{e}_z$ and $\hat{e}_\varphi \wedge \hat{e}_z = \hat{e}_r$, 
         this gives two scalar equations:
         \begin{align}
-            -J_\varphi B_z &= \frac{\partial P}{\partial r} \label{eq: momentum_r}\\
-             J_\varphi B_r &= \frac{\partial P}{\partial z} \label{eq: momentum_z}
+            J_\varphi B_z &= \frac{\partial P}{\partial r} \label{eq: momentum_r}\\
+            -J_\varphi B_r &= \frac{\partial P}{\partial z} \label{eq: momentum_z}
         \end{align}
 \end{itemize}
 
@@ -113,11 +115,9 @@ by introducing the poloidal flux function $\psi(r,z)$ such that
     \qquad
     B_r = -\frac{1}{r}\frac{\partial \psi}{\partial z}, \quad
     B_z = \frac{1}{r}\frac{\partial \psi}{\partial r}.
+    \label{eq: B as fct of psi}
 \end{equation}
 
-{\color{magenta}
-We must require that $\nabla \psi \overset{r \to 0}{\longrightarrow} 0$
-}
 
 Multiplying this $\vec{B}$ to both sides of \eqref{eq: static momentum eq.}, we obtain
 \[
@@ -125,53 +125,59 @@ Multiplying this $\vec{B}$ to both sides of \eqref{eq: static momentum eq.}, we 
 \]
 Pressure $p$ is thus constant along magnetic field lines. 
 Since by construction $\vec{B}\cdot \nabla \psi = 0$, so $\psi$ constant along field lines aswell.
-Thus for our axisymmetric geometry 
+
+Assuming an axisymmetric geometry and $B_\varphi \equiv 0$, we conclude that $\psi(r,z)$ forms nested flux surfaces
+around the torus of center poloidal coils.
+Thus $\psi$ is monotonic as a function of distance from these coils and we have a relation $p(\psi)$.
+We can't however determine the relation $p(\psi)$ from ideal MHD. \cite{Freidberg2014} states \emph{transport theory,
+experimental data, or physical intuition are needed to properly specify $p(\psi)$}.
 
 
+\textbf{Remark} If we did not assume $B_\varphi \equiv 0$, we would have restricted the abve discussion to $B_\text{pol}$
+and added a similar function for $B_\varphi$. Thus $\psi(r,z)$ still forms nested flux surfaces.
 
 
-
-
-\color{magenta}
-
-
-
-\subsection{Polomac Specialization: \texorpdfstring{$B_\varphi \approx 0$}{Bphi = 0}}
-
-For the Polomac geometry, we set the toroidal field to zero:
-\begin{equation}
-    B_\varphi \approx 0 \quad \Longrightarrow \quad F \equiv r B_\varphi = 0,
-\end{equation}
-where $F(\psi)$ is the standard free function appearing in the general Grad--Shafranov equation. With $F = 0$, the $F\,dF/d\psi$ term vanishes.
 
 \subsection{Reduced Grad--Shafranov Equation}
 
-Setting $F = 0$ in the general Grad--Shafranov equation
-$\Delta^* \psi = -\mu_0 r^2 \,dp/d\psi - (1/2)\,dF^2/d\psi$,
-the equilibrium reduces to
+We can rewrite \eqref{eq: J_phi} as
 \begin{equation}
-    \boxed{
-    r\frac{\partial}{\partial r}\!\left(\frac{1}{r}\frac{\partial \psi}{\partial r}\right)
-    + \frac{\partial^2 \psi}{\partial z^2}
-    = -\mu_0 r^2 \frac{dp}{d\psi}
-    }
-    \label{eq:reduced_GSE}
+    \mu_0 J_\varphi = - \frac{1}{r} \Delta^* \psi
+    \label{eq: J_phi as delta*}
 \end{equation}
-This is a second-order, nonlinear PDE for $\psi(r,z)$ in the poloidal plane.
+where 
+\begin{equation*}
+    \Delta^* \psi \coloneq r^2 \nabla \cdot \left(\frac{\nabla \psi}{r^2}\right) = r \frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial \psi}{\partial r}\right) + \frac{\partial^2 \psi}{\partial Z^2}
+\end{equation*}
+, where we again used cylindrical divergence.
 
-\subsection{Free Function \texorpdfstring{$p(\psi)$}{p(psi)}}
+If we furthermore use the chain rule ($\nabla P = \frac{dP}{d\psi} \nabla \psi$) and \eqref{eq: J_phi as delta*}, 
+we see that for nontrivial $\psi(r,z)$ both components of the momentum equation (\eqref{eq: momentum_r}, \eqref{eq: momentum_z})
+are satisfied simultaneously if and only if 
+\begin{equation*}
+    \Delta^*\psi = - \mu_0 r^2 \frac{dP}{d\psi}
+\end{equation*}
 
-The pressure profile $p(\psi)$ is a free function that must be prescribed to close the problem. A simple power-law choice is
+
+\subsection{Boundary conditions}
+\subsubsection{Geometric axis ($r = 0$)}
+For $\vec{B}$ and $p$ to remain finite on the symmetry axis, we require
+\begin{equation*}
+    \nabla\psi \xrightarrow{r \to 0} 0.
+\end{equation*}
+This is a regularity condition, not a physical wall.
+
+\subsubsection{Conducting walls (inner coil surface and outer vacuum vessel)}
+Assuming the wall materials are perfect conductors and initially there is no magnetic field inside the wall, 
+the integral version of Gauss' law for magnetism \eqref{eq:gauss_b} gives 
+
 \begin{equation}
-    p(\psi) = p_0 \left(\frac{\psi}{\psi_0}\right)^\alpha, \qquad \alpha > 0,
+    \vec{B} \cdot \hat{n} = 0 \quad \text{on all walls}
+    \label{eq: BC wall}
 \end{equation}
-where $p_0$ and $\psi_0$ are reference values and $\alpha$ controls the profile peaking. This renders the right-hand side of~\eqref{eq:reduced_GSE} explicit.
 
-\subsection{Boundary Conditions}
+Since in our axisymmetric setup the walls' normal vector $\hat{n}$ generally has no $\varphi$-component, we can insert \eqref{eq: B as fct of psi}
+in the boundary condition \eqref{eq: BC wall}, use the triple product and obtain that $\nabla \psi \equiv \text{const}$
+along the poloidal plane and by axisymmetry on the inner and the outer wall, respectively.
 
-The problem requires the following boundary conditions:
-\begin{enumerate}
-    \item \textbf{Axis regularity:} $\psi = 0$ on the magnetic axis $r = 0$ (or at the geometric axis by convention).
-    \item \textbf{Plasma boundary:} $\psi = \psi_b$ prescribed on the last closed flux surface $\partial\Omega_p$.
-    \item \textbf{Coil source:} The external coil enters as an internal source term or a jump condition on $\nabla\psi$ at the coil location, consistent with Amp\`{e}re's law applied to the coil current $I_c$.
-\end{enumerate}
+
