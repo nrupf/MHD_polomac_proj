@@ -1,22 +1,32 @@
-{\color{magenta}
+
 \chapter{Relevant Parameters for the Polomac}
 \label{chap:parameters}
 
-Three dimensionless (or characteristic) parameters govern the MHD
-dynamics of the Polomac.  For each we first introduce the underlying
+For the following three dimensionless (or characteristic) parameters governing the MHD
+dynamics of the Polomac we first introduce the underlying
 physics, then evaluate the parameter using design values
 from~\cite{Elio2024}, and finally state which assumption of subsection \ref{subsec:mhd_assumptions} it justifies.
 
 Throughout this chapter we use the following Polomac
-values~\cite{Elio2024}: hydrogen plasma ($m_i=1.67\times10^{-27}$~kg,
-$Z=1$), $n=10^{20}$~m$^{-3}$, $T_i\approx T_e=100$~eV,
-$B=0.2$--$0.3$~T, $L\sim0.04$--$0.3$~m.
+values (\cite{Elio2024}):
+\begin{itemize}
+    \item Hydrogen plasma: $m_i = \SI{1.67e-27}{\kilogram}$, $Z = 1$
+    \item Plasma density: $n = \SI{1e20}{\per\cubic\metre}$
+    \item Temperature: $T_i \approx T_e = \SI{100}{\electronvolt}$
+    \item Magnetic field: $B = \SIrange{0.2}{0.3}{\tesla}$
+    \item Characteristic length: $L \sim \SIrange{0.04}{0.3}{\metre}$
+\end{itemize}
+Note that some of these values ($n, T, (B)$) are target values and not yet experimentally verified.
+
+
 
 % ------------------------------------------------------------
 \section{Alfv\'en Velocity and Waves}
 \label{sec:alfven}
 
-\subsection*{Physics}
+\subsection{Theory of Alfv\'en waves}
+
+In this subsection we follow chapter 8 of \cite{Freidberg2014}.
 
 Alfv\'en waves are transverse, incompressible oscillations that
 propagate along magnetic field lines, driven by magnetic tension and
@@ -25,47 +35,98 @@ linearize the ideal MHD equations around a static uniform equilibrium
 $\vec{B}=B_0\hat{e}_z$, $\varrho=\varrho_0$, $\vec{V}=0$,
 $P=P_0$, writing each quantity as its equilibrium value plus a small
 perturbation (e.g.\ $\vec{B}=B_0\hat{e}_z+\vec{B}_1$).  To first
-order, the momentum equation and induction equation (Ohm's law combined
-with Faraday's law) give
+order, combining the ideal MHD Ohm's law \eqref{eq: MHD ohm's law} 
+and Faraday's law \eqref{eq: MHD faraday}, the so called induction equation,
+and the ideal MHD momentum equation \eqref{eq: MHD momentum eq.}
+combined with the ideal MHD Ampère-Maxwell law \eqref{eq: MHD ampere-maxwell} give
+
 \begin{align}
-    \varrho_0\frac{\partial\vec{V}_1}{\partial t}
-        &= \frac{1}{\mu_0}(\nabla\wedge\vec{B}_1)\wedge\vec{B}_0,
-    \label{eq:alfven_mom}\\
+    \label{eq: alfven ind. eq}
     \frac{\partial\vec{B}_1}{\partial t}
-        &= \nabla\wedge(\vec{V}_1\wedge\vec{B}_0).
-    \label{eq:alfven_ind}
+        &= \nabla\wedge(\vec{V}_1\wedge\vec{B}_0), \\
+    \label{eq: alfven mom. eq}
+    \varrho_0\frac{\partial\vec{V}_1}{\partial t}
+        &= -\nabla P_1
+          +\frac{1}{\mu_0}(\nabla\wedge\vec{B}_1)\wedge\vec{B}_0.
 \end{align}
-Assuming plane-wave solutions $\sim e^{i(\vec{k}\cdot\vec{x}-\omega t)}$
-with $\vec{k}=k\hat{e}_z$ and perturbations perpendicular to
-$\vec{B}_0$, one obtains the dispersion relation
+
+
+We seek plane-wave solutions $Q_1\propto e^{i(\vec{k}\cdot\vec{x}-\omega t)}$, thus without loss of generality
+placing $\vec{k}=k_\perp\hat{e}_y+k_\parallel\hat{e}_z$.
+The shear Alfv\'en branch is polarised perpendicular to both $\vec{B}_0$ and
+$\vec{k}$, i.e.\ $\vec{V}_1 = V_1\hat{e}_x$.  Because $\vec{k}\cdot\vec{V}_1=0$
+the motion is incompressible and $P_1=0$, so the pressure gradient in the momentum equation \eqref{eq: alfven mom. eq} drops out.
+
+Substituting the plane-wave ansatz into a fourier transformed induction equation
+($\partial_t\to -i\omega$, $\nabla\to i\vec{k}$) gives
+%
+\begin{equation*}
+    \vec{B}_1
+    = -\frac{1}{\omega}\,\vec{k}\wedge(\vec{V}_1\wedge\vec{B}_0).
+\end{equation*}
+%
+With $\vec{V}_1 = V_1\hat{e}_x$ and $\vec{B}_0=B_0\hat{e}_z$:
+%
+\begin{equation*}
+    \vec{V}_1\wedge\vec{B}_0 = -V_1 B_0\,\hat{e}_y
+    \quad\Longrightarrow\quad
+    \vec{B}_1
+    = -\frac{k_\parallel B_0}{\omega}\,V_1\,\hat{e}_x.
+\end{equation*}
+%
+Inserting $\vec{B}_1$ into the $\hat{e}_x$-component of the fourier transformed momentum equation:
+%
+\begin{equation*}
+    -i\omega\varrho_0 V_1
+    = \frac{i}{\mu_0}
+      \bigl[(\vec{k}\wedge\vec{B}_1)\wedge\vec{B}_0\bigr]_x
+    = \frac{i}{\mu_0}\,k_\parallel B_0\,B_{1x}
+    = -\frac{i k_\parallel^2 B_0^2}{\mu_0\omega}\,V_1.
+\end{equation*}
+%
+Dividing through by $-i\varrho_0 V_1/\omega$ yields the dispersion relation
+%
 \begin{equation}
-    \omega^2 = k_\parallel^2\, v_A^2,
+    \omega^2 = k_\parallel^2\,v_A^2,
     \label{eq:alfven_disp}
 \end{equation}
-where $k_\parallel=\vec{k}\cdot\hat{b}$ is the wavenumber along the
-field and
+%
+where
+%
 \begin{equation}
-    \boxed{v_A = \frac{B}{\sqrt{\mu_0\varrho}}}
+    v_A = \frac{B_0}{\sqrt{\mu_0\varrho_0}}
     \label{eq:va}
 \end{equation}
-is the \emph{Alfv\'en velocity}.  The waves are non-dispersive and
-propagate without compression.
+%
+is the \emph{Alfv\'en velocity}.  The relation~\eqref{eq:alfven_disp} is
+non-dispersive: phase and group velocities are equal and directed along
+$\vec{B}_0$.  Only the parallel wavenumber $k_\parallel$ enters, so the wave
+is insensitive to $k_\perp$.  The perturbation involves no compression,
+no density fluctuation, and no pressure fluctuation; it is a pure
+field-line-bending mode, oscillating between perpendicular kinetic energy
+and magnetic tension energy.
 
-\subsection*{Evaluation for the Polomac}
 
-With $B=0.25$~T (midpoint of operating range) and
-$\varrho = nm_i = 10^{20}\times1.67\times10^{-27}
-= 1.67\times10^{-7}$~kg\,m$^{-3}$:
-\[
+\subsection{Alfv\'en velocity of the Polomac}
+
+With $B = \SI{0.25}{T}$ (midpoint of operating range) and
+$\varrho = nm_i = \SI{e20}{m^{-3}}\times\SI{1.67e-27}{kg}
+= \SI{1.67e-7}{kg.m^{-3}}$ we get for \eqref{eq:va}:
+\begin{equation*}
     v_A
-    = \frac{0.25}{\sqrt{4\pi\times10^{-7}
-                        \times1.67\times10^{-7}}}
-    = \frac{0.25}{4.58\times10^{-7}}
-    \approx 5.5\times10^5\,\text{m\,s}^{-1}.
-\]
-The corresponding MHD timescale for $L=0.3$~m is
-$\tau_A = L/v_A \approx 5.5\times10^{-7}$~s.
+    = \frac{\SI{0.25}{T}}
+           {\sqrt{4\pi\times 10^{-7}\unit{H.m^{-1}}
+                 \times \SI{1.67e-7}{\kilo\gram\meter^{-3}}}}
+    = \frac{\num{0.25}}{\num{4.58e-7}}
+    \approx \SI{5.5e5}{m.s^{-1}}.
+\end{equation*}
 
+
+The corresponding MHD timescale for $L = \SI{0.3}{m}$ is
+$\tau_A = L/v_A \approx \SI{5.5e-7}{s}$.
+
+
+{\color{magenta}
 \subsection*{Significance and justification of MHD assumptions}
 
 \paragraph{Assumption~4: neglect displacement current.}
@@ -80,7 +141,7 @@ Amp\`ere's law is negligible.
 \paragraph{Assumption~1: electron inertia negligible.}
 The ion thermal velocity is
 \[
-    V_{Ti}
+    v_{th, i}
     = \sqrt{\frac{2\times100\,\text{eV}\times1.6\times10^{-19}\,
                   \text{J\,eV}^{-1}}
                  {1.67\times10^{-27}\,\text{kg}}}
@@ -91,7 +152,7 @@ The ECR heating frequency implies $\omega_{ce}=2\pi\times4\times10^9
 =2.51\times10^{10}$~rad\,s$^{-1}$.  Using $L=0.3$~m:
 \[
     \frac{\omega_{MHD}}{\omega_{ce}}
-    = \frac{V_{Ti}/L}{\omega_{ce}}
+    = \frac{v_{th, i}/L}{\omega_{ce}}
     = \frac{1.38\times10^5/0.3}{2.51\times10^{10}}
     = \frac{4.6\times10^5}{2.51\times10^{10}}
     \approx 1.8\times10^{-5} \ll 1. \quad

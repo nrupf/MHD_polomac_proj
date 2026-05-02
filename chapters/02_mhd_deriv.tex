@@ -14,9 +14,9 @@ This theory follows mostly the EPFL Intro to Plasma Phyiscs course, Freidberg's 
 
 \section{The Boltzmann equation}
 The Boltzmann equation is
-\begin{equation}
+\begin{equation*}
     \frac{\partial f_s}{\partial t} + \vec{v} \nabla_{\vec{r}} f_s + \frac{q_s}{m_s}(\vec{E}^{\lr} \vec{v}\wedge \vec{B}^{\lr} ) \nabla_{\vec{v}} f_s - \left(\frac{\partial f}{\partial t}\right)_{\operatorname{coll}} = 0
-\end{equation}
+\end{equation*}
 
 Here the short range interactions are accounted for in the collisional term, and the long range (lr) interactions from collective effeects are accounted for in the electric and Lorentz term.
 The crititical screening distance hereby is the Debye length $\lambda_{D}$ of electrons 
@@ -41,9 +41,9 @@ Even a very weak estimate ($\lambda_D \sim 10^{-6}$, $n_e \sim 10^{14}$) , compa
     \item Number density: $n_s(\vec{r}, t) = \int d\vec{v} \, f_s(\vec{r},\vec{v},t)$
 \end{itemize}
 In general, we note the per particle average in velocity space of a function $g(\vec{v})$ at a given $(\vec{r},t)$ as
-\begin{equation}
+\begin{equation*}
     \langle g(\vec{r},t)\rangle_{\vec{v}} = \frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, g(\vec{v}) f_s(\vec{r},\vec{v},t)
-\end{equation}
+\end{equation*}
 
 Thus we have 
 
@@ -79,9 +79,9 @@ $\to$ continuity eq.: choose $g_s(\vec{v}) = 1$
 \end{align*}
 
 We thus arrive at the species fluid continuity equation
-\begin{equation}
+\begin{equation*}
     \frac{\partial}{\partial t} n_s + \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) = 0
-\end{equation}
+\end{equation*}
 
 
 
@@ -104,7 +104,7 @@ In the relaxation time approcimation we have $\vec{R}_e \approx -m_e n_e \nu_{ei
 \subsection{Species energy equation}
 $\to$ energy eq.: choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$
 
-{\color{magenta} Show derivation in appendix}
+{\color{magenta} if time, show derivation in appendix}
 
 
 \begin{align*}
@@ -145,17 +145,17 @@ In the following we want to combine the species equations to a model describing 
 \subsubsection{Mass continuity equation}
 Multiplying the species continuity equation by their respective mass $m_s$, which is time independent, and adding the the equations for all present species, we obtain the \emph{single fluid mass continuity equation}
 
-\begin{equation}
+\begin{equation*}
     \frac{\partial \varrho}{\partial t} + \nabla \cdot (\varrho \vec{V}) = 0
-\end{equation}
+\end{equation*}
 
 
 \subsubsection{Charge continuity equation}
 Similarly, multiplying the species continuity equation by their respective charges $q_s$, which is time independent, and adding the the equations for all present species, we obtain the \emph{single fluid charge continuity equation}
 
-\begin{equation}
+\begin{equation*}
     \frac{\partial \rho}{\partial t} + \nabla \cdot  \vec{J} = 0
-\end{equation} 
+\end{equation*} 
 
 \subsubsection{Momentum equation}
 
@@ -171,7 +171,7 @@ Details of the derivation can be found in \ref{sec:Derivation of the Single Flui
 
 \subsubsection{Ohm's law}
 
-{\color{magenta} Clean derivation}
+{\color{magenta} if time, clean derivation}
 
 from momentum equations \quad $m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \partial_{\vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s$
 
@@ -478,29 +478,33 @@ satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \wedge \vec{B}) = 0$). 
 The ideal magnetohydrodynamic equations consist of
 \begin{itemize}
     \item the mass-continuity equation:
-            \begin{equation}
+            \begin{equation*}
                 \frac{\partial\varrho}{\partial t} + \nabla(\varrho \vec{V}) = 0
-            \end{equation}
+            \end{equation*}
     \item the momentum equation:
             \begin{equation}
+                \label{eq: MHD momentum eq.}
                 \varrho \frac{d \vec{V}}{dt} = \vec{J} \wedge \vec{B} - \nabla P
             \end{equation}
     \item Ohm's law:
             \begin{equation}
                 \vec{E} + \vec{V} \wedge \vec{B} = 0
+                \label{eq: MHD ohm's law}
             \end{equation}
     \item Closure equation:
-            \begin{equation}
+            \begin{equation*}
                 \frac{d}{dt}\left(P \varrho^{-\gamma}\right) = 0
-            \end{equation}
+            \end{equation*}
     \item Maxwell equations:
             \begin{equation}
+                \label{eq: MHD faraday}
                 \nabla\wedge\vec{E} = - \frac{\partial \vec{B}}{\partial t}
             \end{equation}
             \begin{equation}
                 \nabla\wedge\vec{B} =  \mu_0 \vec{J}
+                \label{eq: MHD ampere-maxwell}
             \end{equation}
-            \begin{equation}
+            \begin{equation*}
                 \nabla\cdot\vec{B} = 0
-            \end{equation}
+            \end{equation*}
 \end{itemize}
