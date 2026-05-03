@@ -108,16 +108,13 @@ and magnetic tension energy.
 
 
 \subsection{Alfv\'en velocity of the Polomac}
+\label{subsec: alfven velocity of polomac}
 
 With $B = \SI{0.25}{T}$ (midpoint of operating range) and
 $\varrho = nm_i = \SI{e20}{m^{-3}}\times\SI{1.67e-27}{kg}
 = \SI{1.67e-7}{kg.m^{-3}}$ we get for \eqref{eq:va}:
 \begin{equation*}
     v_A
-    = \frac{\SI{0.25}{T}}
-           {\sqrt{4\pi\times 10^{-7}\unit{H.m^{-1}}
-                 \times \SI{1.67e-7}{\kilo\gram\meter^{-3}}}}
-    = \frac{\num{0.25}}{\num{4.58e-7}}
     \approx \SI{5.5e5}{m.s^{-1}}.
 \end{equation*}
 
@@ -126,81 +123,56 @@ The corresponding MHD timescale for $L = \SI{0.3}{m}$ is
 $\tau_A = L/v_A \approx \SI{5.5e-7}{s}$.
 
 
-{\color{magenta}
-\subsection*{Significance and justification of MHD assumptions}
 
-\paragraph{Assumption~4: neglect displacement current.}
+\paragraph{Justification of neglection of displacement current in MHD assumption 4}
+
+
 \[
     \frac{v_A}{c}
     = \frac{5.5\times10^5}{3\times10^8}
     \approx 1.8\times10^{-3} \ll 1. \quad
 \]
-MHD dynamics are non-relativistic; the displacement current in
+Thus the MHD dynamics are non-relativistic and the displacement current in
 Amp\`ere's law is negligible.
 
-\paragraph{Assumption~1: electron inertia negligible.}
-The ion thermal velocity is
-\[
-    v_{th, i}
-    = \sqrt{\frac{2\times100\,\text{eV}\times1.6\times10^{-19}\,
-                  \text{J\,eV}^{-1}}
-                 {1.67\times10^{-27}\,\text{kg}}}
-    = \sqrt{1.916\times10^{10}}
-    \approx 1.38\times10^5\,\text{m\,s}^{-1}.
-\]
-The ECR heating frequency implies $\omega_{ce}=2\pi\times4\times10^9
-=2.51\times10^{10}$~rad\,s$^{-1}$.  Using $L=0.3$~m:
-\[
-    \frac{\omega_{MHD}}{\omega_{ce}}
-    = \frac{v_{th, i}/L}{\omega_{ce}}
-    = \frac{1.38\times10^5/0.3}{2.51\times10^{10}}
-    = \frac{4.6\times10^5}{2.51\times10^{10}}
-    \approx 1.8\times10^{-5} \ll 1. \quad
-\]
-Ion dynamics are slow compared to the electron cyclotron motion;
-electron inertia can be neglected on MHD timescales.
 
-% ------------------------------------------------------------
+
 \section{Lundquist Number}
 \label{sec:lundquist}
 
 \subsection*{Physics}
 
-The Lundquist number compares the resistive diffusion timescale
-$\tau_R = \mu_0 L^2/\eta$ to the Alfv\'en timescale $\tau_A=L/v_A$:
+
+The Lundquist number (see \cite{goldston1995}) compares the resistive diffusion timescale
+$\tau_R = \mu_0 L^2/\eta$ (from $\frac{B}{\tau_R} \sim \frac{\eta}{\mu_0} \frac{B}{L^2}$)
+ to the Alfv\'en timescale $\tau_A=L/v_A$:
 \begin{equation}
-    \boxed{S \coloneqq \frac{\tau_R}{\tau_A} = \frac{\mu_0 L v_A}{\eta}.}
+    S \coloneqq \frac{\tau_R}{\tau_A} = \frac{\mu_0 L v_A}{\eta}.
     \label{eq:lundquist}
 \end{equation}
 Equivalently, $S$ is the magnetic Reynolds number evaluated at the
 Alfv\'en speed.  When $S\gg1$, resistive diffusion is slow on MHD
 timescales and the magnetic flux is effectively frozen into the
-fluid — the ideal MHD limit.
+fluid, the ideal MHD limit.
 
-\subsection*{Evaluation for the Polomac}
+\subsection{Lundquist number of the Polomac}
 
-Using $\eta\sim10^{-6}$~$\Omega$m (Section~\ref{sec:mhd_assumptions}),
-$v_A=5.5\times10^5$~m\,s$^{-1}$, and $L=0.3$~m:
+Using $\eta\sim\SI{1e-6}{\ohm\metre}$ (Section~\ref{subsec:mhd_assumptions}),
+$v_A=\SI{5.5e5}{\metre\per\second}$, and $L=\SI{0.04}{\metre}$:
 \[
-    S = \frac{4\pi\times10^{-7}\times0.3\times5.5\times10^5}
-             {10^{-6}}
-    \approx 2\times10^5.
+    S \approx \num{2.7e5}.
 \]
 
-\subsection*{Significance and justification of MHD assumptions}
+\paragraph{Justification of zero resistivity in ideal MHD assumptions}.
 
-\paragraph{Assumption~3: zero resistivity.}
-$S\approx2\times10^5\gg1$ confirms that resistive diffusion is
+$S\approx\num{2.7e5}\gg1$ confirms that resistive diffusion is
 negligible on MHD timescales, justifying $\eta\to0$.  This value is
-modest compared to large tokamaks ($S\sim10^6$--$10^8$), reflecting the
-prototype's small size and low temperature.  Since $\eta\propto
-T^{-3/2}$, a reactor-scale Polomac at keV temperatures would reach
-$S\sim10^6$.
+comparable to current tokamak experiments, e.g. SPARC (\cite{datta2026}).
 
-For the static equilibrium analysis of Chapter~\ref{chap:equilibrium}
-($\vec{V}=0$), resistive effects are absent regardless, so even a
+For the static equilibrium analysis, ($\vec{V}=0$), resistive effects are absent regardless, so even a
 moderate $S$ is sufficient to justify the framework.
 
+{\color{magenta}
 % ------------------------------------------------------------
 \section{Plasma \texorpdfstring{$\beta$}{Beta}}
 \label{sec:beta}
@@ -220,21 +192,22 @@ instabilities.
 
 \subsection*{Evaluation for the Polomac}
 
-From~\cite{Elio2024} (Table~1), plasma pressure is $1.6$--$16$~kPa.
+From~\cite{Elio2024} (Table~1), plasma pressure is
+\SIrange{1.6}{16}{\kilo\pascal}.
 The magnetic pressure at the operating field range is:
 \[
-    \frac{B^2}{2\mu_0}\bigg|_{B=0.2\,\text{T}}
-    = \frac{0.04}{2\times1.257\times10^{-6}}
-    \approx 15.9\,\text{kPa},
+    \frac{B^2}{2\mu_0}\bigg|_{B=\SI{0.2}{\tesla}}
+    = \frac{(\SI{0.2}{\tesla})^2}{2\times\SI{1.257e-6}{\henry\per\metre}}
+    \approx \SI{15.9}{\kilo\pascal},
 \]
 \[
-    \frac{B^2}{2\mu_0}\bigg|_{B=0.3\,\text{T}}
-    = \frac{0.09}{2\times1.257\times10^{-6}}
-    \approx 35.8\,\text{kPa}.
+    \frac{B^2}{2\mu_0}\bigg|_{B=\SI{0.3}{\tesla}}
+    = \frac{(\SI{0.3}{\tesla})^2}{2\times\SI{1.257e-6}{\henry\per\metre}}
+    \approx \SI{35.8}{\kilo\pascal}.
 \]
 This gives:
 \[
-    \beta \in [0.04,\;1].
+    \beta \in [\num{0.04},\;1].
 \]
 
 \subsection*{Significance for the Polomac}
@@ -246,4 +219,5 @@ range $\beta\to1$ is achievable, the Polomac could confine fusion-grade
 pressures with a comparatively modest magnetic field, reducing both
 engineering complexity and power consumption.  These are design targets
 and have not yet been experimentally demonstrated.
+
 }

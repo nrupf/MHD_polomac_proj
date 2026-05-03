@@ -134,6 +134,41 @@
       \verb 10.1007/978-3-319-22309-4
       \endverb
     \endentry
+    \entry{datta2026}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1cd49ce5d8b24fb29274a6e2ccd06610}{%
+           family={Datta},
+           familyi={D\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{bbe037b639bea21e53bd7b62c3266f1a}
+      \strng{fullhash}{bbe037b639bea21e53bd7b62c3266f1a}
+      \strng{fullhashraw}{bbe037b639bea21e53bd7b62c3266f1a}
+      \strng{bibnamehash}{bbe037b639bea21e53bd7b62c3266f1a}
+      \strng{authorbibnamehash}{bbe037b639bea21e53bd7b62c3266f1a}
+      \strng{authornamehash}{bbe037b639bea21e53bd7b62c3266f1a}
+      \strng{authorfullhash}{bbe037b639bea21e53bd7b62c3266f1a}
+      \strng{authorfullhashraw}{bbe037b639bea21e53bd7b62c3266f1a}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nuclear Fusion}
+      \field{title}{Modeling the effect of {MHD} activity on runaway electron generation during {SPARC} disruptions}
+      \field{volume}{66}
+      \field{year}{2026}
+      \field{pages}{046013}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1741-4326/ae4abb
+      \endverb
+    \endentry
     \entry{Elio2024}{article}{}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=299455ea183ef998cc1f4392a4815ac0}{%
@@ -227,6 +262,48 @@
       \field{labeltitlesource}{title}
       \field{title}{Ideal MHD}
       \field{year}{2014}
+    \endentry
+    \entry{goldston1995}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=50c82fa1a083bb62c8f2544db11f0934}{%
+           family={Goldston},
+           familyi={G\bibinitperiod},
+           given={Robert\bibnamedelima J.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0b21563762a57e88c9fd435de1b2841d}{%
+           family={Rutherford},
+           familyi={R\bibinitperiod},
+           given={Paul\bibnamedelima H.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{2}{%
+        {Bristol}%
+        {Philadelphia}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Physics Publishing}%
+      }
+      \strng{namehash}{bf9451edce82860203e89595371df3d6}
+      \strng{fullhash}{bf9451edce82860203e89595371df3d6}
+      \strng{fullhashraw}{bf9451edce82860203e89595371df3d6}
+      \strng{bibnamehash}{bf9451edce82860203e89595371df3d6}
+      \strng{authorbibnamehash}{bf9451edce82860203e89595371df3d6}
+      \strng{authornamehash}{bf9451edce82860203e89595371df3d6}
+      \strng{authorfullhash}{bf9451edce82860203e89595371df3d6}
+      \strng{authorfullhashraw}{bf9451edce82860203e89595371df3d6}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0-7503-0325-5}
+      \field{title}{Introduction to Plasma Physics}
+      \field{year}{1995}
+      \field{pages}{128}
+      \range{pages}{1}
     \endentry
   \enddatalist
 \endrefsection

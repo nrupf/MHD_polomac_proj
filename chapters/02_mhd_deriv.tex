@@ -231,8 +231,8 @@ By comparing constants as well as time and length scales typical in fusion
 
 
 For each assumption we state the physical condition
-and give its general justification; quantitative verification of three asumptions
-for the Polomac prototype is deferred to Chapter~\ref{chap:parameters},
+and give its general justification; quantitative verification for the Polomac of assumptions
+that depend on later introduced concepts is deferred to Chapter~\ref{chap:parameters},
 where the relevant dimensionless parameters are introduced and computed.
 
 
@@ -252,14 +252,33 @@ where the relevant dimensionless parameters are introduced and computed.
 
 Electrons respond nearly instantaneously to field changes because their
 cyclotron period $\tau_{ce}=2\pi/\omega_{ce}$ is far shorter than the
-characteristic MHD timescale $\tau_{MHD}\sim L/V_{Ti}$, where
-$V_{Ti}=\sqrt{2k_BT_i/m_i}$ is the ion thermal velocity and $L$ is the
-plasma length scale.  The condition is
+characteristic MHD timescale $\tau_{MHD}\sim L/v_{th, i}$, where
+$v_{th, i}=\sqrt{2k_BT_i/m_i}$ is the ion thermal velocity 
+(derived from the exponent of a Maxwellian distribution)
+and $L$ is the plasma length scale.  The condition is
 \[
-    \frac{\omega_{MHD}}{\omega_{ce}}
-    = \frac{V_{Ti}/L}{\omega_{ce}} \ll 1.
+    \frac{f_{MHD}}{f_{ce}}
+    = \frac{v_{th, i}/L}{f_{ce}} \ll 1.
 \]
-This is verified for the Polomac in Section~\ref{sec:alfven}.
+
+
+For the Polomac the ion thermal velocity is
+\[
+    v_{th,i}
+    = \sqrt{\frac{2 \times \SI{100}{\electronvolt} \times \SI{1.6e-19}{\joule\per\electronvolt}}
+                 {\SI{1.67e-27}{\kilogram}}}
+    \approx \SI{1.4e5}{\metre\per\second}.
+\]
+
+Using the more limiting, upper bound of the ECR heating frequency from \cite{Elio2024}, 
+which is $f_{ce}=\SI{8}{\giga\hertz}$, and $L = \SI{0.3}{\metre}$:
+\[
+    \frac{f_{MHD}}{f_{ce}}
+    = \frac{v_{th,i}/L}{f_{ce}}
+    \approx \num{6e-6} \ll 1.
+\]
+Ion dynamics are slow compared to the electron cyclotron motion;
+electron inertia can be neglected on MHD timescales.
 
 
 
@@ -355,7 +374,7 @@ which is derived in section~\ref{sec:alfven}, so the condition reduces to $v_A^2
 
 Physically, dropping the displacement current filters out electromagnetic
 waves propagating at $c$, retaining only the slow MHD dynamics. 
-The quantitative verification for the Polomac is also given in section~\ref{sec:alfven}.
+The quantitative verification for the Polomac is also given in section~\ref{subsec: alfven velocity of polomac}.
 
 \item \textbf{Small Larmor radius} $\left(\nicefrac{L}{\rho_i} \gg 1\right)$
 
