@@ -124,7 +124,7 @@ $\tau_A = L/v_A \approx \SI{5.5e-7}{s}$.
 
 
 
-\paragraph{Justification of neglection of displacement current in MHD assumption 4}
+\subsection*{Justification of neglection of displacement current in MHD assumption 4}
 
 
 \[
@@ -163,7 +163,7 @@ $v_A=\SI{5.5e5}{\metre\per\second}$, and $L=\SI{0.04}{\metre}$:
     S \approx \num{2.7e5}.
 \]
 
-\paragraph{Justification of zero resistivity in ideal MHD assumptions}.
+\subsection*{Justification of zero resistivity in ideal MHD assumptions}.
 
 $S\approx\num{2.7e5}\gg1$ confirms that resistive diffusion is
 negligible on MHD timescales, justifying $\eta\to0$.  This value is
@@ -172,52 +172,51 @@ comparable to current tokamak experiments, e.g. SPARC (\cite{datta2026}).
 For the static equilibrium analysis, ($\vec{V}=0$), resistive effects are absent regardless, so even a
 moderate $S$ is sufficient to justify the framework.
 
-{\color{magenta}
-% ------------------------------------------------------------
+
+
+
 \section{Plasma \texorpdfstring{$\beta$}{Beta}}
 \label{sec:beta}
 
-\subsection*{Physics}
+\subsection{Physics}
 
 The plasma $\beta$ is the ratio of kinetic plasma pressure to magnetic
-pressure:
+pressure and measures confinement efficiency. A higher $\beta$ means more fusion
+power per unit of magnetic field energy invested. 
+There is no universal definition of plasma $\beta$, the description found in \cite{Freidberg2014}
+is for example very much taylored to tokamaks.
+Our ansatz, measuring the poloidal $\beta$ because that's all we have in a Polomac, is
 \begin{equation}
-    \boxed{\beta \coloneqq \frac{p}{B^2/(2\mu_0)}.}
+    \beta \coloneqq \frac{P}{B^2/(2\mu_0)}.
     \label{eq:beta}
 \end{equation}
-It measures confinement efficiency: a higher $\beta$ means more fusion
-power per unit of magnetic field energy invested.  Conventional
-tokamaks are typically limited to $\beta lesssim 0.1$ by current-driven
-instabilities.
+Note that different existing geometries and thus definitions complicate the comparisons of $\beta$.
+However, the dominating fields usually also dominate (lower the total value) $\beta$ \cite{Freidberg2014},
+so comparisons of efficiency still make sense.
 
-\subsection*{Evaluation for the Polomac}
+ITER targets a toroidal beta of $\beta_t \approx 0.025$, calculated via 
+$\beta_t(\%) = \beta_N \cdot \frac{I_p}{aB_0}$~\cite{Freidberg2014} 
+with the baseline normalized beta $\beta_N = 1.8$~\cite{sips2018}.
 
-From~\cite{Elio2024} (Table~1), plasma pressure is
-\SIrange{1.6}{16}{\kilo\pascal}.
-The magnetic pressure at the operating field range is:
-\[
-    \frac{B^2}{2\mu_0}\bigg|_{B=\SI{0.2}{\tesla}}
-    = \frac{(\SI{0.2}{\tesla})^2}{2\times\SI{1.257e-6}{\henry\per\metre}}
-    \approx \SI{15.9}{\kilo\pascal},
-\]
-\[
-    \frac{B^2}{2\mu_0}\bigg|_{B=\SI{0.3}{\tesla}}
-    = \frac{(\SI{0.3}{\tesla})^2}{2\times\SI{1.257e-6}{\henry\per\metre}}
-    \approx \SI{35.8}{\kilo\pascal}.
-\]
-This gives:
-\[
-    \beta \in [\num{0.04},\;1].
-\]
 
-\subsection*{Significance for the Polomac}
 
-The predominantly poloidal field topology is claimed to support higher
-$\beta$ than toroidal devices because the closed poloidal field lines
-reduce current-driven instability drive~\cite{Elio2024}.  If the upper
-range $\beta\to1$ is achievable, the Polomac could confine fusion-grade
+
+
+
+\subsection{Plasma \texorpdfstring{$\beta$}{Beta} of the Polomac}
+However, since we do not get explicit values for $P$ from the ideal Grad-Shafranov
+equation, we will use the parameter ranges given in \cite{Elio2024} (Table~1), where plasma pressure is
+\SIrange{1.6}{16}{\kilo\pascal} and magnetic flux density is \SIrange{0.2}{0.3}{\tesla}
+
+Inserting in \eqref{eq:beta}, we thus get 
+\begin{equation*}
+    \beta \in [0.04, 1.01]
+\end{equation*}
+
+
+\subsection*{Significance for future fusion devices}
+If the upper range $\beta\to1$ is achievable, the Polomac could confine fusion-grade
 pressures with a comparatively modest magnetic field, reducing both
 engineering complexity and power consumption.  These are design targets
 and have not yet been experimentally demonstrated.
 
-}
