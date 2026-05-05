@@ -14,7 +14,7 @@ The magnetic field thus simplifies to
 In cylindrical coordinates $(r, \varphi, z)$, the gradient, divergence and curl are:
 
 \begin{align*}
-    \nabla \cdot f &= \frac{\partial f}{\partial r} \hat{e}_r + \frac{1}{r}\frac{\partial f}{\partial \varphi} \hat{e}_\varphi + \frac{\partial f}{\partial z} \hat{e}_z \\
+    \nabla  f &= \frac{\partial f}{\partial r} \hat{e}_r + \frac{1}{r}\frac{\partial f}{\partial \varphi} \hat{e}_\varphi + \frac{\partial f}{\partial z} \hat{e}_z \\
     \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial (r F_r)}{\partial r} + \frac{1}{r}\frac{\partial F_\varphi}{\partial \varphi} + \frac{\partial F_z}{\partial z} \\
     \nabla \wedge \vec{F} &= \left(\frac{1}{r}\frac{\partial F_z}{\partial \varphi} - \frac{\partial F_\varphi}{\partial z}\right)\hat{e}_r
     + \left(\frac{\partial F_r}{\partial z} - \frac{\partial F_z}{\partial r}\right)\hat{e}_\varphi
@@ -175,9 +175,16 @@ the integral version of Gauss' law for magnetism \eqref{eq:gauss_b} gives
     \vec{B} \cdot \hat{n} = 0 \quad \text{on all walls}
     \label{eq: BC wall}
 \end{equation}
+In the static equilibrium ($\partial_t B = 0$) this holds for all times.
 
-Since in our axisymmetric setup the walls' normal vector $\hat{n}$ generally has no $\varphi$-component, we can insert \eqref{eq: B as fct of psi}
-in the boundary condition \eqref{eq: BC wall}, use the triple product and obtain that $\nabla \psi \equiv \text{const}$
-along the poloidal plane and by axisymmetry on the inner and the outer wall, respectively.
-
+In our axisymmetric setup, the wall normal $\hat{n} = n_r\hat{e}_r + n_z\hat{e}_z$ has no
+$\varphi$-component. We can recognize the wall tangent in the poloidal plane $\hat{t} = \hat{e}_\varphi \wedge \hat{n}$
+when we insert \eqref{eq: B as fct of psi} into \eqref{eq: BC wall}
+and use the triple product
+\begin{equation*}
+    0 = \left(\nabla\psi \wedge \hat{e}_\varphi\right)\cdot\hat{n}
+    = \hat{t}\cdot \nabla\psi
+\end{equation*}
+and thus $\psi$ is constant along the walls in the poloidal plane.
+Because $\psi$ is only a function of $r,z$, it is thus constant on the entire inner and outer wall, respectively.
 

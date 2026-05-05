@@ -1,10 +1,11 @@
 \chapter{Adiabatic Equation of State}
 \label{chap: App. Adiabatic Equation of State}
+\section{Derivation and motivation of adiabatic equation of state}
  
 We show that for an ideal gas, conserving entropy along fluid trajectories is
 equivalent to the relation $\dfrac{d}{dt}(P \varrho^{-\gamma})=0$.
  
-\section{First Law of Thermodynamics}
+\subsection*{First Law of Thermodynamics}
  
 Per unit mass, the first law reads
 \begin{equation}
@@ -14,7 +15,7 @@ Per unit mass, the first law reads
 where $e$ is specific internal energy (per unit mass), $s$ is specific entropy (per unit mass), $1/ \varrho = 1/ n m$
 is specific volume (per unit mass), $n$ is number density and $m$ is mass per particle.
  
-\section{Ideal Gas Relations}
+\subsection*{Ideal Gas Relations}
  
 For an ideal gas two relations hold:
 \begin{align}
@@ -24,7 +25,7 @@ For an ideal gas two relations hold:
 where $c_v$ is the specific heat at constant volume, $k_B$ is Boltzmann's
 constant, and $m$ is the particle mass.
  
-\section{Differential of Entropy}
+\subsection*{Differential of Entropy}
  
 Substituting \eqref{eq:ig1} and \eqref{eq:ig2} into \eqref{eq:firstlaw} gives
 \begin{equation}
@@ -37,7 +38,7 @@ Integrating:
     \label{eq:s_T}
 \end{equation}
  
-\section{Eliminating Temperature}
+\subsection*{Eliminating Temperature}
  
 From \eqref{eq:ig2}, $T = Pm/( \varrho k_B)$, so $\ln T = \ln P - \ln \varrho +
 \text{const}$. Substituting into \eqref{eq:s_T}:
@@ -56,7 +57,7 @@ $\gamma \equiv c_p/c_v$, we have $c_v + k_B/m = c_p = \gamma c_v$, so
     \label{eq:s_final}
 \end{equation}
  
-\section{Adiabatic Condition}
+\subsection*{Adiabatic Condition}
  
 Since $c_v > 0$, equation \eqref{eq:s_final} shows that
 \begin{equation*}
@@ -69,6 +70,6 @@ following a fluid element. This is the \emph{adiabatic equation of state}, it si
  that entropy is conserved along fluid trajectories.
  
 
-\section{Note: Plasma wlog not ideal gas}
+\subsection*{Note: Plasma wlog not ideal gas}
 The derivation relies on the ideal gas law \eqref{eq:ig2}. In a plasma context this assumption should
 be revisited, asinter-particle interactions and anisotropic pressure can modify the equation of state.

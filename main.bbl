@@ -134,41 +134,6 @@
       \verb 10.1007/978-3-319-22309-4
       \endverb
     \endentry
-    \entry{datta2026}{article}{}{}
-      \true{moreauthor}
-      \true{morelabelname}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=1cd49ce5d8b24fb29274a6e2ccd06610}{%
-           family={Datta},
-           familyi={D\bibinitperiod},
-           given={R.},
-           giveni={R\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{bbe037b639bea21e53bd7b62c3266f1a}
-      \strng{fullhash}{bbe037b639bea21e53bd7b62c3266f1a}
-      \strng{fullhashraw}{bbe037b639bea21e53bd7b62c3266f1a}
-      \strng{bibnamehash}{bbe037b639bea21e53bd7b62c3266f1a}
-      \strng{authorbibnamehash}{bbe037b639bea21e53bd7b62c3266f1a}
-      \strng{authornamehash}{bbe037b639bea21e53bd7b62c3266f1a}
-      \strng{authorfullhash}{bbe037b639bea21e53bd7b62c3266f1a}
-      \strng{authorfullhashraw}{bbe037b639bea21e53bd7b62c3266f1a}
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Nuclear Fusion}
-      \field{title}{Modeling the effect of {MHD} activity on runaway electron generation during {SPARC} disruptions}
-      \field{volume}{66}
-      \field{year}{2026}
-      \field{pages}{046013}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1088/1741-4326/ae4abb
-      \endverb
-    \endentry
     \entry{Elio2024}{article}{}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=299455ea183ef998cc1f4392a4815ac0}{%
@@ -217,7 +182,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Journal of Technological and Space Plasmas}
-      \field{month}{10}
       \field{number}{1}
       \field{title}{Technical Report: The Polomac approach to fusion energy}
       \field{volume}{5}

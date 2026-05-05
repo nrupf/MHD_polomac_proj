@@ -4,7 +4,7 @@
 
 This section presents a complete derivation of the single fluid momentum equation starting from the species momentum equations obtained from kinetic theory.
 
-\subsection{Starting Point: Species Momentum Equations}
+\subsection*{Starting Point: Species Momentum Equations}
 
 For each species $s$ (electrons and ions), the momentum equation (\ref{eq: species momentum eq}) derived from the Boltzmann kinetic equation is :
 
@@ -19,7 +19,7 @@ where:
 \item $\displaystyle \vec{R}_s = \int d^3v \, m_s (\vec{v} - \vec{u}_s) \left(\frac{\partial f_s}{\partial t}\right)_{\text{coll}}$ is the collisional momentum transfer
 \end{itemize}
 
-\subsection{Summation of Species Equations}
+\subsection*{Summation of Species Equations}
 
 Summing the momentum equations over all species:
 
@@ -50,7 +50,7 @@ Thus:
 \label{eq:summed_momentum}
 \end{equation*}
 
-\subsection{Single Fluid Variables}
+\subsection*{Single Fluid Variables}
 
 We define the species drift velocity relative to the total CM velocity $\vec{V}$
 
@@ -64,7 +64,7 @@ A crucial property of the drift velocity is:
 \label{eq:drift_sum_zero}
 \end{equation}
 
-\subsection{The Key Identity}
+\subsection*{The Key Identity}
 
 We now prove that the sum of species convective derivatives can be rewritten as:
 
@@ -125,7 +125,7 @@ we obtain:
 
 This completes the proof of equation (\ref{eq:key_identity}).
 
-\subsection{Pressure Tensor Relationships}
+\subsection*{Pressure Tensor Relationships}
 
 We define the center-of-mass frame pressure contribution for species $s$ as:
 
@@ -170,7 +170,7 @@ Rearranging:
 \sum_s \overleftrightarrow{P}_s = \overleftrightarrow{P}^{CM} - \sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s
 \end{equation*}
 
-\subsection{Final Assembly}
+\subsection*{Final Assembly}
 
 Combining equation (\ref{eq:key_identity}) with equation (\ref{eq:summed_momentum}):
 

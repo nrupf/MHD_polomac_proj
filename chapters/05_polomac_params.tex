@@ -158,21 +158,18 @@ fluid, the ideal MHD limit.
 \subsection{Lundquist number of the Polomac}
 
 Using $\eta\sim\SI{1e-6}{\ohm\metre}$ (Section~\ref{subsec:mhd_assumptions}),
-$v_A=\SI{5.5e5}{\metre\per\second}$, and $L=\SI{0.04}{\metre}$:
+$v_A=\SI{5.5e5}{\metre\per\second}$, and $L=\SIrange{0.04}{0.3}{\metre}$
 \[
-    S \approx \num{2.7e5}.
+    S \approx \numrange{2.8e4}{2.1e5}.
 \]
 
-\subsection*{Justification of zero resistivity in ideal MHD assumptions}.
 
-$S\approx\num{2.7e5}\gg1$ confirms that resistive diffusion is
-negligible on MHD timescales, justifying $\eta\to0$.  This value is
-comparable to current tokamak experiments, e.g. SPARC (\cite{datta2026}).
+\subsection*{Justification of zero resistivity in ideal MHD assumptions}
 
-For the static equilibrium analysis, ($\vec{V}=0$), resistive effects are absent regardless, so even a
-moderate $S$ is sufficient to justify the framework.
-
-
+$S \in [\num{2.8e4},\, \num{2.1e5}]$ means the resistive diffusion
+timescale $\tau_R$ exceeds the Alfv\'en timescale $\tau_A$ by four to
+five orders of magnitude. Magnetic flux is therefore effectively frozen
+into the plasma on MHD timescales, justifying $\eta\to 0$.
 
 
 \section{Plasma \texorpdfstring{$\beta$}{Beta}}

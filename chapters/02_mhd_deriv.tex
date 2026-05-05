@@ -49,11 +49,11 @@ Thus we have
 
 \begin{itemize}
     \item Average fluid velocity $\vec{u}_s(\vec{r},t)$: $g(\vec{v})=\vec{v} \rightarrow \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \vec{v} f_s(\vec{r},\vec{v},t)$
-    \item Average kinetic energy density $\vec{w}_s(\vec{r},t)$: $g(\vec{v})=\frac{1}{2}m_s\vec{v}^2 \rightarrow \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \frac{1}{2}m_s\vec{v}^2 f_s(\vec{r},\vec{v},t)$
+    \item Average kinetic energy density $\vec{w}_s(\vec{r},t)$: $g(\vec{v})=\frac{1}{2}m_s\vec{v}^2 \rightarrow \vec{w}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \frac{1}{2}m_s\vec{v}^2 f_s(\vec{r},\vec{v},t)$
 \end{itemize}
 
 Furthermore, we define the pressure tensor $\overleftrightarrow{P}$ as (note that we do not normalize over number density)
-\[ \overleftrightarrow{P}_s \coloneq \int d\vec{v} \, (\vec{v}-\vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
+\[ \overleftrightarrow{P}_s \coloneq m_s \int d\vec{v} \, (\vec{v}-\vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
 \]
 
 We can evaluate moments of the Boltzmann equation
@@ -237,8 +237,9 @@ where the relevant dimensionless parameters are introduced and computed.
 
 
 \begin{itemize}
-    \item Characteristic length of the Polomac (\cite{Elio2024}): $L \sim \SIrange{0.04}{0.3}{\meter}$ 
+    \item Characteristic length of the Polomac: $L \sim \SIrange{0.04}{0.3}{\meter}$ 
     \begin{itemize}
+        \item These values correspond to diameters of the central plasma cylinder and the outer plasma regions, respectively(\cite{Elio2024}).
         \item If not otherwise specified, we will in each case use the more limiting value of the two extremes.
     \end{itemize}
     \item We assume approximate thermal equilibrium: $T_e \approx T_i \approx \SI{100}{\electronvolt}$
@@ -498,7 +499,7 @@ The ideal magnetohydrodynamic equations consist of
 \begin{itemize}
     \item the mass-continuity equation:
             \begin{equation*}
-                \frac{\partial\varrho}{\partial t} + \nabla(\varrho \vec{V}) = 0
+                \frac{\partial\varrho}{\partial t} + \nabla\cdot(\varrho \vec{V}) = 0
             \end{equation*}
     \item the momentum equation:
             \begin{equation}

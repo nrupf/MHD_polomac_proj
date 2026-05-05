@@ -16,7 +16,7 @@ This gives us four terms to evaluate:
 \text{Term 4: } & -\int d\vec{v} \, m_s \vec{v} \left(\frac{\partial f}{\partial t}\right)_{coll}
 \end{align*}
 
-\subsection{Term 1: Time derivative}
+\subsection*{Term 1: Time derivative}
 
 \begin{align*}
 \text{Term 1} &= \int d^3v \, m_s \vec{v} \frac{\partial f_s}{\partial t}  \\
@@ -25,7 +25,7 @@ This gives us four terms to evaluate:
 &= m_s \left[ \frac{\partial n_s}{\partial t} \vec{u}_s + n_s \frac{\partial \vec{u}_s}{\partial t} \right]
 \end{align*}
 
-\subsection{Term 2: Spatial advection}
+\subsection*{Term 2: Spatial advection}
 
 \begin{align*}
 \text{Term 2} &= \int d^3v \, m_s \vec{v} (\vec{v} \cdot \nabla_{\vec{r}} f_s)  \\
@@ -79,7 +79,7 @@ In vector notation:
 \text{Term 2} = m_s n_s (\vec{u}_s \cdot \nabla_{\vec{r}}) \vec{u}_s + m_s \vec{u}_s [\nabla_{\vec{r}} \cdot (n_s \vec{u}_s)] + \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s
 \end{equation*}
 
-\subsection{Combining Terms 1 and 2}
+\subsection*{Combining Terms 1 and 2}
 
 Adding Terms 1 and 2:
 \begin{align*}
@@ -112,7 +112,7 @@ we obtain:
  \text{Term 1 + Term 2} = m_s n_s \frac{d\vec{u}_s}{dt} + \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s
 \end{equation*}
 
-\subsection{Term 3: Lorentz force}
+\subsection*{Term 3: Lorentz force}
 
 \begin{align*}
 \text{Term 3} &= \int d^3v \, m_s \vec{v} \left[ \frac{q_s}{m_s}(\vec{E} + \vec{v} \wedge \vec{B}) \cdot \nabla_{\vec{v}} f_s \right]  \\
@@ -180,7 +180,7 @@ In vector notation:
 \text{Term 3} = -q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B})
 \end{equation*}
 
-\subsection{Term 4: Collision term}
+\subsection*{Term 4: Collision term}
 
 \begin{equation*}
 \text{Term 4} = -\int d^3v \, m_s \vec{v} \left(\frac{\partial f}{\partial t}\right)_{\text{coll}} \equiv \vec{R}_s
@@ -210,7 +210,7 @@ Therefore, both forms are equivalent:
 \item For multi-species plasma: $\sum_s \vec{R}_s = 0$ (total momentum conserved)
 \end{itemize}
 
-\subsection{Final Result: Species Momentum equation}
+\subsection*{Final Result: Species Momentum equation}
 
 Combining all terms (Term 1 + Term 2 + Term 3 + Term 4 = 0):
 \begin{equation*}
