@@ -75,7 +75,7 @@ $\to$ continuity eq.: choose $g_s(\vec{v}) = 1$
 & \qquad \qquad \qquad \qquad \qquad \qquad \qquad \text{$\vec{v}$ indep. of $\vec{r}$, $\vec{u} = \langle \vec{v} \rangle$} \\
 (3): \quad & \int d\vec{v} \,  \frac{q_s}{m_s} (\vec{E}^{lr} + \vec{v} \wedge \vec{B}^{lr}) \cdot \frac{\partial f_s}{\partial \vec{v}} = \frac{q_s}{m_s} \int \frac{\partial}{\partial \vec{v}} \cdot (\vec{E} + \vec{v} \wedge \vec{B}) \\
 & = \frac{q_s}{m_s} \int_{S_{\vec{v} \to \infty}} (\vec{E} + \vec{v} \wedge \vec{B}) \, f_s \, d\vec{S}_{\vec{v}} = 0 \qquad\text{Ass. } f_s\overset{v\to\infty}{\rightarrow}0\\
-(4): \quad & \int d\vec{v} \,  \left(\frac{\partial f}{\partial t}\right)_{coll} = 0 \quad \text{bec. we ass. collisions don't create or destroy ptcls.}
+(4): \quad & \int d\vec{v} \,  \left(\frac{\partial f}{\partial t}\right)_{coll} = 0 \quad \text{bec. we ass. collisions don't create or destroy particles.}
 \end{align*}
 
 We thus arrive at the species fluid continuity equation
@@ -104,7 +104,7 @@ In the relaxation time approcimation we have $\vec{R}_e \approx -m_e n_e \nu_{ei
 \subsection{Species energy equation}
 $\to$ energy eq.: choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$
 
-{\color{magenta} if time, show derivation in appendix}
+{\color{magenta} We use the conventions from the \emph{Intro to Plasma Physics} course from EPFL. An analogue derivation in chapter 2 of \cite{Freidberg2014}}
 
 
 \begin{align*}
@@ -115,7 +115,7 @@ $\to$ energy eq.: choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$
 \item double contraction ":" : $\overleftrightarrow{P_s} : \frac{\partial}{\partial \vec{r}} \vec{u}_s \coloneq \sum_{i,j} P_{(s),\, ij} \frac{\partial u_{(s),\, i}}{\partial r_j}$
 \item $T_s := \frac{1}{3n_s} \int d\vec{v} \, m_s \, (\vec{v} - \vec{u}_s)^2 f_s$ \quad, \quad the kinetic energy due to spreading around fluid velocity
 
-\item $\vec{q}_s = \frac{1}{2} m_s \int d\vec{v} \, (\vec{v} - \vec{u}_s)^2 (\vec{v} - \vec{u}_s) f_s$ \quad, \quad the heat flux vector, so the kinetic energy that is transported with velocity of the ptcls
+\item $\vec{q}_s = \frac{1}{2} m_s \int d\vec{v} \, (\vec{v} - \vec{u}_s)^2 (\vec{v} - \vec{u}_s) f_s$ \quad, \quad the heat flux vector, so the kinetic energy that is transported with velocity of the particles
 
 \item $Q_s = \int d\vec{v} \, \frac{1}{2} m_s \, (\vec{v} - \vec{u}_s)^2 \left(\frac{\partial f}{\partial t}\right)_{coll}$ \quad, \quad heat generated due to viscous forces
 \end{itemize}
@@ -317,7 +317,7 @@ Note that this is again connected to the fact that we assume electrons can move 
 
 
 % --- Assumption 3 ---
-\item \textbf{Ideal MHD — zero resistivity} ($\eta = 0$)
+\item \textbf{\emph{Ideal} MHD - zero resistivity} ($\eta = 0$)
 
 Resistive diffusion is negligible when the magnetic field moves instantly with the plasma,
  i.e.\ when the resistive diffusion timescale greatly exceeds
@@ -399,7 +399,7 @@ scales the margin is reduced and the ideal MHD description should be
 treated with appropriate caution.
 
 
-\item Isotropic pressure and incompressible motion
+\item \textbf{Isotropic pressure and incompressible motion}
 
     \textbf{Isotropic pressure:} The ideal MHD model assumes that the pressure tensor is isotropic, 
     $\overleftrightarrow{P}^{CM} = P$, where $P$ is a scalar pressure. This assumption 
