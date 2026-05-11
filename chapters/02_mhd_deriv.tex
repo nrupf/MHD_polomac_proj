@@ -495,10 +495,12 @@ satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \wedge \vec{B}) = 0$). 
 
 
 \subsection{The ideal MHD equations}
+\label{subsec: The ideal MHD equations}
 The ideal magnetohydrodynamic equations consist of
 \begin{itemize}
     \item the mass-continuity equation:
             \begin{equation*}
+                \label{eq: MHD mass continuity eq}
                 \frac{\partial\varrho}{\partial t} + \nabla\cdot(\varrho \vec{V}) = 0
             \end{equation*}
     \item the momentum equation:
@@ -513,6 +515,7 @@ The ideal magnetohydrodynamic equations consist of
             \end{equation}
     \item Closure equation:
             \begin{equation*}
+                \label{eq: MHD closure eq}
                 \frac{d}{dt}\left(P \varrho^{-\gamma}\right) = 0
             \end{equation*}
     \item Maxwell equations:
@@ -525,6 +528,7 @@ The ideal magnetohydrodynamic equations consist of
                 \label{eq: MHD ampere-maxwell}
             \end{equation}
             \begin{equation*}
+                \label{eq: MHD gauss law for magnetism}
                 \nabla\cdot\vec{B} = 0
             \end{equation*}
 \end{itemize}

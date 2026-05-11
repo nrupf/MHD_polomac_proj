@@ -25,6 +25,7 @@ Note that some of these values ($n, T, (B)$) are target values and not yet exper
 \label{sec:alfven}
 
 \subsection{Theory of Alfv\'en waves}
+\label{subsec: theory of alfven waves}
 
 In this subsection we follow chapter 8 of \cite{Freidberg2014}.
 
@@ -36,14 +37,17 @@ $\vec{B}=B_0\hat{e}_z$, $\varrho=\varrho_0$, $\vec{V}=0$,
 $P=P_0$, writing each quantity as its equilibrium value plus a small
 perturbation (e.g.\ $\vec{B}=B_0\hat{e}_z+\vec{B}_1$).  To first
 order, combining the ideal MHD Ohm's law \eqref{eq: MHD ohm's law} 
-and Faraday's law \eqref{eq: MHD faraday}, the so called induction equation,
-and the ideal MHD momentum equation \eqref{eq: MHD momentum eq.}
-combined with the ideal MHD Ampère-Maxwell law \eqref{eq: MHD ampere-maxwell} give
-
+and Faraday's law \eqref{eq: MHD faraday}, we get the so called induction equation
 \begin{align}
     \label{eq: alfven ind. eq}
     \frac{\partial\vec{B}_1}{\partial t}
-        &= \nabla\wedge(\vec{V}_1\wedge\vec{B}_0), \\
+        &= \nabla\wedge(\vec{V}_1\wedge\vec{B}_0), 
+\end{align}
+
+and the ideal MHD momentum equation \eqref{eq: MHD momentum eq.}
+combined with the ideal MHD Ampère-Maxwell law \eqref{eq: MHD ampere-maxwell} gives the 
+
+\begin{align}
     \label{eq: alfven mom. eq}
     \varrho_0\frac{\partial\vec{V}_1}{\partial t}
         &= -\nabla P_1

@@ -1,13 +1,234 @@
 \chapter{Framework for a Minimal FDTD Solver for Linearized MHD of the Polomac}
 
 \section{Problem formulation}
+We want to be able to solve for the independent time dependent properties of the MHD equations in \autoref{subsec: The ideal MHD equations},
+which are $\varrho$, $\vec{V}$, $\vec{B}$ and $P$.  
+
+
+If we have $\vec{B}$ and $\vec{V}$ we will be able to solve for $\vec{E}$ and $\vec{J}$ at any time via \eqref{eq: MHD ohm's law} and \eqref{eq: MHD ampere-maxwell}, respectively.
+
 
 \subsection{Equations to be solved}
+As in \autoref{subsec: theory of alfven waves} we eliminate $\vec{E}$ and $\vec{J}$.
+Additionally we take the mass continuity equation \eqref{eq: MHD mass continuity eq} and the closure equation \eqref{eq: MHD closure eq}
+to arrive at a system of four first-order hyperbolic partial differential equations
+\begin{align*}
+    \frac{\partial \varrho}{\partial t} + \nabla \cdot (\varrho \vec{V}) &= 0 \\
+    \varrho \frac{d\vec{V}}{dt} &= -\nabla P + \frac{1}{\mu_0}(\nabla \times \vec{B}) \times \vec{B} \\
+    \frac{\partial \vec{B}}{\partial t} &= \nabla \times (\vec{V} \times \vec{B}) \\
+    \frac{d}{dt}\!\left(P \varrho^{-\gamma}\right) &= 0
+\end{align*}
+and as an additional constraint Gauss' law for magnetism \eqref{eq: MHD gauss law for magnetism},
+which is not evolved but must be preserved
+\begin{align*}
+    \nabla \cdot \vec{B} &= 0.
+\end{align*}
 
-\subsection{Types of PDEs}
+
 
 \section{Linearization and discretization}
 
-\subsection{Linearized equations}
+As in \autoref{subsec: theory of alfven waves}, we linearize around a uniform static equilibrium
+\begin{align*}
+    \vec{B}(\vec{x}, t) &= \vec{B}_0 + \vec{B}_1(\vec{x}, t), \\
+    \vec{V}(\vec{x}, t) &= \vec{V}_1(\vec{x}, t), \\
+    \varrho(\vec{x}, t) &= \varrho_0 + \varrho_1(\vec{x}, t), \\
+    P(\vec{x}, t)       &= P_0 + P_1(\vec{x}, t),
+\end{align*}
+where $\vec{B}_0$, $\varrho_0$, $P_0$ are constants, $\vec{V}_0 = 0$, and all perturbations
+satisfy $|Q_1/Q_0| \ll 1$. Substituting and retaining only first-order terms yields
+the linearized equations
+\begin{align}
+    \frac{\partial \varrho_1}{\partial t} &= -\varrho_0\, \nabla \cdot \vec{V}_1,
+        \label{eq: lin continuity} \\
+    \varrho_0\, \frac{\partial \vec{V}_1}{\partial t} &= -\nabla P_1
+        + \frac{1}{\mu_0}\bigl(\nabla \times \vec{B}_1\bigr) \times \vec{B}_0,
+        \label{eq: lin momentum} \\
+    \frac{\partial \vec{B}_1}{\partial t} &= \nabla \times \bigl(\vec{V}_1 \times \vec{B}_0\bigr),
+        \label{eq: lin induction} \\
+    \frac{\partial P_1}{\partial t} &= -\gamma P_0\, \nabla \cdot \vec{V}_1.
+        \label{eq: lin pressure}
+\end{align}
+Equations \eqref{eq: lin continuity} and \eqref{eq: lin pressure} together imply
+$P_1 = c_s^2 \varrho_1$, where $c_s = \sqrt{\gamma P_0 / \varrho_0}$ is the adiabatic
+sound speed, so they carry the same information. The system is therefore closed by
+\eqref{eq: lin momentum} and \eqref{eq: lin induction}, with $P_1$ supplied
+by \eqref{eq: lin pressure}. The constraint $\nabla \cdot \vec{B}_1 = 0$ is
+automatically preserved by \eqref{eq: lin induction} and serves as a numerical
+consistency check. The unknowns to be time-stepped are $\vec{V}_1$, $\vec{B}_1$,
+and $P_1$.
+
 
 \subsection{FDTD}
+
+\subsection{Types of PDEs}
+\label{subsec: types of PDEs}
+
+The linearized system \eqref{eq: lin continuity}--\eqref{eq: lin pressure} consists
+of first-order, linear, hyperbolic partial differential equations. This can be seen
+by noting that all time derivatives appear linearly on the left-hand side and the
+right-hand sides contain only spatial derivatives of the unknowns, with no
+dissipative (parabolic) or elliptic terms. Hyperbolic systems propagate information
+at finite speeds along characteristics; the relevant speeds here are the Alfv\'en
+velocity $v_A$ and the magnetosonic speed $v_f = \sqrt{v_A^2 + c_s^2}$, both
+derived in \autoref{sec: relevant parameters}. This structure makes the system
+well-suited to explicit time-domain methods such as FDTD.
+
+\subsection{Reduction to 2D in cylindrical coordinates}
+\label{subsec: 2D cylindrical reduction}
+
+The Polomac geometry is naturally described in cylindrical coordinates
+$(r, \varphi, z)$. We adopt the axisymmetric approximation already used in
+\autoref{chap: static equilibrium}, setting $\partial/\partial\varphi = 0$.
+All perturbation fields are then functions of $(r, z, t)$ only.
+
+We choose the equilibrium field along the $z$-axis,
+$\vec{B}_0 = B_0 \hat{e}_z$, which is the simplest geometry consistent with
+the poloidal dominance of the Polomac (see \autoref{subsec: polomac geometry})
+and with the Alfv\'en wave analysis in \autoref{subsec: theory of alfven waves}.
+In this geometry the axisymmetric ($\partial_\varphi = 0$) cylindrical
+differential operators \eqref{eq: cylindrical divergence}, \eqref{eq: cylindrical curl}
+reduce to
+\begin{align}
+    \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial(r F_r)}{\partial r}
+        + \frac{\partial F_z}{\partial z}, \\
+    (\nabla \times \vec{F})_r &= -\frac{\partial F_\varphi}{\partial z}, \qquad
+    (\nabla \times \vec{F})_\varphi = \frac{\partial F_r}{\partial z}
+        - \frac{\partial F_z}{\partial r}, \qquad
+    (\nabla \times \vec{F})_z = \frac{1}{r}\frac{\partial(r F_\varphi)}{\partial r}.
+\end{align}
+
+We expand the perturbation fields into components
+$\vec{V}_1 = V_r\hat{e}_r + V_\varphi\hat{e}_\varphi + V_z\hat{e}_z$ and
+$\vec{B}_1 = B_r^{(1)}\hat{e}_r + B_\varphi^{(1)}\hat{e}_\varphi + B_z^{(1)}\hat{e}_z$.
+Inserting $\vec{B}_0 = B_0\hat{e}_z$ into the linearized system
+\eqref{eq: lin continuity}--\eqref{eq: lin pressure} and evaluating each component
+yields the following scalar equations.
+
+\textbf{Pressure} (from \eqref{eq: lin pressure}):
+\begin{align}
+    \frac{\partial P_1}{\partial t} &= -\gamma P_0
+        \left(\frac{1}{r}\frac{\partial(r V_r)}{\partial r}
+        + \frac{\partial V_z}{\partial z}\right).
+    \label{eq: 2D pressure}
+\end{align}
+
+\textbf{Momentum} (from \eqref{eq: lin momentum}),
+using $(\nabla\times\vec{B}_1)\times\vec{B}_0
+= B_0\,\partial_z\vec{B}_1^\text{pol} - B_0(\nabla\cdot\vec{B}_1^\text{pol})\hat{e}_z$
+evaluated component by component:
+\begin{align}
+    \varrho_0\frac{\partial V_r}{\partial t} &= -\frac{\partial P_1}{\partial r}
+        + \frac{B_0}{\mu_0}\left(\frac{\partial B_r^{(1)}}{\partial z}
+        - \frac{\partial B_z^{(1)}}{\partial r}\right)
+        \cdot(-1) \cdot(-1),
+        \nonumber \\
+    &= -\frac{\partial P_1}{\partial r}
+        + \frac{B_0}{\mu_0}\frac{\partial B_r^{(1)}}{\partial z}
+        - \frac{B_0}{\mu_0}\frac{\partial B_z^{(1)}}{\partial r},
+    \label{eq: 2D mom r} \\
+    \varrho_0\frac{\partial V_\varphi}{\partial t} &=
+        \frac{B_0}{\mu_0}\frac{\partial B_\varphi^{(1)}}{\partial z},
+    \label{eq: 2D mom phi} \\
+    \varrho_0\frac{\partial V_z}{\partial t} &= -\frac{\partial P_1}{\partial z}.
+    \label{eq: 2D mom z}
+\end{align}
+
+\textbf{Induction} (from \eqref{eq: lin induction}),
+using $\nabla\times(\vec{V}_1\times B_0\hat{e}_z)
+= B_0\,\partial_z\vec{V}_1 - B_0(\nabla\cdot\vec{V}_1)\hat{e}_z$:
+\begin{align}
+    \frac{\partial B_r^{(1)}}{\partial t} &=
+        B_0\frac{\partial V_r}{\partial z},
+    \label{eq: 2D ind r} \\
+    \frac{\partial B_\varphi^{(1)}}{\partial t} &=
+        B_0\frac{\partial V_\varphi}{\partial z},
+    \label{eq: 2D ind phi} \\
+    \frac{\partial B_z^{(1)}}{\partial t} &=
+        -B_0\left(\frac{1}{r}\frac{\partial(r V_r)}{\partial r}
+        + \frac{\partial V_z}{\partial z}\right).
+    \label{eq: 2D ind z}
+\end{align}
+
+Note that the $\varphi$-components \eqref{eq: 2D mom phi} and \eqref{eq: 2D ind phi}
+decouple from the rest and describe a pure shear Alfv\'en wave propagating along
+$\hat{e}_z$, consistent with the dispersion relation \eqref{eq: alfven dispersion}.
+The remaining components $(V_r, V_z, P_1, B_r^{(1)}, B_z^{(1)})$ describe the
+compressional (magnetosonic) branch.
+
+\subsection{FDTD Discretization}
+\label{subsec: FDTD}
+
+\subsubsection{Staggered grid}
+
+We discretize the $(r, z)$ domain on a uniform staggered (Yee-type) grid with
+spacings $\Delta r$ and $\Delta z$. Scalar quantities $P_1$, $B_z^{(1)}$, $\varrho_1$
+and $V_z$ are located at cell centres $(r_i, z_j)$; radial components $V_r$ and
+$B_r^{(1)}$ are located at the $r$-faces $(r_{i+1/2}, z_j)$; azimuthal components
+$V_\varphi$ and $B_\varphi^{(1)}$ are co-located with $V_r$ and $B_r^{(1)}$.
+Time is staggered by half a step: $\vec{B}_1$ is evaluated at integer times $t^n$
+and $\vec{V}_1$, $P_1$ at half-integer times $t^{n+1/2}$. This leapfrog arrangement
+ensures that the update of $\vec{B}_1$ from the induction equations uses
+$\vec{V}_1$ values that are centred in time, giving second-order accuracy in both
+space and time without any implicit solve.
+
+\subsubsection{Courant stability condition}
+
+Because the linearized ideal MHD equations are hyperbolic, explicit time-stepping
+is subject to the Courant--Friedrichs--Lewy (CFL) stability condition. The fastest
+signal speed in the system is the fast magnetosonic speed
+\begin{align}
+    v_f = \sqrt{v_A^2 + c_s^2},
+    \label{eq: fast speed}
+\end{align}
+where $v_A$ is the Alfv\'en velocity \eqref{eq: alfven velocity} and
+$c_s = \sqrt{\gamma P_0/\varrho_0}$ is the adiabatic sound speed.
+In two spatial dimensions the CFL condition reads
+\begin{align}
+    \Delta t \leq \frac{1}{v_f}
+        \left(\frac{1}{\Delta r^2} + \frac{1}{\Delta z^2}\right)^{-1/2}.
+    \label{eq: CFL}
+\end{align}
+Using the Polomac target values from \autoref{chap: relevant parameters}
+($v_A \approx 5.5\times10^5\ \mathrm{m\,s^{-1}}$,
+$T_i \approx T_e = 100\ \mathrm{eV}$, $\gamma = 5/3$), the sound speed is
+\begin{align*}
+    c_s = \sqrt{\frac{\gamma k_B T}{m_i}}
+        = \sqrt{\frac{5/3 \times 100\ \mathrm{eV} \times 1.6\times10^{-19}\ \mathrm{J\,eV^{-1}}}
+        {1.67\times10^{-27}\ \mathrm{kg}}}
+        \approx 9.2\times10^4\ \mathrm{m\,s^{-1}},
+\end{align*}
+giving $v_f \approx 5.6\times10^5\ \mathrm{m\,s^{-1}}$.
+For a grid with $\Delta r = \Delta z = \Delta x$, \eqref{eq: CFL} simplifies to
+$\Delta t \leq \Delta x / (\sqrt{2}\, v_f)$.
+Taking the smallest Polomac length scale $L = 0.04\ \mathrm{m}$ and a modest
+$N = 100$ grid points per direction ($\Delta x = 4\times10^{-4}\ \mathrm{m}$),
+this gives
+\begin{align*}
+    \Delta t lesssim \frac{4\times10^{-4}}{\sqrt{2}\times 5.6\times10^5}
+        \approx 5\times10^{-10}\ \mathrm{s}.
+\end{align*}
+This is comfortably smaller than the Alfv\'en timescale
+$\tau_A \approx 5.5\times10^{-7}\ \mathrm{s}$, so a simulation spanning
+several Alfv\'en times requires of order $10^3$ timesteps.
+
+\subsection{Boundary conditions}
+\label{subsec: BCs}
+
+We model the plasma as bounded by perfectly conducting walls, consistent with
+the assumption used for the static equilibrium in \autoref{subsec: boundary conditions}.
+At a perfectly conducting wall with outward normal $\hat{n}$, the standard
+electromagnetic boundary conditions require that no magnetic flux passes through
+the wall and no plasma flows through it:
+\begin{align}
+    \vec{B}_1 \cdot \hat{n} &= 0, \label{eq: BC B} \\
+    \vec{V}_1 \cdot \hat{n} &= 0. \label{eq: BC V}
+\end{align}
+In the $(r,z)$ domain these translate to: at the outer wall ($r = r_\text{wall}$),
+$B_r^{(1)} = 0$ and $V_r = 0$; at the top and bottom caps ($z = z_\text{top/bot}$),
+$B_z^{(1)} = 0$ and $V_z = 0$. At the inner boundary ($r = 0$ or at the surface of
+the central coil), the regularity condition $\partial_r(\cdot)|_{r=0} = 0$ is applied
+for scalar quantities, consistent with \autoref{subsec: boundary conditions}.
+The tangential components ($V_\varphi$, $B_\varphi^{(1)}$, $V_z$ at radial walls,
+$V_r$ at axial walls) are left free, consistent with ideal MHD — a perfectly
+conducting wall exerts no tangential force on the plasma.
