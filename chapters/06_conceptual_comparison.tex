@@ -1,13 +1,211 @@
-\chapter{Polomac vs Tokamak vs Stellarator}
+\chapter{An overview over magnetic confinement approaches for nuclear fusion}
+
+\section{Relevant factors}
+
+\subsection{Lawson Criterion}
+
+High performance, as quantified by the Lawson criterion, is a prerequisite for
+any viable fusion reactor.
+For the D--T reaction the ignition condition can be written as
+\begin{equation}
+    P\tau_E \;\gtrsim\; \SI{8e5}{\pascal \, \second},
+    \label{eq: lawson}
+\end{equation}
+where $P$ is the plasma pressure and $\tau_E$ the energy confinement time
+\cite{Freidberg2014}.
+The function $T^2/\langle\sigma v\rangle$ that enters the right-hand-side in the full expression of \eqref{eq: lawson} has a
+minimum at approximately $T\approx 15\;\text{keV}$; operating near this
+temperature minimises the required $P\tau_E$ and therefore the cost of the device
+(\cite{Freidberg2014}).
+Achieving high $P$ is the concern of MHD confinement, while achieving
+long $\tau_E$ is the concern of transport physics, and both must be satisfied simultaneously.
+
+See \autoref{sec:beta} for a discussion on plasma $\beta$ comparison.
+
+\subsection{Steady-state operation}
+\label{subsec: Steady-state operation}
+
+Steady-state operation would reduce the cyclic thermal and mechanical stresses of components and,
+given it does not create other unforeseen troubles that are avoided in pulsed operations,
+is economically more viable (\cite{Freidberg2014}).
+
+For configurations that rely on an inductively driven toroidal plasma current,
+such as the standard tokamak, the finite volt-second capacity of the central
+solenoid limits each discharge to a finite pulse duration.
+Configurations that do not rely on a driven toroidal plasma current, such as
+the stellarator, avoid this constraint and are intrinsically steady-state \cite{Freidberg2014}.
 
 
-\section{Magnetic field topology (poloidal vs. toroidal/helical dominance)}
+
+\section{Toroidal geometries}
+
+A toroidal setup, so basically an end-to-end connected Z-pinch, has many nice properties, which is why
+many current experiments follow this torus ansatz.
+However, in purely toroidal fields, due to asymmetries of the magnetic on the inside versus 
+the outside of the torus, an outside directed $\vec{E}\wedge\vec{B}$-drift is created 
+(see \cite{Freidberg2014}, section 4.9).
+The tokamak and stellarator have different approaches to overcome this challenge
+and to create a flux of particles from top to bottom of the torus and vice versa,
+thus avoiding the voltage build-up along the vertical axis and thus the $\vec{E}\wedge\vec{B}$-drift.
 
 
-\section{Role of plasma current}
+
+\subsection{Tokamak ansatz}
+
+\subsubsection{Confinement in a Tokamak}
+A tokamak magnetic field is the superposition of a strong externally-applied
+toroidal field $B_\text{tor}$ (produced by toroidal-field coils external to the plasma)
+and a weaker poloidal field $B_\text{pol}$ produced by the toroidal plasma current $I_\text{pol}$
+and controlled and shaped by external poloidal-field coils (\cite{Freidberg2014}).
 
 
-\section{Equilibrium formulation and steady-state operation}
+The ratio is captured by the safety factor $q(r) \approx rB_\text{tor}/(RB_\text{pol})$
+where $r,R$ are the minor and major radius of the torus, respectively.
+A safety factor of at least $q=1$ is needed to reduce instabilities of current-driven modes.
+
+Flux surfaces are nested, toroidal surfaces and the magnetic field lines are helices on them.
+The safety factor describes how many times a line is winded around the central torroidal torus
+axis compared to around the symmetric axis located at $r=0$.
+
+A safety factor of $q\gtrsim1$ is typically reached in the innermost flux surfaces,
+and it increases for flux surfaces further out. 
+A more detailed discussion can be found in Chapter 5.5.2 of \cite{Freidberg2014}.
+
+\subsubsection{Equilibrium formulation and steady-state operation}
+
+The equilibrium of an axisymmetric toroidal plasma is governed by the full
+Grad--Shafranov equation (\cite{Freidberg2014}):
+\begin{equation}
+    \Delta^* \psi = -\mu_0 R^2 \frac{dp}{d\psi} - \frac{1}{2}\frac{dF^2}{d\psi},
+    \label{eq:GS}
+\end{equation}
+where $\psi(R,Z)$ is the poloidal flux function, $p(\psi)$ the plasma pressure,
+and $F(\psi)=RB_\text{tor}$ encodes the toroidal field.
+This second-order nonlinear PDE, derived from ideal MHD force balance
+$\vec{J}\times\vec{B}=\nabla p$ under axisymmetry, simultaneously describes
+radial pressure balance and toroidal force balance; its solutions give the nested
+flux surfaces on which $p$ and $F$ are constant
+(\cite{Freidberg2014}, Chapter~6).
+
+As described in \autoref{subsec: Steady-state operation}, the standard tokamak is not intrinsically steady-state.
+Steady-state operation requires non-inductive current drive, either external
+(neutral-beam or radio-frequency) or via the self-generated bootstrap current,
+which arises from pressure-gradient-driven particle drifts in the
+neoclassical transport picture. The so-called \emph{advanced tokamak} (AT) scenario exploits a large bootstrap
+fraction together with a reversed-shear $q(r)$ profile to approach steady-state
+operation (\cite{Freidberg2014}).
 
 
-\section{Stability considerations and disruption risks}
+\subsubsection{Stability considerations and disruption risks}
+
+Tokamak stability is limited by both current-driven and pressure-driven
+instabilities.
+
+On the current side, the safety factor $q$ must remain above a minimum
+value throughout the plasma, in practice $q\gtrsim 2-3$ at the edge, to
+suppress current-driven kink instabilities (\cite{Freidberg2014}, section 12.11).
+If too much current flows, these instabilities cause a major disruption:
+a rapid quench of both plasma current and pressure on a millisecond timescale,
+which is one of the principal engineering risks of the tokamak
+\cite{Freidberg2014}.
+
+On the pressure side, there is an empirical upper bound on $\beta$, the ratio
+of plasma pressure to magnetic pressure.
+For a tokamak this limit scales as $\beta_\text{max} \propto I_p / (a B_T)$,
+so higher current and weaker field permit higher pressure (\cite{Freidberg2014}).
+Exceeding this bound also leads to major disruptions.
+
+\subsubsection{Performance of Tokamaks}
+
+If successful, ITER, the next-step international experiment, is designed to achieve $Q=10$ (fusion power ten times
+the external heating power), corresponding to $P\tau_E \approx \SI{6.5e5}{\pascal\second}$
+(\cite{Freidberg2014}, subsection 6.6.6).
+
+
+ITER targets a toroidal beta of $\beta_t \approx 0.025$, calculated via 
+$\beta_t(\%) = \beta_N \cdot \frac{I_p}{aB_0}$ (\cite{Freidberg2014})
+with the baseline normalized beta $\beta_N = 1.8$ (\cite{sips2018}).
+
+
+The main performance limitation of the tokamak is the pulsed nature of inductive
+operation and the risk of major disruptions; both are active areas of research
+targeted by the AT and ITER programs (\cite{Freidberg2014}).
+
+
+
+
+\subsection{Stellarator ansatz}
+\subsubsection{Confinement in a Stellarator}
+Many different designs are grouped as Stellarators. What they have in common is that
+they do not try to induce a large toroidal currents to generate a poloidal electric field.
+Instead, they break the toroidal symmetry by reallocating of the coils inducing a toroidal field
+and that way are able to mix up vertical the distance of the particles from the center.
+
+They still have approximately nested flux surfaces (\cite{Freidberg2014}).
+
+The stellarator analog of the safety factor is the \emph{rotational
+transform} $\iota$, defined via $q = 2\pi/\iota$.
+Unlike in a tokamak, $B_\text{pol}$ is not constant along a field line
+in a stellarator, so the simple ratio $rB_\text{tor}/(RB_\text{pol})$
+is not well-defined pointwise. Instead, one must take the
+field-line average over one helical period (\cite{Freidberg2014}):
+\begin{equation}
+  \frac{\iota}{2\pi}
+  = \frac{\displaystyle\oint \frac{B_\text{pol}}{rB}\,dl}
+         {\displaystyle\oint \frac{B_\text{tor}}{RB}\,dl}.
+  \label{eq:iota_def}
+\end{equation}
+$\iota$ 
+
+A big engineering challenge is coil manufacture: the non-planar modular
+superconducting coils of W7-X, a current leading experiment, must be constructed to millimetre tolerance in
+order to control magnetic island widths and avoid confinement degradation.
+
+
+\subsubsection{Equilibrium formulation and steady-state operation}
+
+Because the stellarator lacks toroidal symmetry, the Grad-Shafranov equation \eqref{eq:GS} no longer applies.
+The equilibrium is instead a full three-dimensional ideal-MHD force balance,
+$\vec{J}\times\vec{B}=\nabla p$, which must be solved in 3D.
+
+Because stellarators carry no net driven toroidal current, they are
+intrinsically steady-state. A residual bootstrap current does arise from pressure-gradient-driven particle
+drifts, but in W7-X this has been minimised by design (\cite{Freidberg2014}).
+The practical consequence is that W7-X has sustained a plasma for 363 seconds
+with an energy throughput of \SI{1.8}{\giga\joule} in its OP 2.3 campaign (\cite{Grulke2026}).
+During that campaign, volume averaged plasma $\beta$ as approached $0.03$ (\cite{Grulke2026}).
+
+\subsubsection{Stability considerations and disruption risks}
+
+Stellarators are subject to pressure-driven instabilities, interchange and
+ballooning modes, but are largely free of the current-driven kink instabilities
+that dominate tokamak stability physics, because they operate with zero or very
+small net toroidal current (\cite{Freidberg2014}).
+
+
+
+
+\section{Poloidal geometries}
+
+Poloidal geometries feature elegant physics, but engineering challenges in regard
+to their central magnetic dipole. The Levitating Dipole Experiment (LDX) 
+was terminated in 2011, but created possibly valuable results upon which new designs
+such as the Polomac or OpenStar's levitating dipole reactor (see \cite{simpson2026}) can build.
+
+
+
+\subsection{Polomac}
+Note that \citeauthor{Elio2024} in {Elio2024} are targeting much higher higher temperatures
+and plasma $\beta$ because they want to use D-D-fusion, for which the Lawson-criterion requires higher values (see \cite{Elio2024}).
+
+
+\subsubsection{Confinement in a Polomac}
+
+
+\subsubsection{Equilibrium formulation and steady-state operation}
+
+
+\subsubsection{Stability considerations and disruption risks}
+
+
+\subsubsection{Performance of the Polomac}

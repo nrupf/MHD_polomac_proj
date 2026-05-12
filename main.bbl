@@ -315,6 +315,157 @@
       \field{pages}{128}
       \range{pages}{1}
     \endentry
+    \entry{Grulke2026}{article}{}{}
+      \name{author}{20}{}{%
+        {{un=0,uniquepart=base,hash=40bf77154c6f8ff5f55294717c9e675a}{%
+           family={Grulke},
+           familyi={G\bibinitperiod},
+           given={Olaf},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=42e629c26c50549f682d1d9bc3b24f1d}{%
+           family={Baldzuhn},
+           familyi={B\bibinitperiod},
+           given={Jürgen},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=24f7a735bf770b068d842453a6cff49b}{%
+           family={Bannmann},
+           familyi={B\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6ce50b89e52ba917419a0af19fd91ba5}{%
+           family={Bozhenkov},
+           familyi={B\bibinitperiod},
+           given={Sergey\bibnamedelima A.},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=93f3525630e29f7912cb0038f9963ef0}{%
+           family={Büschel},
+           familyi={B\bibinitperiod},
+           given={Charlotte},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=43951e66718601739c11b298b65a7152}{%
+           family={Ford},
+           familyi={F\bibinitperiod},
+           given={Oliver\bibnamedelima Patrick},
+           giveni={O\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c7f460c72fa499371b60a97bfe8ae55b}{%
+           family={Hartmann},
+           familyi={H\bibinitperiod},
+           given={Dirk},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c1d17d5e9fda45eee261e4ee8be65a59}{%
+           family={Killer},
+           familyi={K\bibinitperiod},
+           given={Carsten},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2af46e0d75ccf3b5f4d0d1e076bcf445}{%
+           family={Langenberg},
+           familyi={L\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fb6ee4bc36bc012eec7df9d123bde7a6}{%
+           family={Laqua},
+           familyi={L\bibinitperiod},
+           given={Heinrich},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6dc0a580e385c829f0b67be571b6a985}{%
+           family={Overduin},
+           familyi={O\bibinitperiod},
+           given={Emil\bibnamedelima Jan},
+           giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=02e5c88a7232f0ef5e24a04ffd3a497c}{%
+           family={Perseo},
+           familyi={P\bibinitperiod},
+           given={Valeria},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9137f7162e7e3a1b9c1621f54057bcaa}{%
+           family={Polei},
+           familyi={P\bibinitperiod},
+           given={Niklas\bibnamedelima Simon},
+           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=281a39005790e7eacc9ff6d13ba0fbe4}{%
+           family={Proll},
+           familyi={P\bibinitperiod},
+           given={Josefine},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1fcd2a83952f9d55e72775de28471a19}{%
+           family={Reimold},
+           familyi={R\bibinitperiod},
+           given={Felix},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4f5dd387465c158cbd67a5ed45c4af58}{%
+           family={Romba},
+           familyi={R\bibinitperiod},
+           given={Thilo},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=509afef16bc18088d1f2561aeb21fc88}{%
+           family={Stange},
+           familyi={S\bibinitperiod},
+           given={Torsten},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=303d55dd54de25ab77cd682f0578425a}{%
+           family={Scharmer},
+           familyi={S\bibinitperiod},
+           given={Floris},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c5da04fde991958df385f97e3daefe80}{%
+           family={Stechow},
+           familyi={S\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod},
+           givenun=0,
+           prefix={von},
+           prefixi={v\bibinitperiod},
+           prefixun=0}}%
+        {{un=0,uniquepart=base,hash=d1c43b91bfe7dd2c9b5a53dab674bcb3}{%
+           family={Tsikouras},
+           familyi={T\bibinitperiod},
+           given={Anastasios},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing on behalf of the IAEA}%
+      }
+      \strng{namehash}{f1829b35f0218ed9ae5d5176540b6689}
+      \strng{fullhash}{75f24a4f37eccdfb5e7cadcc75c28afe}
+      \strng{fullhashraw}{75f24a4f37eccdfb5e7cadcc75c28afe}
+      \strng{bibnamehash}{f1829b35f0218ed9ae5d5176540b6689}
+      \strng{authorbibnamehash}{f1829b35f0218ed9ae5d5176540b6689}
+      \strng{authornamehash}{f1829b35f0218ed9ae5d5176540b6689}
+      \strng{authorfullhash}{75f24a4f37eccdfb5e7cadcc75c28afe}
+      \strng{authorfullhashraw}{75f24a4f37eccdfb5e7cadcc75c28afe}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nuclear Fusion}
+      \field{note}{Accepted manuscript published online 14 April 2026}
+      \field{title}{Overview of Wendelstein 7-X high-performance operation}
+      \field{year}{2026}
+      \verb{doi}
+      \verb 10.1088/1741-4326/ae5f32
+      \endverb
+    \endentry
     \entry{leveque2002}{book}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=c5fc096f540a44e56f892cc83176f0fb}{%
