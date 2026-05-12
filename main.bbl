@@ -227,6 +227,52 @@
       \field{title}{Ideal MHD}
       \field{year}{2014}
     \endentry
+    \entry{godlewski2021}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=c8d73bcf77737cacb75531c20387b62f}{%
+           family={Godlewski},
+           familyi={G\bibinitperiod},
+           given={Edwige},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6db83ce6e33e40636ec1422fdb4afd48}{%
+           family={Raviart},
+           familyi={R\bibinitperiod},
+           given={Pierre-Arnaud},
+           giveni={P\bibinithyphendelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York, NY}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{d0d32be5109c7e6c3767fa598cc9e691}
+      \strng{fullhash}{d0d32be5109c7e6c3767fa598cc9e691}
+      \strng{fullhashraw}{d0d32be5109c7e6c3767fa598cc9e691}
+      \strng{bibnamehash}{d0d32be5109c7e6c3767fa598cc9e691}
+      \strng{authorbibnamehash}{d0d32be5109c7e6c3767fa598cc9e691}
+      \strng{authornamehash}{d0d32be5109c7e6c3767fa598cc9e691}
+      \strng{authorfullhash}{d0d32be5109c7e6c3767fa598cc9e691}
+      \strng{authorfullhashraw}{d0d32be5109c7e6c3767fa598cc9e691}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{isbn}{978-1-0716-1344-3}
+      \field{issn}{0066-5452}
+      \field{series}{Applied Mathematical Sciences}
+      \field{title}{Numerical Approximation of Hyperbolic Systems of Conservation Laws}
+      \field{volume}{118}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.1007/978-1-0716-1344-3
+      \endverb
+    \endentry
     \entry{goldston1995}{book}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=50c82fa1a083bb62c8f2544db11f0934}{%
@@ -268,6 +314,36 @@
       \field{year}{1995}
       \field{pages}{128}
       \range{pages}{1}
+    \endentry
+    \entry{leveque2002}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c5fc096f540a44e56f892cc83176f0fb}{%
+           family={LeVeque},
+           familyi={L\bibinitperiod},
+           given={Randall\bibnamedelima J.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{c5fc096f540a44e56f892cc83176f0fb}
+      \strng{fullhash}{c5fc096f540a44e56f892cc83176f0fb}
+      \strng{fullhashraw}{c5fc096f540a44e56f892cc83176f0fb}
+      \strng{bibnamehash}{c5fc096f540a44e56f892cc83176f0fb}
+      \strng{authorbibnamehash}{c5fc096f540a44e56f892cc83176f0fb}
+      \strng{authornamehash}{c5fc096f540a44e56f892cc83176f0fb}
+      \strng{authorfullhash}{c5fc096f540a44e56f892cc83176f0fb}
+      \strng{authorfullhashraw}{c5fc096f540a44e56f892cc83176f0fb}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Cambridge Texts in Applied Mathematics}
+      \field{title}{Finite Volume Methods for Hyperbolic Problems}
+      \field{year}{2002}
     \endentry
     \entry{sips2018}{article}{}{}
       \true{moreauthor}
@@ -340,6 +416,8 @@
       \endverb
     \endentry
   \enddatalist
+  \missing{taflove2005}
+  \missing{yee1966}
 \endrefsection
 \endinput
 

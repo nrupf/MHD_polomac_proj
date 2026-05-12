@@ -4,14 +4,12 @@
 We want to be able to solve for the independent time dependent properties of the MHD equations in \autoref{subsec: The ideal MHD equations},
 which are $\varrho$, $\vec{V}$, $\vec{B}$ and $P$.  
 
-
 If we have $\vec{B}$ and $\vec{V}$ we will be able to solve for $\vec{E}$ and $\vec{J}$ at any time via \eqref{eq: MHD ohm's law} and \eqref{eq: MHD ampere-maxwell}, respectively.
-
 
 \subsection{Equations to be solved}
 As in \autoref{subsec: theory of alfven waves} we eliminate $\vec{E}$ and $\vec{J}$.
 Additionally we take the mass continuity equation \eqref{eq: MHD mass continuity eq} and the closure equation \eqref{eq: MHD closure eq}
-to arrive at a system of four first-order hyperbolic partial differential equations
+to arrive at a system of four partial differential equations
 \begin{align*}
     \frac{\partial \varrho}{\partial t} + \nabla \cdot (\varrho \vec{V}) &= 0 \\
     \varrho \frac{d\vec{V}}{dt} &= -\nabla P + \frac{1}{\mu_0}(\nabla \times \vec{B}) \times \vec{B} \\
@@ -23,8 +21,6 @@ which is not evolved but must be preserved
 \begin{align*}
     \nabla \cdot \vec{B} &= 0.
 \end{align*}
-
-
 
 \section{Linearization and discretization}
 
@@ -58,72 +54,64 @@ automatically preserved by \eqref{eq: lin induction} and serves as a numerical
 consistency check. The unknowns to be time-stepped are $\vec{V}_1$, $\vec{B}_1$,
 and $P_1$.
 
-
-\subsection{FDTD}
-
-\subsection{Types of PDEs}
-\label{subsec: types of PDEs}
-
-The linearized system \eqref{eq: lin continuity}--\eqref{eq: lin pressure} consists
-of first-order, linear, hyperbolic partial differential equations. This can be seen
-by noting that all time derivatives appear linearly on the left-hand side and the
-right-hand sides contain only spatial derivatives of the unknowns, with no
-dissipative (parabolic) or elliptic terms. Hyperbolic systems propagate information
-at finite speeds along characteristics; the relevant speeds here are the Alfv\'en
-velocity $v_A$ and the magnetosonic speed $v_f = \sqrt{v_A^2 + c_s^2}$, both
-derived in \autoref{sec: relevant parameters}. This structure makes the system
-well-suited to explicit time-domain methods such as FDTD.
-
-\subsection{Reduction to 2D in cylindrical coordinates}
+\subsection{Reduction to 2D axisymmetric cylindrical coordinates}
 \label{subsec: 2D cylindrical reduction}
 
 The Polomac geometry is naturally described in cylindrical coordinates
-$(r, \varphi, z)$. We adopt the axisymmetric approximation already used in
-\autoref{chap: static equilibrium}, setting $\partial/\partial\varphi = 0$.
-All perturbation fields are then functions of $(r, z, t)$ only.
+$(r, \varphi, z)$. We adopt two simplifications consistent with the rest of this
+work.
 
-We choose the equilibrium field along the $z$-axis,
-$\vec{B}_0 = B_0 \hat{e}_z$, which is the simplest geometry consistent with
-the poloidal dominance of the Polomac (see \autoref{subsec: polomac geometry})
-and with the Alfv\'en wave analysis in \autoref{subsec: theory of alfven waves}.
-In this geometry the axisymmetric ($\partial_\varphi = 0$) cylindrical
-differential operators \eqref{eq: cylindrical divergence}, \eqref{eq: cylindrical curl}
-reduce to
+First, we set $\partial/\partial\varphi = 0$, i.e. we restrict to axisymmetric
+perturbations. This is the same approximation already made in
+\autoref{chap: Static equilibrium model in cylindrical coordinates under axisymmetric assumptions}
+and is motivated by the axisymmetry of the Polomac, broken only by the tunnels (see \autoref{subsec: polomac geometry}). All
+perturbation fields are then functions of $(r, z, t)$ only.
+
+Second, we choose $\vec{B}_0 = B_0\hat{e}_z$, a uniform field along the
+$z$-axis. This is what is to be expected in the vertical parts of the Polomac
+(in the middle, outside the arcs) and is the simplest equilibrium consistent with a dominantly poloidal
+field. We used the same setting
+used in \autoref{subsec: theory of alfven waves} to derive the Alfv\'{e}n
+dispersion relation.
+
+Under these two assumptions the cylindrical differential operators from
+\autoref{sec: equlibrium Axisymmetric and poloidal formulation} reduce to
 \begin{align}
     \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial(r F_r)}{\partial r}
-        + \frac{\partial F_z}{\partial z}, \\
+        + \frac{\partial F_z}{\partial z},
+    \label{eq: reduced div} \\
     (\nabla \times \vec{F})_r &= -\frac{\partial F_\varphi}{\partial z}, \qquad
     (\nabla \times \vec{F})_\varphi = \frac{\partial F_r}{\partial z}
         - \frac{\partial F_z}{\partial r}, \qquad
     (\nabla \times \vec{F})_z = \frac{1}{r}\frac{\partial(r F_\varphi)}{\partial r}.
+    \label{eq: reduced curl}
 \end{align}
 
-We expand the perturbation fields into components
+
+
+We expand the perturbation fields as
 $\vec{V}_1 = V_r\hat{e}_r + V_\varphi\hat{e}_\varphi + V_z\hat{e}_z$ and
 $\vec{B}_1 = B_r^{(1)}\hat{e}_r + B_\varphi^{(1)}\hat{e}_\varphi + B_z^{(1)}\hat{e}_z$.
-Inserting $\vec{B}_0 = B_0\hat{e}_z$ into the linearized system
-\eqref{eq: lin continuity}--\eqref{eq: lin pressure} and evaluating each component
-yields the following scalar equations.
+Inserting $\vec{B}_0 = B_0\hat{e}_z$ and evaluating
+\eqref{eq: lin momentum}--\eqref{eq: lin pressure} component by component using
+\eqref{eq: reduced div}--\eqref{eq: reduced curl} yields the following seven
+scalar equations.
 
-\textbf{Pressure} (from \eqref{eq: lin pressure}):
+\paragraph{Pressure}
 \begin{align}
     \frac{\partial P_1}{\partial t} &= -\gamma P_0
         \left(\frac{1}{r}\frac{\partial(r V_r)}{\partial r}
-        + \frac{\partial V_z}{\partial z}\right).
+        + \frac{\partial V_z}{\partial z}\right)
+        = -\gamma P_0 \frac{\partial V_r}{\partial r}
+        -\gamma P_0 \frac{V_r}{r}
+        -\gamma P_0 \frac{\partial V_z}{\partial z}.
     \label{eq: 2D pressure}
 \end{align}
 
-\textbf{Momentum} (from \eqref{eq: lin momentum}),
-using $(\nabla\times\vec{B}_1)\times\vec{B}_0
-= B_0\,\partial_z\vec{B}_1^\text{pol} - B_0(\nabla\cdot\vec{B}_1^\text{pol})\hat{e}_z$
-evaluated component by component:
+\paragraph{Momentum}
+
 \begin{align}
     \varrho_0\frac{\partial V_r}{\partial t} &= -\frac{\partial P_1}{\partial r}
-        + \frac{B_0}{\mu_0}\left(\frac{\partial B_r^{(1)}}{\partial z}
-        - \frac{\partial B_z^{(1)}}{\partial r}\right)
-        \cdot(-1) \cdot(-1),
-        \nonumber \\
-    &= -\frac{\partial P_1}{\partial r}
         + \frac{B_0}{\mu_0}\frac{\partial B_r^{(1)}}{\partial z}
         - \frac{B_0}{\mu_0}\frac{\partial B_z^{(1)}}{\partial r},
     \label{eq: 2D mom r} \\
@@ -134,9 +122,8 @@ evaluated component by component:
     \label{eq: 2D mom z}
 \end{align}
 
-\textbf{Induction} (from \eqref{eq: lin induction}),
-using $\nabla\times(\vec{V}_1\times B_0\hat{e}_z)
-= B_0\,\partial_z\vec{V}_1 - B_0(\nabla\cdot\vec{V}_1)\hat{e}_z$:
+\paragraph{Induction}
+
 \begin{align}
     \frac{\partial B_r^{(1)}}{\partial t} &=
         B_0\frac{\partial V_r}{\partial z},
@@ -145,45 +132,225 @@ using $\nabla\times(\vec{V}_1\times B_0\hat{e}_z)
         B_0\frac{\partial V_\varphi}{\partial z},
     \label{eq: 2D ind phi} \\
     \frac{\partial B_z^{(1)}}{\partial t} &=
-        -B_0\left(\frac{1}{r}\frac{\partial(r V_r)}{\partial r}
-        + \frac{\partial V_z}{\partial z}\right).
+        -\frac{B_0}{r}\frac{\partial(r V_r)}{\partial r}
+        = 
+        -B_0\frac{\partial V_r}{\partial r}
+        -B_0\frac{V_r}{r}
     \label{eq: 2D ind z}
 \end{align}
 
-Note that the $\varphi$-components \eqref{eq: 2D mom phi} and \eqref{eq: 2D ind phi}
-decouple from the rest and describe a pure shear Alfv\'en wave propagating along
-$\hat{e}_z$, consistent with the dispersion relation \eqref{eq: alfven dispersion}.
-The remaining components $(V_r, V_z, P_1, B_r^{(1)}, B_z^{(1)})$ describe the
-compressional (magnetosonic) branch.
+The system decouples into two independent subsystems. The $\varphi$-components
+\eqref{eq: 2D mom phi} and \eqref{eq: 2D ind phi} form a closed $2\times 2$ system
+in $(V_\varphi, B_\varphi^{(1)})$ describing a pure shear Alfv\'{e}n wave
+propagating along $\hat{e}_z$, consistent with \autoref{subsec: theory of alfven waves}.
+The remaining five equations
+\eqref{eq: 2D pressure}, \eqref{eq: 2D mom r}, \eqref{eq: 2D mom z},
+\eqref{eq: 2D ind r}, \eqref{eq: 2D ind z} form a coupled system in
+$(P_1, V_r, V_z, B_r^{(1)}, B_z^{(1)})$ describing the compressional
+(magnetosonic) branch.
 
-\subsection{FDTD Discretization}
+\begin{comment}
+\subsection{Types of PDEs}
+\label{subsec: types of PDEs}
+
+To classify the reduced system, we write it in first-order matrix form along
+the $z$-direction, which is the direction of $\vec{B}_0$ and thus the principal
+propagation direction. Taking the state vector
+\begin{align}
+    \vec{u} = \begin{pmatrix} V_z \\ V_r \\ B_z^{(1)} \\ B_r^{(1)} \\ P_1 \end{pmatrix},
+\end{align}
+equations \eqref{eq: 2D pressure}--\eqref{eq: 2D ind z} take the form
+\begin{align}
+    \frac{\partial \vec{u}}{\partial t} + \mathsf{A}\frac{\partial \vec{u}}{\partial z} = \vec{s},
+    \label{eq: matrix system}
+\end{align}
+where $\vec{s}$ contains the $r$-derivative terms (which do not affect the
+classification in $z$) and the flux matrix is
+\begin{align}
+    \mathsf{A} = \begin{pmatrix}
+        0      & 0      & 0             & 0      & 1/\varrho_0 \\
+        0      & 0      & 0             & -B_0/(\mu_0\varrho_0) & 0 \\
+        \gamma P_0 & 0  & 0             & 0      & 0           \\
+        0      & B_0    & 0             & 0      & 0           \\
+        \gamma P_0 & 0  & 0             & 0      & 0
+    \end{pmatrix}.
+    \label{eq: A matrix}
+\end{align}
+A system of the form $\partial_t\vec{u} + \mathsf{A}\,\partial_z\vec{u} = \vec{s}$
+is \emph{hyperbolic} if and only if $\mathsf{A}$ has only real eigenvalues and a
+complete set of eigenvectors \cite{leveque2002}. The eigenvalues $\lambda$ are the
+characteristic speeds. Computing $\det(\mathsf{A} - \lambda\mathsf{I}) = 0$ yields
+\begin{align}
+    \lambda^2\!\left(\lambda^2 - v_A^2\right)\!\left(\lambda^2 - v_f^2\right) = 0,
+    \label{eq: char eq}
+\end{align}
+where
+\begin{align}
+    v_A = \frac{B_0}{\sqrt{\mu_0\varrho_0}}, \qquad
+    v_f = \sqrt{v_A^2 + c_s^2}, \qquad
+    c_s = \sqrt{\frac{\gamma P_0}{\varrho_0}}.
+    \label{eq: char speeds}
+\end{align}
+The five eigenvalues are therefore
+\begin{align}
+    \lambda \in \{0,\; \pm v_A,\; \pm v_f\},
+    \label{eq: eigenvalues}
+\end{align}
+all of which are real. One can verify that the corresponding eigenvectors are
+linearly independent, so $\mathsf{A}$ is diagonalisable over $\mathbb{R}$ and
+the system is \emph{hyperbolic}. The $\varphi$-subsystem
+\eqref{eq: 2D mom phi}--\eqref{eq: 2D ind phi} is separately hyperbolic with
+eigenvalues $\pm v_A$.
+
+The eigenvalue $\lambda = 0$ is the entropy mode: a stationary perturbation
+in pressure and density with no magnetic or velocity response. The pair
+$\pm v_A$ are the shear Alfv\'{e}n waves already derived analytically in
+\autoref{subsec: theory of alfven waves}. The pair $\pm v_f$ are the fast
+magnetosonic waves. Since all characteristic speeds are real and finite, the
+system propagates information at bounded speeds, which is the defining property
+of a hyperbolic system and the necessary condition for an explicit
+time-marching scheme to be applicable.
+
+\end{comment}
+
+\subsection{Types of PDEs}
+\label{subsec: types of PDEs}
+
+In general, hyperbolicity is charactereized by finite propagation speed.
+
+To classify the reduced $(r,z)$ system, we apply the definition of hyperbolicity
+for first-order systems from \cite{godlewski2021} to the principal part of our
+balance law. Since hyperbolicity is determined solely by the eigenvalues of the
+flux Jacobian $A(\mathbf{u}) = \partial \mathbf{f}/\partial \mathbf{u}$, and the
+geometric source term does not enter $A(\mathbf{u})$, the classification proceeds
+identically to the source-free case \cite[Ch.~VII, \S1.1]{godlewski2021}.
+Writing the system in the form
+\begin{align}
+    \frac{\partial \vec{u}}{\partial t}
+        + \mathsf{A}_r \frac{\partial \vec{u}}{\partial r}
+        + \mathsf{A}_z \frac{\partial \vec{u}}{\partial z} = \vec{s}(\vec{u}, \vec{r}),
+    \label{eq: matrix system}
+\end{align}
+where the state vector is
+\begin{align}
+    \vec{u} = \begin{pmatrix} V_r \\ V_z \\ B_r^{(1)} \\ B_z^{(1)} \\ P_1
+    \end{pmatrix},
+\end{align}
+the flux matrices and the source term are read off directly from 
+\eqref{eq: 2D pressure}, \eqref{eq: 2D mom r}, \eqref{eq: 2D mom z},
+\eqref{eq: 2D ind r}, \eqref{eq: 2D ind z}:
+\begin{align}
+    \mathbf{A}_r &=
+    \begin{pmatrix}
+    0           & 0 & 0 & \frac{B_0}{\mu_0\varrho_0} & \frac{1}{\varrho_0} \\
+    0           & 0 & 0 & 0 & 0 \\
+    0           & 0 & 0 & 0 & 0 \\
+    B_0        & 0 & 0 & 0 & 0 \\
+    \gamma P_0 & 0 & 0 & 0 & 0
+    \end{pmatrix},
+    \qquad
+    \mathbf{A}_z =
+    \begin{pmatrix}
+        0    & 0            & -\frac{B_0}{\mu_0\varrho_0} & 0 & 0            \\
+        0    & 0            & 0 & 0                        & \frac{1}{\varrho_0} \\
+        -B_0 & 0            & 0 & 0                        & 0 \\
+        0    & 0            & 0 & 0                        & 0 \\
+        0    & \gamma P_0   & 0 & 0                        & 0
+    \end{pmatrix},
+    \\
+    \vec{s} &= -
+    \frac{V_r}{r}
+    \begin{pmatrix}
+        0 \\ 0 \\ 0 \\ B_0 \\ \gamma P_0
+    \end{pmatrix}.
+\end{align}
+
+
+
+The system \eqref{eq: matrix system} is hyperbolic if and only if for all
+$\alpha_r, \alpha_z \in \mathbb{R}$ the combined matrix
+\begin{align}
+    \mathsf{A}(\alpha_r, \alpha_z) := \alpha_r \mathsf{A}_r + \alpha_z \mathsf{A}_z
+    \label{eq: combined matrix}
+\end{align}
+has only real eigenvalues and is diagonalisable \cite{godlewski2021}. Computing
+$\det(\mathsf{A}(\alpha_r,\alpha_z) - \lambda \mathsf{I}) = 0$ yields
+\begin{align}
+    \lambda \!\left(\lambda^2 - \alpha_z^2 v_A^2\right)
+    \!\left(\lambda^2 - \alpha_r^2 c_s^2 - \alpha_z^2 v_f^2\right) = 0,
+    \label{eq: char eq general}
+\end{align}
+where 
+\begin{align}
+    v_A = \frac{B_0}{\sqrt{\mu_0\varrho_0}}, \qquad
+    v_f = \sqrt{v_A^2 + c_s^2}, \qquad
+    c_s = \sqrt{\frac{\gamma P_0}{\varrho_0}}.
+    \label{eq: char speeds}
+\end{align}
+The five eigenvalues are
+\begin{align}
+    \lambda \in \left\{0,\;
+        \pm\, \alpha_z v_A,\;
+        \pm\sqrt{\alpha_r^2 c_s^2 + \alpha_z^2 v_f^2}
+    \right\},
+    \label{eq: eigenvalues general}
+\end{align}
+which are real for all $\alpha_r, \alpha_z \in \mathbb{R}$ since $v_A, c_s,
+v_f > 0$. One can verify that the eigenvectors are linearly independent for
+all $(\alpha_r, \alpha_z) \neq (0,0)$, so $\mathsf{A}(\alpha_r, \alpha_z)$ is
+diagonalisable over $\mathbb{R}$ and the system is \emph{hyperbolic}.
+
+The structure of \eqref{eq: eigenvalues general} is physically transparent.
+Setting $\alpha_r = 0$ (pure $z$-propagation, parallel to $\vec{B}_0$) recovers
+eigenvalues $\{0, \pm v_A, \pm v_f\}$: the entropy mode, the shear Alfv\'{e}n
+wave, and the fast magnetosonic wave. Setting $\alpha_z = 0$ (pure
+$r$-propagation, perpendicular to $\vec{B}_0$) gives $\{0, 0, \pm c_s\}$: only
+acoustic waves survive, since magnetic tension acts only along field lines and
+provides no restoring force in the perpendicular direction. The Alfv\'{e}n speed
+$v_A$ appears only through the $\alpha_z$ terms, confirming that Alfv\'{e}n
+waves propagate strictly along $\vec{B}_0$.
+
+The fastest characteristic speed for any propagation direction is
+$\sqrt{\alpha_r^2 c_s^2 + \alpha_z^2 v_f^2} \leq |\vec{\alpha}|\, v_f$,
+so $v_f$ governs the CFL condition \eqref{eq: CFL}.
+
+The $\varphi$-subsystem \eqref{eq: 2D mom phi}--\eqref{eq: 2D ind phi} is
+separately hyperbolic with eigenvalues $\pm \alpha_z v_A$ and is therefore
+subject to the same CFL bound.
+
+\subsection{FDTD discretization}
 \label{subsec: FDTD}
+
+The Finite-Difference Time-Domain (FDTD) method \cite{taflove2005} discretizes
+hyperbolic systems by replacing time and spatial derivatives with finite
+differences on a staggered grid. We briefly outline the approach here to provide
+a complete framework; a full implementation is left as future work.
 
 \subsubsection{Staggered grid}
 
-We discretize the $(r, z)$ domain on a uniform staggered (Yee-type) grid with
-spacings $\Delta r$ and $\Delta z$. Scalar quantities $P_1$, $B_z^{(1)}$, $\varrho_1$
-and $V_z$ are located at cell centres $(r_i, z_j)$; radial components $V_r$ and
-$B_r^{(1)}$ are located at the $r$-faces $(r_{i+1/2}, z_j)$; azimuthal components
-$V_\varphi$ and $B_\varphi^{(1)}$ are co-located with $V_r$ and $B_r^{(1)}$.
-Time is staggered by half a step: $\vec{B}_1$ is evaluated at integer times $t^n$
-and $\vec{V}_1$, $P_1$ at half-integer times $t^{n+1/2}$. This leapfrog arrangement
-ensures that the update of $\vec{B}_1$ from the induction equations uses
-$\vec{V}_1$ values that are centred in time, giving second-order accuracy in both
-space and time without any implicit solve.
+We discretize the $(r,z)$ domain on a uniform staggered (Yee-type) grid
+\cite{yee1966} with spacings $\Delta r$ and $\Delta z$. The staggering is
+chosen to match the structure of the equations:
+\begin{itemize}
+    \item scalar quantities $P_1$, $B_z^{(1)}$, $\varrho_1$, and $V_z$ at
+        cell centres $(r_i, z_j) = (i\Delta r,\, j\Delta z)$;
+    \item $V_r$ and $B_r^{(1)}$ at $r$-face centres
+        $(r_{i+1/2}, z_j) = ((i+\tfrac{1}{2})\Delta r,\, j\Delta z)$;
+    \item $V_\varphi$ and $B_\varphi^{(1)}$ co-located with $V_r$ and $B_r^{(1)}$.
+\end{itemize}
+Time is staggered by half a step: $\vec{B}_1$ is evaluated at integer times
+$t^n = n\Delta t$ and $\vec{V}_1$, $P_1$ at half-integer times
+$t^{n+1/2} = (n+\tfrac{1}{2})\Delta t$. This leapfrog arrangement ensures that
+each field update uses the other field at the temporally centred point, giving
+second-order accuracy in both space and time without any implicit solve.
 
-\subsubsection{Courant stability condition}
+\subsubsection{Courant--Friedrichs--Lewy stability condition}
 
-Because the linearized ideal MHD equations are hyperbolic, explicit time-stepping
-is subject to the Courant--Friedrichs--Lewy (CFL) stability condition. The fastest
-signal speed in the system is the fast magnetosonic speed
-\begin{align}
-    v_f = \sqrt{v_A^2 + c_s^2},
-    \label{eq: fast speed}
-\end{align}
-where $v_A$ is the Alfv\'en velocity \eqref{eq: alfven velocity} and
-$c_s = \sqrt{\gamma P_0/\varrho_0}$ is the adiabatic sound speed.
-In two spatial dimensions the CFL condition reads
+Because the system is hyperbolic with fastest characteristic speed $v_f$, an
+explicit scheme is conditionally stable. The
+Courant--Friedrichs--Lewy (CFL) condition \cite{leveque2002} requires that the
+numerical domain of dependence contains the physical one. In two spatial
+dimensions this gives
 \begin{align}
     \Delta t \leq \frac{1}{v_f}
         \left(\frac{1}{\Delta r^2} + \frac{1}{\Delta z^2}\right)^{-1/2}.
@@ -191,44 +358,49 @@ In two spatial dimensions the CFL condition reads
 \end{align}
 Using the Polomac target values from \autoref{chap: relevant parameters}
 ($v_A \approx 5.5\times10^5\ \mathrm{m\,s^{-1}}$,
-$T_i \approx T_e = 100\ \mathrm{eV}$, $\gamma = 5/3$), the sound speed is
+$T_i \approx T_e = 100\ \mathrm{eV}$, $\gamma = 5/3$), the adiabatic sound
+speed is
 \begin{align*}
     c_s = \sqrt{\frac{\gamma k_B T}{m_i}}
-        = \sqrt{\frac{5/3 \times 100\ \mathrm{eV} \times 1.6\times10^{-19}\ \mathrm{J\,eV^{-1}}}
-        {1.67\times10^{-27}\ \mathrm{kg}}}
+        = \sqrt{\frac{\tfrac{5}{3} \times 100\ \mathrm{eV}
+            \times 1.6\times10^{-19}\ \mathrm{J\,eV^{-1}}}
+            {1.67\times10^{-27}\ \mathrm{kg}}}
         \approx 9.2\times10^4\ \mathrm{m\,s^{-1}},
 \end{align*}
-giving $v_f \approx 5.6\times10^5\ \mathrm{m\,s^{-1}}$.
-For a grid with $\Delta r = \Delta z = \Delta x$, \eqref{eq: CFL} simplifies to
-$\Delta t \leq \Delta x / (\sqrt{2}\, v_f)$.
-Taking the smallest Polomac length scale $L = 0.04\ \mathrm{m}$ and a modest
-$N = 100$ grid points per direction ($\Delta x = 4\times10^{-4}\ \mathrm{m}$),
-this gives
+giving $v_f = \sqrt{v_A^2+c_s^2} \approx 5.6\times10^5\ \mathrm{m\,s^{-1}}$.
+For a square grid $\Delta r = \Delta z = \Delta x$, \eqref{eq: CFL} simplifies to
+$\Delta t \leq \Delta x/(\sqrt{2}\,v_f)$.
+Taking the smallest Polomac length scale $L = 0.04\ \mathrm{m}$ resolved by
+$N = 100$ grid points ($\Delta x = 4\times10^{-4}\ \mathrm{m}$),
 \begin{align*}
-    \Delta t lesssim \frac{4\times10^{-4}}{\sqrt{2}\times 5.6\times10^5}
+    \Delta t \lesssim \frac{4\times10^{-4}}{\sqrt{2}\times 5.6\times10^5}
         \approx 5\times10^{-10}\ \mathrm{s}.
 \end{align*}
-This is comfortably smaller than the Alfv\'en timescale
-$\tau_A \approx 5.5\times10^{-7}\ \mathrm{s}$, so a simulation spanning
-several Alfv\'en times requires of order $10^3$ timesteps.
+This is three orders of magnitude smaller than the Alfv\'{e}n timescale
+$\tau_A \approx 5.5\times10^{-7}\ \mathrm{s}$, so a simulation spanning several
+Alfv\'{e}n times requires of order $10^3$ timesteps, which is computationally
+tractable.
 
 \subsection{Boundary conditions}
 \label{subsec: BCs}
 
 We model the plasma as bounded by perfectly conducting walls, consistent with
-the assumption used for the static equilibrium in \autoref{subsec: boundary conditions}.
-At a perfectly conducting wall with outward normal $\hat{n}$, the standard
-electromagnetic boundary conditions require that no magnetic flux passes through
-the wall and no plasma flows through it:
+\autoref{subsec: boundary conditions}. At such a wall with outward normal
+$\hat{n}$, no magnetic flux passes through and no plasma flows through:
 \begin{align}
     \vec{B}_1 \cdot \hat{n} &= 0, \label{eq: BC B} \\
     \vec{V}_1 \cdot \hat{n} &= 0. \label{eq: BC V}
 \end{align}
-In the $(r,z)$ domain these translate to: at the outer wall ($r = r_\text{wall}$),
-$B_r^{(1)} = 0$ and $V_r = 0$; at the top and bottom caps ($z = z_\text{top/bot}$),
-$B_z^{(1)} = 0$ and $V_z = 0$. At the inner boundary ($r = 0$ or at the surface of
-the central coil), the regularity condition $\partial_r(\cdot)|_{r=0} = 0$ is applied
-for scalar quantities, consistent with \autoref{subsec: boundary conditions}.
-The tangential components ($V_\varphi$, $B_\varphi^{(1)}$, $V_z$ at radial walls,
-$V_r$ at axial walls) are left free, consistent with ideal MHD — a perfectly
-conducting wall exerts no tangential force on the plasma.
+In the $(r,z)$ domain these translate concretely to:
+\begin{itemize}
+    \item outer wall ($r = r_\mathrm{wall}$): $B_r^{(1)} = 0$, $V_r = 0$;
+    \item top and bottom caps ($z = z_\mathrm{top},\, z_\mathrm{bot}$):
+        $B_z^{(1)} = 0$, $V_z = 0$;
+    \item axis or inner coil surface ($r = 0$ or $r = r_\mathrm{coil}$):
+        regularity requires $B_r^{(1)} = 0$ and $V_r = 0$, consistent with
+        \autoref{subsec: boundary conditions}.
+\end{itemize}
+The tangential components ($V_z$ and $V_\varphi$ at radial walls; $V_r$ and
+$V_\varphi$ at axial walls; the corresponding $B$ components) are left free,
+since a perfectly conducting wall exerts no tangential force on the plasma in
+ideal MHD.

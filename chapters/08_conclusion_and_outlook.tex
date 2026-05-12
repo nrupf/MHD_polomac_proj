@@ -4,3 +4,28 @@
 
 \section{Outlook}
 closed magnetic field lines $\implies$ compressional instabilities
+
+\subsection{Extension to non-axisymmetric perturbations}
+
+The solver framework developed in \autoref{chap: FDTD} assumes axisymmetry
+($\partial/\partial\varphi = 0$), corresponding to the $m = 0$ toroidal mode.
+Since the equilibrium itself is axisymmetric, perturbations of arbitrary toroidal
+mode number $m$ can be incorporated without increasing the dimensionality of
+the numerical problem. Writing every perturbation field as
+\begin{align}
+    Q_1(r, \varphi, z, t) = \hat{Q}_1(r, z, t)\, e^{im\varphi}, \qquad m \in \mathbb{Z},
+\end{align}
+replaces $\partial/\partial\varphi \to im$ everywhere in the linearized equations
+\eqref{eq: lin continuity}--\eqref{eq: lin pressure}. Each mode number $m$ then
+yields an independent 2D problem on the same $(r, z)$ grid, with additional $im/r$
+terms appearing in the divergence and curl operators. The solver structure,
+CFL condition, and boundary conditions carry over with only minor modifications.
+The one qualitative change is that the azimuthal components $V_\varphi$ and
+$B_\varphi^{(1)}$ no longer decouple from the poloidal components for $m \neq 0$,
+so all six field components must be evolved simultaneously. At the axis $r = 0$,
+the regularity condition becomes mode-dependent: fields must vanish there for
+$m \geq 1$. Surveying the lowest few mode numbers would allow identification
+of the dominant instability modes of the Polomac, which is of direct physical
+interest given the closed-field-line geometry noted in \autoref{sec: conclusion}.
+
+One way to start to consider tunnels would be setting the small perturbation of B phi dep.
