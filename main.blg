@@ -1,18 +1,18 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [1] Config.pm:311> INFO - Logfile is 'main.blg'
-[252] biber-MSWIN64:340> INFO - === 
-[336] Biber.pm:420> INFO - Reading 'main.bcf'
-[587] Biber.pm:994> INFO - Found 12 citekeys in bib section 0
-[622] Biber.pm:4463> INFO - Processing section 0
-[656] Biber.pm:4654> INFO - Looking for bibtex file 'bibliography.bib' for section 0
-[755] bibtex.pm:1713> INFO - LaTeX decoding ...
-[790] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
-[1059] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1060] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1061] Biber.pm:4283> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[1061] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
-[1111] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[1136] bbl.pm:779> INFO - Output to main.bbl
-[1137] Biber.pm:131> WARN - I didn't find a database entry for 'taflove2005' (section 0)
-[1138] Biber.pm:131> WARN - I didn't find a database entry for 'yee1966' (section 0)
-[1138] Biber.pm:133> INFO - WARNINGS: 2
+[179] biber-MSWIN64:340> INFO - === 
+[239] Biber.pm:420> INFO - Reading 'main.bcf'
+[408] Biber.pm:994> INFO - Found 16 citekeys in bib section 0
+[427] Biber.pm:4463> INFO - Processing section 0
+[445] Biber.pm:4654> INFO - Looking for bibtex file 'bibliography.bib' for section 0
+[497] bibtex.pm:1713> INFO - LaTeX decoding ...
+[530] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
+[715] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[716] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[716] Biber.pm:4283> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[716] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[747] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[793] bbl.pm:779> INFO - Output to main.bbl
+[794] Biber.pm:131> WARN - I didn't find a database entry for 'taflove2005' (section 0)
+[795] Biber.pm:131> WARN - I didn't find a database entry for 'yee1966' (section 0)
+[795] Biber.pm:133> INFO - WARNINGS: 2

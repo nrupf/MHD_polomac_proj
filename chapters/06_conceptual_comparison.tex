@@ -115,6 +115,7 @@ For a tokamak this limit scales as $\beta_\text{max} \propto I_p / (a B_T)$,
 so higher current and weaker field permit higher pressure (\cite{Freidberg2014}).
 Exceeding this bound also leads to major disruptions.
 
+
 \subsubsection{Performance of Tokamaks}
 
 If successful, ITER, the next-step international experiment, is designed to achieve $Q=10$ (fusion power ten times
@@ -195,17 +196,55 @@ such as the Polomac or OpenStar's levitating dipole reactor (see \cite{simpson20
 
 
 \subsection{Polomac}
-Note that \citeauthor{Elio2024} in {Elio2024} are targeting much higher higher temperatures
-and plasma $\beta$ because they want to use D-D-fusion, for which the Lawson-criterion requires higher values (see \cite{Elio2024}).
+Note that \citeauthor{Elio2024} in {Elio2024} are targeting much higher temperatures 
+because they want to use D-D-fusion, for which the Lawson-criterion requires higher values (see \cite{Elio2024}).
 
-
-\subsubsection{Confinement in a Polomac}
-
-
-\subsubsection{Equilibrium formulation and steady-state operation}
+The confinement in the Polomac happens through the closed poloidal magnetic field lines,
+the MHD equilibrium has been discussed in \autoref{chap: Static equilibrium model in cylindrical coordinates under axisymmetric assumptions}
+and operation is in principle stready-state.
+The performance targets of the Polomac are outlined in \cite{Elio2024} and remain to be validated.
 
 
 \subsubsection{Stability considerations and disruption risks}
 
+The Polomac, like the levitated dipole (LDX),
+carries no driven toroidal plasma current. There is therefore no
+analogue of the tokamak current-driven kink or tearing instability,
+and no mechanism for a major current-quench disruption
+(\cite{Freidberg2014}).
 
-\subsubsection{Performance of the Polomac}
+The principal stability threat is instead the \emph{interchange
+instability}: because the magnetic field is purely poloidal and the
+rotational transform is identically zero, there is no magnetic shear
+and no average-good-curvature region to suppress pressure-driven
+interchange modes \cite{Rosenbluth1957}. The only stabilising
+mechanism is \emph{plasma compressibility}. Marginal stability requires
+the pressure profile to satisfy the adiabaticity condition
+\begin{equation}
+    \frac{d}{d\psi}\!\left(p\,V^\gamma\right) \geq 0,
+    \qquad \gamma = \tfrac{5}{3},
+    \quad V(\psi) = \oint \frac{dl}{B},
+\end{equation}
+where $V(\psi)$ is the flux-tube volume normalized to magnetic flux (\cite{Garnier1999,Rosenbluth1957}).
+Profiles steeper than $p \propto V^{-\gamma}$ are interchange-unstable,
+while profiles shallower than this bound are stable. When the pressure
+profile is held near this marginal condition, \citeauthor{Garnier1999}
+showed that the configuration is simultaneously stable to high-$n$
+ballooning modes, because the most unstable ballooning eigenmodes
+are forced to have a node near the pressure maximum and must bend
+field lines in a region of reduced $\beta$ (\cite{Garnier1999}).
+The LDX experiment at MIT validated this picture experimentally,
+achieving peak $\beta \approx 0.2$ in quasi-steady-state discharges
+(\cite{Garnier2006}).
+
+A second, Polomac-specific risk is the hot-electron interchange (HEI) instability.
+In the supported (non-levitated) operating mode
+of LDX, intense HEI bursts prevented the build-up of high-pressure
+plasma; they were suppressed only when the background plasma density
+was raised sufficiently (\cite{Garnier2006}). The Polomac avoids
+physical supports inside the plasma volume, but its four magnetic
+tunnels—connecting the outer wall to the internal dipole coils—break
+toroidal axisymmetry in a way that could be qualitatively analogous to
+rod supports. Whether compressibility stabilisation survives this
+four-fold symmetry breaking has not yet been quantitatively
+assessed (\cite{Elio2024}).

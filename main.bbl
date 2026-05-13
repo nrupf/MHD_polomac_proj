@@ -227,6 +227,164 @@
       \field{title}{Ideal MHD}
       \field{year}{2014}
     \endentry
+    \entry{Garnier2006}{article}{}{}
+      \name{author}{10}{ul=2}{%
+        {{un=0,uniquepart=base,hash=aad45ea5acc19356fc8e8dccf849feda}{%
+           family={Garnier},
+           familyi={G\bibinitperiod},
+           given={D.\bibnamedelimi T.},
+           giveni={D\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3cbd1768be9f750c840e1690bf240b5b}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=da1f9b8e254bd320e31c1f97638bed69}{%
+           family={Mauel},
+           familyi={M\bibinitperiod},
+           given={M.\bibnamedelimi E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cefaf31041b4601af2253051c0173bd8}{%
+           family={Ortiz},
+           familyi={O\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=88e5466f951e2b74e7a22e02f23d15b5}{%
+           family={Boxer},
+           familyi={B\bibinitperiod},
+           given={A.\bibnamedelimi C.},
+           giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4509a1c87d985ab34cb758716efc7d04}{%
+           family={Ellsworth},
+           familyi={E\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=63e47d3200e4dbe07396cc092127d188}{%
+           family={Karim},
+           familyi={K\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=efc4884c2c3d971a6de10c9795bb0455}{%
+           family={Kesner},
+           familyi={K\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=208f9d3670c6ce8b8e296f37356272d5}{%
+           family={Mahar},
+           familyi={M\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=09962d19b12119205ab264fea4524ea7}{%
+           family={Roach},
+           familyi={R\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b93dcbb175dcf48bd2c29d93e7c35375}
+      \strng{fullhash}{0fa416290bdd5baebc91f2ecb002bcc2}
+      \strng{fullhashraw}{0fa416290bdd5baebc91f2ecb002bcc2}
+      \strng{bibnamehash}{b93dcbb175dcf48bd2c29d93e7c35375}
+      \strng{authorbibnamehash}{b93dcbb175dcf48bd2c29d93e7c35375}
+      \strng{authornamehash}{b93dcbb175dcf48bd2c29d93e7c35375}
+      \strng{authorfullhash}{0fa416290bdd5baebc91f2ecb002bcc2}
+      \strng{authorfullhashraw}{0fa416290bdd5baebc91f2ecb002bcc2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Levitated Dipole Experiment (LDX) [J. Kesner et al., in Fusion Energy 1998, 1165 (1999)] is a new research facility that is exploring the confinement and stability of plasma created within the dipole field produced by a strong superconducting magnet. Unlike other configurations in which stability depends on curvature and magnetic shear, magnetohydrodynamic stability of a dipole derives from plasma compressibility. Theoretically, the dipole magnetic geometry can stabilize a centrally peaked plasma pressure that exceeds the local magnetic pressure (β\&gt;1), and the absence of magnetic shear allows particle and energy confinement to decouple. In initial experiments, long-pulse, quasi-steady-state microwave discharges lasting more than 10s have been produced that are consistent with equilibria having peak beta values of 20\%. Detailed measurements have been made of discharge evolution, plasma dynamics and instability, and the roles of gas fueling, microwave power deposition profiles, and plasma boundary shape. In these initial experiments, the high-field superconducting floating coil was supported by three thin supports. The plasma is created by multifrequency electron cyclotron resonance heating at 2.45 and 6.4GHz, and a population of energetic electrons, with mean energies above 50keV, dominates the plasma pressure. Creation of high-pressure, high-beta plasma is possible only when intense hot electron interchange instabilities are stabilized by sufficiently high background plasma density. A dramatic transition from a low-density, low-beta regime to a more quiescent, high-beta regime is observed when the plasma fueling rate and confinement time become sufficiently large.}
+      \field{issn}{1070-664X}
+      \field{journaltitle}{Physics of Plasmas}
+      \field{month}{05}
+      \field{number}{5}
+      \field{title}{Production and study of high-beta plasma confined by a superconducting dipole magnet}
+      \field{volume}{13}
+      \field{year}{2006}
+      \field{pages}{056111}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1063/1.2186616
+      \endverb
+      \verb{eprint}
+      \verb https://pubs.aip.org/aip/pop/article-pdf/doi/10.1063/1.2186616/15804515/056111_1_online.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1063/1.2186616
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1063/1.2186616
+      \endverb
+    \endentry
+    \entry{Garnier1999}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=aad45ea5acc19356fc8e8dccf849feda}{%
+           family={Garnier},
+           familyi={G\bibinitperiod},
+           given={D.\bibnamedelimi T.},
+           giveni={D\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=efc4884c2c3d971a6de10c9795bb0455}{%
+           family={Kesner},
+           familyi={K\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=da1f9b8e254bd320e31c1f97638bed69}{%
+           family={Mauel},
+           familyi={M\bibinitperiod},
+           given={M.\bibnamedelimi E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{7e5890e92f1e0f8480e06c9c21aa9295}
+      \strng{fullhash}{7e5890e92f1e0f8480e06c9c21aa9295}
+      \strng{fullhashraw}{7e5890e92f1e0f8480e06c9c21aa9295}
+      \strng{bibnamehash}{7e5890e92f1e0f8480e06c9c21aa9295}
+      \strng{authorbibnamehash}{7e5890e92f1e0f8480e06c9c21aa9295}
+      \strng{authornamehash}{7e5890e92f1e0f8480e06c9c21aa9295}
+      \strng{authorfullhash}{7e5890e92f1e0f8480e06c9c21aa9295}
+      \strng{authorfullhashraw}{7e5890e92f1e0f8480e06c9c21aa9295}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Plasma confined by a magnetic dipole is stabilized, at low beta, by magnetic compressibility. The ideal magnetohydrodynamic (MHD) requirements for stability against interchange and high-n ballooning modes are derived at arbitrary beta for a fusion grade laboratory plasma confined by a levitated dipole. A high beta MHD equilibrium is found numerically with a pressure profile near marginal stability for interchange modes, a peak local beta of β∼10, and volume averaged beta of β̄∼0.5. This equilibrium is demonstrated to be ballooning stable on all field lines.}
+      \field{issn}{1070-664X}
+      \field{journaltitle}{Physics of Plasmas}
+      \field{month}{09}
+      \field{number}{9}
+      \field{title}{Magnetohydrodynamic stability in a levitated dipole}
+      \field{volume}{6}
+      \field{year}{1999}
+      \field{pages}{3431\bibrangedash 3434}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1063/1.873601
+      \endverb
+      \verb{eprint}
+      \verb https://pubs.aip.org/aip/pop/article-pdf/6/9/3431/19026255/3431_1_online.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1063/1.873601
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1063/1.873601
+      \endverb
+    \endentry
     \entry{godlewski2021}{book}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=c8d73bcf77737cacb75531c20387b62f}{%
@@ -495,6 +653,193 @@
       \field{series}{Cambridge Texts in Applied Mathematics}
       \field{title}{Finite Volume Methods for Hyperbolic Problems}
       \field{year}{2002}
+    \endentry
+    \entry{Rosenbluth1957}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e3adbcf83a3e875378c4438ae077c029}{%
+           family={Rosenbluth},
+           familyi={R\bibinitperiod},
+           given={M.N},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=45cb42934d20be870219d926ac9a7c85}{%
+           family={Longmire},
+           familyi={L\bibinitperiod},
+           given={C.L},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d9849a49acd4565fdd37fed7a3acb6a8}
+      \strng{fullhash}{d9849a49acd4565fdd37fed7a3acb6a8}
+      \strng{fullhashraw}{d9849a49acd4565fdd37fed7a3acb6a8}
+      \strng{bibnamehash}{d9849a49acd4565fdd37fed7a3acb6a8}
+      \strng{authorbibnamehash}{d9849a49acd4565fdd37fed7a3acb6a8}
+      \strng{authornamehash}{d9849a49acd4565fdd37fed7a3acb6a8}
+      \strng{authorfullhash}{d9849a49acd4565fdd37fed7a3acb6a8}
+      \strng{authorfullhashraw}{d9849a49acd4565fdd37fed7a3acb6a8}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper, we examine the question of the stability of plasmas confined by magnetic fields. Whereas previous studies of this problem have started from the magnetohydrodynamic equations, we pay closer attention to the motions of individual particles. Our results are similar to, but more general than, those which follow from the magnetohydrodynamic equations.}
+      \field{issn}{0003-4916}
+      \field{journaltitle}{Annals of Physics}
+      \field{number}{2}
+      \field{title}{Stability of plasmas confined by magnetic fields}
+      \field{volume}{1}
+      \field{year}{1957}
+      \field{pages}{120\bibrangedash 140}
+      \range{pages}{21}
+      \verb{doi}
+      \verb https://doi.org/10.1016/0003-4916(57)90055-6
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/0003491657900556
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/0003491657900556
+      \endverb
+    \endentry
+    \entry{simpson2026}{misc}{}{}
+      \name{author}{18}{}{%
+        {{un=0,uniquepart=base,hash=8cb0645b830c70921c33eb15bf956801}{%
+           family={Simpson},
+           familyi={S\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fe76b18bc871c475036126f9d6802f31}{%
+           family={Badcock},
+           familyi={B\bibinitperiod},
+           given={R.\bibnamedelimi A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d8fd74c77e6b4bc297ed21b163a03a34}{%
+           family={Berry},
+           familyi={B\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=20582332ec2961e5e0e462ef85a36273}{%
+           family={Chisholm},
+           familyi={C\bibinitperiod},
+           given={C.\bibnamedelimi S.},
+           giveni={C\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e650c9ce3a0b2f04b58d174579bedead}{%
+           family={Fimognari},
+           familyi={F\bibinitperiod},
+           given={P.\bibnamedelimi J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=186b0d15e0dadb854e7e3be22d78c8a3}{%
+           family={Fisher},
+           familyi={F\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=aad45ea5acc19356fc8e8dccf849feda}{%
+           family={Garnier},
+           familyi={G\bibinitperiod},
+           given={D.\bibnamedelimi T.},
+           giveni={D\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5dff2416bf046fd215c44a3725f55106}{%
+           family={Lenagh-Glue},
+           familyi={L\bibinithyphendelim G\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=008383c5b00a4d54aefd5ef3324d927c}{%
+           family={Leuw},
+           familyi={L\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2de37e9c58d5ca6907b9641267a1345d}{%
+           family={Mataira},
+           familyi={M\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f46a97ac823454bef4ea04c9dd3e89af}{%
+           family={Meadows},
+           familyi={M\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8e121dabc6ae8d7bcad4ae5e1c0c7fa4}{%
+           family={McIntosh},
+           familyi={M\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa12f28ddaa47f02c3ab8d7fcbfb2e72}{%
+           family={Poata},
+           familyi={P\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5c772d71e77e304e1aca41d9dc8a7a0a}{%
+           family={Richardson},
+           familyi={R\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=661af25efdcede2da6f1d84feee822d2}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=79257759907a687bd8d44af966a7769d}{%
+           family={Simpson},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c1bc4dfd4421b84a5b8ccce09d924dfb}{%
+           family={Tyler},
+           familyi={T\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c0a5a7b5697fb46dc2b5bfe3386c3a54}{%
+           family={Wordsworth},
+           familyi={W\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c57b567d8d8e86dc0d32e9670219d660}
+      \strng{fullhash}{0fdeef673e7f4a3062c7e12eeab08445}
+      \strng{fullhashraw}{0fdeef673e7f4a3062c7e12eeab08445}
+      \strng{bibnamehash}{c57b567d8d8e86dc0d32e9670219d660}
+      \strng{authorbibnamehash}{c57b567d8d8e86dc0d32e9670219d660}
+      \strng{authornamehash}{c57b567d8d8e86dc0d32e9670219d660}
+      \strng{authorfullhash}{0fdeef673e7f4a3062c7e12eeab08445}
+      \strng{authorfullhashraw}{0fdeef673e7f4a3062c7e12eeab08445}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{physics.plasm-ph}
+      \field{eprinttype}{arXiv}
+      \field{title}{Deuterium-Tritium Levitated Dipole Fusion Power Plants}
+      \field{year}{2026}
+      \verb{eprint}
+      \verb 2602.20564
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2602.20564
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2602.20564
+      \endverb
     \endentry
     \entry{sips2018}{article}{}{}
       \true{moreauthor}
