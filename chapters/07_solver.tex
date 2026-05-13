@@ -221,8 +221,8 @@ In general, hyperbolicity is charactereized by finite propagation speed.
 To classify the reduced $(r,z)$ system, we apply the definition of hyperbolicity
 for first-order systems from \cite{godlewski2021} to the principal part of our
 balance law. Since hyperbolicity is determined solely by the eigenvalues of the
-flux Jacobian $A(\mathbf{u}) = \partial \mathbf{f}/\partial \mathbf{u}$, and the
-geometric source term does not enter $A(\mathbf{u})$, the classification proceeds
+flux Jacobian $\mathsf{A}(\vec{u})$, and the
+geometric source term does not enter $\mathsf{A}(\vec{u})$, the classification proceeds
 identically to the source-free case \cite[Ch.~VII, \S1.1]{godlewski2021}.
 Writing the system in the form
 \begin{align}
@@ -240,7 +240,7 @@ the flux matrices and the source term are read off directly from
 \eqref{eq: 2D pressure}, \eqref{eq: 2D mom r}, \eqref{eq: 2D mom z},
 \eqref{eq: 2D ind r}, \eqref{eq: 2D ind z}:
 \begin{align}
-    \mathbf{A}_r &=
+    \mathsf{A}_r &=
     \begin{pmatrix}
     0           & 0 & 0 & \frac{B_0}{\mu_0\varrho_0} & \frac{1}{\varrho_0} \\
     0           & 0 & 0 & 0 & 0 \\
@@ -249,7 +249,7 @@ the flux matrices and the source term are read off directly from
     \gamma P_0 & 0 & 0 & 0 & 0
     \end{pmatrix},
     \qquad
-    \mathbf{A}_z =
+    \mathsf{A}_z =
     \begin{pmatrix}
         0    & 0            & -\frac{B_0}{\mu_0\varrho_0} & 0 & 0            \\
         0    & 0            & 0 & 0                        & \frac{1}{\varrho_0} \\
@@ -271,15 +271,55 @@ The system \eqref{eq: matrix system} is hyperbolic if and only if for all
 $\alpha_r, \alpha_z \in \mathbb{R}$ the combined matrix
 \begin{align}
     \mathsf{A}(\alpha_r, \alpha_z) := \alpha_r \mathsf{A}_r + \alpha_z \mathsf{A}_z
+\end{align}
+\begin{comment}
+\begin{align}
+\begin{pmatrix}
+0 & 0 &
+-\alpha_z \dfrac{v_A}{\sqrt{\mu_0\varrho_0}}
+&
+\alpha_r \dfrac{v_A}{\sqrt{\mu_0\varrho_0}}
+&
+\dfrac{\alpha_r}{\varrho_0}
+\\[1.2ex]
+0 & 0 & 0 & 0 &
+\dfrac{\alpha_z}{\varrho_0}
+\\[1.2ex]
+-\alpha_z v_A\sqrt{\mu_0\varrho_0}
+&
+0 & 0 & 0 & 0
+\\[1.2ex]
+\alpha_r v_A\sqrt{\mu_0\varrho_0}
+&
+0 & 0 & 0 & 0
+\\[1.2ex]
+\alpha_r \varrho_0 c_s^2
+&
+\alpha_z \varrho_0 c_s^2
+&
+0 & 0 & 0
+\end{pmatrix}.
     \label{eq: combined matrix}
 \end{align}
-has only real eigenvalues and is diagonalisable \cite{godlewski2021}. Computing
-$\det(\mathsf{A}(\alpha_r,\alpha_z) - \lambda \mathsf{I}) = 0$ yields
-\begin{align}
-    \lambda \!\left(\lambda^2 - \alpha_z^2 v_A^2\right)
-    \!\left(\lambda^2 - \alpha_r^2 c_s^2 - \alpha_z^2 v_f^2\right) = 0,
-    \label{eq: char eq general}
-\end{align}
+\end{comment}
+
+has only real eigenvalues and is diagonalisable (\cite{godlewski2021}). 
+If the eigenvalues are also unique, it is strictly hyperbolic.
+
+For $(\alpha_r, \alpha_z) = (0,0)$ the problem is of course hyperbolic.
+
+We get a characteristic polynomial of
+\begin{equation*}
+\chi_A(\lambda)
+=
+\lambda \left[
+\lambda^4
+-
+\left(\alpha_r^2 + \alpha_z^2\right)v_f^2 \lambda^2
++
+\alpha_z^2 \left(\alpha_r^2 + \alpha_z^2\right)c_s^2 v_A^2
+\right].
+\end{equation*}
 where 
 \begin{align}
     v_A = \frac{B_0}{\sqrt{\mu_0\varrho_0}}, \qquad
@@ -287,36 +327,39 @@ where
     c_s = \sqrt{\frac{\gamma P_0}{\varrho_0}}.
     \label{eq: char speeds}
 \end{align}
+
+
 The five eigenvalues are
-\begin{align}
-    \lambda \in \left\{0,\;
-        \pm\, \alpha_z v_A,\;
-        \pm\sqrt{\alpha_r^2 c_s^2 + \alpha_z^2 v_f^2}
-    \right\},
-    \label{eq: eigenvalues general}
-\end{align}
+\begin{align*}
+    \lambda_0 &= 0,\\
+    \pm \lambda_S & = \pm\, \sqrt{ \frac{\alpha_r^2+\alpha_z^2}{2}
+        \left( v_f^2 - \sqrt{v_f^4 - 4\frac{\alpha_z^2}{\alpha_r^2+\alpha_z^2} v_A^2 c_s^2 }\right)}, \\
+    \pm \lambda_F & = \pm\, \sqrt{ \frac{\alpha_r^2+\alpha_z^2}{2}
+        \left( v_f^2 + \sqrt{v_f^4 - 4\frac{\alpha_z^2}{\alpha_r^2+\alpha_z^2} v_A^2 c_s^2 }\right)}
+\end{align*}
+
 which are real for all $\alpha_r, \alpha_z \in \mathbb{R}$ since $v_A, c_s,
-v_f > 0$. One can verify that the eigenvectors are linearly independent for
-all $(\alpha_r, \alpha_z) \neq (0,0)$, so $\mathsf{A}(\alpha_r, \alpha_z)$ is
-diagonalisable over $\mathbb{R}$ and the system is \emph{hyperbolic}.
+v_f \in \mathbb{R}$.
 
-The structure of \eqref{eq: eigenvalues general} is physically transparent.
-Setting $\alpha_r = 0$ (pure $z$-propagation, parallel to $\vec{B}_0$) recovers
-eigenvalues $\{0, \pm v_A, \pm v_f\}$: the entropy mode, the shear Alfv\'{e}n
-wave, and the fast magnetosonic wave. Setting $\alpha_z = 0$ (pure
-$r$-propagation, perpendicular to $\vec{B}_0$) gives $\{0, 0, \pm c_s\}$: only
-acoustic waves survive, since magnetic tension acts only along field lines and
-provides no restoring force in the perpendicular direction. The Alfv\'{e}n speed
-$v_A$ appears only through the $\alpha_z$ terms, confirming that Alfv\'{e}n
-waves propagate strictly along $\vec{B}_0$.
+For $\alpha_r \neq 0, \alpha_z \neq 0$ all eigenvalues are different,
+their eigenvectors therefore independent and the system strictly hyperbolic.
+If $\alpha_r=0$ and $v_A^2 = c_s^2$, which is realistic for plasma $\beta$ of order unity,
+then $\pm\lambda_S = \pm\lambda_F$,and if $\alpha_z=0$ also $\pm\lambda_S=\lambda_0 = 0$ 
+In both cases the system remains hyperbolic.
 
-The fastest characteristic speed for any propagation direction is
-$\sqrt{\alpha_r^2 c_s^2 + \alpha_z^2 v_f^2} \leq |\vec{\alpha}|\, v_f$,
-so $v_f$ governs the CFL condition \eqref{eq: CFL}.
 
-The $\varphi$-subsystem \eqref{eq: 2D mom phi}--\eqref{eq: 2D ind phi} is
-separately hyperbolic with eigenvalues $\pm \alpha_z v_A$ and is therefore
-subject to the same CFL bound.
+The $\varphi$-system has eigenvalues $\lambda_\varphi= \pm \alpha_z v_A$ and is thus hyperbolic
+if $\alpha_z=0$ or $v_A=0$, else it is strictly hyperbolic.
+
+Summarizing we find that the \eqref{eq: 2D pressure}-\eqref{eq: 2D ind z} is a first order hyperbolic system of PDEs,
+and for most parameters even strictly hyperbolic.
+
+We find that the fastest characteristic speed for any propagation is the maximum of $\lambda_F$
+at fixed $\alpha_r^2+\alpha_z^2$, which is obtained at $\alpha_z=0$ and has a value of $v_f \sqrt{\alpha_r^2+\alpha_z^2}$.
+This corresponds to the fast magnetosonic wave discussed inplasma physics resources, here propagating perpendicular to the magnetic field.
+Thus $v_f$ is the relevant speed governing the CFL criterion.
+
+
 
 \subsection{FDTD discretization}
 \label{subsec: FDTD}
