@@ -1,4 +1,5 @@
 \chapter{Framework for a Minimal FDTD Solver for Linearized MHD of the Polomac}
+\label{chap: Framework for a Minimal FDTD Solver for Linearized MHD of the Polomac}
 
 \section{Problem formulation}
 We want to be able to solve for the independent time dependent properties of the MHD equations in \autoref{subsec: The ideal MHD equations},
@@ -18,41 +19,42 @@ to arrive at a system of four partial differential equations
 \end{align*}
 and as an additional constraint Gauss' law for magnetism \eqref{eq: MHD gauss law for magnetism},
 which is not evolved but must be preserved
-\begin{align*}
+\begin{align}
+    \label{eq: gauss magnetism constraint}
     \nabla \cdot \vec{B} &= 0.
-\end{align*}
+\end{align}
 
 \section{Linearization and discretization}
 
 As in \autoref{subsec: theory of alfven waves}, we linearize around a uniform static equilibrium
 \begin{align*}
-    \vec{B}(\vec{x}, t) &= \vec{B}_0 + \vec{B}_1(\vec{x}, t), \\
-    \vec{V}(\vec{x}, t) &= \vec{V}_1(\vec{x}, t), \\
-    \varrho(\vec{x}, t) &= \varrho_0 + \varrho_1(\vec{x}, t), \\
-    P(\vec{x}, t)       &= P_0 + P_1(\vec{x}, t),
+    \vec{B}(\vec{x}, t) &= \vec{B}^{(0)} + \vec{B}^{(1)}(\vec{x}, t), \\
+    \vec{V}(\vec{x}, t) &= \vec{V}^{(1)}(\vec{x}, t), \\
+    \varrho(\vec{x}, t) &= \varrho^{(0)} + \varrho^{(1)}(\vec{x}, t), \\
+    P(\vec{x}, t)       &= P^{(0)} + P^{(1)}(\vec{x}, t),
 \end{align*}
-where $\vec{B}_0$, $\varrho_0$, $P_0$ are constants, $\vec{V}_0 = 0$, and all perturbations
+where $\vec{B}^{(0)}$, $\varrho^{(0)}$, $P^{(0)}$ are constants, $\vec{V}^{(0)} = 0$, and all perturbations
 satisfy $|Q_1/Q_0| \ll 1$. Substituting and retaining only first-order terms yields
 the linearized equations
 \begin{align}
-    \frac{\partial \varrho_1}{\partial t} &= -\varrho_0\, \nabla \cdot \vec{V}_1,
+    \frac{\partial \varrho^{(1)}}{\partial t} &= -\varrho^{(0)}\, \nabla \cdot \vec{V}^{(1)},
         \label{eq: lin continuity} \\
-    \varrho_0\, \frac{\partial \vec{V}_1}{\partial t} &= -\nabla P_1
-        + \frac{1}{\mu_0}\bigl(\nabla \times \vec{B}_1\bigr) \times \vec{B}_0,
+    \varrho^{(0)}\, \frac{\partial \vec{V}^{(1)}}{\partial t} &= -\nabla P^{(1)}
+        + \frac{1}{\mu_0}\bigl(\nabla \times \vec{B}^{(1)}\bigr) \times \vec{B}^{(0)},
         \label{eq: lin momentum} \\
-    \frac{\partial \vec{B}_1}{\partial t} &= \nabla \times \bigl(\vec{V}_1 \times \vec{B}_0\bigr),
+    \frac{\partial \vec{B}^{(1)}}{\partial t} &= \nabla \times \bigl(\vec{V}^{(1)} \times \vec{B}^{(0)}\bigr),
         \label{eq: lin induction} \\
-    \frac{\partial P_1}{\partial t} &= -\gamma P_0\, \nabla \cdot \vec{V}_1.
+    \frac{\partial P^{(1)}}{\partial t} &= -\gamma P^{(0)}\, \nabla \cdot \vec{V}^{(1)}.
         \label{eq: lin pressure}
 \end{align}
 Equations \eqref{eq: lin continuity} and \eqref{eq: lin pressure} together imply
-$P_1 = c_s^2 \varrho_1$, where $c_s = \sqrt{\gamma P_0 / \varrho_0}$ is the adiabatic
+$P^{(1)} = c_s^2 \varrho^{(1)}$, where $c_s = \sqrt{\gamma P^{(0)} / \varrho^{(0)}}$ is the adiabatic
 sound speed, so they carry the same information. The system is therefore closed by
-\eqref{eq: lin momentum} and \eqref{eq: lin induction}, with $P_1$ supplied
-by \eqref{eq: lin pressure}. The constraint $\nabla \cdot \vec{B}_1 = 0$ is
+\eqref{eq: lin momentum} and \eqref{eq: lin induction}, with $P^{(1)}$ supplied
+by \eqref{eq: lin pressure}. The constraint $\nabla \cdot \vec{B}^{(1)} = 0$ is
 automatically preserved by \eqref{eq: lin induction} and serves as a numerical
-consistency check. The unknowns to be time-stepped are $\vec{V}_1$, $\vec{B}_1$,
-and $P_1$.
+consistency check. The unknowns to be time-stepped are $\vec{V}^{(1)}$, $\vec{B}^{(1)}$,
+and $P^{(1)}$.
 
 \subsection{Reduction to 2D axisymmetric cylindrical coordinates}
 \label{subsec: 2D cylindrical reduction}
@@ -64,10 +66,11 @@ work.
 First, we set $\partial/\partial\varphi = 0$, i.e. we restrict to axisymmetric
 perturbations. This is the same approximation already made in
 \autoref{chap: Static equilibrium model in cylindrical coordinates under axisymmetric assumptions}
-and is motivated by the axisymmetry of the Polomac, broken only by the tunnels (see \autoref{subsec: polomac geometry}). All
+and is motivated by the axisymmetry of the Polomac, broken only by the tunnels
+(see \autoref{chap: Polomac geometry and specialization to poloidal configurations}). All
 perturbation fields are then functions of $(r, z, t)$ only.
 
-Second, we choose $\vec{B}_0 = B_0\hat{e}_z$, a uniform field along the
+Second, we choose $\vec{B}^{(0)} = B^{(0)}\hat{e}_z$, a uniform field along the
 $z$-axis. This is what is to be expected in the vertical parts of the Polomac
 (in the middle, outside the arcs) and is the simplest equilibrium consistent with a dominantly poloidal
 field. We used the same setting
@@ -90,35 +93,24 @@ Under these two assumptions the cylindrical differential operators from
 
 
 We expand the perturbation fields as
-$\vec{V}_1 = V_r\hat{e}_r + V_\varphi\hat{e}_\varphi + V_z\hat{e}_z$ and
-$\vec{B}_1 = B_r^{(1)}\hat{e}_r + B_\varphi^{(1)}\hat{e}_\varphi + B_z^{(1)}\hat{e}_z$.
-Inserting $\vec{B}_0 = B_0\hat{e}_z$ and evaluating
+$\vec{V}^{(1)} = V_r\hat{e}_r + V_\varphi\hat{e}_\varphi + V_z\hat{e}_z$ and
+$\vec{B}^{(1)} = B_r^{(1)}\hat{e}_r + B_\varphi^{(1)}\hat{e}_\varphi + B_z^{(1)}\hat{e}_z$.
+Inserting $\vec{B}^{(0)} = B^{(0)}\hat{e}_z$ and evaluating
 \eqref{eq: lin momentum}--\eqref{eq: lin pressure} component by component using
 \eqref{eq: reduced div}--\eqref{eq: reduced curl} yields the following seven
 scalar equations.
 
-\paragraph{Pressure}
-\begin{align}
-    \frac{\partial P_1}{\partial t} &= -\gamma P_0
-        \left(\frac{1}{r}\frac{\partial(r V_r)}{\partial r}
-        + \frac{\partial V_z}{\partial z}\right)
-        = -\gamma P_0 \frac{\partial V_r}{\partial r}
-        -\gamma P_0 \frac{V_r}{r}
-        -\gamma P_0 \frac{\partial V_z}{\partial z}.
-    \label{eq: 2D pressure}
-\end{align}
-
 \paragraph{Momentum}
 
 \begin{align}
-    \varrho_0\frac{\partial V_r}{\partial t} &= -\frac{\partial P_1}{\partial r}
-        + \frac{B_0}{\mu_0}\frac{\partial B_r^{(1)}}{\partial z}
-        - \frac{B_0}{\mu_0}\frac{\partial B_z^{(1)}}{\partial r},
+    \varrho^{(0)}\frac{\partial V_r}{\partial t} &= -\frac{\partial P^{(1)}}{\partial r}
+        + \frac{B^{(0)}}{\mu_0}\frac{\partial B_r^{(1)}}{\partial z}
+        - \frac{B^{(0)}}{\mu_0}\frac{\partial B_z^{(1)}}{\partial r},
     \label{eq: 2D mom r} \\
-    \varrho_0\frac{\partial V_\varphi}{\partial t} &=
-        \frac{B_0}{\mu_0}\frac{\partial B_\varphi^{(1)}}{\partial z},
+    \varrho^{(0)}\frac{\partial V_\varphi}{\partial t} &=
+        \frac{B^{(0)}}{\mu_0}\frac{\partial B_\varphi^{(1)}}{\partial z},
     \label{eq: 2D mom phi} \\
-    \varrho_0\frac{\partial V_z}{\partial t} &= -\frac{\partial P_1}{\partial z}.
+    \varrho^{(0)}\frac{\partial V_z}{\partial t} &= -\frac{\partial P^{(1)}}{\partial z}.
     \label{eq: 2D mom z}
 \end{align}
 
@@ -126,17 +118,28 @@ scalar equations.
 
 \begin{align}
     \frac{\partial B_r^{(1)}}{\partial t} &=
-        B_0\frac{\partial V_r}{\partial z},
+        B^{(0)}\frac{\partial V_r}{\partial z},
     \label{eq: 2D ind r} \\
     \frac{\partial B_\varphi^{(1)}}{\partial t} &=
-        B_0\frac{\partial V_\varphi}{\partial z},
+        B^{(0)}\frac{\partial V_\varphi}{\partial z},
     \label{eq: 2D ind phi} \\
     \frac{\partial B_z^{(1)}}{\partial t} &=
-        -\frac{B_0}{r}\frac{\partial(r V_r)}{\partial r}
+        -\frac{B^{(0)}}{r}\frac{\partial(r V_r)}{\partial r}
         = 
-        -B_0\frac{\partial V_r}{\partial r}
-        -B_0\frac{V_r}{r}
+        -B^{(0)}\frac{\partial V_r}{\partial r}
+        -B^{(0)}\frac{V_r}{r}
     \label{eq: 2D ind z}
+\end{align}
+
+\paragraph{Pressure}
+\begin{align}
+    \frac{\partial P^{(1)}}{\partial t} &= -\gamma P^{(0)}
+        \left(\frac{1}{r}\frac{\partial(r V_r)}{\partial r}
+        + \frac{\partial V_z}{\partial z}\right)
+        = -\gamma P^{(0)} \frac{\partial V_r}{\partial r}
+        -\gamma P^{(0)} \frac{V_r}{r}
+        -\gamma P^{(0)} \frac{\partial V_z}{\partial z}.
+    \label{eq: 2D pressure}
 \end{align}
 
 The system decouples into two independent subsystems. The $\varphi$-components
@@ -146,74 +149,10 @@ propagating along $\hat{e}_z$, consistent with \autoref{subsec: theory of alfven
 The remaining five equations
 \eqref{eq: 2D pressure}, \eqref{eq: 2D mom r}, \eqref{eq: 2D mom z},
 \eqref{eq: 2D ind r}, \eqref{eq: 2D ind z} form a coupled system in
-$(P_1, V_r, V_z, B_r^{(1)}, B_z^{(1)})$ describing the compressional
+$(P^{(1)}, V_r, V_z, B_r^{(1)}, B_z^{(1)})$ describing the compressional
 (magnetosonic) branch.
 
-\begin{comment}
-\subsection{Types of PDEs}
-\label{subsec: types of PDEs}
-
-To classify the reduced system, we write it in first-order matrix form along
-the $z$-direction, which is the direction of $\vec{B}_0$ and thus the principal
-propagation direction. Taking the state vector
-\begin{align}
-    \vec{u} = \begin{pmatrix} V_z \\ V_r \\ B_z^{(1)} \\ B_r^{(1)} \\ P_1 \end{pmatrix},
-\end{align}
-equations \eqref{eq: 2D pressure}--\eqref{eq: 2D ind z} take the form
-\begin{align}
-    \frac{\partial \vec{u}}{\partial t} + \mathsf{A}\frac{\partial \vec{u}}{\partial z} = \vec{s},
-    \label{eq: matrix system}
-\end{align}
-where $\vec{s}$ contains the $r$-derivative terms (which do not affect the
-classification in $z$) and the flux matrix is
-\begin{align}
-    \mathsf{A} = \begin{pmatrix}
-        0      & 0      & 0             & 0      & 1/\varrho_0 \\
-        0      & 0      & 0             & -B_0/(\mu_0\varrho_0) & 0 \\
-        \gamma P_0 & 0  & 0             & 0      & 0           \\
-        0      & B_0    & 0             & 0      & 0           \\
-        \gamma P_0 & 0  & 0             & 0      & 0
-    \end{pmatrix}.
-    \label{eq: A matrix}
-\end{align}
-A system of the form $\partial_t\vec{u} + \mathsf{A}\,\partial_z\vec{u} = \vec{s}$
-is \emph{hyperbolic} if and only if $\mathsf{A}$ has only real eigenvalues and a
-complete set of eigenvectors \cite{leveque2002}. The eigenvalues $\lambda$ are the
-characteristic speeds. Computing $\det(\mathsf{A} - \lambda\mathsf{I}) = 0$ yields
-\begin{align}
-    \lambda^2\!\left(\lambda^2 - v_A^2\right)\!\left(\lambda^2 - v_f^2\right) = 0,
-    \label{eq: char eq}
-\end{align}
-where
-\begin{align}
-    v_A = \frac{B_0}{\sqrt{\mu_0\varrho_0}}, \qquad
-    v_f = \sqrt{v_A^2 + c_s^2}, \qquad
-    c_s = \sqrt{\frac{\gamma P_0}{\varrho_0}}.
-    \label{eq: char speeds}
-\end{align}
-The five eigenvalues are therefore
-\begin{align}
-    \lambda \in \{0,\; \pm v_A,\; \pm v_f\},
-    \label{eq: eigenvalues}
-\end{align}
-all of which are real. One can verify that the corresponding eigenvectors are
-linearly independent, so $\mathsf{A}$ is diagonalisable over $\mathbb{R}$ and
-the system is \emph{hyperbolic}. The $\varphi$-subsystem
-\eqref{eq: 2D mom phi}--\eqref{eq: 2D ind phi} is separately hyperbolic with
-eigenvalues $\pm v_A$.
-
-The eigenvalue $\lambda = 0$ is the entropy mode: a stationary perturbation
-in pressure and density with no magnetic or velocity response. The pair
-$\pm v_A$ are the shear Alfv\'{e}n waves already derived analytically in
-\autoref{subsec: theory of alfven waves}. The pair $\pm v_f$ are the fast
-magnetosonic waves. Since all characteristic speeds are real and finite, the
-system propagates information at bounded speeds, which is the defining property
-of a hyperbolic system and the necessary condition for an explicit
-time-marching scheme to be applicable.
-
-\end{comment}
-
-\subsection{Types of PDEs}
+\subsection{Proof of hyperbolicity}
 \label{subsec: types of PDEs}
 
 In general, hyperbolicity is charactereized by finite propagation speed.
@@ -233,7 +172,7 @@ Writing the system in the form
 \end{align}
 where the state vector is
 \begin{align}
-    \vec{u} = \begin{pmatrix} V_r \\ V_z \\ B_r^{(1)} \\ B_z^{(1)} \\ P_1
+    \vec{u} = \begin{pmatrix} V_r \\ V_z \\ B_r^{(1)} \\ B_z^{(1)} \\ P^{(1)}
     \end{pmatrix},
 \end{align}
 the flux matrices and the source term are read off directly from 
@@ -242,26 +181,26 @@ the flux matrices and the source term are read off directly from
 \begin{align}
     \mathsf{A}_r &=
     \begin{pmatrix}
-    0           & 0 & 0 & \frac{B_0}{\mu_0\varrho_0} & \frac{1}{\varrho_0} \\
+    0           & 0 & 0 & \frac{B^{(0)}}{\mu_0\varrho^{(0)}} & \frac{1}{\varrho^{(0)}} \\
     0           & 0 & 0 & 0 & 0 \\
     0           & 0 & 0 & 0 & 0 \\
-    B_0        & 0 & 0 & 0 & 0 \\
-    \gamma P_0 & 0 & 0 & 0 & 0
+    B^{(0)}        & 0 & 0 & 0 & 0 \\
+    \gamma P^{(0)} & 0 & 0 & 0 & 0
     \end{pmatrix},
     \qquad
     \mathsf{A}_z =
     \begin{pmatrix}
-        0    & 0            & -\frac{B_0}{\mu_0\varrho_0} & 0 & 0            \\
-        0    & 0            & 0 & 0                        & \frac{1}{\varrho_0} \\
-        -B_0 & 0            & 0 & 0                        & 0 \\
+        0    & 0            & -\frac{B^{(0)}}{\mu_0\varrho^{(0)}} & 0 & 0            \\
+        0    & 0            & 0 & 0                        & \frac{1}{\varrho^{(0)}} \\
+        -B^{(0)} & 0            & 0 & 0                        & 0 \\
         0    & 0            & 0 & 0                        & 0 \\
-        0    & \gamma P_0   & 0 & 0                        & 0
+        0    & \gamma P^{(0)}   & 0 & 0                        & 0
     \end{pmatrix},
     \\
     \vec{s} &= -
     \frac{V_r}{r}
     \begin{pmatrix}
-        0 \\ 0 \\ 0 \\ B_0 \\ \gamma P_0
+        0 \\ 0 \\ 0 \\ B^{(0)} \\ \gamma P^{(0)}
     \end{pmatrix}.
 \end{align}
 
@@ -276,26 +215,26 @@ $\alpha_r, \alpha_z \in \mathbb{R}$ the combined matrix
 \begin{align}
 \begin{pmatrix}
 0 & 0 &
--\alpha_z \dfrac{v_A}{\sqrt{\mu_0\varrho_0}}
+-\alpha_z \dfrac{v_A}{\sqrt{\mu_0\varrho^{(0)}}}
 &
-\alpha_r \dfrac{v_A}{\sqrt{\mu_0\varrho_0}}
+\alpha_r \dfrac{v_A}{\sqrt{\mu_0\varrho^{(0)}}}
 &
-\dfrac{\alpha_r}{\varrho_0}
+\dfrac{\alpha_r}{\varrho^{(0)}}
 \\[1.2ex]
 0 & 0 & 0 & 0 &
-\dfrac{\alpha_z}{\varrho_0}
+\dfrac{\alpha_z}{\varrho^{(0)}}
 \\[1.2ex]
--\alpha_z v_A\sqrt{\mu_0\varrho_0}
+-\alpha_z v_A\sqrt{\mu_0\varrho^{(0)}}
 &
 0 & 0 & 0 & 0
 \\[1.2ex]
-\alpha_r v_A\sqrt{\mu_0\varrho_0}
+\alpha_r v_A\sqrt{\mu_0\varrho^{(0)}}
 &
 0 & 0 & 0 & 0
 \\[1.2ex]
-\alpha_r \varrho_0 c_s^2
+\alpha_r \varrho^{(0)} c_s^2
 &
-\alpha_z \varrho_0 c_s^2
+\alpha_z \varrho^{(0)} c_s^2
 &
 0 & 0 & 0
 \end{pmatrix}.
@@ -305,6 +244,7 @@ $\alpha_r, \alpha_z \in \mathbb{R}$ the combined matrix
 
 has only real eigenvalues and is diagonalisable (\cite{godlewski2021}). 
 If the eigenvalues are also unique, it is strictly hyperbolic.
+The eigenvalues $\lambda$ are the characteristic speeds.
 
 For $(\alpha_r, \alpha_z) = (0,0)$ the problem is of course hyperbolic.
 
@@ -322,9 +262,9 @@ We get a characteristic polynomial of
 \end{equation*}
 where 
 \begin{align}
-    v_A = \frac{B_0}{\sqrt{\mu_0\varrho_0}}, \qquad
+    v_A = \frac{B^{(0)}}{\sqrt{\mu_0\varrho^{(0)}}}, \qquad
     v_f = \sqrt{v_A^2 + c_s^2}, \qquad
-    c_s = \sqrt{\frac{\gamma P_0}{\varrho_0}}.
+    c_s = \sqrt{\frac{\gamma P^{(0)}}{\varrho^{(0)}}}.
     \label{eq: char speeds}
 \end{align}
 
@@ -348,7 +288,7 @@ then $\pm\lambda_S = \pm\lambda_F$,and if $\alpha_z=0$ also $\pm\lambda_S=\lambd
 In both cases the system remains hyperbolic.
 
 
-The $\varphi$-system has eigenvalues $\lambda_\varphi= \pm \alpha_z v_A$ and is thus hyperbolic
+The $\varphi$-system has eigenvalues $\pm\lambda_\varphi= \pm \alpha_z v_A$ and is thus hyperbolic
 if $\alpha_z=0$ or $v_A=0$, else it is strictly hyperbolic.
 
 Summarizing we find that the \eqref{eq: 2D pressure}-\eqref{eq: 2D ind z} is a first order hyperbolic system of PDEs,
@@ -359,91 +299,348 @@ at fixed $\alpha_r^2+\alpha_z^2$, which is obtained at $\alpha_z=0$ and has a va
 This corresponds to the fast magnetosonic wave discussed inplasma physics resources, here propagating perpendicular to the magnetic field.
 Thus $v_f$ is the relevant speed governing the CFL criterion.
 
-
+Since all characteristic speeds are real and finite, the
+system propagates information at bounded speeds, which is the defining property
+of a hyperbolic system and the necessary condition for an explicit
+time-marching scheme to be applicable.
 
 \subsection{FDTD discretization}
-\label{subsec: FDTD}
+We will approximize the system of PDEs by finite difference equations,
+derived from first order Taylor expansion,
+as outlined by \citeauthor{Yee1966} in his paper \emph{Numerical Solution of Initial Boundary Value
+Problems Involving Maxwell’s Equations
+in Isotropic Media} (see \cite{Yee1966}), but for the \eqref{eq: 2D pressure}-\eqref{eq: 2D ind z} system of PDEs.
 
-The Finite-Difference Time-Domain (FDTD) method \cite{taflove2005} discretizes
-hyperbolic systems by replacing time and spatial derivatives with finite
-differences on a staggered grid. We briefly outline the approach here to provide
-a complete framework; a full implementation is left as future work.
+\subsubsection{Staggered Grid}
+Due to our simplification of assuming no $\varphi$-dependence (\autoref{subsec: 2D cylindrical reduction})
+our grid is only in the $(r,z)$-plane and because we assume $\vec{B}^{(0)}\parallel \hat{e}_z$,
+it only makes sense to consider the center regions of the Polomac without the arcs.
+Furthermore, we will restrict this discussion to the central cylinder.
+The outer vertical areas are analogue, but without the special attention to the $r=0$ case.
 
-\subsubsection{Staggered grid}
+The middle versions of \eqref{eq: 2D pressure} and \eqref{eq: 2D ind z} without the product rule
+yet applied are better suited for the concrete update equations due to the $r$ factor coming in in both
+the nominator and the denominator. This also omits the source term.
 
-We discretize the $(r,z)$ domain on a uniform staggered (Yee-type) grid
-\cite{yee1966} with spacings $\Delta r$ and $\Delta z$. The staggering is
-chosen to match the structure of the equations:
-\begin{itemize}
-    \item scalar quantities $P_1$, $B_z^{(1)}$, $\varrho_1$, and $V_z$ at
-        cell centres $(r_i, z_j) = (i\Delta r,\, j\Delta z)$;
-    \item $V_r$ and $B_r^{(1)}$ at $r$-face centres
-        $(r_{i+1/2}, z_j) = ((i+\tfrac{1}{2})\Delta r,\, j\Delta z)$;
-    \item $V_\varphi$ and $B_\varphi^{(1)}$ co-located with $V_r$ and $B_r^{(1)}$.
-\end{itemize}
-Time is staggered by half a step: $\vec{B}_1$ is evaluated at integer times
-$t^n = n\Delta t$ and $\vec{V}_1$, $P_1$ at half-integer times
-$t^{n+1/2} = (n+\tfrac{1}{2})\Delta t$. This leapfrog arrangement ensures that
-each field update uses the other field at the temporally centred point, giving
-second-order accuracy in both space and time without any implicit solve.
+As in \eqref{eq: 2D pressure}-\eqref{eq: 2D ind z} we have the dependencies
+$P^{(1)}(\vec{V})$, $\vec{B}^{(1)}(\vec{V})$ and $\vec{V}(P^{(1)},\vec{B}^{(1)})$,
+we choose to update $\vec{V}$ and $P^{(1)},\vec{B}^{(1)}$ at staggered timesteps.
 
-\subsubsection{Courant--Friedrichs--Lewy stability condition}
+To avoid the zero division at $r=0$, we place the variables $P^{(1)},B^{(1)}_z$,
+whose update equations contain a factor $1/r$, at half-$\Delta r$ nodes.
 
-Because the system is hyperbolic with fastest characteristic speed $v_f$, an
-explicit scheme is conditionally stable. The
-Courant--Friedrichs--Lewy (CFL) condition \cite{leveque2002} requires that the
-numerical domain of dependence contains the physical one. In two spatial
-dimensions this gives
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% TIKZ DRAWING %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% ── Colour palette ───────────────────────────────────────────────
+\definecolor{cVr} {RGB}{120,  6,  6}   % V_r   dark  red
+\definecolor{cVz} {RGB}{215, 25, 25}   % V_z   medium red
+\definecolor{cVp} {RGB}{255,148,148}   % V_phi light  red
+\definecolor{cBr} {RGB}{ 10, 30,150}   % B_r   dark  blue
+\definecolor{cBz} {RGB}{ 15,110,210}   % B_z   medium blue
+\definecolor{cBp} {RGB}{110,175,255}   % B_phi light  blue
+\definecolor{cP}  {RGB}{  6,112, 40}   % P     dark  green
+\definecolor{cGrd}{RGB}{150,150,150}   % grid lines
+
+%% ── Marker sizes (absolute pt) ───────────────────────────────────
+\def\msVr{2.5pt}   % V_r  square half-side  (small)
+\def\msVz{3.5pt}   % V_z  square half-side  (medium)
+\def\msVp{4.8pt}   % V_phi square half-side (large)
+\def\mrBr{2.0pt}   % B_r  circle radius     (small)
+\def\mrBz{2.8pt}   % B_z  circle radius     (medium)
+\def\mrBp{3.8pt}   % B_phi circle radius    (large)
+\def\mdP {3.0pt}   % P    diamond half-diag (medium)
+
+%% ── Marker macros (args: x [cm], y [cm]) ────────────────────────
+\newcommand{\mkVr}[2]{%
+  \fill[cVr] (#1,#2) +(-\msVr,-\msVr) rectangle +(\msVr,\msVr);}
+\newcommand{\mkVz}[2]{%
+  \fill[cVz] (#1,#2) +(-\msVz,-\msVz) rectangle +(\msVz,\msVz);}
+\newcommand{\mkVp}[2]{%
+  \fill[cVp] (#1,#2) +(-\msVp,-\msVp) rectangle +(\msVp,\msVp);}
+\newcommand{\mkBr}[2]{\fill[cBr] (#1,#2) circle (\mrBr);}
+\newcommand{\mkBz}[2]{\fill[cBz] (#1,#2) circle (\mrBz);}
+\newcommand{\mkBp}[2]{\fill[cBp] (#1,#2) circle (\mrBp);}
+\newcommand{\mkP} [2]{%
+  \fill[cP] (#1,#2) +(0,\mdP)--+(\mdP,0)--+(0,-\mdP)--+(-\mdP,0)--cycle;}
+
+%% ── Grid layout ──────────────────────────────────────────────────
+%%   Cell size = 1.5 cm,  2x2 cells,  z extended to j-1/2
+%%   Integer  r : x = 0, 1.5, 3 cm      (i, i+1, i+2)
+%%   Half-int r : x = 0.75, 2.25 cm     (i+1/2, i+3/2)
+%%   Integer  z : y = 0, 1.5, 3 cm      (j, j+1, j+2)
+%%   Half-int z : y = -0.75, 0.75, 2.25 (j-1/2, j+1/2, j+3/2)
+
+%% \drawFrame: grid lines + axes + labels
+\newcommand{\drawFrame}{%
+  %% Solid grid lines at integer positions
+  \foreach \yy in {0, 1.5, 3}{%
+    \draw[cGrd!65, thin] (0,\yy) -- (3,\yy);}
+  \foreach \xx in {0, 1.5, 3}{%
+    \draw[cGrd!65, thin] (\xx,-0.75) -- (\xx,3);}
+  %% Dashed grid lines at half-integer positions
+  \foreach \yy in {-0.75, 0.75, 2.25}{%
+    \draw[cGrd!45, thin, dashed, dash pattern=on 3pt off 2pt]
+      (0,\yy) -- (3,\yy);}
+  \foreach \xx in {0.75, 2.25}{%
+    \draw[cGrd!45, thin, dashed, dash pattern=on 3pt off 2pt]
+      (\xx,-0.75) -- (\xx,3);}
+  %% Axes
+  \draw[->, thick] (-0.22, 0)    -- (3.72, 0)   node[right] {$r$};
+  \draw[->, thick] (0,    -0.95) -- (0,    3.62) node[above] {$z$};
+  %% r-axis labels  (NO \, in the list – that breaks \foreach)
+  \foreach \xx/\lb in {0/{i}, 1.5/{i{+}1}, 3/{i{+}2}}{%
+    \node[below=5pt, font=\footnotesize] at (\xx,0) {$\lb$};}
+  %% z-axis labels
+  \node[left=5pt, font=\scriptsize] at (0,-0.75) {$j{-}\tfrac{1}{2}$};
+  \foreach \yy/\lb in {0/{j}, 1.5/{j{+}1}, 3/{j{+}2}}{%
+    \node[left=5pt, font=\footnotesize] at (0,\yy) {$\lb$};}
+}
+
+%% \drawBrackets: Delta-r and Delta-z dimension lines
+\newcommand{\drawBrackets}{%
+  %% Delta r: horizontal, between i and i+1
+  \draw[{Bar[width=3pt]}-{Bar[width=3pt]}, thin]
+    (0,-1.38) -- (1.5,-1.38);
+  \node[below=2pt, font=\scriptsize] at (0.75,-1.38) {$\Delta r$};
+  %% Delta z: vertical, between j and j+1
+  \draw[{Bar[width=3pt]}-{Bar[width=3pt]}, thin]
+    (-1.48,0) -- (-1.48,1.5);
+  \node[left=2pt, font=\scriptsize] at (-1.48,0.75) {$\Delta z$};
+}
+
+
+\begin{figure}
+    
+
+%% ═════════════════════════════════════════════════════════════════
+\begin{tikzpicture}[font=\small]
+
+%% ──────────── PICTURE (a) — Compression branch ──────────────────
+\begin{scope}
+  \drawFrame
+  \drawBrackets
+  \node[above right, font=\bfseries\small] at (3,3) {a)};
+  %% V_r at integer (i,j) — dark red small square
+  \foreach \ii in {0, 1.5, 3}{%
+    \foreach \jj in {0, 1.5, 3}{%
+      \mkVr{\ii}{\jj}}}
+  %% V_z at (i+1/2, j+1/2) — medium red medium square
+  \foreach \ii in {0.75, 2.25}{%
+    \foreach \jj in {0.75, 2.25}{%
+      \mkVz{\ii}{\jj}}}
+  %% V_z at extended row (i+1/2, j-1/2)
+  \foreach \ii in {0.75, 2.25}{%
+    \mkVz{\ii}{-0.75}}
+  %% B_r at (i, j+1/2) incl. j-1/2 row — dark blue small circle
+  \foreach \ii in {0, 1.5, 3}{%
+    \foreach \jj in {-0.75, 0.75, 2.25}{%
+      \mkBr{\ii}{\jj}}}
+  %% B_z at (i+1/2, j), offset +0.18cm in z — medium blue medium circle
+  %% (co-located with P; offset for visibility)
+  \foreach \ii in {0.75, 2.25}{%
+    \foreach \jj in {0, 1.5, 3}{%
+      \fill[cBz] (\ii, \jj+0.18) circle (\mrBz);}}
+  %% P^(1) at (i+1/2, j), offset -0.18cm in z — dark green diamond
+  \foreach \ii in {0.75, 2.25}{%
+    \foreach \jj in {0, 1.5, 3}{%
+      \fill[cP] (\ii,\jj-0.18)
+        +(0,\mdP)--+(\mdP,0)--+(0,-\mdP)--+(-\mdP,0)--cycle;}}
+\end{scope}
+
+%% ──────────── PICTURE (b) — Shear-Alfven (phi) branch ───────────
+\begin{scope}[xshift=6.2cm]
+  \drawFrame
+  \drawBrackets
+  \node[above right, font=\bfseries\small] at (3,3) {b)};
+  %% V_phi at integer (i,j) — light red large square
+  \foreach \ii in {0, 1.5, 3}{%
+    \foreach \jj in {0, 1.5, 3}{%
+      \mkVp{\ii}{\jj}}}
+  %% B_phi at (i, j+1/2) incl. j-1/2 row — light blue large circle
+  \foreach \ii in {0, 1.5, 3}{%
+    \foreach \jj in {-0.75, 0.75, 2.25}{%
+      \mkBp{\ii}{\jj}}}
+\end{scope}
+
+%% ──────────── LEGEND (centred below both pictures) ───────────────
+%%  Grid centres: a) x=1.5  b) x=6.2+1.5=7.7  midpoint ~ 4.65 cm
+%%  Row 1 (4 entries, 2.2 cm spacing): Vr, Vz, Vphi, P
+%%  Row 2 (3 entries, 2.2 cm spacing): Br, Bz, Bphi
+\mkVr{1.35}{-2.50}
+\node[right=4pt, cVr,  font=\scriptsize] at (1.35,-2.50) {$V_r$};
+\mkVz{3.55}{-2.50}
+\node[right=4pt, cVz,  font=\scriptsize] at (3.55,-2.50) {$V_z$};
+\mkVp{5.75}{-2.50}
+\node[right=4pt, cVp,  font=\scriptsize] at (5.75,-2.50) {$V_\varphi$};
+\mkP {7.95}{-2.50}
+\node[right=4pt, cP,   font=\scriptsize] at (7.95,-2.50) {$P^{(1)}$};
+\mkBr{2.45}{-3.20}
+\node[right=4pt, cBr,  font=\scriptsize] at (2.45,-3.20) {$B_r^{(1)}$};
+\mkBz{4.65}{-3.20}
+\node[right=4pt, cBz,  font=\scriptsize] at (4.65,-3.20) {$B_z^{(1)}$};
+\mkBp{6.85}{-3.20}
+\node[right=4pt, cBp,  font=\scriptsize] at (6.85,-3.20) {$B_\varphi^{(1)}$};
+\node[font=\scriptsize, text=cGrd!80!black, align=center] at (4.65,-3.85)
+  {\textcolor{cBz}{$B_z^{(1)}$} and \textcolor{cP}{$P^{(1)}$}
+   share node $(i{+}\tfrac{1}{2},j)$; offset for visibility.};
+
+\end{tikzpicture}
+\caption{a) Grid b) Grid}
+
+\end{figure}
+
+
+
+
+\subsubsection{Discrete update equations}
+We then arrive at the discrete update equations for the compressional branch
+
 \begin{align}
-    \Delta t \leq \frac{1}{v_f}
-        \left(\frac{1}{\Delta r^2} + \frac{1}{\Delta z^2}\right)^{-1/2}.
-    \label{eq: CFL}
+    \label{eq: discrete 2D mom r}
+    \frac{[V_r]_{(i,j)}^{n+\frac{1}{2}}-[V_r]_{(i,j)}^{n-\frac12}}{\Delta t}
+    &=  -\frac{1}{[\varrho^{(0)}]_{(i,j)}}
+            \frac{[P^{(1)}]_{(i+\frac12,j)}^{n} - [P^{(1)}]_{(i-\frac12,j)}^{n}}{\Delta r}\nonumber \\
+        &\qquad
+        +\frac{[B^{(0)}]_{(i,j)}}{\mu_0 \;[\varrho^{(0)}]_{(i,j)}}
+             \frac{[B_r^{(1)}]_{(i,j+\frac12)}^{n} - [B_r^{(1)}]_{(i,j-\frac12)}^{n}}{\Delta z}\nonumber\\
+        &\qquad\qquad
+        -\frac{[B^{(0)}]_{(i,j)}}{\mu_0 \; [\varrho^{(0)}]_{(i,j)}}
+             \frac{[B_z^{(1)}]_{(i+\frac12,j)}^{n} - [B_z^{(1)}]_{(i-\frac12,j)}^{n}}{\Delta r}\\
+    \frac{[V_z]_{(i+\frac12,j+\frac12)}^{n+\frac{1}{2}}-[V_z]_{(i+\frac12,j+\frac12)}^{n-\frac12}}{\Delta t}
+    &=  -\frac{1}{[\varrho^{(0)}]_{(i+\frac12,j+\frac12)}}
+            \frac{[P^{(1)}]_{(i+\frac12,j+1)}^{n} - [P^{(1)}]_{(i+\frac12,j)}^{n}}{\Delta z}\nonumber\\
+    \frac{[B_r^{(1)}]_{(i, j+\frac12)}^{n+1}-[B_r^{(1)}]_{(i, j+\frac12)}^{n}}{\Delta t}
+    &=  [B^{(0)}]_{(i, j+\frac12)} \frac{[V_r]_{(i,j+1)}^{n+\frac12} - [V_r]_{(i,j)}^{n+\frac12}}{\Delta z}\nonumber\\
+    \frac{[B_z^{(1)}]_{(i+\frac12,j)}^{(n+1)} - [B_z^{(1)}]_{(i+\frac12,j)}^{(n)}}{\Delta t}
+    &= -    \frac{[B^{(0)}]_{(i+\frac12, j)}}{r_{i+\frac12}}
+            \frac{[rV_r]_{(i+1,j)}^{n+\frac12}-[rV_r]_{(i,j)}^{n+\frac12}}{\Delta r}\nonumber\\
+    \frac{[P^{(1)}]_{(i+\frac12,j)}^{n+1}-[P^{(1)}]_{(i+\frac12,j)}^{n}}{\Delta t}
+    &= -\gamma [P^{(0)}]_{(i+\frac12,j)}
+        \left(
+            \frac{1}{r_{i+\frac12}}
+            \frac{[rV_r]_{(i,j)}^{n+\frac12}-[rV_r]_{(i+1,j)}^{n+\frac12}}{\Delta r}\right.
+            \nonumber
+            \\
+            &\qquad\qquad\qquad\qquad\qquad
+            + \left. \frac{[V_z]_{(i,j+\frac12)}^{n+\frac12}-[V_z]_{(i,j-\frac12)}^{n+\frac12}}{\Delta z}
+        \right)\nonumber
 \end{align}
-Using the Polomac target values from \autoref{chap: relevant parameters}
-($v_A \approx 5.5\times10^5\ \mathrm{m\,s^{-1}}$,
-$T_i \approx T_e = 100\ \mathrm{eV}$, $\gamma = 5/3$), the adiabatic sound
+
+For the shear Alfvén branch, we can choose the nodes freely and if we keep them analogous
+to the compression branch we find the discrete update equations 
+\begin{align*}
+    \frac{[V_\varphi]_{(i,j)}^{n+\frac{1}{2}}-[V_\varphi]_{(i,j)}^{n-\frac12}}{\Delta t}
+    &=  \frac{[B^{(0)}]_{(i,j)}}{\mu_0 \;[\varrho^{(0)}]_{(i,j)}}
+             \frac{[B_\varphi^{(1)}]_{(i,j+\frac12)}^{n} - [B_\varphi^{(1)}]_{(i,j-\frac12)}^{n}}{\Delta z}\\
+    \frac{[B_\varphi^{(1)}]_{(i, j+\frac12)}^{n+1}-[B_\varphi^{(1)}]_{(i, j+\frac12)}^{n}}{\Delta t}
+    &=  [B^{(0)}]_{(i, j+\frac12)} \frac{[V_\varphi]_{(i,j+1)}^{n+\frac12} - [V_\varphi]_{(i,j)}^{n+\frac12}}{\Delta z}
+\end{align*}
+
+Furthermore we still have the constraint of no magnetic monopoles \eqref{eq: gauss magnetism constraint}
+which in discretized axisymmetric form reads
+
+\begin{align*}
+    \frac{1}{r_{i+\frac{1}{2}}}
+\frac{r_{i+1}\,[B_r^{(1)}]_{(i+1,\,j+\frac{1}{2})}^{n}
+     - r_{i}\,[B_r^{(1)}]_{(i,\,j+\frac{1}{2})}^{n}}{\Delta r}
++
+\frac{[B_z^{(1)}]_{(i+\frac{1}{2},\,j+1)}^{n}
+     - [B_z^{(1)}]_{(i+\frac{1}{2},\,j)}^{n}}{\Delta z}
+= 0
+\end{align*}
+
+
+
+
+
+
+
+\subsubsection{Boundary conditions}
+
+Let $R$ be the radius of the central cylinder. We have the following boudary conditions.
+
+\paragraph{Perfectly conducting wall}
+As in \autoref{subsec: equilibrium BC} we assume the walls to be perfectly conducting.
+Applying \eqref{eq: BC wall} we get $[B_r^{(1)}]_{i,j+\frac12}^{(n)}|_{i\cdot \Delta r=R} = 0$
+$\forall n,j$.
+
+
+\paragraph{No plasma flow through wall} This physical constraint implies
+ $[V_r^{(1)}]_{i,j+\frac12}^{(n)}|_{i\cdot \Delta r=R} = 0$
+$\forall n,j$.
+
+
+
+\paragraph{Axisymmetry} Axisymmetry requires any quantity to obtain the same value at
+$0.5\Delta r$ as at $-0.5\Delta r$.
+Thus $\forall n:$ $[P^{(1)}]_{(\frac12,j)}^{n} = [P^{(1)}]_{(-\frac12,j)}^{n}$
+and $[B_z^{(1)}]_{(\frac12,j)}^{n} = [B_z^{(1)}]_{(-\frac12,j)}^{n}$ which implies that
+\eqref{eq: discrete 2D mom r} at $r=0$ takes the form
+\begin{align*}
+    \frac{[V_r]_{(0,j)}^{n+\frac{1}{2}}-[V_r]_{(0,j)}^{n-\frac12}}{\Delta t}
+    &=  \frac{[B^{(0)}]_{(0,j)}}{\mu_0 \;[\varrho^{(0)}]_{(0,j)}}
+             \frac{[B_r^{(1)}]_{(0,j+\frac12)}^{n} - [B_r^{(1)}]_{(0,j-\frac12)}^{n}}{\Delta z}
+\end{align*}
+
+
+
+
+
+\subsubsection{Courant-Friedrichs-Lewy stability condition}
+
+The necessary (but not sufficient)
+Courant-Friedrichs-Lewy (CFL) condition (\cite{leveque2002}) requires that the
+numerical domain of dependence contains the physical one for the scheme to be stable.
+
+For our explicit scheme with two spatial dimensions this implies and a maximum
+characteristic velocity of $v_f = \sqrt{v_A^2+c_s^2}$ a safe bound is 
+
+\begin{align}
+    \label{eq: CFL}
+    v_f \Delta t \leq \min\{\Delta r, \Delta z\}
+\end{align}
+
+We can use the Polomac target values from \autoref{chap:parameters} ($v_A \approx \SI{5.5e5}{\meter\per\second}$,
+$T_i \approx T_e = \SI{100}{\electronvolt}$, $\gamma \sim 5/3$), keeping in
+mind that the adiabatic closure is an approximation and results explicitly dependent
+on $\gamma$ ought to be treated with caution. Disregarding electrons'
+contribution to the mass density and treating the plasma as an ideal gas the adiabatic sound
 speed is
 \begin{align*}
-    c_s = \sqrt{\frac{\gamma k_B T}{m_i}}
-        = \sqrt{\frac{\tfrac{5}{3} \times 100\ \mathrm{eV}
-            \times 1.6\times10^{-19}\ \mathrm{J\,eV^{-1}}}
-            {1.67\times10^{-27}\ \mathrm{kg}}}
-        \approx 9.2\times10^4\ \mathrm{m\,s^{-1}},
+    c_s = \sqrt{\frac{\gamma k_B T}{m_i}} \approx \SI{9.2e4}{\meter \per \second},
 \end{align*}
-giving $v_f = \sqrt{v_A^2+c_s^2} \approx 5.6\times10^5\ \mathrm{m\,s^{-1}}$.
+giving $v_f = \sqrt{v_A^2+c_s^2} \approx \SI{5.6e5}{\meter \per \second}$.
+
 For a square grid $\Delta r = \Delta z = \Delta x$, \eqref{eq: CFL} simplifies to
-$\Delta t \leq \Delta x/(\sqrt{2}\,v_f)$.
-Taking the smallest Polomac length scale $L = 0.04\ \mathrm{m}$ resolved by
-$N = 100$ grid points ($\Delta x = 4\times10^{-4}\ \mathrm{m}$),
-\begin{align*}
-    \Delta t \lesssim \frac{4\times10^{-4}}{\sqrt{2}\times 5.6\times10^5}
-        \approx 5\times10^{-10}\ \mathrm{s}.
-\end{align*}
-This is three orders of magnitude smaller than the Alfv\'{e}n timescale
+$\Delta t \leq \Delta x/v_f$.
+For $L=R=\SI{0.15}{\meter}$ resolved by 100 gridpoints this implies $\Delta t\lesssim \SI{2.7e-9}{\second}$.
+This is two orders of magnitude smaller than the Alfv\'{e}n timescale
 $\tau_A \approx 5.5\times10^{-7}\ \mathrm{s}$, so a simulation spanning several
-Alfv\'{e}n times requires of order $10^3$ timesteps, which is computationally
-tractable.
+Alfv\'{e}n times would require of order $10^3$ timesteps.
 
-\subsection{Boundary conditions}
-\label{subsec: BCs}
 
-We model the plasma as bounded by perfectly conducting walls, consistent with
-\autoref{subsec: boundary conditions}. At such a wall with outward normal
-$\hat{n}$, no magnetic flux passes through and no plasma flows through:
-\begin{align}
-    \vec{B}_1 \cdot \hat{n} &= 0, \label{eq: BC B} \\
-    \vec{V}_1 \cdot \hat{n} &= 0. \label{eq: BC V}
-\end{align}
-In the $(r,z)$ domain these translate concretely to:
-\begin{itemize}
-    \item outer wall ($r = r_\mathrm{wall}$): $B_r^{(1)} = 0$, $V_r = 0$;
-    \item top and bottom caps ($z = z_\mathrm{top},\, z_\mathrm{bot}$):
-        $B_z^{(1)} = 0$, $V_z = 0$;
-    \item axis or inner coil surface ($r = 0$ or $r = r_\mathrm{coil}$):
-        regularity requires $B_r^{(1)} = 0$ and $V_r = 0$, consistent with
-        \autoref{subsec: boundary conditions}.
-\end{itemize}
-The tangential components ($V_z$ and $V_\varphi$ at radial walls; $V_r$ and
-$V_\varphi$ at axial walls; the corresponding $B$ components) are left free,
-since a perfectly conducting wall exerts no tangential force on the plasma in
-ideal MHD.
+
+\subsection{Verification tests}
+\label{subsec: verification tests}
+
+A fully implemented solver should pass three classes of consistency checks,
+which are stated here for completeness.
+
+
+\paragraph{Wave propagation}
+For a uniform equilibrium, the linearized system admits exact plane-wave
+solutions with dispersion relations given by \eqref{eq: char speeds}
+(\cite{Freidberg2014}).
+A numerical solution initialized as a single Fourier mode should reproduce
+the correct phase velocity $\omega/k$ to second order in $\Delta r$, $\Delta z$,
+and $\Delta t$, and the wave amplitude should remain constant over many Alfv\'{e}n times.
+
+\paragraph{Energy conservation}
+Ideal MHD conserves the total energy \cite[Ch.~8]{Freidberg2014}.
+
+\paragraph{$\nabla\cdot\vec{B}$ control}
+The constraint $\nabla\cdot\vec{B}^{(1)}=0$ \eqref{eq: gauss magnetism constraint}
+is preserved analytically by \eqref{eq: lin induction} and, by
+construction, also by its discrete counterpart.

@@ -56,14 +56,14 @@ Furthermore, we define the pressure tensor $\overleftrightarrow{P}$ as (note tha
 \[ \overleftrightarrow{P}_s \coloneq m_s \int d\vec{v} \, (\vec{v}-\vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
 \]
 
-We can evaluate moments of the Boltzmann equation
-
+We then evaluate moments of the Boltzmann equation
 
 \[
 \int d\vec{v} \, g_s(\vec{v}) \left[\text{Boltzmann}\right] = 0
 \]
+
 \subsection{Species continuity equation}
-$\to$ continuity eq.: choose $g_s(\vec{v}) = 1$
+In order to obtain the species continuity equation, we choose $g_s(\vec{v}) = 1$.
 
 \begin{align*}
 &\Rightarrow \int d\vec{v} \, \left[\underbrace{\frac{\partial f_s}{\partial t}}_{(1)} + \underbrace{\vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}}}_{(2)} + \underbrace{\frac{q_s}{m_s} (\vec{E}^{lr} + \vec{v} \wedge \vec{B}^{lr}) \cdot \frac{\partial f_s}{\partial \vec{v}}}_{(3)} - \underbrace{\left(\frac{\partial f}{\partial t}\right)_{coll}}_{(4)}\right] = 0
@@ -86,9 +86,8 @@ We thus arrive at the species fluid continuity equation
 
 
 \subsection{Species momentum equation}
-$\to$ momentum eq.: choose $g_s(\vec{v}) = m_s \vec{v}$
-
-See derivation in \autoref{sec:Species Momentum Equation}
+For the species momentum equation we choose $g_s(\vec{v}) = m_s \vec{v}$.
+A detailed derivation is attached in \autoref{sec:Species Momentum Equation}, the result we obtain is
 
 \begin{equation}\label{eq: species momentum eq}
  m_s n_s \frac{d \vec{u}_s}{d t} = q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s
@@ -98,13 +97,15 @@ where $\frac{d}{dt}$ is the convective derivative, $\frac{d}{dt} = \frac{\partia
 
 $\vec{R}_s$ is a viscous force due to collisions, $\vec{R} = \int d\vec{v} \, m_s (\vec{v} - \vec{u}_s) \left(\frac{\partial f}{\partial t}\right)_{coll} $.
 
-In the relaxation time approcimation we have $\vec{R}_e \approx -m_e n_e \nu_{ei} (\vec{u}_e - \vec{u}_i)$,
- where $\nu_{ei}$ is the electron-ion collision frequency.
+In the relaxation time approximation we have $\vec{R}_e \approx -m_e n_e \nu_{ei} (\vec{u}_e - \vec{u}_i)$,
+where $\nu_{ei}$ is the electron-ion collision frequency.
 
 \subsection{Species energy equation}
-$\to$ energy eq.: choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$
+For the energy equation we choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$.
 
-{\color{magenta} We use the conventions from the \emph{Intro to Plasma Physics} course from EPFL. An analogue derivation in chapter 2 of \cite{Freidberg2014}}
+We use the conventions from the \emph{Intro to Plasma Physics} course from EPFL (\cite{epfl_plasma_intro}).
+An analogous outline of the derivation of the species equation can be found
+in chapter 2 of \cite{Freidberg2014}.
 
 
 \begin{align*}
@@ -119,9 +120,6 @@ $\to$ energy eq.: choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$
 
 \item $Q_s = \int d\vec{v} \, \frac{1}{2} m_s \, (\vec{v} - \vec{u}_s)^2 \left(\frac{\partial f}{\partial t}\right)_{coll}$ \quad, \quad heat generated due to viscous forces
 \end{itemize}
-
-$\to$ Can generally evolve each species, often we care about ions \& electrons $\to$ call it two-fluid model
-
 
 
 \section{Single fluid model}
@@ -171,20 +169,20 @@ Details of the derivation can be found in \ref{sec:Derivation of the Single Flui
 
 \subsubsection{Ohm's law}
 
-{\color{magenta} if time, clean derivation}
-
-from momentum equations \quad $m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \partial_{\vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s$
-
-$\to$ Ass. we have electrons and one species of ions
-
-$\to$ multiply electron eq. by $\frac{1}{q_e}$ and ion eq. by $\frac{1}{q_i} = \frac{m_e}{m_i n_e}$
-
-$\to$ assume neutrality $(n_e \simeq n_i \simeq n)$, $m_e \ll m_i$, $\vec{J} \ll e n_e \vec{u}_e$, $e n_i \vec{u}_i$
-
-$\to$ Sum of their respective eq's is approx.:
-\[\frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right) = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}\]
+From the species momentum equations \eqref{eq: species momentum eq}, assuming 
+we have electrons and only one species of ions, we can multiply the electron momentum equation
+by $\frac{1}{q_e}$ and the ion momentum equation by $\frac{1}{q_i} = \frac{m_e}{m_i n_e}$.
+Further assuming neutrality $(n_e \simeq n_i \simeq n)$, $m_e \ll m_i$, $\vec{J} \ll e n_e \vec{u}_e$, $e n_i \vec{u}_i$,
+the sum of the intermediate results is approximately
+\begin{equation*}
+    \frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right)
+     = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}
+\end{equation*}
 
 with the \emph{plasma resisitivity} $\eta$.
+A more detailed explanation can be found in chapter 2 of \cite{Freidberg2014}.
+
+
 \subsubsection{Closure}
 
 In order to have a closed system of equations, we need additional assumptions and thus restrictions. This is called a \emph{closure}.
@@ -196,13 +194,7 @@ For an isotropic pressure tensor and adiabatic processes we have the following c
 \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \gamma = \frac{c_p}{c_v}= \frac{5}{3}
 \]
 
-\begin{comment}
-    Three closures
 
-    \[
-    \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \begin{cases} \gamma = 1 & \text{isothermal} \\ \gamma = \frac{c_p}{c_v} & \text{adiabatic} \\ \gamma = +\infty & \text{incompressible} \end{cases}
-    \]
-\end{comment}
 
 We will justify these assumptions in the next section.
 

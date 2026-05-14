@@ -134,6 +134,31 @@
       \verb 10.1007/978-3-319-22309-4
       \endverb
     \endentry
+    \entry{epfl_plasma_intro}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=395821c551761a96491654867ce21eae}{%
+           family={{École polytechnique fédérale de Lausanne}},
+           familyi={É\bibinitperiod}}}%
+      }
+      \strng{namehash}{395821c551761a96491654867ce21eae}
+      \strng{fullhash}{395821c551761a96491654867ce21eae}
+      \strng{fullhashraw}{395821c551761a96491654867ce21eae}
+      \strng{bibnamehash}{395821c551761a96491654867ce21eae}
+      \strng{authorbibnamehash}{395821c551761a96491654867ce21eae}
+      \strng{authornamehash}{395821c551761a96491654867ce21eae}
+      \strng{authorfullhash}{395821c551761a96491654867ce21eae}
+      \strng{authorfullhashraw}{395821c551761a96491654867ce21eae}
+      \field{sortinit}{É}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.openlearnity.org/courses/plasmaintroduction/}}
+      \field{note}{Online course, accessed Spring 2026}
+      \field{title}{Plasma Physics: Introduction}
+      \field{year}{2018}
+    \endentry
     \entry{Elio2024}{article}{}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=299455ea183ef998cc1f4392a4815ac0}{%
@@ -911,9 +936,42 @@
       \verb 10.1088/1741-4326/aade57
       \endverb
     \endentry
+    \entry{Yee1966}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=77352edacd2292358c2b40a540f4e341}{%
+           family={Yee},
+           familyi={Y\bibinitperiod},
+           given={Kane},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{77352edacd2292358c2b40a540f4e341}
+      \strng{fullhash}{77352edacd2292358c2b40a540f4e341}
+      \strng{fullhashraw}{77352edacd2292358c2b40a540f4e341}
+      \strng{bibnamehash}{77352edacd2292358c2b40a540f4e341}
+      \strng{authorbibnamehash}{77352edacd2292358c2b40a540f4e341}
+      \strng{authornamehash}{77352edacd2292358c2b40a540f4e341}
+      \strng{authorfullhash}{77352edacd2292358c2b40a540f4e341}
+      \strng{authorfullhashraw}{77352edacd2292358c2b40a540f4e341}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Antennas and Propagation}
+      \field{number}{3}
+      \field{title}{Numerical solution of initial boundary value problems involving maxwell's equations in isotropic media}
+      \field{volume}{14}
+      \field{year}{1966}
+      \field{pages}{302\bibrangedash 307}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/TAP.1966.1138693
+      \endverb
+      \keyw{Boundary value problems;Maxwell equations;Difference equations;Finite difference methods;Boundary conditions;Electromagnetic scattering;Partial differential equations;EMP radiation effects;Conductors;Differential equations}
+    \endentry
   \enddatalist
-  \missing{taflove2005}
-  \missing{yee1966}
 \endrefsection
 \endinput
 
