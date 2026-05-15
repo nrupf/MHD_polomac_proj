@@ -334,23 +334,23 @@ whose update equations contain a factor $1/r$, at half-$\Delta r$ nodes.
 %%%%%%%%%%%%%%%%%%%%%%%%%%% TIKZ DRAWING %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% ── Colour palette ───────────────────────────────────────────────
-\definecolor{cVr} {RGB}{120,  6,  6}   % V_r   dark  red
-\definecolor{cVz} {RGB}{215, 25, 25}   % V_z   medium red
-\definecolor{cVp} {RGB}{255,148,148}   % V_phi light  red
-\definecolor{cBr} {RGB}{ 10, 30,150}   % B_r   dark  blue
-\definecolor{cBz} {RGB}{ 15,110,210}   % B_z   medium blue
-\definecolor{cBp} {RGB}{110,175,255}   % B_phi light  blue
-\definecolor{cP}  {RGB}{  6,112, 40}   % P     dark  green
+\definecolor{cVr} {RGB}{140, 10, 10}   % V_r   dark   red
+\definecolor{cVz} {RGB}{255,148,148}   % V_z   light  red
+\definecolor{cVp} {RGB}{215, 25, 25}   % V_phi medium red
+\definecolor{cBr} {RGB}{ 10, 30,150}   % B_r   dark   blue
+\definecolor{cBz} {RGB}{110,175,255}   % B_z   light  blue
+\definecolor{cBp} {RGB}{ 15,110,210}   % B_phi medium blue
+\definecolor{cP}  {RGB}{ 10,150, 50}   % P     dark   green
 \definecolor{cGrd}{RGB}{150,150,150}   % grid lines
 
 %% ── Marker sizes (absolute pt) ───────────────────────────────────
-\def\msVr{2.5pt}   % V_r  square half-side  (small)
-\def\msVz{3.5pt}   % V_z  square half-side  (medium)
-\def\msVp{4.8pt}   % V_phi square half-side (large)
-\def\mrBr{2.0pt}   % B_r  circle radius     (small)
-\def\mrBz{2.8pt}   % B_z  circle radius     (medium)
-\def\mrBp{3.8pt}   % B_phi circle radius    (large)
-\def\mdP {3.0pt}   % P    diamond half-diag (medium)
+\def\msVp{3.0pt}   % V_phi square  half-side  (medium)
+\def\msVz{2.4pt}   % V_z   square  half-side  (small)
+\def\msVr{3.2pt}   % V_r   square  half-side  (large)
+\def\mrBp{3.2pt}   % B_phi circle  radius     (medium)
+\def\mrBz{2.6pt}   % B_z   circle  radius     (small)
+\def\mrBr{3.3pt}   % B_r   circle  radius     (large)
+\def\mdP {3.5pt}   % P     diamond half-diag  (medium)
 
 %% ── Marker macros (args: x [cm], y [cm]) ────────────────────────
 \newcommand{\mkVr}[2]{%
@@ -376,33 +376,33 @@ whose update equations contain a factor $1/r$, at half-$\Delta r$ nodes.
 \newcommand{\drawFrame}{%
   %% Solid grid lines at integer positions
   \foreach \yy in {0, 1.5, 3}{%
-    \draw[cGrd!65, thin] (0,\yy) -- (3,\yy);}
+    \draw[cGrd!65, thin] (0,\yy) -- (3.5,\yy);}
   \foreach \xx in {0, 1.5, 3}{%
-    \draw[cGrd!65, thin] (\xx,-0.75) -- (\xx,3);}
+    \draw[cGrd!65, thin] (\xx,-1.00) -- (\xx,3.4);}
   %% Dashed grid lines at half-integer positions
   \foreach \yy in {-0.75, 0.75, 2.25}{%
     \draw[cGrd!45, thin, dashed, dash pattern=on 3pt off 2pt]
-      (0,\yy) -- (3,\yy);}
+                         (0,\yy) -- (3.5,\yy);}
   \foreach \xx in {0.75, 2.25}{%
     \draw[cGrd!45, thin, dashed, dash pattern=on 3pt off 2pt]
-      (\xx,-0.75) -- (\xx,3);}
+                         (\xx,-1.00) -- (\xx,3.4);}
   %% Axes
-  \draw[->, thick] (-0.22, 0)    -- (3.72, 0)   node[right] {$r$};
-  \draw[->, thick] (0,    -0.95) -- (0,    3.62) node[above] {$z$};
+  \draw[->, thick] (0, 0)    -- (3.72, 0)    node[right] {$r$};
+  \draw[->, thick] (0, -1.0) -- (0,    3.62) node[above] {$z$};
   %% r-axis labels  (NO \, in the list – that breaks \foreach)
-  \foreach \xx/\lb in {0/{i}, 1.5/{i{+}1}, 3/{i{+}2}}{%
-    \node[below=5pt, font=\footnotesize] at (\xx,0) {$\lb$};}
+  \foreach \xx/\lb in {0/{i{=}0}, 0.75/{i{=}\tfrac{1}{2}}, 1.5/{i{=}1}, 2.25/{i{=}\tfrac{3}{2}}, 3/{i{=}2}}{%
+    \node[font=\scriptsize, anchor = base] at (\xx,-1.3) {$\lb$};}
   %% z-axis labels
-  \node[left=5pt, font=\scriptsize] at (0,-0.75) {$j{-}\tfrac{1}{2}$};
-  \foreach \yy/\lb in {0/{j}, 1.5/{j{+}1}, 3/{j{+}2}}{%
-    \node[left=5pt, font=\footnotesize] at (0,\yy) {$\lb$};}
+  \node[font=\scriptsize] at (-0.6,-0.75) {$j{=}{\scriptscriptstyle -}\tfrac{1}{2}$};
+  \foreach \yy/\lb in {0/{j{=}\,0}, 0.75/{j{=}\tfrac{1}{2}}, 1.5/{j{=}\,1}, 2.25/{j{=}\tfrac{3}{2}}, 3/{j{=}\,2}}{%
+    \node[font=\scriptsize, anchor=east] at (-0.3,\yy) {$\lb$};}
 }
 
 %% \drawBrackets: Delta-r and Delta-z dimension lines
 \newcommand{\drawBrackets}{%
   %% Delta r: horizontal, between i and i+1
   \draw[{Bar[width=3pt]}-{Bar[width=3pt]}, thin]
-    (0,-1.38) -- (1.5,-1.38);
+    (0,-1.5) -- (1.5,-1.50);
   \node[below=2pt, font=\scriptsize] at (0.75,-1.38) {$\Delta r$};
   %% Delta z: vertical, between j and j+1
   \draw[{Bar[width=3pt]}-{Bar[width=3pt]}, thin]
@@ -441,18 +441,18 @@ whose update equations contain a factor $1/r$, at half-$\Delta r$ nodes.
   %% (co-located with P; offset for visibility)
   \foreach \ii in {0.75, 2.25}{%
     \foreach \jj in {0, 1.5, 3}{%
-      \fill[cBz] (\ii, \jj+0.18) circle (\mrBz);}}
+      \fill[cBz] (\ii, \jj+0.08) circle (\mrBz);}}
   %% P^(1) at (i+1/2, j), offset -0.18cm in z — dark green diamond
   \foreach \ii in {0.75, 2.25}{%
     \foreach \jj in {0, 1.5, 3}{%
-      \fill[cP] (\ii,\jj-0.18)
+      \fill[cP] (\ii,\jj-0.08)
         +(0,\mdP)--+(\mdP,0)--+(0,-\mdP)--+(-\mdP,0)--cycle;}}
 \end{scope}
 
 %% ──────────── PICTURE (b) — Shear-Alfven (phi) branch ───────────
 \begin{scope}[xshift=6.2cm]
   \drawFrame
-  \drawBrackets
+  %\drawBrackets
   \node[above right, font=\bfseries\small] at (3,3) {b)};
   %% V_phi at integer (i,j) — light red large square
   \foreach \ii in {0, 1.5, 3}{%
@@ -468,23 +468,23 @@ whose update equations contain a factor $1/r$, at half-$\Delta r$ nodes.
 %%  Grid centres: a) x=1.5  b) x=6.2+1.5=7.7  midpoint ~ 4.65 cm
 %%  Row 1 (4 entries, 2.2 cm spacing): Vr, Vz, Vphi, P
 %%  Row 2 (3 entries, 2.2 cm spacing): Br, Bz, Bphi
-\mkVr{1.35}{-2.50}
-\node[right=4pt, cVr,  font=\scriptsize] at (1.35,-2.50) {$V_r$};
-\mkVz{3.55}{-2.50}
-\node[right=4pt, cVz,  font=\scriptsize] at (3.55,-2.50) {$V_z$};
-\mkVp{5.75}{-2.50}
-\node[right=4pt, cVp,  font=\scriptsize] at (5.75,-2.50) {$V_\varphi$};
-\mkP {7.95}{-2.50}
-\node[right=4pt, cP,   font=\scriptsize] at (7.95,-2.50) {$P^{(1)}$};
-\mkBr{2.45}{-3.20}
-\node[right=4pt, cBr,  font=\scriptsize] at (2.45,-3.20) {$B_r^{(1)}$};
-\mkBz{4.65}{-3.20}
-\node[right=4pt, cBz,  font=\scriptsize] at (4.65,-3.20) {$B_z^{(1)}$};
-\mkBp{6.85}{-3.20}
-\node[right=4pt, cBp,  font=\scriptsize] at (6.85,-3.20) {$B_\varphi^{(1)}$};
+\mkVr{0.25}{-2.50}
+\node[right=3pt, cVr,  font=\scriptsize] at (0.25,-2.50) {$V_r$};
+\mkVz{1.5}{-2.50}
+\node[right=3pt, cVz,  font=\scriptsize] at (1.5,-2.50) {$V_z$};
+\mkP {2.75}{-2.50}
+\node[right=3pt, cP,   font=\scriptsize] at (2.75,-2.50) {$P^{(1)}$};
+\mkBr{0.875}{-3.0}
+\node[right=3pt, cBr,  font=\scriptsize] at (0.875,-3.0) {$B_r^{(1)}$};
+\mkBz{2.125}{-3.0}
+\node[right=3pt, cBz,  font=\scriptsize] at (2.125,-3.0) {$B_z^{(1)}$};
+\mkVp{7.0}{-2.50}
+\node[right=3pt, cVp,  font=\scriptsize] at (7.0,-2.50) {$V_\varphi$};
+\mkBp{8.25}{-2.50}
+\node[right=3pt, cBp,  font=\scriptsize] at (8.25,-2.50) {$B_\varphi^{(1)}$};
 \node[font=\scriptsize, text=cGrd!80!black, align=center] at (4.65,-3.85)
   {\textcolor{cBz}{$B_z^{(1)}$} and \textcolor{cP}{$P^{(1)}$}
-   share node $(i{+}\tfrac{1}{2},j)$; offset for visibility.};
+   share node $(i{+}\frac{1}{2},j)$; offset for visibility.};
 
 \end{tikzpicture}
 \caption{a) Grid b) Grid}
