@@ -649,6 +649,44 @@
       \verb 10.1088/1741-4326/ae5f32
       \endverb
     \endentry
+    \entry{Inan2011}{inbook}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=1a5b4fd90ac34bbf3b96dd9a8592d9a1}{%
+           family={Inan},
+           familyi={I\bibinitperiod},
+           given={Umran\bibnamedelima S.},
+           giveni={U\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=740a2b6c16971c72aee26fcbd63c452b}{%
+           family={Marshall},
+           familyi={M\bibinitperiod},
+           given={Robert\bibnamedelima A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{e3580b5486d561f1c3757c6d40f9a6be}
+      \strng{fullhash}{e3580b5486d561f1c3757c6d40f9a6be}
+      \strng{fullhashraw}{e3580b5486d561f1c3757c6d40f9a6be}
+      \strng{bibnamehash}{e3580b5486d561f1c3757c6d40f9a6be}
+      \strng{authorbibnamehash}{e3580b5486d561f1c3757c6d40f9a6be}
+      \strng{authornamehash}{e3580b5486d561f1c3757c6d40f9a6be}
+      \strng{authorfullhash}{e3580b5486d561f1c3757c6d40f9a6be}
+      \strng{authorfullhashraw}{e3580b5486d561f1c3757c6d40f9a6be}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Numerical Electromagnetics: The FDTD Method}
+      \field{title}{Numerical stability of finite difference methods}
+      \field{year}{2011}
+      \field{pages}{113\bibrangedash 131}
+      \range{pages}{19}
+    \endentry
     \entry{leveque2002}{book}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=c5fc096f540a44e56f892cc83176f0fb}{%

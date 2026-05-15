@@ -13,8 +13,8 @@ Additionally we take the mass continuity equation \eqref{eq: MHD mass continuity
 to arrive at a system of four partial differential equations
 \begin{align*}
     \frac{\partial \varrho}{\partial t} + \nabla \cdot (\varrho \vec{V}) &= 0 \\
-    \varrho \frac{d\vec{V}}{dt} &= -\nabla P + \frac{1}{\mu_0}(\nabla \times \vec{B}) \times \vec{B} \\
-    \frac{\partial \vec{B}}{\partial t} &= \nabla \times (\vec{V} \times \vec{B}) \\
+    \varrho \frac{d\vec{V}}{dt} &= -\nabla P + \frac{1}{\mu_0}(\nabla \wedge \vec{B}) \wedge \vec{B} \\
+    \frac{\partial \vec{B}}{\partial t} &= \nabla \wedge (\vec{V} \wedge \vec{B}) \\
     \frac{d}{dt}\!\left(P \varrho^{-\gamma}\right) &= 0
 \end{align*}
 and as an additional constraint Gauss' law for magnetism \eqref{eq: MHD gauss law for magnetism},
@@ -40,9 +40,9 @@ the linearized equations
     \frac{\partial \varrho^{(1)}}{\partial t} &= -\varrho^{(0)}\, \nabla \cdot \vec{V}^{(1)},
         \label{eq: lin continuity} \\
     \varrho^{(0)}\, \frac{\partial \vec{V}^{(1)}}{\partial t} &= -\nabla P^{(1)}
-        + \frac{1}{\mu_0}\bigl(\nabla \times \vec{B}^{(1)}\bigr) \times \vec{B}^{(0)},
+        + \frac{1}{\mu_0}\bigl(\nabla \wedge \vec{B}^{(1)}\bigr) \wedge \vec{B}^{(0)},
         \label{eq: lin momentum} \\
-    \frac{\partial \vec{B}^{(1)}}{\partial t} &= \nabla \times \bigl(\vec{V}^{(1)} \times \vec{B}^{(0)}\bigr),
+    \frac{\partial \vec{B}^{(1)}}{\partial t} &= \nabla \wedge \bigl(\vec{V}^{(1)} \wedge \vec{B}^{(0)}\bigr),
         \label{eq: lin induction} \\
     \frac{\partial P^{(1)}}{\partial t} &= -\gamma P^{(0)}\, \nabla \cdot \vec{V}^{(1)}.
         \label{eq: lin pressure}
@@ -83,10 +83,10 @@ Under these two assumptions the cylindrical differential operators from
     \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial(r F_r)}{\partial r}
         + \frac{\partial F_z}{\partial z},
     \label{eq: reduced div} \\
-    (\nabla \times \vec{F})_r &= -\frac{\partial F_\varphi}{\partial z}, \qquad
-    (\nabla \times \vec{F})_\varphi = \frac{\partial F_r}{\partial z}
+    (\nabla \wedge \vec{F})_r &= -\frac{\partial F_\varphi}{\partial z}, \qquad
+    (\nabla \wedge \vec{F})_\varphi = \frac{\partial F_r}{\partial z}
         - \frac{\partial F_z}{\partial r}, \qquad
-    (\nabla \times \vec{F})_z = \frac{1}{r}\frac{\partial(r F_\varphi)}{\partial r}.
+    (\nabla \wedge \vec{F})_z = \frac{1}{r}\frac{\partial(r F_\varphi)}{\partial r}.
     \label{eq: reduced curl}
 \end{align}
 
@@ -594,13 +594,14 @@ The necessary (but not sufficient)
 Courant-Friedrichs-Lewy (CFL) condition (\cite{leveque2002}) requires that the
 numerical domain of dependence contains the physical one for the scheme to be stable.
 
-For our explicit scheme with two spatial dimensions this implies and a maximum
-characteristic velocity of $v_f = \sqrt{v_A^2+c_s^2}$ a safe bound is 
+For our explicit scheme with two spatial dimensions and a maximum
+characteristic velocity of $v_f = \sqrt{v_A^2+c_s^2}$ a safe bound is (\cite{Inan2011})
 
 \begin{align}
     \label{eq: CFL}
-    v_f \Delta t \leq \min\{\Delta r, \Delta z\}
+    v_f \Delta t \leq \frac{1}{\sqrt{\frac{1}{(\Delta r)^2} + \frac{1}{(\Delta z)^2}}}
 \end{align}
+
 
 We can use the Polomac target values from \autoref{chap:parameters} ($v_A \approx \SI{5.5e5}{\meter\per\second}$,
 $T_i \approx T_e = \SI{100}{\electronvolt}$, $\gamma \sim 5/3$), keeping in
@@ -614,11 +615,11 @@ speed is
 giving $v_f = \sqrt{v_A^2+c_s^2} \approx \SI{5.6e5}{\meter \per \second}$.
 
 For a square grid $\Delta r = \Delta z = \Delta x$, \eqref{eq: CFL} simplifies to
-$\Delta t \leq \Delta x/v_f$.
-For $L=R=\SI{0.15}{\meter}$ resolved by 100 gridpoints this implies $\Delta t\lesssim \SI{2.7e-9}{\second}$.
+$\Delta t \leq \Delta x/(\sqrt{2}v_f)$.
+For $L=R=\SI{0.15}{\meter}$ resolved by 100 gridpoints this implies $\Delta t\lesssim \SI{1.9e-9}{\second}$.
 This is two orders of magnitude smaller than the Alfv\'{e}n timescale
-$\tau_A \approx 5.5\times10^{-7}\ \mathrm{s}$, so a simulation spanning several
-Alfv\'{e}n times would require of order $10^3$ timesteps.
+$\tau_A \approx \SI{5.5e-7}{\second}$, so a simulation spanning several
+Alfv\'{e}n times would require of order $10^3-10^4$ timesteps.
 
 
 

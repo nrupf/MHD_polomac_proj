@@ -38,3 +38,38 @@ One way to start to consider tunnels would be setting the small perturbation of 
 Check LDX codes for usable parts
 
 Work with OpenStar
+
+
+\begin{comment}
+    Outline: Conclusion and Outlook (Section 8)
+8.1 Conclusion
+
+Ideal MHD equations derived from first principles (Boltzmann → species → single-fluid → MHD limit), with all six assumptions verified quantitatively for Polomac parameters
+Polomac geometry characterized: predominantly poloidal field, Bφ ≡ 0 to leading order, axisymmetry broken only by tunnels
+Static equilibrium: reduced Grad-Shafranov equation Δ*ψ = −μ₀r²dP/dψ derived and boundary conditions specified
+Dimensionless parameters: Alfvén velocity ~5.5×10⁵ m/s, Lundquist number S ∈ [2.8×10⁴, 2.1×10⁵] justifying ideal MHD, β ∈ [0.04, 1.01] indicating high confinement efficiency if design targets are met
+Conceptual comparison: Polomac avoids current-driven disruptions (unlike tokamak) and is intrinsically steady-state (like stellarator); principal stability threat is interchange instability, stabilized only by plasma compressibility
+FDTD framework: linearized MHD system shown to be hyperbolic with characteristic speeds {0, ±vA, ±cs} along field and ±vf perpendicular; staggered-grid discretization and boundary conditions formulated; verification tests specified
+
+8.2 Outlook
+8.2.1 Numerical implementation
+
+Implement the FDTD solver; verify with wave propagation tests (Alfvén, magnetosonic), ∇·B = 0 preservation, and energy conservation
+Note the corrected 2D CFL: Δt ≤ Δx/(vf√2)
+
+8.2.2 Non-axisymmetric perturbations
+
+Extension to toroidal mode number m ≥ 1 by substitution ∂/∂φ → im; each m is an independent 2D problem on the same (r,z) grid
+Physical motivation: the four magnetic tunnels break axisymmetry with four-fold symmetry (m = 4 and its harmonics); surveying low-m modes would identify dominant instabilities
+This is the most direct route to assessing whether compressibility stabilization survives the tunnel-induced symmetry breaking — the central open physics question of the Polomac
+
+8.2.3 Equilibrium beyond uniform background
+
+The FDTD framework currently linearizes around a uniform B₀ê_z background; a natural next step is to use the Grad-Shafranov solution of Chapter 4 as the equilibrium and linearize around it
+This requires variable-coefficient update equations and a non-uniform grid near the coil
+
+8.2.4 Resources and collaboration
+
+LDX codes (DIPEQ for equilibrium) may provide starting points and benchmarks
+Collaboration with OpenStar (currently developing a levitated-dipole reactor) is a natural avenue given their parallel work on poloidal confinement
+\end{comment}

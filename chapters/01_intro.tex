@@ -1,6 +1,35 @@
 \chapter{Introduction}
-\section{Fusion energy and geometries}
-OpenStar works on poloidal geometry aswell.
 
-LDX has tried before.
-\section{Magnetohydrodynamic modelling}
+\section{Fusion as an Energy Source and the Confinement Challenge}
+
+As global energy demand continues to rise, fusion remains an attractive candidate
+for carbon-free baseload power. 
+In magnetic confinement fusion, the challenge is no longer merely reaching fusion conditions, 
+but sustaining stable, reactor-relevant plasma performance. 
+The dominant approach relies on toroidal magnetic confinement in tokamaks and stellarators. 
+For both geometries, great engineering challenges on the way to net enegy gain and 
+commercial power plants remain.
+
+\section{Poloidal Confinement and the Polomac Concept}
+
+Poloidal magnetic confinement has been explored in the past, most notably 
+the by the Levitated Dipole Experiment (LDX).
+Due to promising initial results, the concept is now being revisited 
+by the OpenStar project and the Polomac, proposed by Deutelio, which represents 
+a new approach in this class.
+Its key engineering innovation is the use of magnetic tunnels,
+regions where external coils deflect outboard field lines aside, to 
+support, feed, and cool the central dipole coil without direct plasma contact. 
+As of this writing, the concept is at the design stage. The small 
+Deutelio prototype is described in \cite{Elio2024}, but no experimental 
+plasma data have been published.
+
+\section{Scope and Structure of this Work}
+
+This work develops a theoretical MHD framework for the Polomac from first principles. 
+\autoref{chap: Single Fluid Ideal MHD Equations} derives the ideal MHD equations, 
+\autoref{chap: Polomac geometry and specialization to poloidal configurations} specializes them to the Polomac geometry, 
+\autoref{chap: Static equilibrium model in cylindrical coordinates under axisymmetric assumptions} formulates the static equilibrium via a reduced Grad-Shafranov equation,
+\autoref{chap:parameters} evaluates the relevant dimensionless parameters,
+\autoref{chap: An Overview over Magnetic Confinement Approaches for Nuclear Fusion} compares the Polomac to the tokamak and stellarator, and
+\autoref{chap: Framework for a Minimal FDTD Solver for Linearized MHD of the Polomac} establishes a framework for a linearized FDTD solver.

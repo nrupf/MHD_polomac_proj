@@ -1,4 +1,5 @@
-\chapter{Single Fluid ideal MHD equations}
+\chapter{Single Fluid Ideal MHD Equations}
+\label{chap: Single Fluid Ideal MHD Equations}
 
 This theory follows mostly the EPFL Intro to Plasma Phyiscs course, Freidberg's book \emph{Ideal MHD} 
 (\cite{Freidberg2014}) and Chen's book \emph{Introduction to Plasma Physics and Controlled Fusion} (\cite{Chen2016}).
@@ -25,13 +26,13 @@ The crititical screening distance hereby is the Debye length $\lambda_{D}$ of el
     \label{eq: debye length}
 \end{equation}
 
-\subsection{Gravity irrelevant}
+\subsection{Neglection of Gravity}
 
-Gravity on single ion: $F_G = m g \sim \SI{1e-26}{\kilo\gram} \SI{10}{\meter\second^{-2}} \sim \SI{1e-25}{\newton}$
-
-
-From Poisson eq ($\nabla^2 \phi = \frac{\rho}{\epsilon_0}$) and length scale estimate for long range forces ($\nabla \sim \frac{1}{\lambda_D}$), we can estimate the 
-long-range (beyond $\lambda_D$) Coulomb force: $F_C = e E = e \nabla \phi \sim \lambda_D \frac{\rho}{\epsilon_0} = \frac{e^2 n_e \lambda_D}{\epsilon_0} \sim \SI{3e-27}{m^2 \newton} n_e \lambda_D$
+The gravitational force on a single ion is approximately 
+$F_G = m g \lesssim \SI{1e-26}{\kilo\gram} \cdot \SI{9.81}{\meter\second^{-2}} \sim \SI{1e-25}{\newton}$.
+From Poisson's equation ($\nabla^2 \phi = \frac{\rho}{\epsilon_0}$) and a length scale
+estimate for long range forces ($\nabla \sim \frac{1}{\lambda_D}$), we can estimate the 
+long-range (beyond $\lambda_D$) Coulomb force to be $F_C = e E = e \nabla \phi \sim e \lambda_D \frac{\rho}{\epsilon_0} = \frac{e^2 n_e \lambda_D}{\epsilon_0} \sim \SI{3e-27}{m^2 \newton} n_e \lambda_D$.
 
 Even a very weak estimate ($\lambda_D \sim 10^{-6}$, $n_e \sim 10^{14}$) , compared to typical plasma values (see \cite{Blandford2013}), this shows that gravity can be neglected.
 
@@ -467,7 +468,7 @@ satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \wedge \vec{B}) = 0$). 
 
 \item Ohm's law:
 \[
-\underbrace{\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right]}_{\text{Ass. 1}} = \vec{E} + \vec{v} \wedge \vec{B} - \underbrace{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e}}_{\text{Ass. 5}}- \underbrace{\eta \vec{J}}_{\text{Ass. 3}}
+\underbrace{\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right]}_{\text{Ass. 1}} = \vec{E} + \vec{V} \wedge \vec{B} - \underbrace{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e}}_{\text{Ass. 5}}- \underbrace{\eta \vec{J}}_{\text{Ass. 3}}
 \]
 \end{itemize}
 
