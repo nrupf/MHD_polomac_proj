@@ -4,27 +4,30 @@
 This theory follows mostly the EPFL Intro to Plasma Phyiscs course, Freidberg's book \emph{Ideal MHD} 
 (\cite{Freidberg2014}) and Chen's book \emph{Introduction to Plasma Physics and Controlled Fusion} (\cite{Chen2016}).
 
-\section{The Maxwell equations}
-
+\section{Maxwell's Equations}
+The microscopic Maxwell equations are
 \begin{align}
-    \text{Gauss's law: } \nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} \label{eq:gauss_e} \\
-    \text{Gauss's law for magnetism: } \nabla \cdot \vec{B} &= 0 \label{eq:gauss_b} \\
-    \text{Faraday's law of induction: } \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \label{eq:faraday} \\
-    \text{Ampère–Maxwell law: }  \nabla \wedge \vec{B} &= \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} \label{eq:ampere}
+    \text{Gauss's law: }\;\, \nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0}\, , \label{eq:gauss_e} \\
+    \text{Gauss's law for magnetism: }\;\, \nabla \cdot \vec{B} &= 0 \, , \label{eq:gauss_b} \\
+    \text{Faraday's law of induction: } \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \, , \label{eq:faraday} \\
+    \text{Ampère–Maxwell law: }  \nabla \wedge \vec{B} &= \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} \, . \label{eq:ampere}
 \end{align}
 
-\section{The Boltzmann equation}
+\section{The Boltzmann Equation}
 The Boltzmann equation is
 \begin{equation*}
-    \frac{\partial f_s}{\partial t} + \vec{v} \nabla_{\vec{r}} f_s + \frac{q_s}{m_s}(\vec{E}^{\lr} \vec{v}\wedge \vec{B}^{\lr} ) \nabla_{\vec{v}} f_s - \left(\frac{\partial f}{\partial t}\right)_{\operatorname{coll}} = 0
+    \frac{\partial f_s}{\partial t} + \vec{v} \nabla_{\vec{r}} f_s + \frac{q_s}{m_s}(\vec{E}^{\lr} \vec{v}\wedge \vec{B}^{\lr} ) \nabla_{\vec{v}} f_s - \left(\frac{\partial f}{\partial t}\right)_{\operatorname{coll}} = 0 \, .
 \end{equation*}
 
 Here the short range interactions are accounted for in the collisional term, and the long range (lr) interactions from collective effeects are accounted for in the electric and Lorentz term.
 The crititical screening distance hereby is the Debye length $\lambda_{D}$ of electrons 
 \begin{equation}
-    \lambda_{D} = \sqrt{\frac{\epsilon_0 T_e}{e^2 n_0}}
+    \lambda_{D} = \sqrt{\frac{\epsilon_0 T_e}{e^2 n_0}}  \, .
     \label{eq: debye length}
 \end{equation}
+
+Acknowledging the above, we from now on omit
+the superscript \emph{lr} and write simply $\vec E$ and $\vec B$.
 
 \subsection{Neglection of Gravity}
 
@@ -36,72 +39,78 @@ long-range (beyond $\lambda_D$) Coulomb force to be $F_C = e E = e \nabla \phi \
 
 Even a very weak estimate ($\lambda_D \sim 10^{-6}$, $n_e \sim 10^{14}$) , compared to typical plasma values (see \cite{Blandford2013}), this shows that gravity can be neglected.
 
-\section{Species continuity equation and momentum equation}
-\subsection{Species variables}
+\section{Species Continuity Equation and Momentum Equation}
+\subsection{Species Variables}
 \begin{itemize}
     \item Number density: $n_s(\vec{r}, t) = \int d\vec{v} \, f_s(\vec{r},\vec{v},t)$
 \end{itemize}
 In general, we note the per particle average in velocity space of a function $g(\vec{v})$ at a given $(\vec{r},t)$ as
 \begin{equation*}
-    \langle g(\vec{r},t)\rangle_{\vec{v}} = \frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, g(\vec{v}) f_s(\vec{r},\vec{v},t)
+    \langle g(\vec{r},t)\rangle_{\vec{v}} = \frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, g(\vec{v}) f_s(\vec{r},\vec{v},t)  \, .
 \end{equation*}
 
 Thus we have 
 
 \begin{itemize}
-    \item Average fluid velocity $\vec{u}_s(\vec{r},t)$: $g(\vec{v})=\vec{v} \rightarrow \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \vec{v} f_s(\vec{r},\vec{v},t)$
-    \item Average kinetic energy density $\vec{w}_s(\vec{r},t)$: $g(\vec{v})=\frac{1}{2}m_s\vec{v}^2 \rightarrow \vec{w}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \frac{1}{2}m_s\vec{v}^2 f_s(\vec{r},\vec{v},t)$
+    \item Average fluid velocity $\vec{u}_s(\vec{r},t)$: 
+    \[
+    g(\vec{v})=\vec{v} \implies \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \vec{v} f_s(\vec{r},\vec{v},t) \, .
+    \]
+    \item Average kinetic energy density $\vec{w}_s(\vec{r},t)$:
+    \[
+    g(\vec{v})=\frac{1}{2}m_s\vec{v}^2 \implies \vec{w}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \frac{1}{2}m_s\vec{v}^2 f_s(\vec{r},\vec{v},t) \, .
+    \]
 \end{itemize}
 
 Furthermore, we define the pressure tensor $\overleftrightarrow{P}$ as (note that we do not normalize over number density)
-\[ \overleftrightarrow{P}_s \coloneq m_s \int d\vec{v} \, (\vec{v}-\vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t)
+\[ \overleftrightarrow{P}_s \coloneq m_s \int d\vec{v} \, (\vec{v}-\vec{u}_s) \otimes (\vec{v}-\vec{u}_s) f_s(\vec{r},\vec{v},t) \, .
 \]
 
 We then evaluate moments of the Boltzmann equation
 
 \[
-\int d\vec{v} \, g_s(\vec{v}) \left[\text{Boltzmann}\right] = 0
+\int d\vec{v} \, g_s(\vec{v}) \left[\text{Boltzmann}\right] = 0  \, .
 \]
 
-\subsection{Species continuity equation}
-In order to obtain the species continuity equation, we choose $g_s(\vec{v}) = 1$.
+\subsection{Species Continuity Equation}
+In order to obtain the species continuity equation, we choose $g_s(\vec{v}) = 1$ and obtain
 
 \begin{align*}
-&\Rightarrow \int d\vec{v} \, \left[\underbrace{\frac{\partial f_s}{\partial t}}_{(1)} + \underbrace{\vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}}}_{(2)} + \underbrace{\frac{q_s}{m_s} (\vec{E}^{lr} + \vec{v} \wedge \vec{B}^{lr}) \cdot \frac{\partial f_s}{\partial \vec{v}}}_{(3)} - \underbrace{\left(\frac{\partial f}{\partial t}\right)_{coll}}_{(4)}\right] = 0
+\int d\vec{v} \, \left[\underbrace{\frac{\partial f_s}{\partial t}}_{(1)} + \underbrace{\vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}}}_{(2)} + \underbrace{\frac{q_s}{m_s} (\vec{E} + \vec{v} \wedge \vec{B}) \cdot \frac{\partial f_s}{\partial \vec{v}}}_{(3)} - \underbrace{\left(\frac{\partial f}{\partial t}\right)_{coll}}_{(4)}\right] = 0  \, ,
 \end{align*}
-
+where
 \begin{align*}
-(1): \quad & \int d\vec{v} \,  \frac{\partial f_s}{\partial t} = \frac{\partial}{\partial t} \int f_s = \frac{\partial}{\partial t} n_s \\
-(2): \quad & \int d\vec{v} \,  \vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}} = \frac{\partial}{\partial \vec{r}} \cdot \int d\vec{v} \, \vec{v} f_s = \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) \qquad \text{$\vec{v}$ indep. of $\vec{r}$} \\
-& \qquad \qquad \qquad \qquad \qquad \qquad \qquad \text{$\vec{v}$ indep. of $\vec{r}$, $\vec{u} = \langle \vec{v} \rangle$} \\
-(3): \quad & \int d\vec{v} \,  \frac{q_s}{m_s} (\vec{E}^{lr} + \vec{v} \wedge \vec{B}^{lr}) \cdot \frac{\partial f_s}{\partial \vec{v}} = \frac{q_s}{m_s} \int \frac{\partial}{\partial \vec{v}} \cdot (\vec{E} + \vec{v} \wedge \vec{B}) \\
-& = \frac{q_s}{m_s} \int_{S_{\vec{v} \to \infty}} (\vec{E} + \vec{v} \wedge \vec{B}) \, f_s \, d\vec{S}_{\vec{v}} = 0 \qquad\text{Ass. } f_s\overset{v\to\infty}{\rightarrow}0\\
-(4): \quad & \int d\vec{v} \,  \left(\frac{\partial f}{\partial t}\right)_{coll} = 0 \quad \text{bec. we ass. collisions don't create or destroy particles.}
+(1): \quad & \int d\vec{v} \,  \frac{\partial f_s}{\partial t} = \frac{\partial}{\partial t} \int f_s = \frac{\partial}{\partial t} n_s  \, ,\\
+(2): \quad & \int d\vec{v} \,  \vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}} = \frac{\partial}{\partial \vec{r}} \cdot \int d\vec{v} \, \vec{v} f_s = \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) \qquad \text{$\vec{v}$ indep. of $\vec{r}$}  \, ,\\
+(3): \quad & \int d\vec{v} \,  \frac{q_s}{m_s} (\vec{E} + \vec{v} \wedge \vec{B}) \cdot \frac{\partial f_s}{\partial \vec{v}} = \frac{q_s}{m_s} \int \frac{\partial}{\partial \vec{v}} \cdot (\vec{E} + \vec{v} \wedge \vec{B}) f_s \\
+& \hspace{5cm}= \frac{q_s}{m_s} \int_{S_{\vec{v} \to \infty}} (\vec{E} + \vec{v} \wedge \vec{B}) \, f_s \, d\vec{S}_{\vec{v}}\\
+&    \hspace{5cm} = 0 \quad\text{assuming } f_s\overset{v\to\infty}{\rightarrow}0 \, ,\\
+(4): \quad & \int d\vec{v} \,  \left(\frac{\partial f}{\partial t}\right)_{coll} = 0 \quad \text{because we assume collisions don't create or destroy particles.}
 \end{align*}
 
 We thus arrive at the species fluid continuity equation
 \begin{equation*}
-    \frac{\partial}{\partial t} n_s + \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) = 0
+    \frac{\partial}{\partial t} n_s + \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) = 0 \, .
 \end{equation*}
 
 
 
-\subsection{Species momentum equation}
+\subsection{Species Momentum Equation}
 For the species momentum equation we choose $g_s(\vec{v}) = m_s \vec{v}$.
 A detailed derivation is attached in \autoref{sec:Species Momentum Equation}, the result we obtain is
 
 \begin{equation}\label{eq: species momentum eq}
- m_s n_s \frac{d \vec{u}_s}{d t} = q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s
+ m_s n_s \frac{d \vec{u}_s}{d t} = q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s  \, ,
 \end{equation}
 
-where $\frac{d}{dt}$ is the convective derivative, $\frac{d}{dt} = \frac{\partial}{\partial t} + \vec{u}_s \cdot \frac{\partial}{\partial \vec{r}}$
+where $\frac{d}{dt}$ is the convective derivative, $\frac{d}{dt} = \frac{\partial}{\partial t} + \vec{u}_s \cdot \frac{\partial}{\partial \vec{r}}$.
 
 $\vec{R}_s$ is a viscous force due to collisions, $\vec{R} = \int d\vec{v} \, m_s (\vec{v} - \vec{u}_s) \left(\frac{\partial f}{\partial t}\right)_{coll} $.
 
 In the relaxation time approximation we have $\vec{R}_e \approx -m_e n_e \nu_{ei} (\vec{u}_e - \vec{u}_i)$,
 where $\nu_{ei}$ is the electron-ion collision frequency.
 
-\subsection{Species energy equation}
+\subsection{Species Energy Equation}
 For the energy equation we choose $g_s(\vec{v}) = m_s \frac{\vec{v}^2}{2}$.
 
 We use the conventions from the \emph{Intro to Plasma Physics} course from EPFL (\cite{epfl_plasma_intro}).
@@ -110,9 +119,9 @@ in chapter 2 of \cite{Freidberg2014}.
 
 
 \begin{align*}
-\Rightarrow \quad \frac{3}{2} n_s \frac{d T_s}{d t} + \overleftrightarrow{P_s} : \frac{\partial}{\partial \vec{r}} \vec{u}_s + \frac{\partial}{\partial \vec{r}} \cdot \vec{q}_s &= Q_s
+\Rightarrow \quad \frac{3}{2} n_s \frac{d T_s}{d t} + \overleftrightarrow{P_s} : \frac{\partial}{\partial \vec{r}} \vec{u}_s + \frac{\partial}{\partial \vec{r}} \cdot \vec{q}_s &= Q_s  \, ,
 \end{align*}
-
+with
 \begin{itemize}
 \item double contraction ":" : $\overleftrightarrow{P_s} : \frac{\partial}{\partial \vec{r}} \vec{u}_s \coloneq \sum_{i,j} P_{(s),\, ij} \frac{\partial u_{(s),\, i}}{\partial r_j}$
 \item $T_s := \frac{1}{3n_s} \int d\vec{v} \, m_s \, (\vec{v} - \vec{u}_s)^2 f_s$ \quad, \quad the kinetic energy due to spreading around fluid velocity
@@ -123,8 +132,8 @@ in chapter 2 of \cite{Freidberg2014}.
 \end{itemize}
 
 
-\section{Single fluid model}
-\subsection{Single fluid variables}
+\section{Single Fluid Model}
+\subsection{Single Fluid Variables}
 \begin{itemize}
     \item Mass density: $\varrho(\vec{r}, t) = \sum_s n_s m_s$
     \item Center of Mass Velocity: $\vec{V}(\vec{r}, t) = \frac{\sum m_s n_s \vec{u}_s}{\varrho}$
@@ -137,38 +146,38 @@ in chapter 2 of \cite{Freidberg2014}.
     \end{itemize} 
 \end{itemize}
 
-\subsection{Single fluid equations}
+\subsection{Single Fluid Equations}
 
 In the following we want to combine the species equations to a model describing the behaviour of the combined fluid consisting of the different species.
 
-\subsubsection{Mass continuity equation}
+\subsubsection{Mass Continuity Equation}
 Multiplying the species continuity equation by their respective mass $m_s$, which is time independent, and adding the the equations for all present species, we obtain the \emph{single fluid mass continuity equation}
 
 \begin{equation*}
-    \frac{\partial \varrho}{\partial t} + \nabla \cdot (\varrho \vec{V}) = 0
+    \frac{\partial \varrho}{\partial t} + \nabla \cdot (\varrho \vec{V}) = 0  \, .
 \end{equation*}
 
 
-\subsubsection{Charge continuity equation}
+\subsubsection{Charge Continuity Equation}
 Similarly, multiplying the species continuity equation by their respective charges $q_s$, which is time independent, and adding the the equations for all present species, we obtain the \emph{single fluid charge continuity equation}
 
 \begin{equation*}
-    \frac{\partial \rho}{\partial t} + \nabla \cdot  \vec{J} = 0
+    \frac{\partial \rho}{\partial t} + \nabla \cdot  \vec{J} = 0  \, .
 \end{equation*} 
 
-\subsubsection{Momentum equation}
+\subsubsection{Momentum Equation}
 
 Summing the species momentum equations \eqref{eq: species momentum eq}, we can obtain the \emph{single fluid momentum equation}.
 
 \begin{equation}\label{eq: Single fluid momentum eq.}
-    \varrho \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \wedge \vec{B} - \partial_{\vec{r}} \cdot \overleftrightarrow{P}^{cm}
+    \varrho \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \wedge \vec{B} - \partial_{\vec{r}} \cdot \overleftrightarrow{P}^{cm}  \, .
 \end{equation}
 
 Details of the derivation can be found in \ref{sec:Derivation of the Single Fluid Momentum Equation}.
 
 
 
-\subsubsection{Ohm's law}
+\subsubsection{Ohm's Law}
 
 From the species momentum equations \eqref{eq: species momentum eq}, assuming 
 we have electrons and only one species of ions, we can multiply the electron momentum equation
@@ -177,7 +186,7 @@ Further assuming neutrality $(n_e \simeq n_i \simeq n)$, $m_e \ll m_i$, $\vec{J}
 the sum of the intermediate results is approximately
 \begin{equation*}
     \frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right)
-     = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}
+     = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}  \, ,
 \end{equation*}
 
 with the \emph{plasma resisitivity} $\eta$.
@@ -192,7 +201,7 @@ Many types of closures exist and most are quite involved.
 For an isotropic pressure tensor and adiabatic processes we have the following closure:
 
 \[
-\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \gamma = \frac{c_p}{c_v}= \frac{5}{3}
+\frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}^{CM} = \frac{\partial}{\partial \vec{r}} P \quad, \quad \frac{d}{dt} (P \varrho^{-\gamma}) = 0 \quad \text{with} \quad \gamma = \frac{c_p}{c_v}= \frac{5}{3}  \, .
 \]
 
 
@@ -200,11 +209,11 @@ For an isotropic pressure tensor and adiabatic processes we have the following c
 We will justify these assumptions in the next section.
 
 
-\subsubsection{Single fluid Maxwell equations}
-Maxwell equations
+\subsubsection{Single Fluid Maxwell Equations}
+For completeness, we also state the microscopic Maxwell equations again with total electric current density $\vec{J}$:
 \begin{align}
-\nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} & \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
-\nabla \cdot \vec{B} &= 0 & \nabla \wedge \vec{B} &= \mu_0 \left(\vec{J} + \epsilon_0 \frac{\partial \vec{E}}{\partial t}\right)
+\nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} \, , & \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t}  \, , \\
+\nabla \cdot \vec{B} &= 0   \, , & \nabla \wedge \vec{B} &= \mu_0 \left(\vec{J} + \epsilon_0 \frac{\partial \vec{E}}{\partial t}\right).
 \label{eq: single fluid maxwell eq}
 \end{align}
 
@@ -215,8 +224,8 @@ Maxwell equations
 
 
 
-\section{Magnetohydrodynamic model}
-\subsection{MHD assumptions}
+\section{Magnetohydrodynamic Model}
+\subsection{Magnetohydrodynamic Assumptions}
 \label{subsec:mhd_assumptions}
 By comparing constants as well as time and length scales typical in fusion
  plasmas or provided specifically for polomacs by \cite{Elio2024}, 
@@ -246,12 +255,12 @@ where the relevant dimensionless parameters are introduced and computed.
 
 Electrons respond nearly instantaneously to field changes because their
 cyclotron period $\tau_{ce}=2\pi/\omega_{ce}$ is far shorter than the
-characteristic MHD timescale $\tau_{MHD}\sim L/v_{th, i}$, where
+characteristic MHD timescale $\tau_\text{MHD}\sim L/v_{th, i}$, where
 $v_{th, i}=\sqrt{2k_BT_i/m_i}$ is the ion thermal velocity 
 (derived from the exponent of a Maxwellian distribution)
 and $L$ is the plasma length scale.  The condition is
 \[
-    \frac{f_{MHD}}{f_{ce}}
+    \frac{f_\text{MHD}}{f_{ce}}
     = \frac{v_{th, i}/L}{f_{ce}} \ll 1.
 \]
 
@@ -267,7 +276,7 @@ For the Polomac the ion thermal velocity is
 Using the more limiting, upper bound of the ECR heating frequency from \cite{Elio2024}, 
 which is $f_{ce}=\SI{8}{\giga\hertz}$, and $L = \SI{0.3}{\metre}$:
 \[
-    \frac{f_{MHD}}{f_{ce}}
+    \frac{f_\text{MHD}}{f_{ce}}
     = \frac{v_{th,i}/L}{f_{ce}}
     \approx \num{6e-6} \ll 1.
 \]
@@ -382,7 +391,7 @@ this leads to
 in Ohm's law. We see this by recognizing the larmor radius in
 \[
 \frac{\vec{V}\wedge\vec{B}}{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}}
-\sim \frac{v_{th, i} B}{\frac{n_e k_B T_e}{e n L}} \sim \frac{v_{th, i} B}{\frac{ k_B T_e}{e L}} \sim \frac{L}{r_i}
+\sim \frac{v_{th, i} B}{\frac{n_e k_B T_e}{e n L}} \sim \frac{v_{th, i} B}{\frac{ k_B T_e}{e L}} \sim \frac{L}{r_i}  \, ,
 \]
 where we used the ideal gas relation to approximate $\overleftrightarrow{P_e}$, the relation $T_e \sim T_i$ and $k_B T_i \sim m_i v_{th,i}^2$.
 
@@ -408,7 +417,7 @@ treated with appropriate caution.
     
     and mass conservation, we obtain
     \[
-        \frac{d}{dt}\left(\frac{P}{\varrho^\gamma}\right) = 0 \iff \frac{dP}{dt} + \gamma P \nabla \cdot \vec{V} = 0
+        \frac{d}{dt}\left(\frac{P}{\varrho^\gamma}\right) = 0 \iff \frac{dP}{dt} + \gamma P \nabla \cdot \vec{V} = 0  \, .
     \]
     
     Because particles can move freely along $\vec{B}$ but are bound to field lines by gyromotion, 
@@ -419,7 +428,7 @@ treated with appropriate caution.
     and perfect conductivity ($\eta = 0$), both the adiabatic closure and the infinite parallel 
     thermal conductivity model reduce to the same result (see \cite{Freidberg2014}, Section 2.4.4):
     \[
-    \frac{dP}{dt} = 0
+    \frac{dP}{dt} = 0  \, .
     \]
 
     An analysis in Chapter 8.9 of \cite{Freidberg2014} shows that geometries with closed field lines 
@@ -487,7 +496,7 @@ satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \wedge \vec{B}) = 0$). 
 
 
 
-\subsection{The ideal MHD equations}
+\subsection{The Ideal MHD Equations}
 \label{subsec: The ideal MHD equations}
 The ideal magnetohydrodynamic equations consist of
 \begin{itemize}

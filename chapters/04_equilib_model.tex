@@ -1,7 +1,7 @@
-\chapter{Static equilibrium model in cylindrical coordinates under axisymmetric assumptions}
+\chapter{Static Equilibrium Model in Cylindrical Coordinates under Axisymmetric Assumptions}
 \label{chap: Static equilibrium model in cylindrical coordinates under axisymmetric assumptions}
 
-\section{Axisymmetric and poloidal formulation}
+\section{Axisymmetric and Poloidal Formulation}
 \label{sec: equlibrium Axisymmetric and poloidal formulation}
 
 
@@ -9,7 +9,7 @@ In the following we will assume the magnetic configuration to be axisymmetric, i
 
 The magnetic field thus simplifies to
 \begin{equation}
-    \vec{B} = B_r (r,z) \hat{e}_r + B_z(r,z) \hat{e}_z + B_\varphi(r,z) \hat{e}_\varphi
+    \vec{B} = B_r (r,z) \hat{e}_r + B_z(r,z) \hat{e}_z + B_\varphi(r,z) \hat{e}_\varphi \, .
     \label{eq: axisymm. magn. field}
 \end{equation}
 .
@@ -17,20 +17,20 @@ The magnetic field thus simplifies to
 In cylindrical coordinates $(r, \varphi, z)$, the gradient, divergence and curl are:
 
 \begin{align*}
-    \nabla  f &= \frac{\partial f}{\partial r} \hat{e}_r + \frac{1}{r}\frac{\partial f}{\partial \varphi} \hat{e}_\varphi + \frac{\partial f}{\partial z} \hat{e}_z \\
-    \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial (r F_r)}{\partial r} + \frac{1}{r}\frac{\partial F_\varphi}{\partial \varphi} + \frac{\partial F_z}{\partial z} \\
+    \nabla  f &= \frac{\partial f}{\partial r} \hat{e}_r + \frac{1}{r}\frac{\partial f}{\partial \varphi} \hat{e}_\varphi + \frac{\partial f}{\partial z} \hat{e}_z  \, ,\\
+    \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial (r F_r)}{\partial r} + \frac{1}{r}\frac{\partial F_\varphi}{\partial \varphi} + \frac{\partial F_z}{\partial z}  \, ,\\
     \nabla \wedge \vec{F} &= \left(\frac{1}{r}\frac{\partial F_z}{\partial \varphi} - \frac{\partial F_\varphi}{\partial z}\right)\hat{e}_r
     + \left(\frac{\partial F_r}{\partial z} - \frac{\partial F_z}{\partial r}\right)\hat{e}_\varphi
-    + \frac{1}{r}\left(\frac{\partial (r F_\varphi)}{\partial r} - \frac{\partial F_r}{\partial \varphi}\right)\hat{e}_z
+    + \frac{1}{r}\left(\frac{\partial (r F_\varphi)}{\partial r} - \frac{\partial F_r}{\partial \varphi}\right)\hat{e}_z \, ,
 \end{align*}
 
 so
 \begin{align}
-    \nabla \cdot \vec{B}  &= \frac{1}{r}\frac{\partial (r B_r)}{\partial r} + \frac{\partial B_z}{\partial z} \label{eq: axisymm. cylindrical div}\\
+    \nabla \cdot \vec{B}  &= \frac{1}{r}\frac{\partial (r B_r)}{\partial r} + \frac{\partial B_z}{\partial z} \, , \label{eq: axisymm. cylindrical div}\\
     \nabla \wedge \vec{B} &= 
 \left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)\hat{e}_\varphi 
 - \frac{\partial B_\varphi}{\partial z}\,\hat{e}_r 
-+ \frac{1}{r}\frac{\partial(r B_\varphi)}{\partial r}\,\hat{e}_z
++ \frac{1}{r}\frac{\partial(r B_\varphi)}{\partial r}\,\hat{e}_z  \, .
     \label{eq: axisymm. cylindrical curl}
 \end{align}
 
@@ -39,18 +39,18 @@ the only possible source of a nonzero $B_\varphi(r,z) \hat{e}_\varphi$ are these
 
 We thus set $B_\varphi(r,z) \hat{e}_\varphi \equiv 0$, which further simplifies \eqref{eq: axisymm. magn. field} to
 \begin{equation}
-    \vec{B} = B_r (r,z) \hat{e}_r + B_z(r,z) \hat{e}_z
+    \vec{B} = B_r (r,z) \hat{e}_r + B_z(r,z) \hat{e}_z  \, ,
     \label{eq: axisymm. pol. magn. field}
 \end{equation}
 
 and \eqref{eq: axisymm. cylindrical curl} to 
 \begin{align}
-    \nabla \wedge \vec{B} &= \left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)\hat{e}_\varphi 
+    \nabla \wedge \vec{B} &= \left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)\hat{e}_\varphi   \, .
     \label{eq: poloidal cylindrical curl}
 \end{align}
 
 
-\section{Static equilibrium}
+\section{Static Equilibrium}
 
 For the following derivation we closely work with Chapter 6 of \cite{Freidberg2014} which derives the Grad-Shafranov equation.
 Due to our special geometry, we can make a couple of simplifications.
@@ -97,10 +97,10 @@ we can rewrite these equations and only the following components remain:
             \label{eq: J_phi}
         \end{equation}
 
-    \item The momentum equation $\vec{J} \wedge \vec{B} = \nabla P$ yields:
+    \item The momentum equation $\vec{J} \wedge \vec{B} = \nabla P$ yields
         \begin{align}
             J_\varphi\,\hat{e}_\varphi \wedge \left(B_r\,\hat{e}_r + B_z\,\hat{e}_z\right) 
-            &= \frac{\partial P}{\partial r}\hat{e}_r + \frac{\partial P}{\partial z}\hat{e}_z
+            &= \frac{\partial P}{\partial r}\hat{e}_r + \frac{\partial P}{\partial z}\hat{e}_z  \, .
             \label{eq: mom eq}
         \end{align}
         Using $\hat{e}_\varphi \wedge \hat{e}_r = -\hat{e}_z$ and $\hat{e}_\varphi \wedge \hat{e}_z = \hat{e}_r$, 
@@ -124,16 +124,16 @@ by introducing the poloidal flux function $\psi(r,z)$ such that
 
 Multiplying this $\vec{B}$ to both sides of \eqref{eq: static momentum eq.}, we obtain
 \[
-\vec{B}\cdot \nabla P = 0
+\vec{B}\cdot \nabla P = 0  \, .
 \]
 Pressure $p$ is thus constant along magnetic field lines. 
 Since by construction $\vec{B}\cdot \nabla \psi = 0$, so $\psi$ constant along field lines aswell.
 
 Assuming an axisymmetric geometry and $B_\varphi \equiv 0$, we conclude that $\psi(r,z)$ forms nested flux surfaces
 around the torus of center poloidal coils.
-Thus $\psi$ is monotonic as a function of distance from these coils and we have a relation $p(\psi)$.
-We can't however determine the relation $p(\psi)$ from ideal MHD. \cite{Freidberg2014} states \emph{transport theory,
-experimental data, or physical intuition are needed to properly specify $p(\psi)$}.
+Thus $\psi$ is monotonic as a function of distance from these coils and we have a relation $P(\psi)$.
+We can't however determine the relation $P(\psi)$ from ideal MHD. \cite{Freidberg2014} states \emph{"transport theory,
+experimental data, or physical intuition are needed to properly specify $P(\psi)$"}.
 
 
 \textbf{Remark} If we did not assume $B_\varphi \equiv 0$, we would have restricted the abve discussion to $B_\text{pol}$
@@ -141,38 +141,39 @@ and added a similar function for $B_\varphi$. Thus $\psi(r,z)$ still forms neste
 
 
 
-\subsection{Reduced Grad--Shafranov Equation}
+\subsection{Reduced Grad-Shafranov Equation}
 
 We can rewrite \eqref{eq: J_phi} as
 \begin{equation}
-    \mu_0 J_\varphi = - \frac{1}{r} \Delta^* \psi
+    \mu_0 J_\varphi = - \frac{1}{r} \Delta^* \psi  \, ,
     \label{eq: J_phi as delta*}
 \end{equation}
-where 
+where, using cylindrical divergence again, 
 \begin{equation*}
-    \Delta^* \psi \coloneq r^2 \nabla \cdot \left(\frac{\nabla \psi}{r^2}\right) = r \frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial \psi}{\partial r}\right) + \frac{\partial^2 \psi}{\partial Z^2}
+    \Delta^* \psi \coloneq r^2 \nabla \cdot \left(\frac{\nabla \psi}{r^2}\right) = r \frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial \psi}{\partial r}\right) + \frac{\partial^2 \psi}{\partial Z^2}  \, .
 \end{equation*}
-, where we again used cylindrical divergence.
 
 If we furthermore use the chain rule ($\nabla P = \frac{dP}{d\psi} \nabla \psi$) and \eqref{eq: J_phi as delta*}, 
 we see that for nontrivial $\psi(r,z)$ both components of the momentum equation (\eqref{eq: momentum_r}, \eqref{eq: momentum_z})
 are satisfied simultaneously if and only if 
-\begin{equation*}
-    \Delta^*\psi = - \mu_0 r^2 \frac{dP}{d\psi}
-\end{equation*}
+\begin{equation}
+    \label{eq: reduced grad-shafranov eq}
+    \Delta^*\psi = - \mu_0 r^2 \frac{dP}{d\psi}.
+\end{equation}
+We call this the \emph{reduced Grad-Shafranov equation}. 
 
 
-\subsection{Boundary conditions}
+\subsection{Boundary Conditions}
 \label{subsec: equilibrium BC}
 
-\subsubsection{Geometric axis ($r = 0$)}
+\subsubsection{Geometric Axis ($r = 0$)}
 For $\vec{B}$ and $p$ to remain finite on the symmetry axis, we require
 \begin{equation*}
     \nabla\psi \xrightarrow{r \to 0} 0.
 \end{equation*}
 This is a regularity condition, not a physical wall.
 
-\subsubsection{Conducting walls (inner coil surface and outer vacuum vessel)}
+\subsubsection{Conducting Walls (Inner Coil Surface and Outer Vacuum Vessel)}
 Assuming the wall materials are perfect conductors and initially there is no magnetic field inside the wall, 
 the integral version of Gauss' law for magnetism \eqref{eq:gauss_b} gives 
 
@@ -188,7 +189,7 @@ when we insert \eqref{eq: B as fct of psi} into \eqref{eq: BC wall}
 and use the triple product
 \begin{equation*}
     0 = \left(\nabla\psi \wedge \hat{e}_\varphi\right)\cdot\hat{n}
-    = \hat{t}\cdot \nabla\psi
+    = \hat{t}\cdot \nabla\psi  \, ,
 \end{equation*}
 and thus $\psi$ is constant along the walls in the poloidal plane.
 Because $\psi$ is only a function of $r,z$, it is thus constant on the entire inner and outer wall, respectively.

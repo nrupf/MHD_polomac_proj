@@ -1,75 +1,149 @@
 \chapter{Conclusion and Outlook}
+\label{chap: Conclusion and Outlook}
 
+%-----------------------------------------------------------------------
 \section{Conclusion}
+\label{sec: conclusion}
+%-----------------------------------------------------------------------
 
+This work developed a self-contained theoretical MHD framework for the Polomac concept,
+proceeding from first principles to a concrete numerical implementation plan.
+
+\paragraph{Ideal MHD Equations (Chapter~\ref{chap: Single Fluid Ideal MHD Equations})}
+Starting from the Boltzmann equation, velocity moments were taken to obtain species-fluid
+equations, which were then combined into a single-fluid model.
+The ideal MHD limit was obtained by imposing six assumptions (quasi-neutrality, negligible
+electron inertia, negligible displacement current, zero resistivity, small Larmor radius,
+and adiabatic isotropic closure), each verified quantitatively for Polomac parameters.
+The resulting system consists of a mass-continuity equation, a momentum equation, the
+ideal Ohm's law, the adiabatic closure, and the two relevant Maxwell equations.
+
+\paragraph{Polomac Geometry (Chapter~\ref{chap: Polomac geometry and specialization to poloidal configurations}).}
+The magnetic field is predominantly poloidal, the toroidal component satisfies
+$B_\varphi/|\vec{B}_\mathrm{pol}|\equiv\varepsilon\ll 1$ and enters the MHD equations
+only as an $\mathcal{O}(\varepsilon)$ correction.
+To leading order $B_\varphi\equiv 0$, a simplification used throughout all subsequent
+chapters.
+Axisymmetry is exact in the arc sections and broken by the four magnetic tunnels
+in the midplane.
+
+\paragraph{Static Equilibrium (Chapter~\ref{chap: Static equilibrium model in cylindrical coordinates under axisymmetric assumptions}).}
+Setting $\vec{V}=0$, $B_\varphi=0$, and $\partial/\partial\varphi=0$ reduces the
+force-balance problem to the poloidal flux function $\psi(r,z)$ governed by the
+reduced Grad–Shafranov equation \eqref{eq: reduced grad-shafranov eq}.
+Boundary conditions are regularity ($\nabla\psi\to 0$ at $r=0$) and
+$\psi=\mathrm{const}$ on the conducting walls.
+The pressure profile $P(\psi)$ is not determined by ideal MHD and must be supplied by
+transport theory or experimental data.
+
+\paragraph{Characteristic Parameters (Chapter~\ref{chap:parameters}).}
+Three dimensionless parameters govern the MHD dynamics of the Polomac:
+\begin{itemize}
+  \item \textbf{Alfvén velocity.}
+        $v_A \approx \SI{5.5e5}{\meter\per\second}$, giving
+        $v_A/c\approx\num{1.8e-3}\ll 1$, which justifies neglecting the
+        displacement current.
+  \item \textbf{Lundquist number.}
+        $S\in[\num{2.8e4}, \num{2.1e5}]\gg 1$, confirming that resistive
+        diffusion is negligible on MHD timescales and the ideal limit $\eta\to 0$
+        is appropriate.
+  \item \textbf{Plasma \texorpdfstring{$\beta$}{Beta}.}
+        $\beta\in[0.04,\,1.01]$ if the upper range is achievable, the Polomac
+        could confine fusion-grade pressures with a modest magnetic field.
+        These are design targets and have not been experimentally verified.
+\end{itemize}
+
+\paragraph{Geometry Comparison (Chapter~\ref{chap: An Overview over Magnetic Confinement Approaches for Nuclear Fusion}).}
+The Polomac drives no toroidal plasma current, so current-driven kink and tearing
+instabilities—and the associated risk of major disruptions—have no analogue here,
+unlike in the tokamak.
+Steady-state operation is intrinsic to the concept, as in the stellarator.
+The principal MHD stability threat is the interchange instability: with identically zero
+rotational transform there is no magnetic shear or average good curvature to provide
+stabilization, and the only stabilizing mechanism is plasma compressibility,
+as demonstrated experimentally in the LDX levitated-dipole experiment
+\cite{Garnier2006}.
+A Polomac-specific risk is the hot-electron interchange instability: depending on how well the four magnetic
+tunnels breaking toroidal axisymmetrywork, they may act analogously to the rod supports that
+triggered HEI bursts in the non-levitated LDX operating mode.
+Whether compressibility stabilization survives this four-fold symmetry breaking has not
+yet been quantitatively assessed \cite{Elio2024}.
+
+\paragraph{FDTD Framework (Chapter~\ref{chap: Framework for a Minimal FDTD Solver for Linearized MHD of the Polomac}).}
+The ideal MHD equations were linearized around a uniform static equilibrium
+$\vec{B}^{(0)}=B^{(0)}\hat{e}_z$, reduced to 2D axisymmetric cylindrical coordinates,
+and shown to form a first-order hyperbolic system with characteristic speeds
+$0, v_A, c_s, v_f\}$, where $v_f=\sqrt{v_A^2+c_s^2}$ is the fast
+magnetosonic speed (\cite{Freidberg2014}).
+A staggered-grid (Yee-type) discretization was derived, separating a decoupled
+shear-Alfvén branch $(V_\varphi,B^{(1)}_\varphi)$ from the compressional branch
+$(V_r,V_z,B^{(1)}_r,B^{(1)}_z,P^{(1)})$.
+The CFL stability bound is $\Delta t\leq\Delta x/(\sqrt{2}\,v_f)$, requiring
+$\sim\mathcal{O}(10^3-10^4)$ timesteps per Alfvén time for a 100-point grid at Polomac
+parameters.
+
+%-----------------------------------------------------------------------
 \section{Outlook}
-closed magnetic field lines $\implies$ compressional instabilities
+\label{sec: outlook}
+%-----------------------------------------------------------------------
 
-\subsection{Numerical implementation}
-Check div B =0 and energy conservation
+\subsection{Numerical Implementation}
+\label{subsec: numerical implementation}
 
-\subsection{Extension to non-axisymmetric perturbations}
+The immediate next step is to implement the FDTD solver specified in
+Chapter~\ref{chap: Framework for a Minimal FDTD Solver for Linearized MHD of the Polomac}.
+Correctness should be established through the three verification tests described in
+Section~\ref{subsec: verification tests}:
+(i) a plane-wave test confirming that the shear-Alfvén and fast-magnetosonic dispersion
+relations from \autoref{subsec: types of PDEs} are
+reproduced to second order globally in $\Delta r$, $\Delta z$, $\Delta t$;
+(ii) conservation of the discrete total energy over many Alfvén times; and
+(iii) machine-precision preservation of the discrete $\nabla\cdot\vec{B}^{(1)}=0$
+constraint \eqref{eq: gauss magnetism constraint}.
 
-The solver framework developed in \autoref{chap: Framework for a Minimal FDTD Solver for Linearized MHD of the Polomac}
-assumes axisymmetry
-($\partial/\partial\varphi = 0$), corresponding to the $m = 0$ toroidal mode.
-Since the equilibrium itself is axisymmetric, perturbations of arbitrary toroidal
-mode number $m$ can be incorporated without increasing the dimensionality of
-the numerical problem. Writing every perturbation field as
-\begin{align}
-    Q_1(r, \varphi, z, t) = \hat{Q}_1(r, z, t)\, e^{im\varphi}, \qquad m \in \mathbb{Z},
-\end{align}
-replaces $\partial/\partial\varphi \to im$ everywhere in the linearized equations
-\eqref{eq: lin continuity}--\eqref{eq: lin pressure}. Each mode number $m$ then
-yields an independent 2D problem on the same $(r, z)$ grid, with additional $im/r$
-terms appearing in the divergence and curl operators. The solver structure,
-CFL condition, and boundary conditions carry over with only minor modifications.
-The one qualitative change is that the azimuthal components $V_\varphi$ and
-$B_\varphi^{(1)}$ no longer decouple from the poloidal components for $m \neq 0$,
-so all six field components must be evolved simultaneously. At the axis $r = 0$,
-the regularity condition becomes mode-dependent: fields must vanish there for
-$m \geq 1$. Surveying the lowest few mode numbers would allow identification
-of the dominant instability modes of the Polomac, which is of direct physical
-interest given the closed-field-line geometry noted in \autoref{sec: conclusion}.
+\subsection{Equilibrium beyond the Uniform Background}
+\label{subsec: equilibrium beyond uniform}
 
-One way to start to consider tunnels would be setting the small perturbation of B phi dep.
+The FDTD framework currently linearizes around a uniform $B^{(0)}\hat{e}_z$
+equilibrium.
+A natural and physically more relevant next step is to use a Grad–Shafranov
+solution fulfilling \eqref{eq: reduced grad-shafranov eq} with an experimentally
+verified or from transport theory derived pressure profile $P(\psi)$ as the equilibrium state
+and linearize around it.
 
+\subsection{Extension to Non-Axisymmetric Perturbations}
+\label{subsec: non-axisymmetric perturbations}
+
+The solver framework assumes axisymmetry ($\partial/\partial\varphi=0$), corresponding
+to the $m=0$ toroidal mode.
+Since the equilibrium is axisymmetric, perturbations of arbitrary toroidal mode number
+$m$ can be incorporated without increasing the dimensionality of the numerical problem.
+Writing every perturbation field as
+\begin{equation}
+    Q_1(r,\varphi,z,t) = \hat{Q}_1(r,z,t)\,e^{im\varphi}, \qquad m\in\mathbb{Z},
+    \label{eq: toroidal mode ansatz}
+\end{equation}
+replaces $\partial/\partial\varphi\to im$ everywhere in the linearized equations
+\eqref{eq: lin continuity}-\eqref{eq: lin pressure}. Equation~\eqref{eq: toroidal mode ansatz} is inspired by the Ansatz for the
+$\theta$-pinch from section 11.3 of \cite{Freidberg2014}.
+Each mode number $m$ then yields an independent 2D problem on the same $(r,z)$ grid,
+with additional $im/r$ terms appearing in the divergence and curl operators.
+The solver structure, CFL condition, and boundary conditions should carry over with only minor
+modifications; the one qualitative change is that $V_\varphi$ and $B^{(1)}_\varphi$
+no longer decouple from the poloidal components for $m\neq 0$, so all six field
+components must be evolved simultaneously.
+At the axis $r=0$ the regularity condition becomes mode-dependent: fields must vanish
+there for $m\geq 1$, because they need to be the same for all $\varphi$.
+
+Surveying the lowest few mode numbers is of direct physical interest given the
+closed-field-line geometry discussed in Section~\ref{sec: conclusion}.
+The four magnetic tunnels break axisymmetry with four-fold symmetry, possibly coupling $m=4k$
+and their harmonics and destabilizing the fields.
 \subsection{Resources and Collaboration}
-Check LDX codes for usable parts
+\label{subsec: resources}
+A natural starting point for further numerical work is exploring the resources
+already established by the Levitating Dipole Experiment (LDX).
 
-Work with OpenStar
-
-
-\begin{comment}
-    Outline: Conclusion and Outlook (Section 8)
-8.1 Conclusion
-
-Ideal MHD equations derived from first principles (Boltzmann → species → single-fluid → MHD limit), with all six assumptions verified quantitatively for Polomac parameters
-Polomac geometry characterized: predominantly poloidal field, Bφ ≡ 0 to leading order, axisymmetry broken only by tunnels
-Static equilibrium: reduced Grad-Shafranov equation Δ*ψ = −μ₀r²dP/dψ derived and boundary conditions specified
-Dimensionless parameters: Alfvén velocity ~5.5×10⁵ m/s, Lundquist number S ∈ [2.8×10⁴, 2.1×10⁵] justifying ideal MHD, β ∈ [0.04, 1.01] indicating high confinement efficiency if design targets are met
-Conceptual comparison: Polomac avoids current-driven disruptions (unlike tokamak) and is intrinsically steady-state (like stellarator); principal stability threat is interchange instability, stabilized only by plasma compressibility
-FDTD framework: linearized MHD system shown to be hyperbolic with characteristic speeds {0, ±vA, ±cs} along field and ±vf perpendicular; staggered-grid discretization and boundary conditions formulated; verification tests specified
-
-8.2 Outlook
-8.2.1 Numerical implementation
-
-Implement the FDTD solver; verify with wave propagation tests (Alfvén, magnetosonic), ∇·B = 0 preservation, and energy conservation
-Note the corrected 2D CFL: Δt ≤ Δx/(vf√2)
-
-8.2.2 Non-axisymmetric perturbations
-
-Extension to toroidal mode number m ≥ 1 by substitution ∂/∂φ → im; each m is an independent 2D problem on the same (r,z) grid
-Physical motivation: the four magnetic tunnels break axisymmetry with four-fold symmetry (m = 4 and its harmonics); surveying low-m modes would identify dominant instabilities
-This is the most direct route to assessing whether compressibility stabilization survives the tunnel-induced symmetry breaking — the central open physics question of the Polomac
-
-8.2.3 Equilibrium beyond uniform background
-
-The FDTD framework currently linearizes around a uniform B₀ê_z background; a natural next step is to use the Grad-Shafranov solution of Chapter 4 as the equilibrium and linearize around it
-This requires variable-coefficient update equations and a non-uniform grid near the coil
-
-8.2.4 Resources and collaboration
-
-LDX codes (DIPEQ for equilibrium) may provide starting points and benchmarks
-Collaboration with OpenStar (currently developing a levitated-dipole reactor) is a natural avenue given their parallel work on poloidal confinement
-\end{comment}
+The OpenStar project is currently developing a levitated-dipole reactor concept in a
+regime closely related to the Polomac. Possibly an exchange of numerical methods and stability
+analysis, as well as other collaboration, would be mutually beneficial.

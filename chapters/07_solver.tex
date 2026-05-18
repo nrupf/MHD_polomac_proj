@@ -1,21 +1,21 @@
 \chapter{Framework for a Minimal FDTD Solver for Linearized MHD of the Polomac}
 \label{chap: Framework for a Minimal FDTD Solver for Linearized MHD of the Polomac}
 
-\section{Problem formulation}
+\section{Problem Formulation}
 We want to be able to solve for the independent time dependent properties of the MHD equations in \autoref{subsec: The ideal MHD equations},
 which are $\varrho$, $\vec{V}$, $\vec{B}$ and $P$.  
 
 If we have $\vec{B}$ and $\vec{V}$ we will be able to solve for $\vec{E}$ and $\vec{J}$ at any time via \eqref{eq: MHD ohm's law} and \eqref{eq: MHD ampere-maxwell}, respectively.
 
-\subsection{Equations to be solved}
+\subsection{Equations to be Solved}
 As in \autoref{subsec: theory of alfven waves} we eliminate $\vec{E}$ and $\vec{J}$.
 Additionally we take the mass continuity equation \eqref{eq: MHD mass continuity eq} and the closure equation \eqref{eq: MHD closure eq}
 to arrive at a system of four partial differential equations
 \begin{align*}
-    \frac{\partial \varrho}{\partial t} + \nabla \cdot (\varrho \vec{V}) &= 0 \\
-    \varrho \frac{d\vec{V}}{dt} &= -\nabla P + \frac{1}{\mu_0}(\nabla \wedge \vec{B}) \wedge \vec{B} \\
-    \frac{\partial \vec{B}}{\partial t} &= \nabla \wedge (\vec{V} \wedge \vec{B}) \\
-    \frac{d}{dt}\!\left(P \varrho^{-\gamma}\right) &= 0
+    \frac{\partial \varrho}{\partial t} + \nabla \cdot (\varrho \vec{V}) &= 0  \, ,\\
+    \varrho \frac{d\vec{V}}{dt} &= -\nabla P + \frac{1}{\mu_0}(\nabla \wedge \vec{B}) \wedge \vec{B}  \, ,\\
+    \frac{\partial \vec{B}}{\partial t} &= \nabla \wedge (\vec{V} \wedge \vec{B})  \, , \\
+    \frac{d}{dt}\!\left(P \varrho^{-\gamma}\right) &= 0  \, ,
 \end{align*}
 and as an additional constraint Gauss' law for magnetism \eqref{eq: MHD gauss law for magnetism},
 which is not evolved but must be preserved
@@ -24,7 +24,7 @@ which is not evolved but must be preserved
     \nabla \cdot \vec{B} &= 0.
 \end{align}
 
-\section{Linearization and discretization}
+\section{Linearization and Discretization}
 
 As in \autoref{subsec: theory of alfven waves}, we linearize around a uniform static equilibrium
 \begin{align*}
@@ -56,7 +56,7 @@ automatically preserved by \eqref{eq: lin induction} and serves as a numerical
 consistency check. The unknowns to be time-stepped are $\vec{V}^{(1)}$, $\vec{B}^{(1)}$,
 and $P^{(1)}$.
 
-\subsection{Reduction to 2D axisymmetric cylindrical coordinates}
+\subsection{Reduction to 2D Axisymmetric Cylindrical Coordinates}
 \label{subsec: 2D cylindrical reduction}
 
 The Polomac geometry is naturally described in cylindrical coordinates
@@ -81,7 +81,7 @@ Under these two assumptions the cylindrical differential operators from
 \autoref{sec: equlibrium Axisymmetric and poloidal formulation} reduce to
 \begin{align}
     \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial(r F_r)}{\partial r}
-        + \frac{\partial F_z}{\partial z},
+        + \frac{\partial F_z}{\partial z} \, ,
     \label{eq: reduced div} \\
     (\nabla \wedge \vec{F})_r &= -\frac{\partial F_\varphi}{\partial z}, \qquad
     (\nabla \wedge \vec{F})_\varphi = \frac{\partial F_r}{\partial z}
@@ -118,7 +118,7 @@ scalar equations.
 
 \begin{align}
     \frac{\partial B_r^{(1)}}{\partial t} &=
-        B^{(0)}\frac{\partial V_r}{\partial z},
+        B^{(0)}\frac{\partial V_r}{\partial z} ,
     \label{eq: 2D ind r} \\
     \frac{\partial B_\varphi^{(1)}}{\partial t} &=
         B^{(0)}\frac{\partial V_\varphi}{\partial z},
@@ -127,7 +127,7 @@ scalar equations.
         -\frac{B^{(0)}}{r}\frac{\partial(r V_r)}{\partial r}
         = 
         -B^{(0)}\frac{\partial V_r}{\partial r}
-        -B^{(0)}\frac{V_r}{r}
+        -B^{(0)}\frac{V_r}{r}  \, ,
     \label{eq: 2D ind z}
 \end{align}
 
@@ -152,7 +152,7 @@ The remaining five equations
 $(P^{(1)}, V_r, V_z, B_r^{(1)}, B_z^{(1)})$ describing the compressional
 (magnetosonic) branch.
 
-\subsection{Proof of hyperbolicity}
+\subsection{Proof of Hyperbolicity}
 \label{subsec: types of PDEs}
 
 In general, hyperbolicity is charactereized by finite propagation speed.
@@ -275,7 +275,7 @@ The five eigenvalues are
     \pm \lambda_S & = \pm\, \sqrt{ \frac{\alpha_r^2+\alpha_z^2}{2}
         \left( v_f^2 - \sqrt{v_f^4 - 4\frac{\alpha_z^2}{\alpha_r^2+\alpha_z^2} v_A^2 c_s^2 }\right)}, \\
     \pm \lambda_F & = \pm\, \sqrt{ \frac{\alpha_r^2+\alpha_z^2}{2}
-        \left( v_f^2 + \sqrt{v_f^4 - 4\frac{\alpha_z^2}{\alpha_r^2+\alpha_z^2} v_A^2 c_s^2 }\right)}
+        \left( v_f^2 + \sqrt{v_f^4 - 4\frac{\alpha_z^2}{\alpha_r^2+\alpha_z^2} v_A^2 c_s^2 }\right)}.
 \end{align*}
 
 which are real for all $\alpha_r, \alpha_z \in \mathbb{R}$ since $v_A, c_s,
@@ -304,7 +304,7 @@ system propagates information at bounded speeds, which is the defining property
 of a hyperbolic system and the necessary condition for an explicit
 time-marching scheme to be applicable.
 
-\subsection{FDTD discretization}
+\subsection{FDTD Discretization}
 We will approximize the system of PDEs by finite difference equations,
 derived from first order Taylor expansion,
 as outlined by \citeauthor{Yee1966} in his paper \emph{Numerical Solution of Initial Boundary Value
@@ -421,7 +421,7 @@ whose update equations contain a factor $1/r$, at half-$\Delta r$ nodes.
 \begin{scope}
   \drawFrame
   \drawBrackets
-  \node[above right, font=\bfseries\small] at (3,3) {a)};
+  \node[above right, font=\bfseries\small] at (-1.16,3.55) {a)};
   %% V_r at integer (i,j) — dark red small square
   \foreach \ii in {0, 1.5, 3}{%
     \foreach \jj in {0, 1.5, 3}{%
@@ -453,7 +453,7 @@ whose update equations contain a factor $1/r$, at half-$\Delta r$ nodes.
 \begin{scope}[xshift=6.2cm]
   \drawFrame
   %\drawBrackets
-  \node[above right, font=\bfseries\small] at (3,3) {b)};
+  \node[above right, font=\bfseries\small] at (-1.16,3.55) {b)};
   %% V_phi at integer (i,j) — light red large square
   \foreach \ii in {0, 1.5, 3}{%
     \foreach \jj in {0, 1.5, 3}{%
@@ -482,19 +482,37 @@ whose update equations contain a factor $1/r$, at half-$\Delta r$ nodes.
 \node[right=3pt, cVp,  font=\scriptsize] at (7.0,-2.50) {$V_\varphi$};
 \mkBp{8.25}{-2.50}
 \node[right=3pt, cBp,  font=\scriptsize] at (8.25,-2.50) {$B_\varphi^{(1)}$};
-\node[font=\scriptsize, text=cGrd!80!black, align=center] at (4.65,-3.85)
-  {\textcolor{cBz}{$B_z^{(1)}$} and \textcolor{cP}{$P^{(1)}$}
-   share node $(i{+}\frac{1}{2},j)$; offset for visibility.};
 
 \end{tikzpicture}
-\caption{a) Grid b) Grid}
+
+\caption{%
+Staggered grid layout for the linearised ideal MHD equations in the $(r,z)$-plane
+under axisymmetry ($\partial/\partial\varphi = 0$).
+Solid and dashed lines mark integer and half-integer grid positions, respectively.
+\textbf{(a)}~Compressional branch:
+\textcolor{cVr}{$V_r$} and \textcolor{cVz}{$V_z$} are updated at half-integer timesteps $n{+}\tfrac{1}{2}$;
+\textcolor{cBr}{$B_r^{(1)}$}, \textcolor{cBz}{$B_z^{(1)}$}, and \textcolor{cP}{$P^{(1)}$}
+at integer timesteps $n{+}1$.
+Spatial nodes:
+\textcolor{cVr}{$V_r$} at $(i,\,j)$;
+\textcolor{cVz}{$V_z$} at $(i{+}\tfrac{1}{2},\,j{+}\tfrac{1}{2})$;
+\textcolor{cBr}{$B_r^{(1)}$} at $(i,\,j{+}\tfrac{1}{2})$;
+\textcolor{cBz}{$B_z^{(1)}$} and \textcolor{cP}{$P^{(1)}$}
+co-located at $(i{+}\tfrac{1}{2},\,j)$, offset vertically for visibility.
+Placing \textcolor{cP}{$P^{(1)}$} and \textcolor{cBz}{$B_z^{(1)}$}
+at half-integer $r$-nodes avoids division by zero at $r=0$.
+\textbf{(b)}~Shear-Alfv\'{e}n branch:
+\textcolor{cVp}{$V_\varphi$} (updated at $n{+}\tfrac{1}{2}$) at $(i,\,j)$;
+\textcolor{cBp}{$B_\varphi^{(1)}$} (updated at $n{+}1$) at $(i,\,j{+}\tfrac{1}{2})$;
+decoupled from the compressional branch.}
 
 \end{figure}
 
 
 
 
-\subsubsection{Discrete update equations}
+
+\subsubsection{Discrete Update Equations}
 We then arrive at the discrete update equations for the compressional branch
 
 \begin{align}
@@ -507,15 +525,15 @@ We then arrive at the discrete update equations for the compressional branch
              \frac{[B_r^{(1)}]_{(i,j+\frac12)}^{n} - [B_r^{(1)}]_{(i,j-\frac12)}^{n}}{\Delta z}\nonumber\\
         &\qquad\qquad
         -\frac{[B^{(0)}]_{(i,j)}}{\mu_0 \; [\varrho^{(0)}]_{(i,j)}}
-             \frac{[B_z^{(1)}]_{(i+\frac12,j)}^{n} - [B_z^{(1)}]_{(i-\frac12,j)}^{n}}{\Delta r}\\
+             \frac{[B_z^{(1)}]_{(i+\frac12,j)}^{n} - [B_z^{(1)}]_{(i-\frac12,j)}^{n}}{\Delta r} ,\\
     \frac{[V_z]_{(i+\frac12,j+\frac12)}^{n+\frac{1}{2}}-[V_z]_{(i+\frac12,j+\frac12)}^{n-\frac12}}{\Delta t}
     &=  -\frac{1}{[\varrho^{(0)}]_{(i+\frac12,j+\frac12)}}
-            \frac{[P^{(1)}]_{(i+\frac12,j+1)}^{n} - [P^{(1)}]_{(i+\frac12,j)}^{n}}{\Delta z}\nonumber\\
+            \frac{[P^{(1)}]_{(i+\frac12,j+1)}^{n} - [P^{(1)}]_{(i+\frac12,j)}^{n}}{\Delta z},\nonumber\\
     \frac{[B_r^{(1)}]_{(i, j+\frac12)}^{n+1}-[B_r^{(1)}]_{(i, j+\frac12)}^{n}}{\Delta t}
-    &=  [B^{(0)}]_{(i, j+\frac12)} \frac{[V_r]_{(i,j+1)}^{n+\frac12} - [V_r]_{(i,j)}^{n+\frac12}}{\Delta z}\nonumber\\
+    &=  [B^{(0)}]_{(i, j+\frac12)} \frac{[V_r]_{(i,j+1)}^{n+\frac12} - [V_r]_{(i,j)}^{n+\frac12}}{\Delta z},\nonumber\\
     \frac{[B_z^{(1)}]_{(i+\frac12,j)}^{(n+1)} - [B_z^{(1)}]_{(i+\frac12,j)}^{(n)}}{\Delta t}
     &= -    \frac{[B^{(0)}]_{(i+\frac12, j)}}{r_{i+\frac12}}
-            \frac{[rV_r]_{(i+1,j)}^{n+\frac12}-[rV_r]_{(i,j)}^{n+\frac12}}{\Delta r}\nonumber\\
+            \frac{[rV_r]_{(i+1,j)}^{n+\frac12}-[rV_r]_{(i,j)}^{n+\frac12}}{\Delta r},\nonumber\\
     \frac{[P^{(1)}]_{(i+\frac12,j)}^{n+1}-[P^{(1)}]_{(i+\frac12,j)}^{n}}{\Delta t}
     &= -\gamma [P^{(0)}]_{(i+\frac12,j)}
         \left(
@@ -525,7 +543,7 @@ We then arrive at the discrete update equations for the compressional branch
             \\
             &\qquad\qquad\qquad\qquad\qquad
             + \left. \frac{[V_z]_{(i,j+\frac12)}^{n+\frac12}-[V_z]_{(i,j-\frac12)}^{n+\frac12}}{\Delta z}
-        \right)\nonumber
+        \right).\nonumber
 \end{align}
 
 For the shear Alfvén branch, we can choose the nodes freely and if we keep them analogous
@@ -533,9 +551,9 @@ to the compression branch we find the discrete update equations
 \begin{align*}
     \frac{[V_\varphi]_{(i,j)}^{n+\frac{1}{2}}-[V_\varphi]_{(i,j)}^{n-\frac12}}{\Delta t}
     &=  \frac{[B^{(0)}]_{(i,j)}}{\mu_0 \;[\varrho^{(0)}]_{(i,j)}}
-             \frac{[B_\varphi^{(1)}]_{(i,j+\frac12)}^{n} - [B_\varphi^{(1)}]_{(i,j-\frac12)}^{n}}{\Delta z}\\
+             \frac{[B_\varphi^{(1)}]_{(i,j+\frac12)}^{n} - [B_\varphi^{(1)}]_{(i,j-\frac12)}^{n}}{\Delta z},\\
     \frac{[B_\varphi^{(1)}]_{(i, j+\frac12)}^{n+1}-[B_\varphi^{(1)}]_{(i, j+\frac12)}^{n}}{\Delta t}
-    &=  [B^{(0)}]_{(i, j+\frac12)} \frac{[V_\varphi]_{(i,j+1)}^{n+\frac12} - [V_\varphi]_{(i,j)}^{n+\frac12}}{\Delta z}
+    &=  [B^{(0)}]_{(i, j+\frac12)} \frac{[V_\varphi]_{(i,j+1)}^{n+\frac12} - [V_\varphi]_{(i,j)}^{n+\frac12}}{\Delta z}.
 \end{align*}
 
 Furthermore we still have the constraint of no magnetic monopoles \eqref{eq: gauss magnetism constraint}
@@ -548,7 +566,7 @@ which in discretized axisymmetric form reads
 +
 \frac{[B_z^{(1)}]_{(i+\frac{1}{2},\,j+1)}^{n}
      - [B_z^{(1)}]_{(i+\frac{1}{2},\,j)}^{n}}{\Delta z}
-= 0
+= 0.
 \end{align*}
 
 
@@ -557,17 +575,17 @@ which in discretized axisymmetric form reads
 
 
 
-\subsubsection{Boundary conditions}
+\subsubsection{Boundary Conditions}
 
 Let $R$ be the radius of the central cylinder. We have the following boudary conditions.
 
-\paragraph{Perfectly conducting wall}
+\paragraph{Perfectly Conducting Wall}
 As in \autoref{subsec: equilibrium BC} we assume the walls to be perfectly conducting.
 Applying \eqref{eq: BC wall} we get $[B_r^{(1)}]_{i,j+\frac12}^{(n)}|_{i\cdot \Delta r=R} = 0$
 $\forall n,j$.
 
 
-\paragraph{No plasma flow through wall} This physical constraint implies
+\paragraph{No Plasma Flow through Wall} This physical constraint implies
  $[V_r^{(1)}]_{i,j+\frac12}^{(n)}|_{i\cdot \Delta r=R} = 0$
 $\forall n,j$.
 
@@ -581,14 +599,14 @@ and $[B_z^{(1)}]_{(\frac12,j)}^{n} = [B_z^{(1)}]_{(-\frac12,j)}^{n}$ which impli
 \begin{align*}
     \frac{[V_r]_{(0,j)}^{n+\frac{1}{2}}-[V_r]_{(0,j)}^{n-\frac12}}{\Delta t}
     &=  \frac{[B^{(0)}]_{(0,j)}}{\mu_0 \;[\varrho^{(0)}]_{(0,j)}}
-             \frac{[B_r^{(1)}]_{(0,j+\frac12)}^{n} - [B_r^{(1)}]_{(0,j-\frac12)}^{n}}{\Delta z}
+             \frac{[B_r^{(1)}]_{(0,j+\frac12)}^{n} - [B_r^{(1)}]_{(0,j-\frac12)}^{n}}{\Delta z}.
 \end{align*}
 
 
 
 
 
-\subsubsection{Courant-Friedrichs-Lewy stability condition}
+\subsubsection{Courant-Friedrichs-Lewy Stability Condition}
 
 The necessary (but not sufficient)
 Courant-Friedrichs-Lewy (CFL) condition (\cite{leveque2002}) requires that the
@@ -599,7 +617,7 @@ characteristic velocity of $v_f = \sqrt{v_A^2+c_s^2}$ a safe bound is (\cite{Ina
 
 \begin{align}
     \label{eq: CFL}
-    v_f \Delta t \leq \frac{1}{\sqrt{\frac{1}{(\Delta r)^2} + \frac{1}{(\Delta z)^2}}}
+    v_f \Delta t \leq \frac{1}{\sqrt{\frac{1}{(\Delta r)^2} + \frac{1}{(\Delta z)^2}}}.
 \end{align}
 
 
@@ -623,14 +641,14 @@ Alfv\'{e}n times would require of order $10^3-10^4$ timesteps.
 
 
 
-\subsection{Verification tests}
+\subsection{Verification Tests}
 \label{subsec: verification tests}
 
 A fully implemented solver should pass three classes of consistency checks,
 which are stated here for completeness.
 
 
-\paragraph{Wave propagation}
+\paragraph{Wave Propagation}
 For a uniform equilibrium, the linearized system admits exact plane-wave
 solutions with dispersion relations given by \eqref{eq: char speeds}
 (\cite{Freidberg2014}).
@@ -638,10 +656,10 @@ A numerical solution initialized as a single Fourier mode should reproduce
 the correct phase velocity $\omega/k$ to second order in $\Delta r$, $\Delta z$,
 and $\Delta t$, and the wave amplitude should remain constant over many Alfv\'{e}n times.
 
-\paragraph{Energy conservation}
+\paragraph{Energy Conservation}
 Ideal MHD conserves the total energy \cite[Ch.~8]{Freidberg2014}.
 
-\paragraph{$\nabla\cdot\vec{B}$ control}
+\paragraph{$\nabla\cdot\vec{B}$ Control}
 The constraint $\nabla\cdot\vec{B}^{(1)}=0$ \eqref{eq: gauss magnetism constraint}
 is preserved analytically by \eqref{eq: lin induction} and, by
 construction, also by its discrete counterpart.
