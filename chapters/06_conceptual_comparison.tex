@@ -65,7 +65,7 @@ where $r,R$ are the minor and major radius of the torus, respectively.
 A safety factor of at least $q=1$ is needed to reduce instabilities of current-driven modes.
 
 Flux surfaces are nested, toroidal surfaces and the magnetic field lines are helices on them.
-The safety factor describes how many times a line is winded around the central torroidal torus
+The safety factor describes how many times a line is winded around the central toroidal torus
 axis compared to around the symmetric axis located at $r=0$.
 
 A safety factor of $q\gtrsim1$ is typically reached in the innermost flux surfaces,
@@ -199,7 +199,7 @@ such as the Polomac or OpenStar's levitating dipole reactor (see \cite{simpson20
 Note that \citeauthor{Elio2024} in {Elio2024} are targeting much higher temperatures 
 because they want to use D-D-fusion, for which the Lawson-criterion requires higher values (see \cite{Elio2024}).
 
-The confinement in the Polomac happens through the closed poloidal magnetic field lines,
+The confinement in the Polomac is achieved via the closed poloidal magnetic field lines,
 the MHD equilibrium has been discussed in \autoref{chap: Static equilibrium model in cylindrical coordinates under axisymmetric assumptions}
 and operation is in principle stready-state.
 The performance targets of the Polomac are outlined in \cite{Elio2024} and remain to be validated.
@@ -212,40 +212,12 @@ carries no driven toroidal plasma current. Current driven instabilities are thus
 less problematic.
 
 The principal stability threat is instead the \emph{interchange
-instability}: because the magnetic field is purely poloidal and the
-rotational transform is identically zero, there is no magnetic shear
-and no average-good-curvature region to suppress pressure-driven
-interchange modes (\cite{Rosenbluth1957}). The only stabilising
-mechanism is \emph{plasma compressibility}. Marginal stability requires
-the pressure profile to satisfy the adiabaticity condition
-\begin{equation}
-    \frac{d}{d\psi}\!\left(p\,V^\gamma\right) \geq 0,
-    \qquad \gamma = \tfrac{5}{3},
-    \quad V(\psi) = \oint \frac{dl}{B},
-\end{equation}
-where $V(\psi)$ is the flux-tube volume normalized to magnetic flux (\cite{Garnier1999,Rosenbluth1957}).
-Profiles steeper than $p \propto V^{-\gamma}$ are interchange-unstable,
-while profiles shallower than this bound are stable. When the pressure
-profile is held near this marginal condition, \citeauthor{Garnier1999}
-showed that the configuration is simultaneously stable to high-$n$
-ballooning modes, because the most unstable ballooning eigenmodes
-are forced to have a node near the pressure maximum and must bend
-field lines in a region of reduced $\beta$ (\cite{Garnier1999}).
-The LDX experiment at MIT validated this picture experimentally,
-achieving peak $\beta \approx 0.2$ in quasi-steady-state discharges
-(\cite{Garnier2006}).
-
-The Polomac, like the levitated dipole (LDX), carries no driven
-toroidal plasma current, so current-driven kink and tearing
-instabilities are absent.
-
-The principal stability threat is instead the \emph{interchange
 instability} (described in \cite{Rosenbluth1957}). Because the magnetic field is
 purely poloidal and the rotational transform is identically zero,
 there is no magnetic shear and no average-good-curvature region
 available to suppress pressure-driven interchange modes
 (\cite[§\,8.11.3]{Freidberg2014}). The only stabilising mechanism is
-\emph{plasma compressibility}. Marginal stability requires the
+\emph{plasma compressibility}. Stability requires the
 pressure profile to satisfy the adiabaticity condition
 \begin{equation}
     \frac{d}{d\psi}\!\left(p\,V^\gamma\right) \geq 0,

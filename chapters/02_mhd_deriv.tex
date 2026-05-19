@@ -1,8 +1,9 @@
 \chapter{Single Fluid Ideal MHD Equations}
 \label{chap: Single Fluid Ideal MHD Equations}
 
-This theory follows mostly the EPFL Intro to Plasma Phyiscs course, Freidberg's book \emph{Ideal MHD} 
-(\cite{Freidberg2014}) and Chen's book \emph{Introduction to Plasma Physics and Controlled Fusion} (\cite{Chen2016}).
+This theory follows mostly Freidberg's book \emph{Ideal MHD} 
+(\cite{Freidberg2014}), Chen's book \emph{Introduction to Plasma Physics and Controlled Fusion} (\cite{Chen2016}) 
+and EPFL's \emph{Introduction to Plasma Phyiscs} course (\cite{epfl_plasma_intro}).
 
 \section{Maxwell's Equations}
 The microscopic Maxwell equations are
@@ -19,7 +20,7 @@ The Boltzmann equation is
     \frac{\partial f_s}{\partial t} + \vec{v} \nabla_{\vec{r}} f_s + \frac{q_s}{m_s}(\vec{E}^{\lr} \vec{v}\wedge \vec{B}^{\lr} ) \nabla_{\vec{v}} f_s - \left(\frac{\partial f}{\partial t}\right)_{\operatorname{coll}} = 0 \, .
 \end{equation*}
 
-Here the short range interactions are accounted for in the collisional term, and the long range (lr) interactions from collective effeects are accounted for in the electric and Lorentz term.
+Here the short range interactions are accounted for in the collisional term, and the long range (lr) interactions from collective effects are accounted for in the electric and Lorentz term.
 The crititical screening distance hereby is the Debye length $\lambda_{D}$ of electrons (\cite{Chen2016})
 \begin{equation}
     \lambda_{D} = \sqrt{\frac{\epsilon_0 k_B T_e}{e^2 n_e}}  \, .
@@ -56,9 +57,9 @@ Thus we have
     \[
     g(\vec{v})=\vec{v} \implies \vec{u}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \vec{v} f_s(\vec{r},\vec{v},t) \, .
     \]
-    \item Average kinetic energy density $\vec{w}_s(\vec{r},t)$:
+    \item Average kinetic energy density $w_s(\vec{r},t)$:
     \[
-    g(\vec{v})=\frac{1}{2}m_s\vec{v}^2 \implies \vec{w}_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \frac{1}{2}m_s\vec{v}^2 f_s(\vec{r},\vec{v},t) \, .
+    g(\vec{v})=\frac{1}{2}m_s\vec{v}^2 \implies w_s(\vec{r},t) =\frac{1}{n_s(\vec{r}, t)} \int d\vec{v} \, \frac{1}{2}m_s\vec{v}^2 f_s(\vec{r},\vec{v},t) \, .
     \]
 \end{itemize}
 
