@@ -56,7 +56,7 @@ thus avoiding the voltage build-up along the vertical axis and thus the $\vec{E}
 \subsubsection{Confinement in a Tokamak}
 A tokamak magnetic field is the superposition of a strong externally-applied
 toroidal field $B_\text{tor}$ (produced by toroidal-field coils external to the plasma)
-and a weaker poloidal field $B_\text{pol}$ produced by the toroidal plasma current $I_\text{pol}$
+and a weaker poloidal field $B_\text{pol}$ produced by the toroidal plasma current $I_\text{tor}$
 and controlled and shaped by external poloidal-field coils (\cite{Freidberg2014}).
 
 
@@ -83,7 +83,7 @@ Grad--Shafranov equation (\cite{Freidberg2014}):
 where $\psi(R,Z)$ is the poloidal flux function, $p(\psi)$ the plasma pressure,
 and $F(\psi)=RB_\text{tor}$ encodes the toroidal field.
 This second-order nonlinear PDE, derived from ideal MHD force balance
-$\vec{J}\times\vec{B}=\nabla p$ under axisymmetry, simultaneously describes
+$\vec{J}\wedge\vec{B}=\nabla p$ under axisymmetry, simultaneously describes
 radial pressure balance and toroidal force balance; its solutions give the nested
 flux surfaces on which $p$ and $F$ are constant
 (\cite{Freidberg2014}, Chapter~6).
@@ -167,7 +167,7 @@ order to control magnetic island widths and avoid confinement degradation.
 
 Because the stellarator lacks toroidal symmetry, the Grad-Shafranov equation \eqref{eq:GS} no longer applies.
 The equilibrium is instead a full three-dimensional ideal-MHD force balance,
-$\vec{J}\times\vec{B}=\nabla p$, which must be solved in 3D.
+$\vec{J}\wedge\vec{B}=\nabla p$, which must be solved in 3D.
 
 Because stellarators carry no net driven toroidal current, they are
 intrinsically steady-state. A residual bootstrap current does arise from pressure-gradient-driven particle
@@ -208,16 +208,14 @@ The performance targets of the Polomac are outlined in \cite{Elio2024} and remai
 \subsubsection{Stability Considerations and Disruption Risks}
 
 The Polomac, like the levitated dipole (LDX),
-carries no driven toroidal plasma current. There is therefore no
-analogue of the tokamak current-driven kink or tearing instability,
-and no mechanism for a major current-quench disruption
-(\cite{Freidberg2014}).
+carries no driven toroidal plasma current. Current driven instabilities are thus
+less problematic.
 
 The principal stability threat is instead the \emph{interchange
 instability}: because the magnetic field is purely poloidal and the
 rotational transform is identically zero, there is no magnetic shear
 and no average-good-curvature region to suppress pressure-driven
-interchange modes \cite{Rosenbluth1957}. The only stabilising
+interchange modes (\cite{Rosenbluth1957}). The only stabilising
 mechanism is \emph{plasma compressibility}. Marginal stability requires
 the pressure profile to satisfy the adiabaticity condition
 \begin{equation}
@@ -236,6 +234,30 @@ field lines in a region of reduced $\beta$ (\cite{Garnier1999}).
 The LDX experiment at MIT validated this picture experimentally,
 achieving peak $\beta \approx 0.2$ in quasi-steady-state discharges
 (\cite{Garnier2006}).
+
+The Polomac, like the levitated dipole (LDX), carries no driven
+toroidal plasma current, so current-driven kink and tearing
+instabilities are absent.
+
+The principal stability threat is instead the \emph{interchange
+instability} (described in \cite{Rosenbluth1957}). Because the magnetic field is
+purely poloidal and the rotational transform is identically zero,
+there is no magnetic shear and no average-good-curvature region
+available to suppress pressure-driven interchange modes
+(\cite[§\,8.11.3]{Freidberg2014}). The only stabilising mechanism is
+\emph{plasma compressibility}. Marginal stability requires the
+pressure profile to satisfy the adiabaticity condition
+\begin{equation}
+    \frac{d}{d\psi}\!\left(p\,V^\gamma\right) \geq 0,
+    \qquad \gamma = \tfrac{5}{3},
+    \quad V(\psi) = \oint \frac{dl}{B},
+\end{equation}
+where $V(\psi)$ is the specific volume of a flux tube
+(\cite{Rosenbluth1957,Garnier1999}). Profiles steeper than
+$p \propto V^{-\gamma}$ are interchange-unstable; shallower profiles
+are stable. Further theoretical background on stability at this border
+can be found in \cite{Garnier1999}, with physical confirmation for 
+LDX provided in \cite{Garnier2006}.
 
 A second, Polomac-specific risk is the hot-electron interchange (HEI) instability.
 In the supported (non-levitated) operating mode

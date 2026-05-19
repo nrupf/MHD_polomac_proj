@@ -20,9 +20,9 @@ The Boltzmann equation is
 \end{equation*}
 
 Here the short range interactions are accounted for in the collisional term, and the long range (lr) interactions from collective effeects are accounted for in the electric and Lorentz term.
-The crititical screening distance hereby is the Debye length $\lambda_{D}$ of electrons 
+The crititical screening distance hereby is the Debye length $\lambda_{D}$ of electrons (\cite{Chen2016})
 \begin{equation}
-    \lambda_{D} = \sqrt{\frac{\epsilon_0 T_e}{e^2 n_0}}  \, .
+    \lambda_{D} = \sqrt{\frac{\epsilon_0 k_B T_e}{e^2 n_e}}  \, .
     \label{eq: debye length}
 \end{equation}
 
@@ -228,8 +228,9 @@ For completeness, we also state the microscopic Maxwell equations again with tot
 \subsection{Magnetohydrodynamic Assumptions}
 \label{subsec:mhd_assumptions}
 By comparing constants as well as time and length scales typical in fusion
- plasmas or provided specifically for polomacs by \cite{Elio2024}, 
- we can make a number of assumptions following chapter 2 of \cite{Freidberg2014}.
+plasmas or provided specifically for polomacs by \cite{Elio2024}, 
+we can make a number of assumptions following chapter 2 of \cite{Freidberg2014},
+and for quasi-neutrality the plasma physics introductory course by \cite{epfl_plasma_intro}.
 
 
 For each assumption we state the physical condition
@@ -270,7 +271,7 @@ and $L$ is the plasma length scale.  The condition is
 For the Polomac the ion thermal velocity is
 \[
     v_{th,i}
-    = \sqrt{\frac{2 \times \SI{100}{\electronvolt} \times \SI{1.6e-19}{\joule\per\electronvolt}}
+    = \sqrt{\frac{2 \cdot \SI{100}{\electronvolt} \cdot \SI{1.6e-19}{\joule\per\electronvolt}}
                  {\SI{1.67e-27}{\kilogram}}}
     \approx \SI{1.4e5}{\metre\per\second}.
 \]
@@ -280,7 +281,7 @@ which is $f_{ce}=\SI{8}{\giga\hertz}$, and $L = \SI{0.3}{\metre}$:
 \[
     \frac{f_\text{MHD}}{f_{ce}}
     = \frac{v_{th,i}/L}{f_{ce}}
-    \approx \num{6e-6} \ll 1.
+    \approx \num{6e-5} \ll 1.
 \]
 Ion dynamics are slow compared to the electron cyclotron motion;
 electron inertia can be neglected on MHD timescales.
@@ -291,33 +292,49 @@ electron inertia can be neglected on MHD timescales.
 \item \textbf{Quasi-neutrality}
 
 We assume the plasma to be quasi-neutral, i.e. that the typical plasma length scale $L$
- is much greater than the Debye screening distance $\lambda_D$ (see \eqref{eq: debye length}), and outside of that
-  screening distance $\frac{\rho}{ne} = \frac{n_e - n_i}{n_e} \ll 1$,
-   i.e. there are many particles in the Debye sphere.
+is much greater than the Debye screening distance $\lambda_D$ (see \eqref{eq: debye length}), 
+and outside of that screening distance $\frac{\rho}{ne} = \frac{n_e - n_i}{n_i} \ll 1$.
 
+
+
+To motivate how the condition $L \gg \lambda_D$ 
+guarantees also the latter, note that the electron density responds to the electrostatic 
+potential of a fixed background ion density $n_{i}$ as 
+$n_e = n_{i}\exp(e\Phi/k_B T_e) \approx n_{i}(1 + e\Phi/k_B T_e)$ (\cite{epfl_plasma_intro}).
+For this linearization to hold we had to assume that there are many particles 
+inside a Debye sphere for the collective shielding to be statistically meaningful,
+$N_D = n \cdot \frac{4\pi}{3}\lambda_D^3 \gg 1$, since
+\cite{epfl_plasma_intro} show $e\Phi/k_B T_e \sim 1/(4\pi N_D^{2/3}) \ll 1$.
+Hence $(n_e - n_i)/n_i \approx e\Phi/k_B T_e$.
+
+The screened (Yukawa) potential around any 
+test charge takes the form $\Phi(r) \propto r^{-1}\exp(-r/\lambda_D)$ 
+(\cite{epfl_plasma_intro}), so for $r \gg \lambda_D$ the exponential suppresses 
+$\Phi$ and therefore $e\Phi/k_B T_e \to 0$. If the plasma length scale $L$ satisfies 
+$L \gg \lambda_D$, charge separation is exponentially suppressed throughout the 
+bulk.
+
+We conclude that quasi-neutrality requires
 \[
     \frac{L}{\lambda_D} \gg 1, \qquad
     N_D = n\cdot\tfrac{4\pi}{3}\lambda_D^3 \gg 1.
 \]
 
-For the Polomac (\cite{Elio2024}), with $n=10^{20}\,\text{m}^{-3}$ and
-$T_e=100\,\text{eV}$:
+For the Polomac (\cite{Elio2024}), with $n=\SI{e20}{\meter^{-3}}$,
+$k_B T_e=\SI{100}{\electronvolt}$ and the approxiamtive formula below for $\lambda_D$ given by \cite{Chen2016}:
 \begin{itemize}
     \item $\lambda_D
-          = 7430\,\text{m}\,\sqrt{T_\text{eV}/n}
+          = \SI{7430}{\meter}\,\sqrt{T_\text{eV}/n}
           = 7430\sqrt{100/10^{20}}
           = \SI{7.4e-6}{\meter}$
     \item $L/\lambda_D
-          \geq 0.04\,\text{m}/7.4\times10^{-6}\,\text{m}
-          \approx 5.4\times10^3 \gg 1$
+          \geq \SI{0.04}{\meter}/\SI{7.4e-6}{\meter}
+          \approx \num{5.4e3} \gg 1$
     \item $N_D
-          = 10^{20}\cdot\tfrac{4\pi}{3}(7.4\times10^{-6})^3
-          \approx 1.7\times10^4 \gg 1$
+          = \SI{e20}{\per\cubic\meter}\cdot\tfrac{4\pi}{3}(\SI{7.4e-6}{\meter})^3
+          \approx \num{1.7e5} \gg 1$
 \end{itemize}
 Both conditions are well satisfied.
-
-Note that this is again connected to the fact that we assume electrons can move very fast.
-
 
 
 % --- Assumption 3 ---
@@ -332,26 +349,25 @@ We can however already calculate the resistivity.
 The classical Spitzer resistivity (\cite{Chen2016}) is
 \[
     \eta_\parallel
-    = 5.2\times10^{-5}\,\frac{Z\ln\Lambda}{T_{eV}^{3/2}}
+    = \num{5.2e-5}\,\frac{Z\ln\Lambda}{T_{eV}^{3/2}}
     \quad[\Omega\text{-m}],
 \]
 where $\ln\Lambda \equiv \ln(r_\text{max}/r_\text{min})$ is the Coulomb
 logarithm, the ratio of the maximum to minimum effective impact
 parameters in a Coulomb collision (\cite{NRL2023}). For electron--ion
 collisions in the regime $T_i m_e/m_i < 10Z^2\,\text{eV} < T_e$,
-which applies here since $T_i m_e/m_i \approx 0.05\,\text{eV}$ and
-$T_e = 100\,\text{eV} \gg 10\,\text{eV}$ (\cite{NRL2023}):
+which applies here since $T_i m_e/m_i \approx \SI{0.05}{\electronvolt}$ and
+$T_e = \SI{100}{\electronvolt} \gg \SI{10}{\electronvolt}$ (\cite{NRL2023}):
 \[
     \ln\Lambda_{ei}
     = 24 - \ln\!\left(n_e^{1/2}\,T_e^{-1}\right)
-    = 24 - \ln\!\left(\frac{\sqrt{10^{14}\,\text{cm}^{-3}}}{100}\right)
-    = 24 - 5\ln 10
+    = 24 - \ln\!\left(\frac{\sqrt{\SI{10e14}{\centi\meter^{-3}}}}{100}\right)   
     \approx 12.5.
 \]
-For the Polomac ($Z=1$, $T_e = 100\,\text{eV}$):
+For the Polomac ($Z=1$, $T_e = \SI{100}{\electronvolt}$):
 \[
     \eta_\parallel
-    = 5.2\times10^{-5}\times\frac{1\times 12.5}{(100)^{3/2}}
+    = \num{5.2e-5}\cdot\frac{1\cdot 12.5}{(100)^{3/2}}
     \approx \SI{6.5e-7}{\ohm\meter},
 \]
 and since $\eta_\perp \sim 2\eta_\parallel$~\cite{Chen2016} we use
@@ -383,7 +399,7 @@ The quantitative verification for the Polomac is also given in section~\ref{subs
 
 \item \textbf{Small Larmor radius} $\left(\nicefrac{L}{\rho_i} \gg 1\right)$
 
-The particles are tightly bound to the electric field lines.
+The particles are tightly bound to the magnetic field lines.
 Inserting the definition of the larmor radius ($r_i = \nicefrac{m_i v_{th, i}}{eB}$)
 this leads to
 \[
@@ -397,7 +413,7 @@ in Ohm's law. We see this by recognizing the larmor radius in
 \]
 where we used the ideal gas relation to approximate $\overleftrightarrow{P_e}$, the relation $T_e \sim T_i$ and $k_B T_i \sim m_i v_{th,i}^2$.
 
-With $L=\SIrange{0.04}{0.3}{\meter}$ this gives $L/r_i\approx \numrange{7}{52}$.
+With $L=\SIrange{0.04}{0.3}{\meter}$ and $B=\SIrange{0.2}{0.3}{\tesla}$ this gives $L/r_i\approx \numrange{5.5}{62}$.
 The condition is satisfied at device scales; at the smallest resolved
 scales the margin is reduced and the ideal MHD description should be
 treated with appropriate caution.

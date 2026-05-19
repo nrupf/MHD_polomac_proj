@@ -134,31 +134,6 @@
       \verb 10.1007/978-3-319-22309-4
       \endverb
     \endentry
-    \entry{epfl_plasma_intro}{misc}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=395821c551761a96491654867ce21eae}{%
-           family={{École polytechnique fédérale de Lausanne}},
-           familyi={É\bibinitperiod}}}%
-      }
-      \strng{namehash}{395821c551761a96491654867ce21eae}
-      \strng{fullhash}{395821c551761a96491654867ce21eae}
-      \strng{fullhashraw}{395821c551761a96491654867ce21eae}
-      \strng{bibnamehash}{395821c551761a96491654867ce21eae}
-      \strng{authorbibnamehash}{395821c551761a96491654867ce21eae}
-      \strng{authornamehash}{395821c551761a96491654867ce21eae}
-      \strng{authorfullhash}{395821c551761a96491654867ce21eae}
-      \strng{authorfullhashraw}{395821c551761a96491654867ce21eae}
-      \field{sortinit}{É}
-      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.openlearnity.org/courses/plasmaintroduction/}}
-      \field{note}{Online course, accessed Spring 2026}
-      \field{title}{Plasma Physics: Introduction}
-      \field{year}{2018}
-    \endentry
     \entry{Elio2024}{article}{}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=299455ea183ef998cc1f4392a4815ac0}{%
@@ -222,6 +197,70 @@
       \verb{url}
       \verb https://jtsp.eu/jtsp/article/view/32
       \endverb
+    \endentry
+    \entry{epfl_plasma_intro}{misc}{}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=1d68050065327e8d5439ff64878b28bc}{%
+           family={Fasoli},
+           familyi={F\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0357f1e590807cf3a130ec3a090cf147}{%
+           family={Ricci},
+           familyi={R\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d7f4114fde4c05286c5a172d83881778}{%
+           family={Howling},
+           familyi={H\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0ff0ba6426ab781f2484de96907ff79d}{%
+           family={Theiler},
+           familyi={T\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=244b2a798aa251cf25286f38cf78ff59}{%
+           family={Testa},
+           familyi={T\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=58a070f959327e1cf3d1132479ec5a9f}{%
+           family={Furno},
+           familyi={F\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=492ef6cb6fa01017d16eccc95f8b1f48}{%
+           family={Hogge},
+           familyi={H\bibinitperiod},
+           given={J.\bibnamedelimi P.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0ccfc739ad08111f6f1ac6106c8b12b0}
+      \strng{fullhash}{829e5985bd9a2df062ec45ef63c70ae7}
+      \strng{fullhashraw}{829e5985bd9a2df062ec45ef63c70ae7}
+      \strng{bibnamehash}{0ccfc739ad08111f6f1ac6106c8b12b0}
+      \strng{authorbibnamehash}{0ccfc739ad08111f6f1ac6106c8b12b0}
+      \strng{authornamehash}{0ccfc739ad08111f6f1ac6106c8b12b0}
+      \strng{authorfullhash}{829e5985bd9a2df062ec45ef63c70ae7}
+      \strng{authorfullhashraw}{829e5985bd9a2df062ec45ef63c70ae7}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.openlearnity.org/courses/plasmaintroduction/}}
+      \field{note}{Online course by {École polytechnique fédérale de Lausanne}, accessed Spring 2026}
+      \field{title}{Plasma Physics: Introduction}
+      \field{year}{2018}
     \endentry
     \entry{Freidberg2014}{book}{}{}
       \name{author}{1}{}{%
