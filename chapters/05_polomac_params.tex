@@ -176,6 +176,8 @@ five orders of magnitude. Magnetic flux is therefore effectively frozen
 into the plasma on MHD timescales, justifying $\eta\to 0$.
 
 
+
+
 \section{Plasma \texorpdfstring{$\beta$}{Beta}}
 \label{sec:beta}
 
@@ -183,36 +185,50 @@ into the plasma on MHD timescales, justifying $\eta\to 0$.
 
 The plasma $\beta$ is the ratio of kinetic plasma pressure to magnetic
 pressure and measures confinement efficiency. A higher $\beta$ means more fusion
-power per unit of magnetic field energy invested. 
-There is no universal definition of plasma $\beta$, the description found in \cite{Freidberg2014}
-is for example very much taylored to tokamaks.
-Our ansatz, measuring the $\beta$, in a Polomac the total $\beta$ is the poloidal $\beta$, is
+power per unit of magnetic field energy invested.
+There is no universal definition of plasma $\beta$, the definition found in
+\cite{Freidberg2014} is for example tailored to tokamaks, where the dominant
+toroidal field sets the magnetic pressure scale.
+For the Polomac, which operates in a predominantly poloidal field with $B_\varphi
+\approx 0$, a natural definition is the local ratio
 \begin{equation}
-    \beta \coloneqq \frac{P}{B^2/(2\mu_0)}.
+    \beta(\vec{r}) \coloneqq \frac{P(\vec{r})}{B(\vec{r})^2/(2\mu_0)},
     \label{eq:beta}
 \end{equation}
-Note that different existing geometries and thus definitions complicate the comparisons of $\beta$.
-However, the dominating fields usually also dominate (lower the total value) $\beta$ \cite{Freidberg2014},
+where $P$ and $B$ are evaluated at the same point. This is a \emph{local} $\beta$,
+not a volume-averaged quantity. The distinction matters: while a global
+$\beta > 1$ would imply that the plasma pressure exceeds the total confining
+magnetic pressure and is therefore not achievable in steady-state magnetic
+confinement, a \emph{local} $\beta > 1$ is physically admissible wherever the
+field has a near-null, and has been experimentally demonstrated in the RT-1
+ experiment \cite{Nishiura2015}.
+Note also that comparing $\beta$ values across geometries requires care, since the
+dominant field component (toroidal vs.\ poloidal) sets the denominator differently
+in each case (\cite{Freidberg2014}).
+However, the dominating fields usually also dominate (lower the total value) $\beta$ (\cite{Freidberg2014}),
 so comparisons of efficiency still make sense.
 
-
-
-
-
 \subsection{Plasma \texorpdfstring{$\beta$}{Beta} of the Polomac}
-However, since we do not get explicit values for $P$ from the ideal Grad-Shafranov
-equation, we will use the parameter ranges given in \cite{Elio2024} (Table~1), where plasma pressure is
-\SIrange{1.6}{16}{\kilo\pascal} and magnetic flux density $B$ is \SIrange{0.2}{0.3}{\tesla}
 
-Inserting in \eqref{eq:beta}, we thus get 
+Since the ideal Grad-Shafranov equation does not yield explicit values of $P$
+and $B$ without a numerical solution, we estimate $\beta$ using the prototype
+parameter ranges given in \cite{Elio2024} (Table~1): plasma pressure
+$P \in [\SI{1.6}{\kilo\pascal},\, \SI{16}{\kilo\pascal}]$ and magnetic flux
+density $B \in [\SI{0.2}{\tesla},\, \SI{0.3}{\tesla}]$.
+
+Inserting into \eqref{eq:beta}, the envelope of achievable $\beta$ values is
 \begin{equation*}
-    \beta \in [0.04, 1.01] \, .
+    \beta \in [0.04,\; 1.01],
 \end{equation*}
-
+where the lower bound corresponds to $P = \SI{1.6}{\kilo\pascal}$,
+$B = \SI{0.3}{\tesla}$ and the upper bound to $P = \SI{16}{\kilo\pascal}$,
+$B = \SI{0.2}{\tesla}$. These are not a single operating point but the
+extremes of the parameter envelope. The upper end of this range, $\beta \lesssim
+1$, is consistent with the high-$\beta$ regime characteristic of levitated-dipole
+configurations \cite{Nishiura2015, Garnier2006}.
 
 \subsection*{Significance for Future Fusion Devices}
 If the upper range $\beta\to1$ is achievable, the Polomac could confine fusion-grade
 pressures with a comparatively modest magnetic field, reducing both
 engineering complexity and power consumption.  These are design targets
 and have not yet been experimentally demonstrated.
-

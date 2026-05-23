@@ -45,7 +45,7 @@ No experimental plasma data from the Polomac exist as of this writing; the devic
 
 ## Context: Poloidal Confinement
 
-The Polomac belongs to a class of poloidal confinement devices, most notably pioneered by the [Levitating Dipole Experiment (LDX)](https://en.wikipedia.org/wiki/Levitated_Dipole_Experiment) at MIT, which demonstrated compressibility-driven stabilisation of interchange modes in a superconducting dipole geometry before concluding in 2011. The concept is also being revisited by the [OpenStar](https://www.openstar.tech/) project, which is developing a levitated-dipole reactor in a closely related regime (see also [Simpson et al. 2026](https://arxiv.org/abs/2602.20564)).
+The Polomac belongs to a class of poloidal confinement devices, most notably pioneered by the [Levitating Dipole Experiment (LDX)](https://en.wikipedia.org/wiki/Levitated_Dipole_Experiment) at MIT, which demonstrated compressibility-driven stabilisation of interchange modes in a superconducting dipole geometry before concluding in 2011, and also being explored by the Japanese [RT-1 experiment](https://www.nature.com/articles/s41467-024-44977-x?utm_source=researchgate.net&utm_medium=article). The concept is also being revisited by the [OpenStar](https://www.openstar.tech/) project, which is developing a levitated-dipole reactor in a closely related regime (see also [Simpson et al. 2026](https://arxiv.org/abs/2602.20564)).
 
 ---
 

@@ -756,6 +756,91 @@
       \field{title}{Finite Volume Methods for Hyperbolic Problems}
       \field{year}{2002}
     \endentry
+    \entry{Nishiura2015}{article}{}{}
+      \name{author}{9}{}{%
+        {{un=0,uniquepart=base,hash=b43531ba49c3c96174034b7766ec2f7b}{%
+           family={Nishiura},
+           familyi={N\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6aab4cdee92c71d5ae27cbd43460be6a}{%
+           family={Yoshida},
+           familyi={Y\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=33ee0b43ed80e4c358453f02825132cf}{%
+           family={Saitoh},
+           familyi={S\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0298e5a824e52d961774b6420a3c80a6}{%
+           family={Yano},
+           familyi={Y\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b7fa56ef1644af05afa3509f1d0da70d}{%
+           family={Kawazura},
+           familyi={K\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2ddb696c24509f777dea22f904c34f94}{%
+           family={Nogami},
+           familyi={N\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b65e5a7b818b2c56bbae977edd0d7aad}{%
+           family={Yamasaki},
+           familyi={Y\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7fcc927165a30ec0e882755d492c4a8a}{%
+           family={Mushiake},
+           familyi={M\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=16e2aaf1706f0ac0e9bc7d4849d5fb71}{%
+           family={Kashyap},
+           familyi={K\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{51bc7ab6181d8ea9e78c82b306d2aa37}
+      \strng{fullhash}{8d584988f8a2442839a29df2225a05c5}
+      \strng{fullhashraw}{8d584988f8a2442839a29df2225a05c5}
+      \strng{bibnamehash}{51bc7ab6181d8ea9e78c82b306d2aa37}
+      \strng{authorbibnamehash}{51bc7ab6181d8ea9e78c82b306d2aa37}
+      \strng{authornamehash}{51bc7ab6181d8ea9e78c82b306d2aa37}
+      \strng{authorfullhash}{8d584988f8a2442839a29df2225a05c5}
+      \strng{authorfullhashraw}{8d584988f8a2442839a29df2225a05c5}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nuclear Fusion}
+      \field{number}{5}
+      \field{title}{Improved beta (local beta $>1$) and density in electron cyclotron resonance heating on the {RT-1} magnetosphere plasma}
+      \field{volume}{55}
+      \field{year}{2015}
+      \field{pages}{053019}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/0029-5515/55/5/053019
+      \endverb
+    \endentry
     \entry{Rosenbluth1957}{article}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=e3adbcf83a3e875378c4438ae077c029}{%
