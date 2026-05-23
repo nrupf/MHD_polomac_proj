@@ -1,9 +1,18 @@
-﻿*.aux
-*.bcf
-*.log
+﻿# LaTeX intermediate files
+*.aux
+*.toc
 *.out
+
+# Biber/BibTeX bibliography files
+*.bcf
+*.bbl
+*.blg
+
+#Log files
+*.log
 *.run.xml
+
+SyncTeX
 *.synctex.gz
 *.synctex(busy)
-*.toc
-*.bbl
+
