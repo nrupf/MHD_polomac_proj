@@ -58,7 +58,7 @@ The Polomac belongs to a class of poloidal confinement devices, most notably pio
 - **Garnier, D. T., Hansen, A., et al.** (2006). Production and study of high-beta plasma confined by a superconducting dipole magnet. *Physics of Plasmas* 13.5. DOI: [10.1063/1.2186616](https://doi.org/10.1063/1.2186616)
 - **Rosenbluth, M. N. and Longmire, C. L.** (1957). Stability of plasmas confined by magnetic fields. *Annals of Physics* 1.2. DOI: [10.1016/0003-4916(57)90055-6](https://doi.org/10.1016/0003-4916(57)90055-6) — Original interchange instability criterion.
 - **Nishiura, M. et al.** (2015). Smproved beta (local beta > 1) and density in electron
-cyclotron resonance heating on the RT-1 magnetosphere plasma. *Nuclear Fusion* 55.5. DOI: [10.1016/0003-4916(57)90055-6](https://doi.org/10.1088/0029-5515/55/5/053019) — Local beta in magnetic dipole above 1.
+cyclotron resonance heating on the RT-1 magnetosphere plasma. *Nuclear Fusion* 55.5. DOI: [10.1088/0029-5515/55/5/053019](https://doi.org/10.1088/0029-5515/55/5/053019) — Local beta in magnetic dipole above 1.
 - **Yee, K.** (1966). Numerical solution of initial boundary value problems involving Maxwell's equations in isotropic media. *IEEE Transactions on Antennas and Propagation* 14.3. DOI: [10.1109/TAP.1966.1138693](https://doi.org/10.1109/TAP.1966.1138693)
 - **Godlewski, E. and Raviart, P.-A.** (2021). *Numerical Approximation of Hyperbolic Systems of Conservation Laws*, 2nd ed. Springer. DOI: [10.1007/978-1-0716-1344-3](https://doi.org/10.1007/978-1-0716-1344-3)
 
