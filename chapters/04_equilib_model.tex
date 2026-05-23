@@ -19,7 +19,7 @@ In cylindrical coordinates $(r, \varphi, z)$, the gradient, divergence and curl 
 \begin{align*}
     \nabla  f &= \frac{\partial f}{\partial r} \hat{e}_r + \frac{1}{r}\frac{\partial f}{\partial \varphi} \hat{e}_\varphi + \frac{\partial f}{\partial z} \hat{e}_z  \, ,\\
     \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial (r F_r)}{\partial r} + \frac{1}{r}\frac{\partial F_\varphi}{\partial \varphi} + \frac{\partial F_z}{\partial z}  \, ,\\
-    \nabla \wedge \vec{F} &= \left(\frac{1}{r}\frac{\partial F_z}{\partial \varphi} - \frac{\partial F_\varphi}{\partial z}\right)\hat{e}_r
+    \nabla \times \vec{F} &= \left(\frac{1}{r}\frac{\partial F_z}{\partial \varphi} - \frac{\partial F_\varphi}{\partial z}\right)\hat{e}_r
     + \left(\frac{\partial F_r}{\partial z} - \frac{\partial F_z}{\partial r}\right)\hat{e}_\varphi
     + \frac{1}{r}\left(\frac{\partial (r F_\varphi)}{\partial r} - \frac{\partial F_r}{\partial \varphi}\right)\hat{e}_z \, ,
 \end{align*}
@@ -27,7 +27,7 @@ In cylindrical coordinates $(r, \varphi, z)$, the gradient, divergence and curl 
 so
 \begin{align}
     \nabla \cdot \vec{B}  &= \frac{1}{r}\frac{\partial (r B_r)}{\partial r} + \frac{\partial B_z}{\partial z} \, , \label{eq: axisymm. cylindrical div}\\
-    \nabla \wedge \vec{B} &= 
+    \nabla \times \vec{B} &= 
 \left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)\hat{e}_\varphi 
 - \frac{\partial B_\varphi}{\partial z}\,\hat{e}_r 
 + \frac{1}{r}\frac{\partial(r B_\varphi)}{\partial r}\,\hat{e}_z  \, .
@@ -45,7 +45,7 @@ We thus set $B_\varphi(r,z) \hat{e}_\varphi \equiv 0$, which further simplifies 
 
 and \eqref{eq: axisymm. cylindrical curl} to 
 \begin{align}
-    \nabla \wedge \vec{B} &= \left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)\hat{e}_\varphi   \, .
+    \nabla \times \vec{B} &= \left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)\hat{e}_\varphi   \, .
     \label{eq: poloidal cylindrical curl}
 \end{align}
 
@@ -61,7 +61,7 @@ of the ideal MHD equations only the following \emph{static equilibrium equations
 \begin{itemize}
     \item the static momentum equation:
             \begin{equation}
-                 \vec{J} \wedge \vec{B} = \nabla P
+                 \vec{J} \times \vec{B} = \nabla P
                  \label{eq: static momentum eq.}
             \end{equation}
 
@@ -69,7 +69,7 @@ of the ideal MHD equations only the following \emph{static equilibrium equations
         \begin{itemize}
             \item 
                 \begin{equation}
-                    \nabla\wedge\vec{B} =  \mu_0 \vec{J}
+                    \nabla\times\vec{B} =  \mu_0 \vec{J}
                 \end{equation}
             \item
                 \begin{equation}
@@ -90,20 +90,20 @@ we can rewrite these equations and only the following components remain:
             \label{eq: divB}
         \end{equation}
 
-    \item Ampère's law $\nabla \wedge \vec{B} = \mu_0 \vec{J}$ gives a purely toroidal current density:
+    \item Ampère's law $\nabla \times \vec{B} = \mu_0 \vec{J}$ gives a purely toroidal current density:
         \begin{equation}
             \vec{J} = J_\varphi(r,z)\,\hat{e}_\varphi, \qquad 
             J_\varphi = \frac{1}{\mu_0}\left(\frac{\partial B_r}{\partial z} - \frac{\partial B_z}{\partial r}\right)
             \label{eq: J_phi}
         \end{equation}
 
-    \item The momentum equation $\vec{J} \wedge \vec{B} = \nabla P$ yields
+    \item The momentum equation $\vec{J} \times \vec{B} = \nabla P$ yields
         \begin{align}
-            J_\varphi\,\hat{e}_\varphi \wedge \left(B_r\,\hat{e}_r + B_z\,\hat{e}_z\right) 
+            J_\varphi\,\hat{e}_\varphi \times \left(B_r\,\hat{e}_r + B_z\,\hat{e}_z\right) 
             &= \frac{\partial P}{\partial r}\hat{e}_r + \frac{\partial P}{\partial z}\hat{e}_z  \, .
             \label{eq: mom eq}
         \end{align}
-        Using $\hat{e}_\varphi \wedge \hat{e}_r = -\hat{e}_z$ and $\hat{e}_\varphi \wedge \hat{e}_z = \hat{e}_r$, 
+        Using $\hat{e}_\varphi \times \hat{e}_r = -\hat{e}_z$ and $\hat{e}_\varphi \times \hat{e}_z = \hat{e}_r$, 
         this gives two scalar equations:
         \begin{align}
             J_\varphi B_z &= \frac{\partial P}{\partial r} \label{eq: momentum_r}\\
@@ -114,7 +114,7 @@ we can rewrite these equations and only the following components remain:
 Notice that \eqref{eq: divB} implies that $\vec{B}$ can be written identically
 by introducing the poloidal flux function $\psi(r,z)$ such that
 \begin{equation}
-    \vec{B} = \frac{1}{r} \nabla\psi \wedge \hat{e}_\varphi,
+    \vec{B} = \frac{1}{r} \nabla\psi \times \hat{e}_\varphi,
     \qquad
     B_r = -\frac{1}{r}\frac{\partial \psi}{\partial z}, \quad
     B_z = \frac{1}{r}\frac{\partial \psi}{\partial r}.
@@ -184,11 +184,11 @@ the integral version of Gauss' law for magnetism \eqref{eq:gauss_b} gives
 In the static equilibrium ($\partial_t B = 0$) this holds for all times.
 
 In our axisymmetric setup, the wall normal $\hat{n} = n_r\hat{e}_r + n_z\hat{e}_z$ has no
-$\varphi$-component. We can recognize the wall tangent in the poloidal plane $\hat{t} = \hat{e}_\varphi \wedge \hat{n}$
+$\varphi$-component. We can recognize the wall tangent in the poloidal plane $\hat{t} = \hat{e}_\varphi \times \hat{n}$
 when we insert \eqref{eq: B as fct of psi} into \eqref{eq: BC wall}
 and use the triple product
 \begin{equation*}
-    0 = \left(\nabla\psi \wedge \hat{e}_\varphi\right)\cdot\hat{n}
+    0 = \left(\nabla\psi \times \hat{e}_\varphi\right)\cdot\hat{n}
     = \hat{t}\cdot \nabla\psi  \, ,
 \end{equation*}
 and thus $\psi$ is constant along the walls in the poloidal plane.

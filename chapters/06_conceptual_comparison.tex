@@ -43,11 +43,11 @@ the stellarator, avoid this constraint and are intrinsically steady-state \cite{
 A toroidal setup, so basically an end-to-end connected Z-pinch, has many nice properties, which is why
 many current experiments follow this torus ansatz.
 However, in purely toroidal fields, due to asymmetries of the magnetic on the inside versus 
-the outside of the torus, an outside directed $\vec{E}\wedge\vec{B}$-drift is created 
+the outside of the torus, an outside directed $\vec{E}\times\vec{B}$-drift is created 
 (see \cite{Freidberg2014}, section 4.9).
 The tokamak and stellarator have different approaches to overcome this challenge
 and to create a flux of particles from top to bottom of the torus and vice versa,
-thus avoiding the voltage build-up along the vertical axis and thus the $\vec{E}\wedge\vec{B}$-drift.
+thus avoiding the voltage build-up along the vertical axis and thus the $\vec{E}\times\vec{B}$-drift.
 
 
 
@@ -83,7 +83,7 @@ Grad--Shafranov equation (\cite{Freidberg2014}):
 where $\psi(R,Z)$ is the poloidal flux function, $p(\psi)$ the plasma pressure,
 and $F(\psi)=RB_\text{tor}$ encodes the toroidal field.
 This second-order nonlinear PDE, derived from ideal MHD force balance
-$\vec{J}\wedge\vec{B}=\nabla p$ under axisymmetry, simultaneously describes
+$\vec{J}\times\vec{B}=\nabla p$ under axisymmetry, simultaneously describes
 radial pressure balance and toroidal force balance; its solutions give the nested
 flux surfaces on which $p$ and $F$ are constant
 (\cite{Freidberg2014}, Chapter~6).
@@ -167,7 +167,7 @@ order to control magnetic island widths and avoid confinement degradation.
 
 Because the stellarator lacks toroidal symmetry, the Grad-Shafranov equation \eqref{eq:GS} no longer applies.
 The equilibrium is instead a full three-dimensional ideal-MHD force balance,
-$\vec{J}\wedge\vec{B}=\nabla p$, which must be solved in 3D.
+$\vec{J}\times\vec{B}=\nabla p$, which must be solved in 3D.
 
 Because stellarators carry no net driven toroidal current, they are
 intrinsically steady-state. A residual bootstrap current does arise from pressure-gradient-driven particle
@@ -201,7 +201,7 @@ because they want to use D-D-fusion, for which the Lawson-criterion requires hig
 
 The confinement in the Polomac is achieved via the closed poloidal magnetic field lines,
 the MHD equilibrium has been discussed in \autoref{chap: Static equilibrium model in cylindrical coordinates under axisymmetric assumptions}
-and operation is in principle stready-state.
+and operation is in principle steady-state.
 The performance targets of the Polomac are outlined in \cite{Elio2024} and remain to be validated.
 
 

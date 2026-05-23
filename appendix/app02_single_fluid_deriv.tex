@@ -9,7 +9,7 @@ This section presents a complete derivation of the single fluid momentum equatio
 For each species $s$ (electrons and ions), the momentum equation (\ref{eq: species momentum eq}) derived from the Boltzmann kinetic equation is
 
 \begin{equation*}
-m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B}) - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s + \vec{R}_s,
+m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s (\vec{E} + \vec{u}_s \times \vec{B}) - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s + \vec{R}_s,
 \end{equation*}
 
 where:
@@ -24,7 +24,7 @@ where:
 Summing the momentum equations over all species:
 
 \begin{equation*}
-\sum_s m_s n_s \frac{d\vec{u}_s}{dt} = \sum_s q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B}) - \sum_s \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s + \sum_s \vec{R}_s.
+\sum_s m_s n_s \frac{d\vec{u}_s}{dt} = \sum_s q_s n_s (\vec{E} + \vec{u}_s \times \vec{B}) - \sum_s \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s + \sum_s \vec{R}_s.
 \end{equation*}
 
 The right-hand side simplifies as follows:
@@ -35,7 +35,7 @@ The right-hand side simplifies as follows:
 \end{equation*}
 
 \begin{equation*}
-\sum_s q_s n_s (\vec{u}_s \wedge \vec{B}) = \left(\sum_s q_s n_s \vec{u}_s\right) \wedge \vec{B} = \vec{J} \wedge \vec{B}
+\sum_s q_s n_s (\vec{u}_s \times \vec{B}) = \left(\sum_s q_s n_s \vec{u}_s\right) \times \vec{B} = \vec{J} \times \vec{B}
 \end{equation*}
 
 \paragraph{Collision term:}
@@ -46,7 +46,7 @@ since total momentum is conserved in collisions.
 
 Thus,
 \begin{equation*}
-\sum_s m_s n_s \frac{d\vec{u}_s}{dt} = \rho \vec{E} + \vec{J} \wedge \vec{B} - \sum_s \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s.
+\sum_s m_s n_s \frac{d\vec{u}_s}{dt} = \rho \vec{E} + \vec{J} \times \vec{B} - \sum_s \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s.
 \label{eq:summed_momentum}
 \end{equation*}
 
@@ -175,7 +175,7 @@ Rearranging:
 Combining equation (\ref{eq:key_identity}) with equation (\ref{eq:summed_momentum}):
 
 \begin{equation*}
-\varrho \frac{d\vec{V}}{dt} + \nabla_{\vec{r}} \cdot \left[\sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s\right] = \rho \vec{E} + \vec{J} \wedge \vec{B} - \nabla_{\vec{r}} \cdot \left[\sum_s \overleftrightarrow{P}_s\right].
+\varrho \frac{d\vec{V}}{dt} + \nabla_{\vec{r}} \cdot \left[\sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s\right] = \rho \vec{E} + \vec{J} \times \vec{B} - \nabla_{\vec{r}} \cdot \left[\sum_s \overleftrightarrow{P}_s\right].
 \end{equation*}
 
 Using equation (\ref{eq:pressure_relation}):
@@ -188,13 +188,13 @@ Substituting:
 
 \begin{multline}
 \varrho \frac{d\vec{V}}{dt} + \nabla_{\vec{r}} \cdot \left[\sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s\right] \\
-= \rho \vec{E} + \vec{J} \wedge \vec{B} - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}^{CM} + \nabla_{\vec{r}} \cdot \left[\sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s\right].
+= \rho \vec{E} + \vec{J} \times \vec{B} - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}^{CM} + \nabla_{\vec{r}} \cdot \left[\sum_s m_s n_s \vec{w}_s \otimes \vec{w}_s\right].
 \end{multline}
 
 The divergence terms cancel exactly, yielding the single fluid momentum equation:
 
 \begin{equation}
-\varrho \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \wedge \vec{B} - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}^{CM},
+\varrho \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \times \vec{B} - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}^{CM},
 \label{eq:single_fluid_momentum}
 \end{equation}
 

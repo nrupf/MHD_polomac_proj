@@ -5,14 +5,14 @@
 Choose $g_s(\vec{v}) = m_s \vec{v}$ and take the momentum moment of the Boltzmann equation:
 
 \begin{align*}
-&\Rightarrow \int d\vec{v} \, m_s \vec{v} \left[\frac{\partial f_s}{\partial t}+ \vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}} + \frac{q_s}{m_s}(\vec{E}^{lr} + \vec{v} \wedge \vec{B}^{lr}) \cdot \frac{\partial f_s}{\partial \vec{v}} - \left(\frac{\partial f}{\partial t}\right)_{coll}\right] = 0.
+&\Rightarrow \int d\vec{v} \, m_s \vec{v} \left[\frac{\partial f_s}{\partial t}+ \vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}} + \frac{q_s}{m_s}(\vec{E}^{lr} + \vec{v} \times \vec{B}^{lr}) \cdot \frac{\partial f_s}{\partial \vec{v}} - \left(\frac{\partial f}{\partial t}\right)_{coll}\right] = 0.
 \end{align*}
 
 This gives us four terms to evaluate:
 \begin{align*}
 \text{Term 1: } & \int d\vec{v} \, m_s \vec{v} \frac{\partial f_s}{\partial t} \\
 \text{Term 2: } & \int d\vec{v} \, m_s \vec{v} (\vec{v} \cdot \nabla_{\vec{r}} f_s) \\
-\text{Term 3: } & \int d\vec{v} \, m_s \vec{v} \left[\frac{q_s}{m_s}(\vec{E} + \vec{v} \wedge \vec{B}) \cdot \nabla_{\vec{v}} f_s\right] \\
+\text{Term 3: } & \int d\vec{v} \, m_s \vec{v} \left[\frac{q_s}{m_s}(\vec{E} + \vec{v} \times \vec{B}) \cdot \nabla_{\vec{v}} f_s\right] \\
 \text{Term 4: } & -\int d\vec{v} \, m_s \vec{v} \left(\frac{\partial f}{\partial t}\right)_{coll}
 \end{align*}
 
@@ -115,68 +115,68 @@ we obtain:
 \subsection*{Term 3: Lorentz force}
 
 \begin{align*}
-\text{Term 3} &= \int d^3v \, m_s \vec{v} \left[ \frac{q_s}{m_s}(\vec{E} + \vec{v} \wedge \vec{B}) \cdot \nabla_{\vec{v}} f_s \right]  \\
-&= q_s \int d^3v \, \vec{v} \cdot [(\vec{E} + \vec{v} \wedge \vec{B}) \cdot \nabla_{\vec{v}} f_s].
+\text{Term 3} &= \int d^3v \, m_s \vec{v} \left[ \frac{q_s}{m_s}(\vec{E} + \vec{v} \times \vec{B}) \cdot \nabla_{\vec{v}} f_s \right]  \\
+&= q_s \int d^3v \, \vec{v} \cdot [(\vec{E} + \vec{v} \times \vec{B}) \cdot \nabla_{\vec{v}} f_s].
 \end{align*}
 
 In component form:
 \begin{equation*}
-[\text{Term 3}]_i = q_s \int d^3v \, v_i [(E_j + (v \wedge B)_j) \frac{\partial f_s}{\partial v_j}].
+[\text{Term 3}]_i = q_s \int d^3v \, v_i [(E_j + (v \times B)_j) \frac{\partial f_s}{\partial v_j}].
 \end{equation*}
 
 We use integration by parts. From the product rule:
 \begin{equation*}
-\frac{\partial}{\partial v_j} [v_i (E_j + (v \wedge B)_j) f_s] = v_i (E_j + (v \wedge B)_j) \frac{\partial f_s}{\partial v_j} + f_s \frac{\partial}{\partial v_j}[v_i (E_j + (v \wedge B)_j)].
+\frac{\partial}{\partial v_j} [v_i (E_j + (v \times B)_j) f_s] = v_i (E_j + (v \times B)_j) \frac{\partial f_s}{\partial v_j} + f_s \frac{\partial}{\partial v_j}[v_i (E_j + (v \times B)_j)].
 \end{equation*}
 
 Rearranging:
 \begin{equation*}
-v_i (E_j + (v \wedge B)_j) \frac{\partial f_s}{\partial v_j} = \frac{\partial}{\partial v_j} [v_i (E_j + (v \wedge B)_j) f_s] - f_s \frac{\partial}{\partial v_j}[v_i (E_j + (v \wedge B)_j)].
+v_i (E_j + (v \times B)_j) \frac{\partial f_s}{\partial v_j} = \frac{\partial}{\partial v_j} [v_i (E_j + (v \times B)_j) f_s] - f_s \frac{\partial}{\partial v_j}[v_i (E_j + (v \times B)_j)].
 \end{equation*}
 
 Integrating over all velocity space:
 \begin{equation*}
-\int d^3v \, v_i (E_j + (v \wedge B)_j) \frac{\partial f_s}{\partial v_j} = \underbrace{\int d^3v \, \frac{\partial}{\partial v_j} [v_i (E_j + (v \wedge B)_j) f_s]}_{=0} - \int d^3v \, f_s \frac{\partial}{\partial v_j}[v_i (E_j + (v \wedge B)_j)].
+\int d^3v \, v_i (E_j + (v \times B)_j) \frac{\partial f_s}{\partial v_j} = \underbrace{\int d^3v \, \frac{\partial}{\partial v_j} [v_i (E_j + (v \times B)_j) f_s]}_{=0} - \int d^3v \, f_s \frac{\partial}{\partial v_j}[v_i (E_j + (v \times B)_j)].
 \end{equation*}
 
 The first integral vanishes by the divergence theorem (surface integral at $|\vec{v}| \to \infty$ where $f_s \to 0$).
 For the second integral, we compute:
 \begin{align*}
-\frac{\partial}{\partial v_j}[v_i (E_j + (v \wedge B)_j)] &= \frac{\partial v_i}{\partial v_j}(E_j + (v \wedge B)_j) + v_i \frac{\partial}{\partial v_j}(E_j + (v \wedge B)_j)  \\
-&= \delta_{ij}(E_j + (v \wedge B)_j) + v_i \frac{\partial}{\partial v_j}(E_j + (v \wedge B)_j).
+\frac{\partial}{\partial v_j}[v_i (E_j + (v \times B)_j)] &= \frac{\partial v_i}{\partial v_j}(E_j + (v \times B)_j) + v_i \frac{\partial}{\partial v_j}(E_j + (v \times B)_j)  \\
+&= \delta_{ij}(E_j + (v \times B)_j) + v_i \frac{\partial}{\partial v_j}(E_j + (v \times B)_j).
 \end{align*}
 
 The first term gives:
 \begin{equation*}
-\delta_{ij}(E_j + (v \wedge B)_j) = E_i + (v \wedge B)_i.
+\delta_{ij}(E_j + (v \times B)_j) = E_i + (v \times B)_i.
 \end{equation*}
 
 For the second term, note that
 \begin{itemize}
 \item $\frac{\partial E_j}{\partial v_j} = 0$ \quad ($\vec{E}$ independent of $\vec{v}$)
-\item $\frac{\partial}{\partial v_j}(v \wedge B)_j = \frac{\partial}{\partial v_j}(\varepsilon_{jkl} v_k B_l) = \varepsilon_{jkl} B_l \delta_{jk} = \varepsilon_{jjl} B_l = 0$
+\item $\frac{\partial}{\partial v_j}(v \times B)_j = \frac{\partial}{\partial v_j}(\varepsilon_{jkl} v_k B_l) = \varepsilon_{jkl} B_l \delta_{jk} = \varepsilon_{jjl} B_l = 0$
 \end{itemize}
 
-The last equality holds because $(v \wedge B)_j$ is independent of $v_j$ (the cross product structure ensures the $j$-th component depends only on the other velocity components).
+The last equality holds because $(v \times B)_j$ is independent of $v_j$ (the cross product structure ensures the $j$-th component depends only on the other velocity components).
 
 Therefore:
 \begin{equation*}
-\frac{\partial}{\partial v_j}[v_i (E_j + (v \wedge B)_j)] = E_i + (v \wedge B)_i.
+\frac{\partial}{\partial v_j}[v_i (E_j + (v \times B)_j)] = E_i + (v \times B)_i.
 \end{equation*}
 
 Substituting back:
 \begin{align*}
-[\text{Term 3}]_i &= -q_s \int d^3v \, f_s [E_i + (v \wedge B)_i]  \\
-&= -q_s E_i \int d^3v \, f_s - q_s \int d^3v \, f_s (v \wedge B)_i  \\
+[\text{Term 3}]_i &= -q_s \int d^3v \, f_s [E_i + (v \times B)_i]  \\
+&= -q_s E_i \int d^3v \, f_s - q_s \int d^3v \, f_s (v \times B)_i  \\
 &= -q_s n_s E_i - q_s \int d^3v \, f_s \varepsilon_{ijk} v_j B_k  \\
 &= -q_s n_s E_i - q_s \varepsilon_{ijk} B_k \int d^3v \, v_j f_s  \\
 &= -q_s n_s E_i - q_s \varepsilon_{ijk} B_k (n_s u_{s,j})  \\
-&= -q_s n_s [E_i + (u_s \wedge B)_i].
+&= -q_s n_s [E_i + (u_s \times B)_i].
 \end{align*}
 
 In vector notation:
 \begin{equation*}
-\text{Term 3} = -q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B}).
+\text{Term 3} = -q_s n_s (\vec{E} + \vec{u}_s \times \vec{B}).
 \end{equation*}
 
 \subsection*{Term 4: Collision term}
@@ -213,12 +213,12 @@ Therefore, both forms are equivalent:
 
 Combining all terms (Term 1 + Term 2 + Term 3 + Term 4 = 0):
 \begin{equation*}
-m_s n_s \frac{d\vec{u}_s}{dt} + \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s - q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B}) + \vec{R}_s = 0.
+m_s n_s \frac{d\vec{u}_s}{dt} + \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s - q_s n_s (\vec{E} + \vec{u}_s \times \vec{B}) + \vec{R}_s = 0.
 \end{equation*}
 
 Rearranging:
 \begin{equation*}
- m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s (\vec{E} + \vec{u}_s \wedge \vec{B}) - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s + \vec{R}_s,
+ m_s n_s \frac{d\vec{u}_s}{dt} = q_s n_s (\vec{E} + \vec{u}_s \times \vec{B}) - \nabla_{\vec{r}} \cdot \overleftrightarrow{P}_s + \vec{R}_s,
 \end{equation*}
 
 where $\frac{d}{dt} = \frac{\partial}{\partial t} + \vec{u}_s \cdot \nabla_{\vec{r}}$ is the convective derivative.

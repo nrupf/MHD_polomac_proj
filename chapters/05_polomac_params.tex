@@ -34,14 +34,14 @@ propagate along magnetic field lines, driven by magnetic tension and
 resisted by plasma inertia.  To derive their dispersion relation we
 linearize the ideal MHD equations around a static uniform equilibrium
 $\vec{B}=B_0\hat{e}_z$, $\varrho=\varrho_0$, $\vec{V}=0$,
-$P=P_0$, writing each quantity as its equilibrium value plus a small
-perturbation (e.g.\ $\vec{B}=B_0\hat{e}_z+\vec{B}_1$).  To first
+$P=P_0$, writing each quantity as $Q = Q_0 + Q_1$, so the the equilibrium value plus a small
+perturbation (e.g.\ $\vec{B}=B_0\hat{e}_z+\vec{B}_1$). To first
 order, combining the ideal MHD Ohm's law \eqref{eq: MHD ohm's law} 
 and Faraday's law \eqref{eq: MHD faraday}, we get the so called induction equation
 \begin{align}
     \label{eq: alfven ind. eq}
     \frac{\partial\vec{B}_1}{\partial t}
-        &= \nabla\wedge(\vec{V}_1\wedge\vec{B}_0), 
+        &= \nabla\times(\vec{V}_1\times\vec{B}_0), 
 \end{align}
 
 and the ideal MHD momentum equation \eqref{eq: MHD momentum eq.}
@@ -51,7 +51,7 @@ combined with the ideal MHD Ampère-Maxwell law \eqref{eq: MHD ampere-maxwell} g
     \label{eq: alfven mom. eq}
     \varrho_0\frac{\partial\vec{V}_1}{\partial t}
         &= -\nabla P_1
-          +\frac{1}{\mu_0}(\nabla\wedge\vec{B}_1)\wedge\vec{B}_0.
+          +\frac{1}{\mu_0}(\nabla\times\vec{B}_1)\times\vec{B}_0.
 \end{align}
 
 
@@ -66,13 +66,13 @@ Substituting the plane-wave ansatz into a fourier transformed induction equation
 %
 \begin{equation*}
     \vec{B}_1
-    = -\frac{1}{\omega}\,\vec{k}\wedge(\vec{V}_1\wedge\vec{B}_0).
+    = -\frac{1}{\omega}\,\vec{k}\times(\vec{V}_1\times\vec{B}_0).
 \end{equation*}
 %
 With $\vec{V}_1 = V_1\hat{e}_x$ and $\vec{B}_0=B_0\hat{e}_z$:
 %
 \begin{equation*}
-    \vec{V}_1\wedge\vec{B}_0 = -V_1 B_0\,\hat{e}_y
+    \vec{V}_1\times\vec{B}_0 = -V_1 B_0\,\hat{e}_y
     \quad\Longrightarrow\quad
     \vec{B}_1
     = -\frac{k_\parallel B_0}{\omega}\,V_1\,\hat{e}_x.
@@ -83,7 +83,7 @@ Inserting $\vec{B}_1$ into the $\hat{e}_x$-component of the fourier transformed 
 \begin{equation*}
     -i\omega\varrho_0 V_1
     = \frac{i}{\mu_0}
-      \bigl[(\vec{k}\wedge\vec{B}_1)\wedge\vec{B}_0\bigr]_x
+      \bigl[(\vec{k}\times\vec{B}_1)\times\vec{B}_0\bigr]_x
     = \frac{i}{\mu_0}\,k_\parallel B_0\,B_{1x}
     = -\frac{i k_\parallel^2 B_0^2}{\mu_0\omega}\,V_1.
 \end{equation*}
@@ -202,7 +202,7 @@ so comparisons of efficiency still make sense.
 \subsection{Plasma \texorpdfstring{$\beta$}{Beta} of the Polomac}
 However, since we do not get explicit values for $P$ from the ideal Grad-Shafranov
 equation, we will use the parameter ranges given in \cite{Elio2024} (Table~1), where plasma pressure is
-\SIrange{1.6}{16}{\kilo\pascal} and magnetic flux density is \SIrange{0.2}{0.3}{\tesla}
+\SIrange{1.6}{16}{\kilo\pascal} and magnetic flux density $B$ is \SIrange{0.2}{0.3}{\tesla}
 
 Inserting in \eqref{eq:beta}, we thus get 
 \begin{equation*}

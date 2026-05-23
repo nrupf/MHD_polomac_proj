@@ -13,8 +13,8 @@ Additionally we take the mass continuity equation \eqref{eq: MHD mass continuity
 to arrive at a system of four partial differential equations
 \begin{align*}
     \frac{\partial \varrho}{\partial t} + \nabla \cdot (\varrho \vec{V}) &= 0  \, ,\\
-    \varrho \frac{d\vec{V}}{dt} &= -\nabla P + \frac{1}{\mu_0}(\nabla \wedge \vec{B}) \wedge \vec{B}  \, ,\\
-    \frac{\partial \vec{B}}{\partial t} &= \nabla \wedge (\vec{V} \wedge \vec{B})  \, , \\
+    \varrho \frac{d\vec{V}}{dt} &= -\nabla P + \frac{1}{\mu_0}(\nabla \times \vec{B}) \times \vec{B}  \, ,\\
+    \frac{\partial \vec{B}}{\partial t} &= \nabla \times (\vec{V} \times \vec{B})  \, , \\
     \frac{d}{dt}\!\left(P \varrho^{-\gamma}\right) &= 0  \, ,
 \end{align*}
 and as an additional constraint Gauss' law for magnetism \eqref{eq: MHD gauss law for magnetism},
@@ -33,16 +33,16 @@ As in \autoref{subsec: theory of alfven waves}, we linearize around a uniform st
     \varrho(\vec{x}, t) &= \varrho^{(0)} + \varrho^{(1)}(\vec{x}, t), \\
     P(\vec{x}, t)       &= P^{(0)} + P^{(1)}(\vec{x}, t),
 \end{align*}
-where $\vec{B}^{(0)}$, $\varrho^{(0)}$, $P^{(0)}$ are constants, $\vec{V}^{(0)} = 0$, and all perturbations
+where $\vec{B}^{(0)}$, $\varrho^{(0)}$, $P^{(0)}$ are constants, $\vec{V}^{(0)} = 0$, and, as in \autoref{subsec: theory of alfven waves}, perturbations of all quantities $Q=Q_0 + Q_1$ satisfy
 satisfy $|Q_1/Q_0| \ll 1$. Substituting and retaining only first-order terms yields
 the linearized equations
 \begin{align}
     \frac{\partial \varrho^{(1)}}{\partial t} &= -\varrho^{(0)}\, \nabla \cdot \vec{V}^{(1)},
         \label{eq: lin continuity} \\
     \varrho^{(0)}\, \frac{\partial \vec{V}^{(1)}}{\partial t} &= -\nabla P^{(1)}
-        + \frac{1}{\mu_0}\bigl(\nabla \wedge \vec{B}^{(1)}\bigr) \wedge \vec{B}^{(0)},
+        + \frac{1}{\mu_0}\bigl(\nabla \times \vec{B}^{(1)}\bigr) \times \vec{B}^{(0)},
         \label{eq: lin momentum} \\
-    \frac{\partial \vec{B}^{(1)}}{\partial t} &= \nabla \wedge \bigl(\vec{V}^{(1)} \wedge \vec{B}^{(0)}\bigr),
+    \frac{\partial \vec{B}^{(1)}}{\partial t} &= \nabla \times \bigl(\vec{V}^{(1)} \times \vec{B}^{(0)}\bigr),
         \label{eq: lin induction} \\
     \frac{\partial P^{(1)}}{\partial t} &= -\gamma P^{(0)}\, \nabla \cdot \vec{V}^{(1)}.
         \label{eq: lin pressure}
@@ -83,10 +83,10 @@ Under these two assumptions the cylindrical differential operators from
     \nabla \cdot \vec{F} &= \frac{1}{r}\frac{\partial(r F_r)}{\partial r}
         + \frac{\partial F_z}{\partial z} \, ,
     \label{eq: reduced div} \\
-    (\nabla \wedge \vec{F})_r &= -\frac{\partial F_\varphi}{\partial z}, \qquad
-    (\nabla \wedge \vec{F})_\varphi = \frac{\partial F_r}{\partial z}
+    (\nabla \times \vec{F})_r &= -\frac{\partial F_\varphi}{\partial z}, \qquad
+    (\nabla \times \vec{F})_\varphi = \frac{\partial F_r}{\partial z}
         - \frac{\partial F_z}{\partial r}, \qquad
-    (\nabla \wedge \vec{F})_z = \frac{1}{r}\frac{\partial(r F_\varphi)}{\partial r}.
+    (\nabla \times \vec{F})_z = \frac{1}{r}\frac{\partial(r F_\varphi)}{\partial r}.
     \label{eq: reduced curl}
 \end{align}
 
@@ -608,9 +608,11 @@ and $[B_z^{(1)}]_{(\frac12,j)}^{n} = [B_z^{(1)}]_{(-\frac12,j)}^{n}$ which impli
 
 \subsubsection{Courant-Friedrichs-Lewy Stability Condition}
 
-The necessary (but not sufficient)
-Courant-Friedrichs-Lewy (CFL) condition (\cite{leveque2002}) requires that the
-numerical domain of dependence contains the physical one for the scheme to be stable.
+To obtain an initial estimate for a suitable timestep, the
+Courant-Friedrichs-Lewy (CFL) condition can be used. For explicit
+schemes, the CFL condition is a necessary, though not sufficient,
+criterion for stability, and requires that the numerical domain of
+dependence contains the physical domain of dependence (\cite{leveque2002}).
 
 For our explicit scheme with two spatial dimensions and a maximum
 characteristic velocity of $v_f = \sqrt{v_A^2+c_s^2}$ a safe bound is (\cite{Inan2011})
@@ -639,7 +641,11 @@ This is two orders of magnitude smaller than the Alfv\'{e}n timescale
 $\tau_A \approx \SI{5.5e-7}{\second}$, so a simulation spanning several
 Alfv\'{e}n times would require of order $10^3-10^4$ timesteps.
 
-
+A more rigorous stability assessment would require a von Neumann analysis
+of the amplification factors of the discretized equations or an analysis
+of boundedness in a suitable discrete energy norm. Such analyses are not
+performed here, the CFL criterion is instead used as a practical timestep
+restriction.
 
 \subsection{Verification Tests}
 \label{subsec: verification tests}

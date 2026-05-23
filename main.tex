@@ -19,6 +19,8 @@
 
 \usepackage{comment}
 
+\usepackage{pdfpages}
+
 \usepackage[backend=biber, style=authoryear]{biblatex}
 \usepackage{csquotes}
 \addbibresource{bibliography.bib}
@@ -26,16 +28,16 @@
 \input{latex/commands}
 \input{latex/layout}
 
-% Title info
-\title{Theoretical MHD Modelling of the Polomac Concept}
-\subtitle{Ideal MHD and Equilibrium Derivation, Characteristic Parameters,\\
-          Geometry Comparison and a Framework for Numerical Implementation}
-\author{Nicola Rupf}
-\date{2026}
+
 
 \begin{document}
 
-\maketitle
+\include{title_page}
+\pagebreak
+\include{title_page_claude}
+
+\newpage
+
 \tableofcontents
 
 
@@ -52,6 +54,9 @@
 \include{chapters/08_conclusion_and_outlook}
 
 \printbibliography
+
+\addcontentsline{toc}{chapter}{Declaration of Originality}
+\includepdf[pages={-}]{declaration-originality_signed.pdf}
 
 \appendix
 \include{appendix/app01_species_eq_deriv}

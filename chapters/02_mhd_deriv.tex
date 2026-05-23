@@ -10,18 +10,18 @@ The microscopic Maxwell equations are
 \begin{align}
     \text{Gauss's law: }\;\, \nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0}\, , \label{eq:gauss_e} \\
     \text{Gauss's law for magnetism: }\;\, \nabla \cdot \vec{B} &= 0 \, , \label{eq:gauss_b} \\
-    \text{Faraday's law of induction: } \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \, , \label{eq:faraday} \\
-    \text{Ampère–Maxwell law: }  \nabla \wedge \vec{B} &= \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} \, . \label{eq:ampere}
+    \text{Faraday's law of induction: } \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \, , \label{eq:faraday} \\
+    \text{Ampère–Maxwell law: }  \nabla \times \vec{B} &= \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t} \, . \label{eq:ampere}
 \end{align}
 
 \section{The Boltzmann Equation}
 The Boltzmann equation is
 \begin{equation*}
-    \frac{\partial f_s}{\partial t} + \vec{v} \nabla_{\vec{r}} f_s + \frac{q_s}{m_s}(\vec{E}^{\lr} \vec{v}\wedge \vec{B}^{\lr} ) \nabla_{\vec{v}} f_s - \left(\frac{\partial f}{\partial t}\right)_{\operatorname{coll}} = 0 \, .
+    \frac{\partial f_s}{\partial t} + \vec{v} \nabla_{\vec{r}} f_s + \frac{q_s}{m_s}(\vec{E}^{\lr} \vec{v}\times \vec{B}^{\lr} ) \nabla_{\vec{v}} f_s - \left(\frac{\partial f}{\partial t}\right)_{\operatorname{coll}} = 0 \, .
 \end{equation*}
 
 Here the short range interactions are accounted for in the collisional term, and the long range (lr) interactions from collective effects are accounted for in the electric and Lorentz term.
-The crititical screening distance hereby is the Debye length $\lambda_{D}$ of electrons (\cite{Chen2016})
+The critical screening distance hereby is the Debye length $\lambda_{D}$ of electrons (\cite{Chen2016})
 \begin{equation}
     \lambda_{D} = \sqrt{\frac{\epsilon_0 k_B T_e}{e^2 n_e}}  \, .
     \label{eq: debye length}
@@ -77,14 +77,14 @@ We then evaluate moments of the Boltzmann equation
 In order to obtain the species continuity equation, we choose $g_s(\vec{v}) = 1$ and obtain
 
 \begin{align*}
-\int d\vec{v} \, \left[\underbrace{\frac{\partial f_s}{\partial t}}_{(1)} + \underbrace{\vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}}}_{(2)} + \underbrace{\frac{q_s}{m_s} (\vec{E} + \vec{v} \wedge \vec{B}) \cdot \frac{\partial f_s}{\partial \vec{v}}}_{(3)} - \underbrace{\left(\frac{\partial f}{\partial t}\right)_{coll}}_{(4)}\right] = 0  \, ,
+\int d\vec{v} \, \left[\underbrace{\frac{\partial f_s}{\partial t}}_{(1)} + \underbrace{\vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}}}_{(2)} + \underbrace{\frac{q_s}{m_s} (\vec{E} + \vec{v} \times \vec{B}) \cdot \frac{\partial f_s}{\partial \vec{v}}}_{(3)} - \underbrace{\left(\frac{\partial f}{\partial t}\right)_{coll}}_{(4)}\right] = 0  \, ,
 \end{align*}
 where
 \begin{align*}
 (1): \quad & \int d\vec{v} \,  \frac{\partial f_s}{\partial t} = \frac{\partial}{\partial t} \int f_s = \frac{\partial}{\partial t} n_s  \, ,\\
 (2): \quad & \int d\vec{v} \,  \vec{v} \cdot \frac{\partial f_s}{\partial \vec{r}} = \frac{\partial}{\partial \vec{r}} \cdot \int d\vec{v} \, \vec{v} f_s = \frac{\partial}{\partial \vec{r}} \cdot (n_s \vec{u}_s) \qquad \text{$\vec{v}$ indep. of $\vec{r}$}  \, ,\\
-(3): \quad & \int d\vec{v} \,  \frac{q_s}{m_s} (\vec{E} + \vec{v} \wedge \vec{B}) \cdot \frac{\partial f_s}{\partial \vec{v}} = \frac{q_s}{m_s} \int \frac{\partial}{\partial \vec{v}} \cdot (\vec{E} + \vec{v} \wedge \vec{B}) f_s \\
-& \hspace{5cm}= \frac{q_s}{m_s} \int_{S_{\vec{v} \to \infty}} (\vec{E} + \vec{v} \wedge \vec{B}) \, f_s \, d\vec{S}_{\vec{v}}\\
+(3): \quad & \int d\vec{v} \,  \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \vec{B}) \cdot \frac{\partial f_s}{\partial \vec{v}} = \frac{q_s}{m_s} \int \frac{\partial}{\partial \vec{v}} \cdot (\vec{E} + \vec{v} \times \vec{B}) f_s \\
+& \hspace{5cm}= \frac{q_s}{m_s} \int_{S_{\vec{v} \to \infty}} (\vec{E} + \vec{v} \times \vec{B}) \, f_s \, d\vec{S}_{\vec{v}}\\
 &    \hspace{5cm} = 0 \quad\text{assuming } f_s\overset{v\to\infty}{\rightarrow}0 \, ,\\
 (4): \quad & \int d\vec{v} \,  \left(\frac{\partial f}{\partial t}\right)_{coll} = 0 \quad \text{because we assume collisions don't create or destroy particles.}
 \end{align*}
@@ -101,7 +101,7 @@ For the species momentum equation we choose $g_s(\vec{v}) = m_s \vec{v}$.
 A detailed derivation is attached in \autoref{sec:Species Momentum Equation}, the result we obtain is
 
 \begin{equation}\label{eq: species momentum eq}
- m_s n_s \frac{d \vec{u}_s}{d t} = q_s n_s \left(\vec{E} + \vec{u}_s \wedge \vec{B}\right) - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s  \, ,
+ m_s n_s \frac{d \vec{u}_s}{d t} = q_s n_s \left(\vec{E} + \vec{u}_s \times \vec{B}\right) - \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_s} + \vec{R}_s  \, ,
 \end{equation}
 
 where $\frac{d}{dt}$ is the convective derivative, $\frac{d}{dt} = \frac{\partial}{\partial t} + \vec{u}_s \cdot \frac{\partial}{\partial \vec{r}}$.
@@ -171,7 +171,7 @@ Similarly, multiplying the species continuity equation by their respective charg
 Summing the species momentum equations \eqref{eq: species momentum eq}, we can obtain the \emph{single fluid momentum equation}.
 
 \begin{equation}\label{eq: Single fluid momentum eq.}
-    \varrho \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \wedge \vec{B} - \partial_{\vec{r}} \cdot \overleftrightarrow{P}^{cm}  \, .
+    \varrho \frac{d\vec{V}}{dt} = \rho \vec{E} + \vec{J} \times \vec{B} - \partial_{\vec{r}} \cdot \overleftrightarrow{P}^{cm}  \, .
 \end{equation}
 
 Details of the derivation can be found in \ref{sec:Derivation of the Single Fluid Momentum Equation}.
@@ -187,7 +187,7 @@ Further assuming neutrality $(n_e \simeq n_i \simeq n)$, $m_e \ll m_i$, $\vec{J}
 the sum of the intermediate results is approximately
 \begin{equation*}
     \frac{m_e}{n e^2} \left(\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right)
-     = \vec{E} + \vec{V} \wedge \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}  \, ,
+     = \vec{E} + \vec{V} \times \vec{B} - \frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P}_e^{cm} - \eta \vec{J}  \, ,
 \end{equation*}
 
 with the \emph{plasma resisitivity} $\eta$.
@@ -213,8 +213,8 @@ We will justify these assumptions in the next section.
 \subsubsection{Single Fluid Maxwell Equations}
 For completeness, we also state the microscopic Maxwell equations again with total electric current density $\vec{J}$:
 \begin{align}
-\nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} \, , & \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t}  \, , \\
-\nabla \cdot \vec{B} &= 0   \, , & \nabla \wedge \vec{B} &= \mu_0 \left(\vec{J} + \epsilon_0 \frac{\partial \vec{E}}{\partial t}\right).
+\nabla \cdot \vec{E} &= \frac{\rho}{\epsilon_0} \, , & \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t}  \, , \\
+\nabla \cdot \vec{B} &= 0   \, , & \nabla \times \vec{B} &= \mu_0 \left(\vec{J} + \epsilon_0 \frac{\partial \vec{E}}{\partial t}\right).
 \label{eq: single fluid maxwell eq}
 \end{align}
 
@@ -342,7 +342,7 @@ Both conditions are well satisfied.
 \item \textbf{\emph{Ideal} MHD - zero resistivity} ($\eta = 0$)
 
 Resistive diffusion is negligible when the magnetic field moves instantly with the plasma,
- i.e.\ when the resistive diffusion timescale greatly exceeds
+ i.e. when the resistive diffusion timescale greatly exceeds
 the Alfvén timescale. This is valid when the Lundquist number
 $S \gg 1$, the calculation of which is deffered to section~\ref{sec:lundquist}.
 
@@ -380,13 +380,13 @@ is determined by $S$; see Section~\ref{sec:lundquist}.
 \item \textbf{Neglect displacement current}
 
 In Amp\`ere's law \eqref{eq: single fluid maxwell eq}, 
-$\nabla\wedge\vec{B} = \mu_0\vec{J} + \mu_0\epsilon_0\,\partial_t\vec{E}$, 
+$\nabla\times\vec{B} = \mu_0\vec{J} + \mu_0\epsilon_0\,\partial_t\vec{E}$, 
 we drop the displacement current when $\vec{J}$ dominates. 
-To estimate $E$, we use Faraday's law $\nabla\wedge\vec{E}=-\partial_t\vec{B}$, 
+To estimate $E$, we use Faraday's law $\nabla\times\vec{E}=-\partial_t\vec{B}$, 
 which gives $E/L\sim B/\tau\sim vB/L$, hence $E\sim vB$. Then with $c^2=1/\epsilon_0\mu_0$:
 \[
     \frac{\mu_0\epsilon_0\,\partial_t\vec{E}}
-         {\nabla\wedge\vec{B}}
+         {\nabla\times\vec{B}}
     \sim \frac{v^2 B/c^2 L}{B/L}
     = \frac{v^2}{c^2}.
 \]
@@ -404,15 +404,15 @@ The particles are tightly bound to the magnetic field lines.
 Inserting the definition of the larmor radius ($r_i = \nicefrac{m_i v_{th, i}}{eB}$)
 this leads to
 \[
-\left|\vec{V} \wedge \vec{B}\right| \gg \left|\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}\right|
+\left|\vec{V} \times \vec{B}\right| \gg \left|\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}\right|
 \]
 
 in Ohm's law. We see this by recognizing the larmor radius in
 \[
-\frac{\vec{V}\wedge\vec{B}}{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}}
+\frac{\vec{V}\times\vec{B}}{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P_e}}
 \sim \frac{v_{th, i} B}{\frac{n_e k_B T_e}{e n L}} \sim \frac{v_{th, i} B}{\frac{ k_B T_e}{e L}} \sim \frac{L}{r_i}  \, ,
 \]
-where we used the ideal gas relation to approximate $\overleftrightarrow{P_e}$, the relation $T_e \sim T_i$ and $k_B T_i \sim m_i v_{th,i}^2$.
+where we used the ideal gas relation to estimate $\overleftrightarrow{P_e}$, the relation $T_e \sim T_i$ and $k_B T_i \sim m_i v_{th,i}^2$.
 
 With $L=\SIrange{0.04}{0.3}{\meter}$ and $B=\SIrange{0.2}{0.3}{\tesla}$ this gives $L/r_i\approx \numrange{5.5}{62}$.
 The condition is satisfied at device scales; at the smallest resolved
@@ -483,7 +483,7 @@ treated with appropriate caution.
 \item Charge continuity equation:
 
 Charge continuity reduces to $\nabla \cdot \vec{J} = 0$, which is automatically 
-satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \wedge \vec{B}) = 0$). It is thus obsolete.
+satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \times \vec{B}) = 0$). It is thus obsolete.
 
 \[
 \underbrace{\frac{\partial \rho}{\partial t}}_{\text{Ass. 2}} + \underbrace{\frac{\partial}{\partial \vec{r}} \cdot \vec{J} = 0}_{\text{Ass. 4}}
@@ -491,12 +491,12 @@ satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \wedge \vec{B}) = 0$). 
 
 \item Momentum equation:
 \[
-\varrho \frac{d\vec{V}}{dt} = \underbrace{\rho \vec{E}}_{\text{Ass. 2}} + \vec{J} \wedge \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \underbrace{\overleftrightarrow{P}^{CM}}_{\text{Ass. 6}}
+\varrho \frac{d\vec{V}}{dt} = \underbrace{\rho \vec{E}}_{\text{Ass. 2}} + \vec{J} \times \vec{B} - \frac{\partial}{\partial \vec{r}} \cdot \underbrace{\overleftrightarrow{P}^{CM}}_{\text{Ass. 6}}
 \]
 
 \item Ohm's law:
 \[
-\underbrace{\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right]}_{\text{Ass. 1}} = \vec{E} + \vec{V} \wedge \vec{B} - \underbrace{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e}}_{\text{Ass. 5}}- \underbrace{\eta \vec{J}}_{\text{Ass. 3}}
+\underbrace{\frac{m_e}{n e^2} \left[\frac{\partial \vec{J}}{\partial t} + \frac{\partial}{\partial \vec{r}} \cdot (\vec{V}\vec{J} + \vec{J}\vec{V})\right]}_{\text{Ass. 1}} = \vec{E} + \vec{V} \times \vec{B} - \underbrace{\frac{1}{en} \frac{\partial}{\partial \vec{r}} \cdot \overleftrightarrow{P^{CM}_e}}_{\text{Ass. 5}}- \underbrace{\eta \vec{J}}_{\text{Ass. 3}}
 \]
 \end{itemize}
 
@@ -506,8 +506,8 @@ satisfied by Ampere's law (Ass. 4: $\nabla \cdot (\nabla \wedge \vec{B}) = 0$). 
 
 \item Maxwell equations
 \begin{align*}
-\underbrace{\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}}_{\text{redundant}} & & \nabla \wedge \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
-\nabla \cdot \vec{B} &= 0 & \nabla \wedge \vec{B} &= \mu_0 \left(\vec{J} + \underbrace{\epsilon_0 \frac{\partial \vec{E}}{\partial t}}_{\text{Ass. 4}}\right)
+\underbrace{\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}}_{\text{redundant}} & & \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+\nabla \cdot \vec{B} &= 0 & \nabla \times \vec{B} &= \mu_0 \left(\vec{J} + \underbrace{\epsilon_0 \frac{\partial \vec{E}}{\partial t}}_{\text{Ass. 4}}\right)
 \end{align*}
 \end{itemize}
 
@@ -527,11 +527,11 @@ The ideal magnetohydrodynamic equations consist of
     \item the momentum equation:
             \begin{equation}
                 \label{eq: MHD momentum eq.}
-                \varrho \frac{d \vec{V}}{dt} = \vec{J} \wedge \vec{B} - \nabla P
+                \varrho \frac{d \vec{V}}{dt} = \vec{J} \times \vec{B} - \nabla P
             \end{equation}
     \item Ohm's law:
             \begin{equation}
-                \vec{E} + \vec{V} \wedge \vec{B} = 0
+                \vec{E} + \vec{V} \times \vec{B} = 0
                 \label{eq: MHD ohm's law}
             \end{equation}
     \item Closure equation:
@@ -542,10 +542,10 @@ The ideal magnetohydrodynamic equations consist of
     \item Maxwell equations:
             \begin{equation}
                 \label{eq: MHD faraday}
-                \nabla\wedge\vec{E} = - \frac{\partial \vec{B}}{\partial t}
+                \nabla\times\vec{E} = - \frac{\partial \vec{B}}{\partial t}
             \end{equation}
             \begin{equation}
-                \nabla\wedge\vec{B} =  \mu_0 \vec{J}
+                \nabla\times\vec{B} =  \mu_0 \vec{J}
                 \label{eq: MHD ampere-maxwell}
             \end{equation}
             \begin{equation*}
