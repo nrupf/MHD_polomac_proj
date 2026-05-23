@@ -38,14 +38,14 @@ No experimental plasma data from the Polomac exist as of this writing; the devic
 - **Characteristic parameters** (based on design values from Elio et al. 2024):
   - Alfvén velocity: v_A ≈ 5.5 × 10⁵ m/s
   - Lundquist number: S ∈ [2.8 × 10⁴, 2.1 × 10⁵] — ideal MHD limit well justified
-  - Plasma β ∈ [0.04, 1.01] — high-β operation potentially achievable
+  - Plasma β ∈ [0.04, 1.01] — high-β operation potentially achievable (derived by simply using extremizing values in Elio et al. 2024)
 - **FDTD framework:** The linearised system is proven to be first-order hyperbolic. A staggered Yee-type grid discretisation is derived, separating the shear-Alfvén branch (V_φ, B_φ) from the compressional/magnetosonic branch. CFL bound: Δt ≤ Δx / (√2 · v_f), where v_f = √(v_A² + c_s²).
 
 ---
 
 ## Context: Poloidal Confinement
 
-The Polomac belongs to a class of poloidal confinement devices, most notably pioneered by the [Levitating Dipole Experiment (LDX)](https://www.psfc.mit.edu/ldx) at MIT, which demonstrated compressibility-driven stabilisation of interchange modes in a superconducting dipole geometry before concluding in 2011. The concept is also being revisited by the [OpenStar](https://www.openstarfusion.com) project, which is developing a levitated-dipole reactor in a closely related regime (see also [Simpson et al. 2026](https://arxiv.org/abs/2602.20564)).
+The Polomac belongs to a class of poloidal confinement devices, most notably pioneered by the [Levitating Dipole Experiment (LDX)](https://en.wikipedia.org/wiki/Levitated_Dipole_Experiment) at MIT, which demonstrated compressibility-driven stabilisation of interchange modes in a superconducting dipole geometry before concluding in 2011. The concept is also being revisited by the [OpenStar](https://www.openstar.tech/) project, which is developing a levitated-dipole reactor in a closely related regime (see also [Simpson et al. 2026](https://arxiv.org/abs/2602.20564)).
 
 ---
 
