@@ -9,6 +9,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
+\usepackage{varwidth}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -33,9 +34,11 @@
 \begin{document}
 
 \include{title_page}
-\pagebreak
-\include{title_page_claude}
 
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
 \newpage
 
 \tableofcontents
@@ -62,5 +65,10 @@
 \include{appendix/app01_species_eq_deriv}
 \include{appendix/app02_single_fluid_deriv}
 \include{appendix/app03_adiabatic_eq_of_state}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
 
 \end{document}
