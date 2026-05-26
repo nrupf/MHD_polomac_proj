@@ -16,3 +16,6 @@ SyncTeX
 *.synctex.gz
 *.synctex(busy)
 
+# signed declaration of originality
+declaration-originality.pdf
+
