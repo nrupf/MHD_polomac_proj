@@ -9,7 +9,7 @@
 
 ## Overview
 
-This repository accompanies the research project *Theoretical MHD Modelling of the Polomac Concept*, which develops a self-contained ideal MHD framework for the Polomac, a novel poloidal magnetic confinement geometry for nuclear fusion proposed by [Deutelio](https://www.deutelio.com) (described in [Elio et al. 2024](https://jtsp.eu/jtsp/article/view/32)).
+This repository accompanies the research project *Theoretical MHD Modelling of the Polomac Concept*, which develops a self-contained ideal MHD framework for the Polomac, a novel poloidal magnetic confinement geometry for nuclear fusion proposed by [Deutelio](https://www.deutelio.com) (described in [Elio et al. 2024](https://jtsp.eu/jtsp/article/view/32)). The thesis PDF is available in the main.pdf file.
 
 The work proceeds from first principles: starting from the Boltzmann equation, it derives the ideal MHD equations, specialises them to the Polomac geometry, formulates the static MHD equilibrium, evaluates the relevant dimensionless parameters, compares the concept to tokamak and stellarator geometries, and lays out a concrete framework for a linearised FDTD solver.
 
