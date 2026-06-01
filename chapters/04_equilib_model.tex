@@ -50,6 +50,7 @@ and \eqref{eq: axisymm. cylindrical curl} to
 \end{align}
 
 
+
 \section{Static Equilibrium}
 
 For the following derivation we closely work with Chapter 6 of \cite{Freidberg2014} which derives the Grad-Shafranov equation.
@@ -122,22 +123,26 @@ by introducing the poloidal flux function $\psi(r,z)$ such that
 \end{equation}
 
 
-Multiplying this $\vec{B}$ to both sides of \eqref{eq: static momentum eq.}, we obtain
-\[
-\vec{B}\cdot \nabla P = 0  \, .
-\]
-Pressure $p$ is thus constant along magnetic field lines. 
-Since by construction $\vec{B}\cdot \nabla \psi = 0$, so $\psi$ constant along field lines aswell.
+By construction, $\vec{B} \cdot \nabla\psi = 0$, so $\psi$ is constant
+along field lines.
 
-Assuming an axisymmetric geometry and $B_\varphi \equiv 0$, we conclude that $\psi(r,z)$ forms nested flux surfaces
-around the torus of center poloidal coils.
-Thus $\psi$ is monotonic as a function of distance from these coils and we have a relation $P(\psi)$.
-We can't however determine the relation $P(\psi)$ from ideal MHD. \cite{Freidberg2014} states \emph{"transport theory,
-experimental data, or physical intuition are needed to properly specify $P(\psi)$"}.
+Dotting $\vec{B}$ into the momentum equation \eqref{eq: static momentum eq.}
+gives $\vec{B} \cdot \nabla P = 0$, so $P$ is constant along field lines as well.
+
+We assume that in the plasma domain the field lines form closed, nested loops
+around the torus of central coils, consistent with a dipole-like topology, but not
+derived from ideal MHD. Under this assumption each field line loop
+has a unique value of $\psi$, making $\psi$ a valid flux surface label
+and $P(\psi)$ a well-defined single-valued function.
+
+The function $P(\psi)$ cannot be determined from ideal MHD alone. As
+\cite{Freidberg2014} notes, transport theory, experimental data, or physical
+intuition are needed to specify it.
 
 
-\textbf{Remark} If we did not assume $B_\varphi \equiv 0$, we would have restricted the abve discussion to $B_\text{pol}$
-and added a similar function for $B_\varphi$. Thus $\psi(r,z)$ still forms nested flux surfaces.
+\paragraph{Remark} If we did not assume $B_\varphi \equiv 0$, we would have restricted 
+the above discussion to $B_\text{pol}$ and added a similar function for $B_\varphi$ 
+(see \cite{Freidberg2014}). The argument for nested flux surfaces would get more involved.
 
 
 
@@ -150,7 +155,7 @@ We can rewrite \eqref{eq: J_phi} as
 \end{equation}
 where, using cylindrical divergence again, 
 \begin{equation*}
-    \Delta^* \psi \coloneq r^2 \nabla \cdot \left(\frac{\nabla \psi}{r^2}\right) = r \frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial \psi}{\partial r}\right) + \frac{\partial^2 \psi}{\partial Z^2}  \, .
+    \Delta^* \psi \coloneq r^2 \nabla \cdot \left(\frac{\nabla \psi}{r^2}\right) = r \frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial \psi}{\partial r}\right) + \frac{\partial^2 \psi}{\partial z^2}  \, .
 \end{equation*}
 
 If we furthermore use the chain rule ($\nabla P = \frac{dP}{d\psi} \nabla \psi$) and \eqref{eq: J_phi as delta*}, 
@@ -162,6 +167,11 @@ are satisfied simultaneously if and only if
 \end{equation}
 We call this the \emph{reduced Grad-Shafranov equation}. 
 
+\paragraph{Remark} Instead of specifying an experimentally obtained pressure profile
+$P(\psi)$, we could also specify an experimentally obtained current profile $J_\varphi(r,z)$, insert it in 
+\eqref{eq: J_phi as delta*} and recover the pressure via \eqref{eq: B as fct of psi}
+and the static momentum equation \eqref{eq: static momentum eq.}. 
+This does not change the fact, that MHD is underdetermined.
 
 \subsection{Boundary Conditions}
 \label{subsec: equilibrium BC}
